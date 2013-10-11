@@ -5,21 +5,21 @@
         <input type="search" class="form-control" placeholder="Search" ng-model="search.query"/>
     </form>
 
-    <button type="button" class="btn btn-link">New</button>
+    <a ng-href="#/questionnaires/new" class="btn btn-link">New</a>
 
     <article class="questionnaire" ng-repeat="questionnaire in questionnaires">
         <ul class="list-unstyled pull-right">
             <li>
-                <button type="button" class="btn btn-link">Edit</button>
+                <a ng-href="#/questionnaires/show/{{questionnaire.id}}" class="btn btn-link">Show</a>
             </li>
             <li>
-                <button type="button" class="btn btn-link">Answer</button>
+                <a ng-href="#/questionnaires/edit/{{questionnaire.id}}" class="btn btn-link">Edit</a>
             </li>
             <li>
-                <button type="button" class="btn btn-link">View</button>
+                <a ng-href="#/questionnaires/delete/{{questionnaire.id}}" class="btn btn-link">Delete</a>
             </li>
             <li>
-                <button type="button" class="btn btn-link">Delete</button>
+                <a ng-href="#" class="btn btn-link">Respond</a>
             </li>
         </ul>
         <p class="lead">{{questionnaire.title}}</p>

@@ -10,6 +10,10 @@
     <script src="lib/angular/angular-route.js"></script>
     <script src="common/app.js"></script>
     <script src="questionnaires/questionnaireListController.js"></script>
+    <script src="questionnaires/questionnaireShowController.js"></script>
+    <script src="questionnaires/questionnaireNewController.js"></script>
+    <script src="questionnaires/questionnaireEditController.js"></script>
+    <script src="questionnaires/questionnaireDeleteController.js"></script>
     <script src="questions/questionListController.js"></script>
     <script src="responses/responseListController.js"></script>
 </head>
@@ -17,13 +21,13 @@
 
 <header>
     <nav class="navbar navbar-default">
-        <a class="navbar-brand" href="#">ngQuestionnaires</a>
+        <a class="navbar-brand" ng-href="#/questionnaires/list">ngQuestionnaires</a>
         <ul class="nav navbar-nav">
             <li>
-                <a href="#/questions/list">Questions</a>
+                <a ng-href="#/questions/list">Questions</a>
             </li>
             <li>
-                <a href="#/responses/list">Responses</a>
+                <a ng-href="#/responses/list">Responses</a>
             </li>
         </ul>
     </nav>

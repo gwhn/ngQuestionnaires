@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+angular.module('ngQuestionnaires', [
         'ngRoute',
         'myApp.filters',
         'myApp.services',

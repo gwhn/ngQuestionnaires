@@ -40,7 +40,7 @@ angular.module('ngQuestionnaires.questionnaireListController', [
                     },
                     {
                         id: 2,
-                        title: 'questionnaire 2',
+                        title: 'questionnaire guy 2',
                         description: 'description for questionnaire 2',
                         published: true,
                         questions: [1, 2],
@@ -60,4 +60,15 @@ angular.module('ngQuestionnaires.questionnaireListController', [
             return qs;
         };
         $scope.questionnaires = getQuestionnaires();
+
+        $scope.isMatch = function (questionnaire) {
+            return $scope.hasSearchQuery() ? (
+                questionnaire.title.indexOf($scope.search.query) > -1 ||
+                    questionnaire.description.indexOf($scope.search.query) > -1
+                ) : true;
+        };
+
+        $scope.hasSearchQuery = function () {
+            return $scope.search.query;
+        };
     }]);

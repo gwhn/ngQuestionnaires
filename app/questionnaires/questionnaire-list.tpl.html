@@ -7,7 +7,7 @@
 
     <a ng-href="#/questionnaires/new" class="btn btn-link">New</a>
 
-    <article class="questionnaire" ng-repeat="questionnaire in questionnaires">
+    <article class="questionnaire" ng-repeat="questionnaire in questionnaires | filter:{title:search.query,description:search.query}">
         <ul class="list-unstyled pull-right">
             <li>
                 <a ng-href="#/questionnaires/show/{{questionnaire.id}}" class="btn btn-link">Show</a>

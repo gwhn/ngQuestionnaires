@@ -1,1 +1,37 @@
-<h1>Questionnaire List</h1>
+<section class="questionnaires">
+    <h1>Questionnaires</h1>
+
+    <form name="search">
+        <input type="search" class="form-control" placeholder="Search" ng-model="search.query"/>
+    </form>
+
+    <button type="button" class="btn btn-link">New</button>
+
+    <article class="questionnaire" ng-repeat="questionnaire in questionnaires">
+        <ul class="list-unstyled pull-right">
+            <li>
+                <button type="button" class="btn btn-link">Edit</button>
+            </li>
+            <li>
+                <button type="button" class="btn btn-link">Answer</button>
+            </li>
+            <li>
+                <button type="button" class="btn btn-link">View</button>
+            </li>
+            <li>
+                <button type="button" class="btn btn-link">Delete</button>
+            </li>
+        </ul>
+        <p class="lead">{{questionnaire.title}}</p>
+
+        <p>{{questionnaire.description}}</p>
+
+        <p class="text-muted">
+            Questions #: {{questionnaire.questions.length}}<br/>
+            Responses #: {{questionnaire.responses.length}}<br/>
+            Published? {{questionnaire.published}}
+        </p>
+
+        <hr/>
+    </article>
+</section>

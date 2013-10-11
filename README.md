@@ -1,6 +1,6 @@
 # ngQuestionnaires
 
-ngQuestionnaires is a single page application using AngularJS.
+ngQuestionnaires is a single page application using AngularJS 1.2.0 rc2 cloned from angular/angular-seed.
 
 ## questionnaires
 

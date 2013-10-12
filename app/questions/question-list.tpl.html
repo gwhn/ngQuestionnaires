@@ -1,1 +1,49 @@
-<h1>Question List</h1>
+<section class="questions">
+    <h1>Questions</h1>
+
+    <form name="search">
+        <input type="search" class="form-control" placeholder="Search" ng-model="search.query"/>
+    </form>
+
+    <p class="label label-info pull-right" ng-show="search.query">
+        <span ng-switch on="filteredQuestions.length">
+            <span ng-switch-when="0">No questions match</span>
+            <span ng-switch-when="1">One question matches</span>
+            <span ng-switch-default>{{filteredQuestions.length}} questions match</span>
+            {{search.query}}
+        </span>
+    </p>
+
+    <p>
+        <a ng-href="#/questions/new" class="btn btn-link">New</a>
+    </p>
+
+    <article class="question"
+             ng-repeat="question in filteredQuestions = (questions | filter:isMatch)">
+
+        <ul class="list-unstyled pull-right">
+            <li>
+                <a ng-href="#/questions/show/{{question.id}}" class="btn btn-link">Show</a>
+            </li>
+            <li>
+                <a ng-href="#/questions/edit/{{question.id}}" class="btn btn-link">Edit</a>
+            </li>
+            <li>
+                <a ng-href="#/questions/delete/{{question.id}}" class="btn btn-link">Delete</a>
+            </li>
+        </ul>
+
+        <p class="lead">{{question.text}}</p>
+
+        <ol>
+            <li ng-repeat="choice in question.choices | orderBy:ordinal">{{choice.text}}</li>
+        </ol>
+
+        <p class="text-muted">
+            Questionnaires #: {{question.questionnaires.length}}<br/>
+            Answers #: {{question.answers.length}}<br/>
+        </p>
+
+        <hr/>
+    </article>
+</section>

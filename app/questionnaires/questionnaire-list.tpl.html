@@ -20,6 +20,7 @@
 
     <article class="questionnaire"
              ng-repeat="questionnaire in filteredQuestionnaires = (questionnaires | filter:isMatch)">
+
         <ul class="list-unstyled pull-right">
             <li>
                 <a ng-href="#/questionnaires/show/{{questionnaire.id}}" class="btn btn-link">Show</a>
@@ -34,6 +35,7 @@
                 <a ng-href="#" class="btn btn-link">Respond</a>
             </li>
         </ul>
+
         <p class="lead">{{questionnaire.title}}</p>
 
         <p>{{questionnaire.description}}</p>

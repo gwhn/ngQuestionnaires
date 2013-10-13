@@ -20,7 +20,30 @@ angular.module('ngQuestionnaires.questionnaireNewController', [
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
-                $cacheFactory.get('data').put('returnTo', $location.url());
-                $location.url('/questions/new');
+                $location.url('/questions/new?returnUrl=' + $location.url());
+            };
+
+            var navigate = function () {
+                $location.url('/questionnaires/list');
+            };
+
+            $scope.save = function () {
+                var questionnaires = $cacheFactory.get('data').get('questionnaires'),
+                    max = _.max(questionnaires, function (questionnaire) {
+                        return questionnaire.id;
+                    });
+                questionnaires.push({
+                    id: max.id + 1,
+                    title: $scope.questionnaire.title,
+                    description: $scope.questionnaire.description,
+                    published: $scope.questionnaire.published,
+                    questions: $scope.questionnaire.questions
+                });
+                $cacheFactory.get('data').put('questionnaires', questionnaires);
+                navigate();
+            };
+
+            $scope.cancel = function () {
+                navigate();
             };
         }]);

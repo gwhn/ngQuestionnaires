@@ -6,23 +6,21 @@ angular.module('ngQuestionnaires.questionnaireNewController', [
     .controller('questionnaireNewController', [
         '$scope',
         '$cacheFactory',
-        function ($scope, $cacheFactory) {
+        '$location',
+        function ($scope, $cacheFactory, $location) {
             $scope.action = 'New';
+
+            var questionnaire = $cacheFactory.get('data').get('questionnaire');
+            if (questionnaire !== undefined) {
+                $scope.questionnaire = questionnaire;
+                $cacheFactory.get('data').remove('questionnaire');
+            }
 
             $scope.questions = $cacheFactory.get('data').get('questions');
 
             $scope.addQuestion = function () {
-                // store questionnaire inputs in cache service
-                // store return to new questionnaire in cache service
-                // navigate to new question form
-                // on save new question,
-                //  persist state and check for return to value in cache service,
-                //  then navigate there
-                // on cancel new question,
-                //  check for return to value in cache service,
-                //  then navigate there
-                // on returning to new questionnaire form,
-                //  check cache service for questionnaire inputs and display them,
-                //  then remove from cache service
+                $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
+                $cacheFactory.get('data').put('returnTo', $location.url());
+                $location.url('/questions/new');
             };
         }]);

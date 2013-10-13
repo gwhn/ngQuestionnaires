@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngQuestionnaires.questionListController', [
-        'ngQuestionnaires.cacheService',
+        'ng',
         'ngQuestionnaires.questionShowController',
         'ngQuestionnaires.questionNewController',
         'ngQuestionnaires.questionEditController',
@@ -27,9 +27,9 @@ angular.module('ngQuestionnaires.questionListController', [
     }])
     .controller('questionListController', [
         '$scope',
-        'cacheService',
-        function ($scope, cacheService) {
-            $scope.questions = cacheService.get('questions');
+        '$cacheFactory',
+        function ($scope, $cacheFactory) {
+            $scope.questions = $cacheFactory.get('data').get('questions');
 
             $scope.isMatch = function (question) {
                 return $scope.hasSearchQuery() ? (

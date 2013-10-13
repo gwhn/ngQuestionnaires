@@ -27,6 +27,10 @@
                     ng-options="question.id as question.text for question in questions"
                     id="questionnaire.questions" class="form-control" multiple>
             </select>
+
+            <p>
+                <a ng-click="addQuestion()" class="btn btn-link">New</a>
+            </p>
         </div>
     </form>
 </section>

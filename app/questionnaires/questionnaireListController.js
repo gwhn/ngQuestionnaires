@@ -38,13 +38,9 @@ angular.module('ngQuestionnaires.questionnaireListController', [
             $scope.questionnaires = angularFireCollection(new Firebase(fbUrl + 'questionnaires'));
 
             $scope.isMatch = function (questionnaire) {
-                return $scope.hasSearchQuery() ? (
+                return $scope.search.query ? (
                     questionnaire.title.indexOf($scope.search.query) > -1 ||
                         questionnaire.description.indexOf($scope.search.query) > -1
                     ) : true;
-            };
-
-            $scope.hasSearchQuery = function () {
-                return $scope.search.query;
             };
         }]);

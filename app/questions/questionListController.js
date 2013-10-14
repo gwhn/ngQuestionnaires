@@ -32,15 +32,11 @@ angular.module('ngQuestionnaires.questionListController', [
             $scope.questions = angularFireCollection(new Firebase(fbUrl + 'questions'));
 
             $scope.isMatch = function (question) {
-                return $scope.hasSearchQuery() ? (
+                return $scope.search.query ? (
                     question.text.indexOf($scope.search.query) > -1 ||
                         _.any(question.choices, function (choice) {
                             return choice.text.indexOf($scope.search.query) > -1;
                         })
                     ) : true;
-            };
-
-            $scope.hasSearchQuery = function () {
-                return $scope.search.query;
             };
         }]);

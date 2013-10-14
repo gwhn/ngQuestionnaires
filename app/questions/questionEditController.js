@@ -24,6 +24,9 @@ angular.module('ngQuestionnaires.questionEditController', [])
             };
 
             $scope.addChoice = function () {
+                if ($scope.question.choices === undefined) {
+                    $scope.question.choices = [];
+                }
                 $scope.question.choices.push({text: ''});
             };
 

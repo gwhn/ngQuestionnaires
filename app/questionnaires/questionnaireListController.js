@@ -4,7 +4,8 @@ angular.module('ngQuestionnaires.questionnaireListController', [
         'ngQuestionnaires.questionnaireShowController',
         'ngQuestionnaires.questionnaireNewController',
         'ngQuestionnaires.questionnaireEditController',
-        'ngQuestionnaires.questionnaireDeleteController'
+        'ngQuestionnaires.questionnaireDeleteController',
+        'ngQuestionnaires.responseNewController'
     ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/questionnaires/show/:id', {
@@ -22,6 +23,10 @@ angular.module('ngQuestionnaires.questionnaireListController', [
         $routeProvider.when('/questionnaires/delete/:id', {
             templateUrl: 'questionnaires/questionnaire-delete.tpl.html',
             controller: 'questionnaireDeleteController'
+        });
+        $routeProvider.when('/responses/new/:id', {
+            templateUrl: 'responses/response-new.tpl.html',
+            controller: 'responseNewController'
         });
     }])
     .controller('questionnaireListController', [

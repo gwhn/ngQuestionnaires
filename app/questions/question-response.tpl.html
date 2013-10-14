@@ -1,0 +1,17 @@
+<article ng-controller="questionShowController">
+    <p class="lead">{{question.text}}</p>
+
+    <ul class="list-unstyled">
+        <li ng-repeat="choice in question.choices">
+            <div class="radio">
+                <label class="control-label">
+                    <input type="radio" ng-model="$parent.question.choice" value="{{choice.text}}"
+                           ng-click="answer(question.text, choice.text)"/>
+                    {{choice.text}}
+                </label>
+            </div>
+        </li>
+    </ul>
+
+    <hr/>
+</article>

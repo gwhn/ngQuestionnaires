@@ -1,23 +1,21 @@
 <section class="questionnaire">
-    <article>
-        <h1>{{questionnaire.title}}</h1>
+    <h1>{{questionnaire.title}}</h1>
 
-        <p class="lead">{{questionnaire.description}}</p>
+    <p class="lead">{{questionnaire.description}}</p>
 
-        <p ng-switch on="questionnaire.published">
-            Published?
-            <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
-            <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
-        </p>
+    <p ng-switch on="questionnaire.published">
+        Published?
+        <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
+        <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
+    </p>
 
-        <h2>Questions</h2>
-        <ul class="list-unstyled">
-            <li ng-repeat="question in questionnaire.questions">
-                <ng-include src="'questions/question-show.tpl.html'"></ng-include>
-            </li>
-        </ul>
-        <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
-    </article>
+    <h2>Questions</h2>
+    <ul class="list-unstyled">
+        <li ng-repeat="question in questionnaire.questions">
+            <ng-include src="'questions/question-show.tpl.html'"></ng-include>
+        </li>
+    </ul>
+    <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
 
     <button type="button" ng-click="back()" class="btn btn-default">Back</button>
 </section>

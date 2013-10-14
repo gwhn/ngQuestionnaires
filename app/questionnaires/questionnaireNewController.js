@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('ngQuestionnaires.questionnaireNewController', [
-        'ng'
+        'ng',
+        'ngQuestionnaires.firebaseFactories'
     ])
     .controller('questionnaireNewController', [
         '$scope',
         '$cacheFactory',
         '$location',
-        function ($scope, $cacheFactory, $location) {
+        'questionnaires',
+        'questions',
+        function ($scope, $cacheFactory, $location, questionnaires, questions) {
             $scope.action = 'New';
 
             var questionnaire = $cacheFactory.get('data').get('questionnaire');
@@ -16,7 +19,7 @@ angular.module('ngQuestionnaires.questionnaireNewController', [
                 $cacheFactory.get('data').remove('questionnaire');
             }
 
-            $scope.questions = $cacheFactory.get('data').get('questions');
+            $scope.questions = questions;
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -24,22 +27,12 @@ angular.module('ngQuestionnaires.questionnaireNewController', [
             };
 
             var navigate = function () {
+                $cacheFactory.get('data').remove('questionnaire');
                 $location.url('/questionnaires/list');
             };
 
             $scope.save = function () {
-                var questionnaires = $cacheFactory.get('data').get('questionnaires'),
-                    max = _.max(questionnaires, function (questionnaire) {
-                        return questionnaire.id;
-                    });
-                questionnaires.push({
-                    id: max.id + 1,
-                    title: $scope.questionnaire.title,
-                    description: $scope.questionnaire.description,
-                    published: $scope.questionnaire.published,
-                    questions: $scope.questionnaire.questions
-                });
-                $cacheFactory.get('data').put('questionnaires', questionnaires);
+                questionnaires.add(angular.copy($scope.questionnaire));
                 navigate();
             };
 

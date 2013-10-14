@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngQuestionnaires.questionListController', [
-        'ng',
+        'ngQuestionnaires.firebaseFactories',
         'ngQuestionnaires.questionShowController',
         'ngQuestionnaires.questionNewController',
         'ngQuestionnaires.questionEditController',
@@ -27,9 +27,9 @@ angular.module('ngQuestionnaires.questionListController', [
     }])
     .controller('questionListController', [
         '$scope',
-        '$cacheFactory',
-        function ($scope, $cacheFactory) {
-            $scope.questions = $cacheFactory.get('data').get('questions');
+        'questions',
+        function ($scope, questions) {
+            $scope.questions = questions;
 
             $scope.isMatch = function (question) {
                 return $scope.hasSearchQuery() ? (

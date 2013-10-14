@@ -24,7 +24,7 @@
         <div class="form-group">
             <label for="questionnaire.questions">Questions</label>
             <select ng-model="questionnaire.questions"
-                    ng-options="question.id as question.text for question in questions"
+                    ng-options="question.$id as question.text for question in questions"
                     id="questionnaire.questions" class="form-control" multiple>
             </select>
 

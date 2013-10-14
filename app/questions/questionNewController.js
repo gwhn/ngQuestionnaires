@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('ngQuestionnaires.questionNewController', [
-        'ng'
+        'ngQuestionnaires.firebaseFactories',
     ])
     .controller('questionNewController', [
         '$scope',
         '$location',
         '$routeParams',
-        '$cacheFactory',
-        function ($scope, $location, $routeParams, $cacheFactory) {
+        'questions',
+        function ($scope, $location, $routeParams, questions) {
             $scope.action = 'New';
 
             $scope.question = {
@@ -35,16 +35,7 @@ angular.module('ngQuestionnaires.questionNewController', [
             };
 
             $scope.save = function () {
-                var questions = $cacheFactory.get('data').get('questions'),
-                    max = _.max(questions, function (question) {
-                        return question.id;
-                    });
-                questions.push({
-                    id: max.id + 1,
-                    text: $scope.question.text,
-                    choices: $scope.question.choices
-                });
-                $cacheFactory.get('data').put('questions', questions);
+                questions.add(angular.copy($scope.question));
                 navigate();
             };
 

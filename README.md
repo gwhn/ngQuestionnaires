@@ -14,13 +14,13 @@ ngQuestionnaires is a single page application using AngularJS 1.2.0 rc2 cloned f
 
 * text
 * choices
-** ordinal
-** text
+    * ordinal
+    * text
 
 ## responses
 
 * respondent
 * questionnaire
 * answers
-** question
-** choice
+    * question
+    * choice

@@ -37,6 +37,7 @@ angular.module('ngQuestionnaires.responseNewController', [])
                 angularFireCollection(new Firebase(fbUrl + 'responses'))
                     .add({
                         respondent: $scope.respondent,
+                        questionnaire: $scope.questionnaire.title,
                         answers: answers
                     });
                 navigate();

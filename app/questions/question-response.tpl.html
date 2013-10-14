@@ -5,7 +5,7 @@
         <li ng-repeat="choice in question.choices">
             <div class="radio">
                 <label class="control-label">
-                    <input type="radio" ng-model="$parent.question.choice" value="{{choice.text}}"
+                    <input type="radio" ng-model="$parent.response.choices" value="{{choice.text}}"
                            ng-click="answer(question.text, choice.text)"/>
                     {{choice.text}}
                 </label>

@@ -6,23 +6,29 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
         '$cacheFactory',
         '$location',
         '$routeParams',
-        'questionnaires',
-        'questions',
-        function ($scope, $cacheFactory, $location, $routeParams, questionnaires, questions) {
+        'fbUrl',
+        'Firebase',
+        'angularFire',
+        'angularFireCollection',
+        function ($scope, $cacheFactory, $location, $routeParams, fbUrl, Firebase, angularFire, angularFireCollection) {
             var questionnaire = $cacheFactory.get('data').get('questionnaire'),
-                navigate = function () {
-                    $cacheFactory.get('data').remove('questionnaire');
-                    $location.url('/questionnaires/list');
-                };
+                ref = new Firebase(fbUrl + 'questionnaires/' + $routeParams.id);
+
+            function navigate() {
+                $cacheFactory.get('data').remove('questionnaire');
+                $location.url('/questionnaires/list');
+            }
 
             $scope.action = 'Edit';
 
-            if (questionnaire !== undefined) {
+            if (questionnaire === undefined) {
+                angularFire(ref, $scope, 'questionnaire');
+            } else {
                 $scope.questionnaire = questionnaire;
                 $cacheFactory.get('data').remove('questionnaire');
             }
 
-            $scope.questions = questions;
+            $scope.questions = angularFireCollection(new Firebase(fbUrl + 'questions'));
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -30,7 +36,7 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             };
 
             $scope.update = function () {
-                questionnaires.update(angular.copy($scope.questionnaire));
+                ref.set($scope.questionnaire);
                 navigate();
             };
 

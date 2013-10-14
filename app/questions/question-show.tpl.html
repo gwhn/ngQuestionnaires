@@ -1,0 +1,9 @@
+<article ng-controller="questionShowController">
+    <p class="lead">{{question.text}}</p>
+
+    <ol>
+        <li ng-repeat="choice in question.choices">{{choice.text}}</li>
+    </ol>
+
+    <hr/>
+</article>

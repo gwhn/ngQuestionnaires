@@ -1,1 +1,19 @@
-<h1>Show Questionnaire</h1>
+<section class="questionnaire">
+    <article>
+        <h1>{{questionnaire.title}}</h1>
+
+        <p class="lead">{{questionnaire.description}}</p>
+
+        <p>Published? {{questionnaire.published}}</p>
+
+        <h2>Questions</h2>
+        <ul class="list-unstyled">
+            <li ng-repeat="question in questionnaire.questions">
+                <ng-include src="'questions/question-show.tpl.html'"></ng-include>
+            </li>
+        </ul>
+        <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
+    </article>
+
+    <button type="button" ng-click="back()" class="btn btn-default">Back</button>
+</section>

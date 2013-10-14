@@ -6,23 +6,22 @@ It uses Firebase database to persist the following data structures as JSON and p
 
 ## questionnaires
 
-* title
-* description
-* published
-* questions
-* responses
+* title (String)
+* description (String)
+* published (Boolean)
+* questions (Array)
 
 ## questions
 
-* text
-* choices
-    * ordinal
-    * text
+* text (String)
+* choices (Array)
+    * ordinal (Number)
+    * text (String)
 
 ## responses
 
-* respondent
-* questionnaire
-* answers
-    * question
-    * choice
+* respondent (String)
+* questionnaire (String)
+* answers (Array)
+    * question (String)
+    * choice (String)

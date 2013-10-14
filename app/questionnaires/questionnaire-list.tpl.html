@@ -21,7 +21,7 @@
     <article class="questionnaire"
              ng-repeat="questionnaire in filteredQuestionnaires = (questionnaires | filter:isMatch)">
 
-        <ul class="list-unstyled pull-right">
+        <ul class="list-unstyled pull-right text-right">
             <li>
                 <a ng-href="#/questionnaires/show/{{questionnaire.$id}}" class="btn btn-link">Show</a>
             </li>
@@ -31,7 +31,7 @@
             <li>
                 <a ng-href="#/questionnaires/delete/{{questionnaire.$id}}" class="btn btn-link">Delete</a>
             </li>
-            <li>
+            <li ng-if="questionnaire.published">
                 <a ng-href="#" class="btn btn-link">Respond</a>
             </li>
         </ul>
@@ -41,8 +41,12 @@
         <p>{{questionnaire.description}}</p>
 
         <p class="text-muted">
-            Questions #: {{questionnaire.questions.length}}<br/>
-            Responses #: {{questionnaire.responses.length}}<br/>
+            <span ng-if="questionnaire.questions">
+                Questions # {{questionnaire.questions.length}}<br/>
+            </span>
+            <span ng-if="questionnaire.responses">
+                Responses # {{questionnaire.responses.length}}<br/>
+            </span>
             <span ng-switch on="questionnaire.published">
                 Published?
                 <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>

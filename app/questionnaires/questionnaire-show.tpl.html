@@ -4,7 +4,11 @@
 
         <p class="lead">{{questionnaire.description}}</p>
 
-        <p>Published? {{questionnaire.published}}</p>
+        <p ng-switch on="questionnaire.published">
+            Published?
+            <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
+            <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
+        </p>
 
         <h2>Questions</h2>
         <ul class="list-unstyled">

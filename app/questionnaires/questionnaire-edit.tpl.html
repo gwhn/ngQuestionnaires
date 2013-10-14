@@ -1,28 +1,32 @@
 <section class="{{action | lowercase}}-questionnaire">
     <h1>{{action}} Questionnaire</h1>
 
-    <form>
-        <div class="form-group">
-            <label for="questionnaireTitle">Title</label>
-            <input type="text" ng-model="questionnaire.title"
+    <form name="questionnaireForm" novalidate>
+        <div class="form-group" ng-class="getCssClasses(questionnaireForm.title)">
+            <label for="questionnaireTitle" class="control-label">Title</label>
+            <input type="text" ng-model="questionnaire.title" name="title"
                    id="questionnaireTitle" class="form-control" required/>
+            <span ng-show="showError(questionnaireForm.title, 'title')"
+                  class="help-block">Title is required</span>
         </div>
 
-        <div class="form-group">
-            <label for="questionnaire.description">Description</label>
-            <textarea ng-model="questionnaire.description"
+        <div class="form-group" ng-class="getCssClasses(questionnaireForm.description)">
+            <label for="questionnaire.description" class="control-label">Description</label>
+            <textarea ng-model="questionnaire.description" name="description"
                       id="questionnaire.description" class="form-control" rows="3" required></textarea>
+            <span ng-show="showError(questionnaireForm.description, 'description')"
+                  class="help-block">Description is required</span>
         </div>
 
         <div class="checkbox">
-            <label>
+            <label class="control-label">
                 <input type="checkbox" ng-model="questionnaire.published"/>
                 Published?
             </label>
         </div>
 
         <div class="form-group">
-            <label for="questionnaire.questions">Questions</label>
+            <label for="questionnaire.questions" class="control-label">Questions</label>
             <select ng-model="questionnaire.questions"
                     ng-options="question.$id as question.text for question in questions"
                     id="questionnaire.questions" class="form-control" multiple>
@@ -34,9 +38,9 @@
         </div>
 
         <div class="form-group" ng-switch on="action">
-            <button type="button" ng-switch-when="New" ng-click="save()"
+            <button type="button" ng-switch-when="New" ng-click="save()" ng-disabled="!canSave()"
                     class="btn btn-primary">Save</button>
-            <button type="button" ng-switch-default ng-click="update()"
+            <button type="button" ng-switch-default ng-click="update()" ng-disabled="!canUpdate()"
                     class="btn btn-primary">Update</button>
             <button type="button" ng-click="cancel()"
                     class="btn btn-default">Cancel</button>

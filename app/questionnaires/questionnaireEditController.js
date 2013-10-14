@@ -12,7 +12,8 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
         'angularFireCollection',
         function ($scope, $cacheFactory, $location, $routeParams, fbUrl, Firebase, angularFire, angularFireCollection) {
             var questionnaire = $cacheFactory.get('data').get('questionnaire'),
-                ref = new Firebase(fbUrl + 'questionnaires/' + $routeParams.id);
+                ref = new Firebase(fbUrl + 'questionnaires/' + $routeParams.id),
+                original = null;
 
             function navigate() {
                 $cacheFactory.get('data').remove('questionnaire');
@@ -22,7 +23,10 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             $scope.action = 'Edit';
 
             if (questionnaire === undefined) {
-                angularFire(ref, $scope, 'questionnaire');
+                angularFire(ref, $scope, 'questionnaire')
+                    .then(function () {
+                        original = angular.copy($scope.questionnaire);
+                    });
             } else {
                 $scope.questionnaire = questionnaire;
                 $cacheFactory.get('data').remove('questionnaire');
@@ -41,6 +45,22 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             };
 
             $scope.cancel = function () {
+                $scope.questionnaire = angular.copy(original);
                 navigate();
+            };
+
+            $scope.canUpdate = function () {
+                return $scope.questionnaireForm.$dirty && $scope.questionnaireForm.$valid;
+            };
+
+            $scope.getCssClasses = function (ngModelController) {
+                return {
+                    'has-error': ngModelController.$invalid && ngModelController.$dirty,
+                    'has-success': ngModelController.$valid && ngModelController.$dirty
+                };
+            };
+
+            $scope.showError = function (ngModelController, error) {
+                return ngModelController.$error[error];
             };
         }]);

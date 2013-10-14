@@ -4,7 +4,6 @@ ngQuestionnaires is a single page application using AngularJS 1.2.0 rc2 cloned f
 
 ## questionnaires
 
-* id
 * title
 * description
 * published
@@ -13,28 +12,15 @@ ngQuestionnaires is a single page application using AngularJS 1.2.0 rc2 cloned f
 
 ## questions
 
-* id
 * text
-* questionnaires
 * choices
-* answers
-
-## choices
-
-* id
-* text
-* ordinal
-* questionId
+** ordinal
+** text
 
 ## responses
 
-* id
 * respondent
-* questionnaireId
+* questionnaire
 * answers
-
-## answers
-
-* id
-* questionId
-* choiceId
+** question
+** choice

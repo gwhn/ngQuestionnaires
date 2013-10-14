@@ -9,7 +9,8 @@ angular.module('ngQuestionnaires.questionEditController', [])
         'Firebase',
         'angularFire',
         function ($scope, $location, $routeParams, fbUrl, Firebase, angularFire) {
-            var ref = new Firebase(fbUrl + 'questions/' + $routeParams.id);
+            var ref = new Firebase(fbUrl + 'questions/' + $routeParams.id),
+                original = null;
 
             function navigate() {
                 $location.url('/questions/list');
@@ -17,7 +18,10 @@ angular.module('ngQuestionnaires.questionEditController', [])
 
             $scope.action = 'Edit';
 
-            angularFire(ref, $scope, 'question');
+            angularFire(ref, $scope, 'question')
+                .then(function () {
+                    original = angular.copy($scope.question);
+                });
 
             $scope.removeChoice = function (index) {
                 $scope.question.choices.splice(index, 1);
@@ -36,6 +40,18 @@ angular.module('ngQuestionnaires.questionEditController', [])
             };
 
             $scope.cancel = function () {
+                $scope.question = angular.copy(original);
                 navigate();
+            };
+
+            $scope.canUpdate = function () {
+                return $scope.questionForm.$dirty && $scope.questionForm.$valid;
+            };
+
+            $scope.getCssClasses = function (ngModelController) {
+                return {
+                    'has-error': ngModelController.$invalid && ngModelController.$dirty,
+                    'has-success': ngModelController.$valid && ngModelController.$dirty
+                };
             };
         }]);

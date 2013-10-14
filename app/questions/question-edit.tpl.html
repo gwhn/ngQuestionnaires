@@ -1,22 +1,30 @@
 <section class="{{action | lowercase}}-question">
     <h1>{{action}} Question</h1>
 
-    <form>
-        <div class="form-group">
-            <label for="questionText">Text</label>
-            <input type="text" ng-model="question.text"
+    <form name="questionForm" novalidate>
+        <div class="form-group" ng-class="getCssClasses(questionForm.question)">
+            <label for="questionText" class="control-label">Text</label>
+            <input type="text" ng-model="question.text" name="question"
                    id="questionText" class="form-control" required/>
+            <span ng-show="questionForm.question.$error.required"
+                  class="help-block">Question text is required</span>
         </div>
 
         <div class="form-group">
-            <label>Choices</label>
-            <div ng-repeat="choice in question.choices" class="input-group">
-                <input type="text" ng-model="choice.text" class="form-control">
-                <span class="input-group-btn">
-                    <button type="button" ng-click="removeChoice($index)" class="btn btn-default">
-                        <i class="glyphicon glyphicon-remove"></i>
-                    </button>
-                </span>
+            <label class="control-label">Choices</label>
+            <div ng-repeat="choice in question.choices" ng-form="choiceForm"
+                 ng-class="getCssClasses(choiceForm.choice)">
+                <div class="input-group">
+                    <input type="text" ng-model="choice.text" name="choice"
+                           class="form-control" required>
+                    <span class="input-group-btn">
+                        <button type="button" ng-click="removeChoice($index)" class="btn btn-default">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </span>
+                </div>
+                <span ng-show="choiceForm.choice.$error.required"
+                      class="help-block">Choice text is required</span>
             </div>
             <button type="button" ng-click="addChoice()" class="btn btn-default">
                 <i class="glyphicon glyphicon-plus"></i>
@@ -24,9 +32,9 @@
         </div>
 
         <div class="form-group" ng-switch on="action">
-            <button type="button" ng-switch-when="New" ng-click="save()"
+            <button type="button" ng-switch-when="New" ng-click="save()" ng-disabled="!canSave()"
                     class="btn btn-primary">Save</button>
-            <button type="button" ng-switch-default ng-click="update()"
+            <button type="button" ng-switch-default ng-click="update()" ng-disabled="!canUpdate()"
                     class="btn btn-primary">Update</button>
             <button type="button" ng-click="cancel()"
                     class="btn btn-default">Cancel</button>

@@ -50,8 +50,4 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
                     'has-success': ngModelController.$valid && ngModelController.$dirty
                 };
             };
-
-            $scope.showError = function (ngModelController, error) {
-                return ngModelController.$error[error];
-            };
         }]);

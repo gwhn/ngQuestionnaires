@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('ngQuestionnaires.questionListController', [
-        'ngQuestionnaires.questionShowController',
         'ngQuestionnaires.questionNewController',
         'ngQuestionnaires.questionEditController',
         'ngQuestionnaires.questionDeleteController'

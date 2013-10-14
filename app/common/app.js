@@ -3,11 +3,12 @@
 angular.module('ngQuestionnaires', [
         'ng',
         'ngRoute',
+        'firebase',
         'ngQuestionnaires.questionnaireListController',
         'ngQuestionnaires.questionListController',
         'ngQuestionnaires.responseListController'
     ])
-    .value('fbUrl', 'https://ngquestionnaires.firebaseio.com/')
+    .constant('fbUrl', 'https://ngquestionnaires.firebaseio.com/')
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/questionnaires/list', {
             templateUrl: 'questionnaires/questionnaire-list.tpl.html',

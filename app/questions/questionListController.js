@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('ngQuestionnaires.questionListController', [
-        'ngQuestionnaires.firebaseFactories',
         'ngQuestionnaires.questionShowController',
         'ngQuestionnaires.questionNewController',
         'ngQuestionnaires.questionEditController',
@@ -27,9 +26,11 @@ angular.module('ngQuestionnaires.questionListController', [
     }])
     .controller('questionListController', [
         '$scope',
-        'questions',
-        function ($scope, questions) {
-            $scope.questions = questions;
+        'fbUrl',
+        'Firebase',
+        'angularFireCollection',
+        function ($scope, fbUrl, Firebase, angularFireCollection) {
+            $scope.questions = angularFireCollection(new Firebase(fbUrl + 'questions'));
 
             $scope.isMatch = function (question) {
                 return $scope.hasSearchQuery() ? (

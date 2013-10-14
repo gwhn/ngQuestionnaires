@@ -1,14 +1,23 @@
 'use strict';
 
-angular.module('ngQuestionnaires.questionNewController', [
-        'ngQuestionnaires.firebaseFactories',
-    ])
+angular.module('ngQuestionnaires.questionNewController', [])
     .controller('questionNewController', [
         '$scope',
         '$location',
         '$routeParams',
-        'questions',
-        function ($scope, $location, $routeParams, questions) {
+        'fbUrl',
+        'Firebase',
+        'angularFireCollection',
+        function ($scope, $location, $routeParams, fbUrl, Firebase, angularFireCollection) {
+            function navigate() {
+                var returnUrl = $routeParams.returnUrl;
+                if (returnUrl === undefined) {
+                    $location.url('/questions/list');
+                } else {
+                    $location.url(returnUrl);
+                }
+            }
+
             $scope.action = 'New';
 
             $scope.question = {
@@ -25,17 +34,9 @@ angular.module('ngQuestionnaires.questionNewController', [
                 $scope.question.choices.push({text: ''});
             };
 
-            var navigate = function () {
-                var returnUrl = $routeParams.returnUrl;
-                if (returnUrl === undefined) {
-                    $location.url('/questions/list');
-                } else {
-                    $location.url(returnUrl);
-                }
-            };
-
             $scope.save = function () {
-                questions.add(angular.copy($scope.question));
+                angularFireCollection(new Firebase(fbUrl + 'questions'))
+                    .add(angular.copy($scope.question));
                 navigate();
             };
 

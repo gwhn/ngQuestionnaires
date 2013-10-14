@@ -43,7 +43,11 @@
         <p class="text-muted">
             Questions #: {{questionnaire.questions.length}}<br/>
             Responses #: {{questionnaire.responses.length}}<br/>
-            Published? {{questionnaire.published}}
+            <span ng-switch on="questionnaire.published">
+                Published?
+                <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
+                <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
+            </span>
         </p>
 
         <hr/>

@@ -4,6 +4,7 @@ angular.module('ngQuestionnaires', [
         'ng',
         'ngRoute',
         'firebase',
+        'ngQuestionnaires.validationFactory',
         'ngQuestionnaires.questionnaireListController',
         'ngQuestionnaires.questionListController',
         'ngQuestionnaires.responseListController'
@@ -24,6 +25,14 @@ angular.module('ngQuestionnaires', [
         });
         $routeProvider.otherwise({redirectTo: '/questionnaires/list'});
     }])
-    .run(['$cacheFactory', function ($cacheFactory) {
-        var data = $cacheFactory('data');
-    }]);
+    .run([
+        '$cacheFactory',
+        '$rootScope',
+        'validationFactory',
+        function ($cacheFactory, $rootScope, validationFactory) {
+            var data = $cacheFactory('data');
+
+            $rootScope.canSave = $rootScope.canUpdate = validationFactory.isFormValid;
+
+            $rootScope.validationClasses = validationFactory.validationClasses;
+        }]);

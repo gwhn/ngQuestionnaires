@@ -39,15 +39,4 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
             $scope.cancel = function () {
                 navigate();
             };
-
-            $scope.canSave = function () {
-                return $scope.questionnaireForm.$dirty && $scope.questionnaireForm.$valid;
-            };
-
-            $scope.getCssClasses = function (ngModelController) {
-                return {
-                    'has-error': ngModelController.$invalid && ngModelController.$dirty,
-                    'has-success': ngModelController.$valid && ngModelController.$dirty
-                };
-            };
         }]);

@@ -4,7 +4,7 @@
     <p class="lead">{{questionnaire.description}}</p>
 
     <form name="responseForm" novalidate>
-        <div class="form-group" ng-class="validationClasses(responseForm.respondent)">
+        <div class="form-group" validation-class-for="respondent">
             <label for="respondent" class="control-label">Respondent</label>
             <input type="text" ng-model="respondent" name="respondent"
                    id="respondent" class="form-control" required/>
@@ -20,7 +20,7 @@
         </ul>
 
         <div class="form-group">
-            <button type="button" ng-click="submit()" ng-disabled="!canSave(responseForm)"
+            <button type="button" ng-click="submit()" disabled-when-invalid
                     class="btn btn-primary">Submit</button>
             <button type="button" ng-click="cancel()"
                     class="btn btn-default">Cancel</button>

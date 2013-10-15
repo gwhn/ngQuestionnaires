@@ -4,7 +4,8 @@ angular.module('ngQuestionnaires', [
         'ng',
         'ngRoute',
         'firebase',
-        'ngQuestionnaires.validationFactory',
+        'ngQuestionnaires.disabledWhenInvalid',
+        'ngQuestionnaires.validationClassFor',
         'ngQuestionnaires.questionnaireListController',
         'ngQuestionnaires.questionListController',
         'ngQuestionnaires.responseListController'
@@ -27,12 +28,6 @@ angular.module('ngQuestionnaires', [
     }])
     .run([
         '$cacheFactory',
-        '$rootScope',
-        'validationFactory',
-        function ($cacheFactory, $rootScope, validationFactory) {
+        function ($cacheFactory) {
             var data = $cacheFactory('data');
-
-            $rootScope.canSave = $rootScope.canUpdate = validationFactory.isFormValid;
-
-            $rootScope.validationClasses = validationFactory.validationClasses;
         }]);

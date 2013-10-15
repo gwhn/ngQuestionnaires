@@ -2,7 +2,7 @@
     <h1>{{action}} Questionnaire</h1>
 
     <form name="questionnaireForm" novalidate>
-        <div class="form-group" ng-class="validationClasses(questionnaireForm.title)">
+        <div class="form-group" validation-class-for="title">
             <label for="questionnaireTitle" class="control-label">Title</label>
             <input type="text" ng-model="questionnaire.title" name="title"
                    id="questionnaireTitle" class="form-control" required/>
@@ -10,7 +10,7 @@
                   class="help-block">Title is required</span>
         </div>
 
-        <div class="form-group" ng-class="validationClasses(questionnaireForm.description)">
+        <div class="form-group" validation-class-for="description">
             <label for="questionnaire.description" class="control-label">Description</label>
             <textarea ng-model="questionnaire.description" name="description"
                       id="questionnaire.description" class="form-control" rows="3" required></textarea>
@@ -38,9 +38,9 @@
         </div>
 
         <div class="form-group" ng-switch on="action">
-            <button type="button" ng-switch-when="New" ng-click="save()" ng-disabled="!canSave(questionnaireForm)"
+            <button type="button" ng-switch-when="New" ng-click="save()" disabled-when-invalid
                     class="btn btn-primary">Save</button>
-            <button type="button" ng-switch-default ng-click="update()" ng-disabled="!canUpdate(questionnaireForm)"
+            <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid
                     class="btn btn-primary">Update</button>
             <button type="button" ng-click="cancel()"
                     class="btn btn-default">Cancel</button>

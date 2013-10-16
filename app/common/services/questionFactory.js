@@ -6,32 +6,49 @@ angular.module('ngQuestionnaires.questionFactory', [])
         'fbUrl',
         'Firebase',
         function ($q, fbUrl, Firebase) {
-            var ref = new Firebase(fbUrl + 'questions');
             return {
                 query: function (options) {
-                    var deferred = $q.defer();
-                    deferred.reject('questionFactory.query not implemented');
-                    return deferred.promise;
+                    var def = $q.defer(),
+                        ref = new Firebase(fbUrl + 'questions');
+                    ref.once('value', function (snapshot) {
+                        var value = snapshot.val(),
+                            data = [],
+                            key;
+                        for (key in value) {
+                            if (value.hasOwnProperty(key)) {
+                                data.push(angular.extend(value[key], {id: key}));
+                            }
+                        }
+                        def.resolve(data);
+                    }, function () {
+                        def.reject('Failed to query questions');
+                    });
+                    return def.promise;
                 },
                 get: function (id) {
-                    var deferred = $q.defer();
-                    deferred.reject('questionFactory.get not implemented');
-                    return deferred.promise;
+                    var def = $q.defer(),
+                        ref = new Firebase(fbUrl + 'questions/' + id);
+                    ref.once('value', function (snapshot) {
+                        def.resolve(snapshot.val());
+                    }, function () {
+                        def.reject('Failed to get question');
+                    });
+                    return def.promise;
                 },
                 add: function (question) {
-                    var deferred = $q.defer();
-                    deferred.reject('questionFactory.add not implemented');
-                    return deferred.promise;
+                    var def = $q.defer();
+//                    def.reject('questionFactory.add not implemented');
+                    return def.promise;
                 },
                 update: function (id, question) {
-                    var deferred = $q.defer();
-                    deferred.reject('questionFactory.update not implemented');
-                    return deferred.promise;
+                    var def = $q.defer();
+//                    def.reject('questionFactory.update not implemented');
+                    return def.promise;
                 },
                 remove: function (id) {
-                    var deferred = $q.defer();
-                    deferred.reject('questionFactory.remove not implemented');
-                    return deferred.promise;
+                    var def = $q.defer();
+//                    def.reject('questionFactory.remove not implemented');
+                    return def.promise;
                 }
             };
         }]);

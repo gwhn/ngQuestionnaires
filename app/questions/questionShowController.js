@@ -3,9 +3,10 @@
 angular.module('ngQuestionnaires.questionShowController', [])
     .controller('questionShowController', [
         '$scope',
+        '$log',
         'questionFactory',
-        function ($scope, questionFactory) {
+        function ($scope, $log, questionFactory) {
             questionFactory.get($scope.question).then(function (question) {
                 $scope.question = question;
-            });
+            }, $log.error);
         }]);

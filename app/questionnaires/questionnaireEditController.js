@@ -3,12 +3,13 @@
 angular.module('ngQuestionnaires.questionnaireEditController', [])
     .controller('questionnaireEditController', [
         '$scope',
+        '$log',
         '$cacheFactory',
         '$location',
         '$routeParams',
         'questionnaireFactory',
         'questionFactory',
-        function ($scope, $cacheFactory, $location, $routeParams, questionnaireFactory, questionFactory) {
+        function ($scope, $log, $cacheFactory, $location, $routeParams, questionnaireFactory, questionFactory) {
             var questionnaire = $cacheFactory.get('data').get('questionnaire'),
                 original;
 
@@ -23,7 +24,7 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
                 questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
                     $scope.questionnaire = questionnaire;
                     original = angular.copy($scope.questionnaire);
-                });
+                }, $log.error);
             } else {
                 $scope.questionnaire = questionnaire;
                 $cacheFactory.get('data').remove('questionnaire');
@@ -31,7 +32,7 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
 
             questionFactory.query().then(function (questions) {
                 $scope.questions = questions;
-            });
+            }, $log.error);
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -39,7 +40,7 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             };
 
             $scope.update = function () {
-                questionnaireFactory.update($routeParams.id, $scope.questionnaire).then(navigate);
+                questionnaireFactory.update($routeParams.id, $scope.questionnaire).then(navigate, $log.error);
             };
 
             $scope.cancel = function () {

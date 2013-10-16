@@ -3,11 +3,12 @@
 angular.module('ngQuestionnaires.responseListController', [])
     .controller('responseListController', [
         '$scope',
+        '$log',
         'responseFactory',
-        function ($scope, responseFactory) {
+        function ($scope, $log, responseFactory) {
             responseFactory.query().then(function (responses) {
                 $scope.responses = responses;
-            });
+            }, $log.error);
 
             $scope.isMatch = function (response) {
                 return $scope.search.query ? (

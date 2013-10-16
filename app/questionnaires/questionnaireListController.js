@@ -31,11 +31,12 @@ angular.module('ngQuestionnaires.questionnaireListController', [
     }])
     .controller('questionnaireListController', [
         '$scope',
+        '$log',
         'questionnaireFactory',
-        function ($scope, questionnaireFactory) {
+        function ($scope, $log, questionnaireFactory) {
             questionnaireFactory.query().then(function (questionnaires) {
                 $scope.questionnaires = questionnaires;
-            });
+            }, $log.error);
 
             $scope.isMatch = function (questionnaire) {
                 return $scope.search.query ? (

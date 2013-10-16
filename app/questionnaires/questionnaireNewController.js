@@ -3,11 +3,12 @@
 angular.module('ngQuestionnaires.questionnaireNewController', [])
     .controller('questionnaireNewController', [
         '$scope',
+        '$log',
         '$cacheFactory',
         '$location',
         'questionnaireFactory',
         'questionFactory',
-        function ($scope, $cacheFactory, $location, questionnaireFactory, questionFactory) {
+        function ($scope, $log, $cacheFactory, $location, questionnaireFactory, questionFactory) {
             var questionnaire = $cacheFactory.get('data').get('questionnaire');
 
             function navigate() {
@@ -24,7 +25,7 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
 
             questionFactory.query().then(function (questions) {
                 $scope.questions = questions;
-            });
+            }, $log.error);
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -32,7 +33,7 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
             };
 
             $scope.save = function () {
-                questionnaireFactory.save($scope.questionnaire).then(navigate);
+                questionnaireFactory.save($scope.questionnaire).then(navigate, $log.error);
             };
 
             $scope.cancel = navigate;

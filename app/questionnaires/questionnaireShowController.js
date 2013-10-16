@@ -5,13 +5,14 @@ angular.module('ngQuestionnaires.questionnaireShowController', [
     ])
     .controller('questionnaireShowController', [
         '$scope',
+        '$log',
         '$location',
         '$routeParams',
         'questionnaireFactory',
-        function ($scope, $location, $routeParams, questionnaireFactory) {
+        function ($scope, $log, $location, $routeParams, questionnaireFactory) {
             questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
                 $scope.questionnaire = questionnaire;
-            });
+            }, $log.error);
 
             $scope.hasQuestions = function () {
                 return $scope.questionnaire && $scope.questionnaire.questions;

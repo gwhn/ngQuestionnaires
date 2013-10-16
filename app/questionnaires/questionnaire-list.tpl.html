@@ -23,19 +23,19 @@
 
         <ul class="list-unstyled pull-right text-right">
             <li>
-                <a ng-href="#/questionnaires/show/{{questionnaire.$id}}"
+                <a ng-href="#/questionnaires/show/{{questionnaire.id}}"
                    class="btn btn-link btn-sm">Show</a>
             </li>
             <li>
-                <a ng-href="#/questionnaires/edit/{{questionnaire.$id}}"
+                <a ng-href="#/questionnaires/edit/{{questionnaire.id}}"
                    class="btn btn-link btn-sm">Edit</a>
             </li>
             <li>
-                <a ng-href="#/questionnaires/delete/{{questionnaire.$id}}"
+                <a ng-href="#/questionnaires/delete/{{questionnaire.id}}"
                    class="btn btn-link btn-sm">Delete</a>
             </li>
             <li ng-if="questionnaire.published">
-                <a ng-href="#/responses/new/{{questionnaire.$id}}"
+                <a ng-href="#/responses/new/{{questionnaire.id}}"
                    class="btn btn-link btn-sm">Respond</a>
             </li>
         </ul>

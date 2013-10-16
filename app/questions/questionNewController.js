@@ -3,10 +3,11 @@
 angular.module('ngQuestionnaires.questionNewController', [])
     .controller('questionNewController', [
         '$scope',
+        '$log',
         '$location',
         '$routeParams',
         'questionFactory',
-        function ($scope, $location, $routeParams, questionFactory) {
+        function ($scope, $log, $location, $routeParams, questionFactory) {
             function navigate() {
                 var returnUrl = $routeParams.returnUrl;
                 if (returnUrl === undefined) {
@@ -33,7 +34,7 @@ angular.module('ngQuestionnaires.questionNewController', [])
             };
 
             $scope.save = function () {
-                questionFactory.add($scope.question).then(navigate);
+                questionFactory.add($scope.question).then(navigate, $log.error);
             };
 
             $scope.cancel = navigate;

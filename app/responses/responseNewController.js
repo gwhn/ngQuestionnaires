@@ -3,11 +3,12 @@
 angular.module('ngQuestionnaires.responseNewController', [])
     .controller('responseNewController', [
         '$scope',
+        '$log',
         '$location',
         '$routeParams',
         'questionnaireFactory',
         'responseFactory',
-        function ($scope, $location, $routeParams, questionnaireFactory, responseFactory) {
+        function ($scope, $log, $location, $routeParams, questionnaireFactory, responseFactory) {
             var response = {answers: {}};
 
             function navigate() {
@@ -16,7 +17,7 @@ angular.module('ngQuestionnaires.responseNewController', [])
 
             questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
                 $scope.questionnaire = questionnaire;
-            });
+            }, $log.error);
 
             $scope.answer = function (question, choice) {
                 response.answers[question] = choice;
@@ -37,7 +38,7 @@ angular.module('ngQuestionnaires.responseNewController', [])
                     respondent: $scope.respondent,
                     questionnaire: $scope.questionnaire.title,
                     answers: answers
-                }).then(navigate);
+                }).then(navigate, $log.error);
             };
 
             $scope.cancel = navigate;

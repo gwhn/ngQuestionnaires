@@ -6,6 +6,26 @@ angular.module('ngQuestionnaires.questionFactory', [])
         'fbUrl',
         'Firebase',
         function ($q, fbUrl, Firebase) {
+            function removeRelatives(id) {
+                new Firebase(fbUrl + 'questionnaires').once('value', function (snapshot) {
+                    var value = snapshot.val(),
+                        key,
+                        i;
+                    for (key in value) {
+                        if (value.hasOwnProperty(key) && value[key].questions) {
+                            for (i = value[key].questions.length - 1; i >= 0; i -= 1) {
+                                if (value[key].questions[i] === id) {
+                                    value[key].questions.splice(i, 1);
+                                    new Firebase(fbUrl + 'questionnaires/' + key + '/questions')
+                                        .update(value[key].questions);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
             return {
                 query: function (options) {
                     var def = $q.defer(),
@@ -63,8 +83,16 @@ angular.module('ngQuestionnaires.questionFactory', [])
                     return def.promise;
                 },
                 remove: function (id) {
-                    var def = $q.defer();
-//                    def.reject('questionFactory.remove not implemented');
+                    var def = $q.defer(),
+                        ref = new Firebase(fbUrl + 'questions/' + id);
+                    ref.remove(function (err) {
+                        if (err) {
+                            def.reject('Failed to remove question');
+                        } else {
+                            removeRelatives(id);
+                            def.resolve();
+                        }
+                    });
                     return def.promise;
                 }
             };

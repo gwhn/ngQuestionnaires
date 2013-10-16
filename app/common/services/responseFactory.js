@@ -63,8 +63,15 @@ angular.module('ngQuestionnaires.responseFactory', [])
                     return def.promise;
                 },
                 remove: function (id) {
-                    var def = $q.defer();
-//                    def.reject('responseFactory.remove not implemented');
+                    var def = $q.defer(),
+                        ref = new Firebase(fbUrl + 'responses/' + id);
+                    ref.remove(function (err) {
+                        if (err) {
+                            def.reject('Failed to remove response');
+                        } else {
+                            def.resolve();
+                        }
+                    });
                     return def.promise;
                 }
             };

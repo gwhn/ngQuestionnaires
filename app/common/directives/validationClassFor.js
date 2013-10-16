@@ -5,25 +5,25 @@ angular.module('ngQuestionnaires.validationClassFor', [])
         return {
             require: '^form',
             link: function (scope, element, attributes, formController) {
+                var hasError = 'has-error',
+                    hasSuccess = 'has-success';
                 scope.$watch(function () {
                     var controller = formController[attributes.validationClassFor] || formController,
                         state;
                     if (controller.$invalid && controller.$dirty) {
-                        state = 'error';
+                        state = hasError;
                     } else if (controller.$valid && controller.$dirty) {
-                        state = 'success';
+                        state = hasSuccess;
                     }
                     return state;
-                }, function (state) {
-                    switch (state) {
-                    case 'error':
-                        element.removeClass('has-success').addClass('has-error');
-                        break;
-                    case 'success':
-                        element.removeClass('has-error').addClass('has-success');
+                }, function (newState, oldState) {
+                    switch (newState) {
+                    case hasError:
+                    case hasSuccess:
+                        element.removeClass(oldState).addClass(newState);
                         break;
                     default:
-                        element.removeClass('has-error').removeClass('has-success');
+                        element.removeClass(hasError).removeClass(hasSuccess);
                         break;
                     }
                 });

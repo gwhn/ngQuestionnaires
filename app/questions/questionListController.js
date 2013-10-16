@@ -25,11 +25,11 @@ angular.module('ngQuestionnaires.questionListController', [
     }])
     .controller('questionListController', [
         '$scope',
-        'fbUrl',
-        'Firebase',
-        'angularFireCollection',
-        function ($scope, fbUrl, Firebase, angularFireCollection) {
-            $scope.questions = angularFireCollection(new Firebase(fbUrl + 'questions'));
+        'questionFactory',
+        function ($scope, questionFactory) {
+            questionFactory.query().then(function (questions) {
+                $scope.questions = questions;
+            });
 
             $scope.isMatch = function (question) {
                 return $scope.search.query ? (

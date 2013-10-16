@@ -5,24 +5,19 @@ angular.module('ngQuestionnaires.questionnaireDeleteController', [])
         '$scope',
         '$location',
         '$routeParams',
-        'fbUrl',
-        'Firebase',
-        'angularFire',
-        function ($scope, $location, $routeParams, fbUrl, Firebase, angularFire) {
-            var ref = new Firebase(fbUrl + 'questionnaires/' + $routeParams.id);
-
+        'questionnaireFactory',
+        function ($scope, $location, $routeParams, questionnaireFactory) {
             function navigate() {
                 $location.url('/questionnaires/list');
             }
 
-            angularFire(ref, $scope, 'questionnaire');
+            questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
+                $scope.questionnaire = questionnaire;
+            });
 
-            $scope.delete = function () {
-                ref.remove();
-                navigate();
+            $scope.remove = function () {
+                questionnaireFactory.remove($routeParams.id).then(navigate);
             };
 
-            $scope.cancel = function () {
-                navigate();
-            };
+            $scope.cancel = navigate;
         }]);

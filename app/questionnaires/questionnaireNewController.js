@@ -5,10 +5,9 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
         '$scope',
         '$cacheFactory',
         '$location',
-        'fbUrl',
-        'Firebase',
-        'angularFireCollection',
-        function ($scope, $cacheFactory, $location, fbUrl, Firebase, angularFireCollection) {
+        'questionnaireFactory',
+        'questionFactory',
+        function ($scope, $cacheFactory, $location, questionnaireFactory, questionFactory) {
             var questionnaire = $cacheFactory.get('data').get('questionnaire');
 
             function navigate() {
@@ -23,7 +22,9 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
                 $cacheFactory.get('data').remove('questionnaire');
             }
 
-            $scope.questions = angularFireCollection(new Firebase(fbUrl + 'questions'));
+            questionFactory.query().then(function (questions) {
+                $scope.questions = questions;
+            });
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -31,12 +32,8 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
             };
 
             $scope.save = function () {
-                angularFireCollection(new Firebase(fbUrl + 'questionnaires'))
-                    .add(angular.copy($scope.questionnaire));
-                navigate();
+                questionnaireFactory.save($scope.questionnaire).then(navigate);
             };
 
-            $scope.cancel = function () {
-                navigate();
-            };
+            $scope.cancel = navigate;
         }]);

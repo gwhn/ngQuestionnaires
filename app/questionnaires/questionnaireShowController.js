@@ -7,11 +7,11 @@ angular.module('ngQuestionnaires.questionnaireShowController', [
         '$scope',
         '$location',
         '$routeParams',
-        'fbUrl',
-        'Firebase',
-        'angularFire',
-        function ($scope, $location, $routeParams, fbUrl, Firebase, angularFire) {
-            angularFire(new Firebase(fbUrl + 'questionnaires/' + $routeParams.id), $scope, 'questionnaire');
+        'questionnaireFactory',
+        function ($scope, $location, $routeParams, questionnaireFactory) {
+            questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
+                $scope.questionnaire = questionnaire;
+            });
 
             $scope.hasQuestions = function () {
                 return $scope.questionnaire && $scope.questionnaire.questions;

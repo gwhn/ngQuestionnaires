@@ -5,12 +5,9 @@ angular.module('ngQuestionnaires.questionEditController', [])
         '$scope',
         '$location',
         '$routeParams',
-        'fbUrl',
-        'Firebase',
-        'angularFire',
-        function ($scope, $location, $routeParams, fbUrl, Firebase, angularFire) {
-            var ref = new Firebase(fbUrl + 'questions/' + $routeParams.id),
-                original = null;
+        'questionFactory',
+        function ($scope, $location, $routeParams, questionFactory) {
+            var original;
 
             function navigate() {
                 $location.url('/questions/list');
@@ -18,10 +15,10 @@ angular.module('ngQuestionnaires.questionEditController', [])
 
             $scope.action = 'Edit';
 
-            angularFire(ref, $scope, 'question')
-                .then(function () {
-                    original = angular.copy($scope.question);
-                });
+            questionFactory.get($routeParams.id).then(function (question) {
+                $scope.question = question;
+                original = angular.copy($scope.question);
+            });
 
             $scope.removeChoice = function (index) {
                 $scope.question.choices.splice(index, 1);
@@ -35,8 +32,7 @@ angular.module('ngQuestionnaires.questionEditController', [])
             };
 
             $scope.update = function () {
-                ref.set($scope.question);
-                navigate();
+                questionFactory.update($routeParams.id, $scope.question).then(navigate);
             };
 
             $scope.cancel = function () {

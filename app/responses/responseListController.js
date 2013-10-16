@@ -3,11 +3,11 @@
 angular.module('ngQuestionnaires.responseListController', [])
     .controller('responseListController', [
         '$scope',
-        'fbUrl',
-        'Firebase',
-        'angularFireCollection',
-        function ($scope, fbUrl, Firebase, angularFireCollection) {
-            $scope.responses = angularFireCollection(new Firebase(fbUrl + 'responses'));
+        'responseFactory',
+        function ($scope, responseFactory) {
+            responseFactory.query().then(function (responses) {
+                $scope.responses = responses;
+            });
 
             $scope.isMatch = function (response) {
                 return $scope.search.query ? (

@@ -5,10 +5,8 @@ angular.module('ngQuestionnaires.questionNewController', [])
         '$scope',
         '$location',
         '$routeParams',
-        'fbUrl',
-        'Firebase',
-        'angularFireCollection',
-        function ($scope, $location, $routeParams, fbUrl, Firebase, angularFireCollection) {
+        'questionFactory',
+        function ($scope, $location, $routeParams, questionFactory) {
             function navigate() {
                 var returnUrl = $routeParams.returnUrl;
                 if (returnUrl === undefined) {
@@ -35,12 +33,8 @@ angular.module('ngQuestionnaires.questionNewController', [])
             };
 
             $scope.save = function () {
-                angularFireCollection(new Firebase(fbUrl + 'questions'))
-                    .add(angular.copy($scope.question));
-                navigate();
+                questionFactory.add($scope.question).then(navigate);
             };
 
-            $scope.cancel = function () {
-                navigate();
-            };
+            $scope.cancel = navigate;
         }]);

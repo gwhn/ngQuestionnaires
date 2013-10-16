@@ -3,9 +3,9 @@
 angular.module('ngQuestionnaires.questionShowController', [])
     .controller('questionShowController', [
         '$scope',
-        'fbUrl',
-        'Firebase',
-        'angularFire',
-        function ($scope, fbUrl, Firebase, angularFire) {
-            angularFire(new Firebase(fbUrl + 'questions/' + $scope.question), $scope, 'question');
+        'questionFactory',
+        function ($scope, questionFactory) {
+            questionFactory.get($scope.question).then(function (question) {
+                $scope.question = question;
+            });
         }]);

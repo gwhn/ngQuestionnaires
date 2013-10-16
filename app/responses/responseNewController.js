@@ -5,19 +5,18 @@ angular.module('ngQuestionnaires.responseNewController', [])
         '$scope',
         '$location',
         '$routeParams',
-        'fbUrl',
-        'Firebase',
-        'angularFire',
-        'angularFireCollection',
-        function ($scope, $location, $routeParams, fbUrl, Firebase, angularFire, angularFireCollection) {
-            var ref = new Firebase(fbUrl + 'questionnaires/' + $routeParams.id),
-                response = {answers: {}};
+        'questionnaireFactory',
+        'responseFactory',
+        function ($scope, $location, $routeParams, questionnaireFactory, responseFactory) {
+            var response = {answers: {}};
 
             function navigate() {
                 $location.url('/questionnaires/list');
             }
 
-            angularFire(ref, $scope, 'questionnaire');
+            questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
+                $scope.questionnaire = questionnaire;
+            });
 
             $scope.answer = function (question, choice) {
                 response.answers[question] = choice;
@@ -34,16 +33,12 @@ angular.module('ngQuestionnaires.responseNewController', [])
                         });
                     }
                 }
-                angularFireCollection(new Firebase(fbUrl + 'responses'))
-                    .add({
-                        respondent: $scope.respondent,
-                        questionnaire: $scope.questionnaire.title,
-                        answers: answers
-                    });
-                navigate();
+                responseFactory.add({
+                    respondent: $scope.respondent,
+                    questionnaire: $scope.questionnaire.title,
+                    answers: answers
+                }).then(navigate);
             };
 
-            $scope.cancel = function () {
-                navigate();
-            };
+            $scope.cancel = navigate;
         }]);

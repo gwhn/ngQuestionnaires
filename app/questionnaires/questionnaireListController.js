@@ -31,11 +31,11 @@ angular.module('ngQuestionnaires.questionnaireListController', [
     }])
     .controller('questionnaireListController', [
         '$scope',
-        'fbUrl',
-        'Firebase',
-        'angularFireCollection',
-        function ($scope, fbUrl, Firebase, angularFireCollection) {
-            $scope.questionnaires = angularFireCollection(new Firebase(fbUrl + 'questionnaires'));
+        'questionnaireFactory',
+        function ($scope, questionnaireFactory) {
+            questionnaireFactory.query().then(function (questionnaires) {
+                $scope.questionnaires = questionnaires;
+            });
 
             $scope.isMatch = function (questionnaire) {
                 return $scope.search.query ? (

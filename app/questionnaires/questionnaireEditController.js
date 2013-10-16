@@ -6,14 +6,11 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
         '$cacheFactory',
         '$location',
         '$routeParams',
-        'fbUrl',
-        'Firebase',
-        'angularFire',
-        'angularFireCollection',
-        function ($scope, $cacheFactory, $location, $routeParams, fbUrl, Firebase, angularFire, angularFireCollection) {
+        'questionnaireFactory',
+        'questionFactory',
+        function ($scope, $cacheFactory, $location, $routeParams, questionnaireFactory, questionFactory) {
             var questionnaire = $cacheFactory.get('data').get('questionnaire'),
-                ref = new Firebase(fbUrl + 'questionnaires/' + $routeParams.id),
-                original = null;
+                original;
 
             function navigate() {
                 $cacheFactory.get('data').remove('questionnaire');
@@ -23,16 +20,18 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             $scope.action = 'Edit';
 
             if (questionnaire === undefined) {
-                angularFire(ref, $scope, 'questionnaire')
-                    .then(function () {
-                        original = angular.copy($scope.questionnaire);
-                    });
+                questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
+                    $scope.questionnaire = questionnaire;
+                    original = angular.copy($scope.questionnaire);
+                });
             } else {
                 $scope.questionnaire = questionnaire;
                 $cacheFactory.get('data').remove('questionnaire');
             }
 
-            $scope.questions = angularFireCollection(new Firebase(fbUrl + 'questions'));
+            questionFactory.query().then(function (questions) {
+                $scope.questions = questions;
+            });
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -40,8 +39,7 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             };
 
             $scope.update = function () {
-                ref.set($scope.questionnaire);
-                navigate();
+                questionnaireFactory.update($routeParams.id, $scope.questionnaire).then(navigate);
             };
 
             $scope.cancel = function () {

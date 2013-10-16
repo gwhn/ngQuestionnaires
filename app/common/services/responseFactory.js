@@ -29,20 +29,37 @@ angular.module('ngQuestionnaires.responseFactory', [])
                     var def = $q.defer(),
                         ref = new Firebase(fbUrl + 'responses/' + id);
                     ref.once('value', function (snapshot) {
-                        def.resolve(snapshot.val());
+                        var value = snapshot.val(),
+                            data = angular.extend(value, {id: id});
+                        def.resolve(data);
                     }, function () {
                         def.reject('Failed to get response');
                     });
                     return def.promise;
                 },
-                add: function (question) {
-                    var def = $q.defer();
-//                    def.reject('responseFactory.add not implemented');
+                add: function (data) {
+                    var def = $q.defer(),
+                        ref = new Firebase(fbUrl + 'responses'),
+                        obj = ref.push(data, function (err) {
+                            if (err) {
+                                def.reject('Failed to add response');
+                            } else {
+                                def.resolve(obj.name());
+                            }
+                        });
                     return def.promise;
                 },
-                update: function (id, question) {
-                    var def = $q.defer();
-//                    def.reject('responseFactory.update not implemented');
+                update: function (id, data) {
+                    var def = $q.defer(),
+                        ref = new Firebase(fbUrl + 'responses/' + id);
+                    delete data.id;
+                    ref.update(data, function (err) {
+                        if (err) {
+                            def.reject('Failed to update response');
+                        } else {
+                            def.resolve();
+                        }
+                    });
                     return def.promise;
                 },
                 remove: function (id) {

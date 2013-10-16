@@ -33,7 +33,7 @@ angular.module('ngQuestionnaires.questionnaireNewController', [])
             };
 
             $scope.save = function () {
-                questionnaireFactory.save($scope.questionnaire).then(navigate, $log.error);
+                questionnaireFactory.add($scope.questionnaire).then(navigate, $log.error);
             };
 
             $scope.cancel = navigate;

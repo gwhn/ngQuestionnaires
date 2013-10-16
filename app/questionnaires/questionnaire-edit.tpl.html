@@ -31,7 +31,7 @@
                 <a ng-click="addQuestion()" class="btn btn-link btn-sm">New</a>
             </p>
             <select ng-model="questionnaire.questions" name="questions" size="10"
-                    ng-options="question.$id as question.text for question in questions"
+                    ng-options="question.id as question.text for question in questions"
                     id="questionnaire.questions" class="form-control" multiple required>
             </select>
             <span ng-show="questionnaireForm.questions.$error.required"

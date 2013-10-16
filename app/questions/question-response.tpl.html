@@ -1,17 +1,19 @@
 <article ng-controller="questionShowController">
     <p class="lead">{{question.text}}</p>
 
-    <ul class="list-unstyled">
+    <ul class="list-unstyled form-group" ng-form="choiceForm" validation-class-for="choiceForm">
         <li ng-repeat="choice in question.choices">
             <div class="radio">
                 <label class="control-label">
                     <input type="radio" ng-model="$parent.response.choices" value="{{choice.text}}"
-                           ng-click="answer(question.text, choice.text)"/>
+                           ng-click="answer(question.text, choice.text)" required/>
                     {{choice.text}}
                 </label>
             </div>
         </li>
     </ul>
+    <span ng-show="choiceForm.$error.required"
+          class="help-block">Choice is required</span>
 
     <hr/>
 </article>

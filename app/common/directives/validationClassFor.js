@@ -6,11 +6,11 @@ angular.module('ngQuestionnaires.validationClassFor', [])
             require: '^form',
             link: function (scope, element, attributes, formController) {
                 scope.$watch(function () {
-                    var field = formController[attributes.validationClassFor],
+                    var controller = formController[attributes.validationClassFor] || formController,
                         state;
-                    if (field.$invalid && field.$dirty) {
+                    if (controller.$invalid && controller.$dirty) {
                         state = 'error';
-                    } else if (field.$valid && field.$dirty) {
+                    } else if (controller.$valid && controller.$dirty) {
                         state = 'success';
                     }
                     return state;

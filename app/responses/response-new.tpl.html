@@ -1,5 +1,5 @@
 <section class="new-response">
-    <h1>{{questionnaire.title}}</h1>
+    <h2>{{questionnaire.title}}</h2>
 
     <p class="lead">{{questionnaire.description}}</p>
 
@@ -12,7 +12,7 @@
                   class="help-block">Respondent is required</span>
         </div>
 
-        <h2>Questions</h2>
+        <h3>Questions</h3>
         <ul class="list-unstyled">
             <li ng-repeat="question in questionnaire.questions">
                 <ng-include src="'questions/question-response.tpl.html'"></ng-include>

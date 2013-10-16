@@ -1,5 +1,5 @@
 <section class="{{action | lowercase}}-questionnaire">
-    <h1>{{action}} Questionnaire</h1>
+    <h2>{{action}} Questionnaire</h2>
 
     <form name="questionnaireForm" novalidate>
         <div class="form-group" validation-class-for="title">
@@ -25,25 +25,30 @@
             </label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" validation-class-for="questions">
             <label for="questionnaire.questions" class="control-label">Questions</label>
-            <select ng-model="questionnaire.questions"
-                    ng-options="question.$id as question.text for question in questions"
-                    id="questionnaire.questions" class="form-control" multiple>
-            </select>
-
             <p>
-                <a ng-click="addQuestion()" class="btn btn-link">New</a>
+                <a ng-click="addQuestion()" class="btn btn-link btn-sm">New</a>
             </p>
+            <select ng-model="questionnaire.questions" name="questions" size="10"
+                    ng-options="question.$id as question.text for question in questions"
+                    id="questionnaire.questions" class="form-control" multiple required>
+            </select>
+            <span ng-show="questionnaireForm.questions.$error.required"
+                  class="help-block">Questions are required</span>
         </div>
+
 
         <div class="form-group" ng-switch on="action">
             <button type="button" ng-switch-when="New" ng-click="save()" disabled-when-invalid
-                    class="btn btn-primary">Save</button>
+                    class="btn btn-primary">Save
+            </button>
             <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid
-                    class="btn btn-primary">Update</button>
+                    class="btn btn-primary">Update
+            </button>
             <button type="button" ng-click="cancel()"
-                    class="btn btn-default">Cancel</button>
+                    class="btn btn-default">Cancel
+            </button>
         </div>
     </form>
 </section>

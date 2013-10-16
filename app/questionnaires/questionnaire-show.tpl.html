@@ -1,5 +1,5 @@
 <section class="questionnaire">
-    <h1>{{questionnaire.title}}</h1>
+    <h2>{{questionnaire.title}}</h2>
 
     <p class="lead">{{questionnaire.description}}</p>
 
@@ -9,7 +9,7 @@
         <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
     </p>
 
-    <h2>Questions</h2>
+    <h3>Questions</h3>
     <ul class="list-unstyled">
         <li ng-repeat="question in questionnaire.questions">
             <ng-include src="'questions/question-show.tpl.html'"></ng-include>

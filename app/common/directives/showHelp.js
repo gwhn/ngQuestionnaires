@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngQuestionnaires.showHelp', [])
-    .directive('showHelp', function () {
+    .directive('showHelp', ['$animate', function ($animate) {
         return {
             require: '^form',
             scope: true,
@@ -20,9 +20,11 @@ angular.module('ngQuestionnaires.showHelp', [])
                         return state;
                     }, function (newValue, oldValue) {
                         element.removeClass(oldValue).addClass(newValue);
+                        $animate.removeClass(element, 'animate-' + oldValue);
+                        $animate.addClass(element, 'animate-' + newValue);
                     });
                     element.append(transclude(scope));
                 };
             }
         };
-    });
+    }]);

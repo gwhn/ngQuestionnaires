@@ -12,13 +12,13 @@
 }
 
 .reveal-animation.ng-enter {
-    -webkit-animation: enter-sequence 1.5s ease-out;
-    -moz-animation: enter-sequence 1.5s ease-out;
-    -o-animation: enter-sequence 1.5s ease-out;
-    animation: enter-sequence 1.5s ease-out;
+    -webkit-animation: slide-in 0.5s ease-out;
+    -moz-animation: slide-in 0.5s ease-out;
+    -o-animation: slide-in 0.5s ease-out;
+    animation: slide-in 0.5s ease-out;
 }
 
-@-webkit-keyframes enter-sequence {
+@-webkit-keyframes slide-in {
     from {
         left: 100%;
     }
@@ -27,7 +27,7 @@
     }
 }
 
-@-moz-keyframes enter-sequence {
+@-moz-keyframes slide-in {
     from {
         left: 100%;
     }
@@ -36,7 +36,7 @@
     }
 }
 
-@-o-keyframes enter-sequence {
+@-o-keyframes slide-in {
     from {
         left: 100%;
     }
@@ -45,7 +45,7 @@
     }
 }
 
-@keyframes enter-sequence {
+@keyframes slide-in {
     from {
         left: 100%;
     }
@@ -55,13 +55,13 @@
 }
 
 .reveal-animation.ng-leave {
-    -webkit-animation: leave-sequence 0.5s ease-in;
-    -moz-animation: leave-sequence 0.5s ease-in;
-    -o-animation: leave-sequence 0.5s ease-in;
-    animation: leave-sequence 0.5s ease-in;
+    -webkit-animation: slide-out 0.2s ease-in;
+    -moz-animation: slide-out 0.2s ease-in;
+    -o-animation: slide-out 0.2s ease-in;
+    animation: slide-out 0.2s ease-in;
 }
 
-@-webkit-keyframes leave-sequence {
+@-webkit-keyframes slide-out {
     from {
         left: 0;
     }
@@ -70,7 +70,7 @@
     }
 }
 
-@-moz-keyframes leave-sequence {
+@-moz-keyframes slide-out {
     from {
         left: 0;
     }
@@ -79,7 +79,7 @@
     }
 }
 
-@-o-keyframes leave-sequence {
+@-o-keyframes slide-out {
     from {
         left: 0;
     }
@@ -88,12 +88,24 @@
     }
 }
 
-@keyframes leave-sequence {
+@keyframes slide-out {
     from {
         left: 0;
     }
     to {
         left: -100%;
     }
+}
+
+.help-block {
+    opacity: 0;
+}
+.help-block.animate-show,
+.help-block.animate-show-add.animate-show-add-active {
+    opacity: 1;
+    -moz-transition: opacity 1s ease 0.5s;
+    -webkit-transition: opacity 1s ease 0.5s;
+    -o-transition: opacity 1s ease 0.5s;
+    transition: opacity 1s ease 0.5s;
 }
 

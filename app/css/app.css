@@ -1,30 +1,99 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.reveal-container {
+    position: relative;
 }
 
-.menu:before {
-  content: "[";
+.reveal-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
 }
 
-.menu:after {
-  content: "]";
+.reveal-animation.ng-enter {
+    -webkit-animation: enter-sequence 1.5s ease-out;
+    -moz-animation: enter-sequence 1.5s ease-out;
+    -o-animation: enter-sequence 1.5s ease-out;
+    animation: enter-sequence 1.5s ease-out;
 }
 
-.menu > li {
-  display: inline;
+@-webkit-keyframes enter-sequence {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
 }
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+@-moz-keyframes enter-sequence {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
 }
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+@-o-keyframes enter-sequence {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
 }
+
+@keyframes enter-sequence {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+.reveal-animation.ng-leave {
+    -webkit-animation: leave-sequence 0.5s ease-in;
+    -moz-animation: leave-sequence 0.5s ease-in;
+    -o-animation: leave-sequence 0.5s ease-in;
+    animation: leave-sequence 0.5s ease-in;
+}
+
+@-webkit-keyframes leave-sequence {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+@-moz-keyframes leave-sequence {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+@-o-keyframes leave-sequence {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes leave-sequence {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+

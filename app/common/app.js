@@ -3,6 +3,7 @@
 angular.module('ngQuestionnaires', [
         'ng',
         'ngRoute',
+        'ngAnimate',
         'ngQuestionnaires.questionnaireFactory',
         'ngQuestionnaires.questionFactory',
         'ngQuestionnaires.responseFactory',

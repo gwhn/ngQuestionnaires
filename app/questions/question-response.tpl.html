@@ -1,7 +1,7 @@
 <article ng-controller="questionShowController">
     <p class="lead">{{question.text}}</p>
 
-    <ul class="list-unstyled form-group" ng-form="choiceForm" validation-class-for>
+    <ul class="list-unstyled form-group" ng-form="choiceForm" validation-class>
         <li ng-repeat="choice in question.choices">
             <div class="radio">
                 <label class="control-label">

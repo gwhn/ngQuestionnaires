@@ -2,7 +2,7 @@
     <h2>{{action}} Questionnaire</h2>
 
     <form name="questionnaireForm" novalidate>
-        <div class="form-group" validation-class-for="title">
+        <div class="form-group" validation-class on="title">
             <label for="questionnaireTitle" class="control-label">Title</label>
             <input type="text" ng-model="questionnaire.title" name="title"
                    id="questionnaireTitle" class="form-control" required/>
@@ -10,7 +10,7 @@
                   class="help-block">Title is required</span>
         </div>
 
-        <div class="form-group" validation-class-for="description">
+        <div class="form-group" validation-class on="description">
             <label for="questionnaire.description" class="control-label">Description</label>
             <textarea ng-model="questionnaire.description" name="description"
                       id="questionnaire.description" class="form-control" rows="3" required></textarea>
@@ -25,7 +25,7 @@
             </label>
         </div>
 
-        <div class="form-group" validation-class-for="questions">
+        <div class="form-group" validation-class on="questions">
             <label for="questionnaire.questions" class="control-label">Questions</label>
             <p>
                 <a ng-click="addQuestion()" class="btn btn-link btn-sm">New</a>

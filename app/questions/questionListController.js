@@ -26,8 +26,9 @@ angular.module('ngQuestionnaires.questionListController', [
     .controller('questionListController', [
         '$scope',
         '$log',
+        '_',
         'questionFactory',
-        function ($scope, $log, questionFactory) {
+        function ($scope, $log, _, questionFactory) {
             questionFactory.query().then(function (questions) {
                 $scope.questions = questions;
             }, $log.error);

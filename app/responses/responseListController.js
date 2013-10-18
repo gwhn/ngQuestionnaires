@@ -4,8 +4,9 @@ angular.module('ngQuestionnaires.responseListController', [])
     .controller('responseListController', [
         '$scope',
         '$log',
+        '_',
         'responseFactory',
-        function ($scope, $log, responseFactory) {
+        function ($scope, $log, _, responseFactory) {
             responseFactory.query().then(function (responses) {
                 $scope.responses = responses;
             }, $log.error);

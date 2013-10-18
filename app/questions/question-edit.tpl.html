@@ -6,8 +6,7 @@
             <label for="questionText" class="control-label">Text</label>
             <input type="text" ng-model="question.text" name="question"
                    id="questionText" class="form-control" required/>
-            <span ng-show="questionForm.question.$error.required"
-                  class="help-block">Question text is required</span>
+            <span show-help on="question" when="required">Question text is required</span>
         </div>
 
         <div class="form-group">
@@ -23,8 +22,7 @@
                         </button>
                     </span>
                 </div>
-                <span ng-show="choiceForm.choice.$error.required"
-                      class="help-block">Choice text is required</span>
+                <span show-help on="choice" when="required">Choice text is required</span>
             </div>
             <button type="button" ng-click="addChoice()" class="btn btn-default">
                 <i class="glyphicon glyphicon-plus"></i>

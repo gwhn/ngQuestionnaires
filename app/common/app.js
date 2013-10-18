@@ -8,6 +8,7 @@ angular.module('ngQuestionnaires', [
         'ngQuestionnaires.responseFactory',
         'ngQuestionnaires.disabledWhenInvalid',
         'ngQuestionnaires.validationClass',
+        'ngQuestionnaires.showHelp',
         'ngQuestionnaires.questionnaireListController',
         'ngQuestionnaires.questionListController',
         'ngQuestionnaires.responseListController'

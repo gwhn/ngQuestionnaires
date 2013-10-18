@@ -8,8 +8,7 @@
             <label for="respondent" class="control-label">Respondent</label>
             <input type="text" ng-model="respondent" name="respondent"
                    id="respondent" class="form-control" required/>
-            <span ng-show="responseForm.respondent.$error.required"
-                  class="help-block">Respondent is required</span>
+            <span show-help on="respondent" when="required">Respondent is required</span>
         </div>
 
         <h3>Questions</h3>

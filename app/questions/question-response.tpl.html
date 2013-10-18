@@ -1,7 +1,7 @@
-<article ng-controller="questionShowController">
+<article ng-controller="questionShowController" ng-form="choiceForm">
     <p class="lead">{{question.text}}</p>
 
-    <ul class="list-unstyled form-group" ng-form="choiceForm" validation-class>
+    <ul class="list-unstyled form-group" validation-class>
         <li ng-repeat="choice in question.choices">
             <div class="radio">
                 <label class="control-label">
@@ -12,8 +12,7 @@
             </div>
         </li>
     </ul>
-    <span ng-show="choiceForm.$error.required"
-          class="help-block">Choice is required</span>
+    <span show-help when="required">Choice is required</span>
 
     <hr/>
 </article>

@@ -6,16 +6,14 @@
             <label for="questionnaireTitle" class="control-label">Title</label>
             <input type="text" ng-model="questionnaire.title" name="title"
                    id="questionnaireTitle" class="form-control" required/>
-            <span ng-show="questionnaireForm.title.$error.required"
-                  class="help-block">Title is required</span>
+            <span show-help on="title" when="required">Title is required</span>
         </div>
 
         <div class="form-group" validation-class on="description">
             <label for="questionnaire.description" class="control-label">Description</label>
             <textarea ng-model="questionnaire.description" name="description"
                       id="questionnaire.description" class="form-control" rows="3" required></textarea>
-            <span ng-show="questionnaireForm.description.$error.required"
-                  class="help-block">Description is required</span>
+            <span show-help on="description" when="required">Description is required</span>
         </div>
 
         <div class="checkbox">
@@ -34,8 +32,7 @@
                     ng-options="question.id as question.text for question in questions"
                     id="questionnaire.questions" class="form-control" multiple required>
             </select>
-            <span ng-show="questionnaireForm.questions.$error.required"
-                  class="help-block">Questions are required</span>
+            <span show-help on="questions" when="required">Questions are required</span>
         </div>
 
 

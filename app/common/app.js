@@ -12,6 +12,7 @@ angular.module('ngQuestionnaires', [
         'ngQuestionnaires.showHelp',
         'ngQuestionnaires.uniqueQuestionnaireTitle',
         'ngQuestionnaires.uniqueQuestionText',
+        'ngQuestionnaires.multipleRequired',
         'ngQuestionnaires.questionnaireListController',
         'ngQuestionnaires.questionListController',
         'ngQuestionnaires.responseListController'

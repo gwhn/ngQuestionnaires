@@ -4,6 +4,7 @@ angular.module('ngQuestionnaires', [
         'ng',
         'ngRoute',
         'ngAnimate',
+        'ui.bootstrap',
         'ngQuestionnaires.questionnaireFactory',
         'ngQuestionnaires.questionFactory',
         'ngQuestionnaires.responseFactory',

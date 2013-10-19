@@ -14,9 +14,11 @@
         </span>
     </p>
 
-    <p>
-        <a ng-href="#/questionnaires/new" class="btn btn-link">New</a>
-    </p>
+    <ul class="list-inline">
+        <li>
+            <a ng-href="#/questionnaires/new" class="btn btn-link">New</a>
+        </li>
+    </ul>
 
     <article class="questionnaire"
              ng-repeat="questionnaire in filteredQuestionnaires = (questionnaires | filter:isMatch)">
@@ -54,5 +56,7 @@
         <hr/>
     </article>
 
-    <pagination num-pages="" current-page="" on-select-page=""></pagination>
+    <div class="text-center">
+        <pagination num-pages="" current-page="" on-select-page=""></pagination>
+    </div>
 </section>

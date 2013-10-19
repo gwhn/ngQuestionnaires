@@ -31,13 +31,18 @@
             </button>
         </div>
 
-        <div class="form-group" ng-switch on="action">
-            <button type="button" ng-switch-when="New" ng-click="save()" disabled-when-invalid
-                    class="btn btn-primary">Save</button>
-            <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid
-                    class="btn btn-primary">Update</button>
-            <button type="button" ng-click="cancel()"
-                    class="btn btn-default">Cancel</button>
-        </div>
+        <ul class="list-inline">
+            <li>
+                <div ng-switch on="action">
+                    <button type="button" ng-switch-when="New" ng-click="save()" disabled-when-invalid
+                            class="btn btn-primary">Save</button>
+                    <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid
+                            class="btn btn-primary">Update</button>
+                </div>
+            </li>
+            <li>
+                <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+            </li>
+        </ul>
     </form>
 </section>

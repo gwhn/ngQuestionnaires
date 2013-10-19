@@ -3,8 +3,12 @@
 
     <p class="lead">Are you sure you want to delete {{questionnaire.title}}?</p>
 
-    <button type="button" ng-click="remove()"
-            class="btn btn-danger">Delete</button>
-    <button type="button" ng-click="cancel()"
-            class="btn btn-default">Cancel</button>
+    <ul class="list-inline">
+        <li>
+            <button type="button" ng-click="remove()" class="btn btn-danger">Delete</button>
+        </li>
+        <li>
+            <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+        </li>
+    </ul>
 </section>

@@ -14,9 +14,11 @@
         </span>
     </p>
 
-    <p>
-        <a ng-href="#/questions/new" class="btn btn-link">New</a>
-    </p>
+    <ul class="list-inline">
+        <li>
+            <a ng-href="#/questions/new" class="btn btn-link">New</a>
+        </li>
+    </ul>
 
     <article class="question"
              ng-repeat="question in filteredQuestions = (questions | filter:isMatch)">

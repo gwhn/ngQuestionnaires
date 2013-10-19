@@ -1,6 +1,14 @@
 'use strict';
 
-angular.module('ngQuestionnaires.responseListController', [])
+angular.module('ngQuestionnaires.responseListController', [
+        'ngQuestionnaires.responseDeleteController'
+    ])
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/responses/delete/:id', {
+            templateUrl: 'responses/response-delete.tpl.html',
+            controller: 'responseDeleteController'
+        });
+    }])
     .controller('responseListController', [
         '$scope',
         '$log',

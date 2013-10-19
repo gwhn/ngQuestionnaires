@@ -9,11 +9,23 @@ angular.module('ngQuestionnaires.questionFactory', [])
             return {
                 query: function (options) {
                     var def = $q.defer(),
-                        ref = new Firebase(fbUrl + 'questions');
+                        ref = new Firebase(fbUrl + 'questions'),
+                        filter = function (collection, key, value) {
+                            return _.filter(collection, function (item) {
+                                return item[key] === value;
+                            });
+                        };
                     ref.once('value', function (snapshot) {
                         var value = snapshot.val(),
                             data = [],
                             key;
+                        if (options) {
+                            for (key in options) {
+                                if (options.hasOwnProperty(key)) {
+                                    value = filter(value, key, options[key]);
+                                }
+                            }
+                        }
                         for (key in value) {
                             if (value.hasOwnProperty(key)) {
                                 data.push(angular.extend(value[key], {id: key}));

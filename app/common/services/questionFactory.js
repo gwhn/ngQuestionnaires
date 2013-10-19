@@ -6,26 +6,6 @@ angular.module('ngQuestionnaires.questionFactory', [])
         'fbUrl',
         'Firebase',
         function ($q, fbUrl, Firebase) {
-            function removeRelatives(id) {
-                new Firebase(fbUrl + 'questionnaires').once('value', function (snapshot) {
-                    var value = snapshot.val(),
-                        key,
-                        i;
-                    for (key in value) {
-                        if (value.hasOwnProperty(key) && value[key].questions) {
-                            for (i = value[key].questions.length - 1; i >= 0; i -= 1) {
-                                if (value[key].questions[i] === id) {
-                                    value[key].questions.splice(i, 1);
-                                    new Firebase(fbUrl + 'questionnaires/' + key + '/questions')
-                                        .update(value[key].questions);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
             return {
                 query: function (options) {
                     var def = $q.defer(),
@@ -84,7 +64,27 @@ angular.module('ngQuestionnaires.questionFactory', [])
                 },
                 remove: function (id) {
                     var def = $q.defer(),
-                        ref = new Firebase(fbUrl + 'questions/' + id);
+                        ref = new Firebase(fbUrl + 'questions/' + id),
+                        removeRelatives = function (id) {
+                            new Firebase(fbUrl + 'questionnaires').once('value', function (snapshot) {
+                                var value = snapshot.val(),
+                                    key,
+                                    i,
+                                    n;
+                                for (key in value) {
+                                    if (value.hasOwnProperty(key) && value[key].questions) {
+                                        n = value[key].questions.length;
+                                        for (i = 0; i < n; i += 1) {
+                                            if (value[key].questions[i] === id) {
+                                                value[key].questions.splice(i, 1);
+                                                break;
+                                            }
+                                        }
+                                        new Firebase(fbUrl + 'questionnaires/' + key).update(value[key]);
+                                    }
+                                }
+                            });
+                        };
                     ref.remove(function (err) {
                         if (err) {
                             def.reject('Failed to remove question');

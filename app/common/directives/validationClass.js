@@ -4,7 +4,6 @@ angular.module('ngQuestionnaires.validationClass', [])
     .directive('validationClass', function () {
         return {
             require: '^form',
-            scope: true,
             link: function (scope, element, attributes, formController) {
                 var hasError = 'has-error',
                     hasSuccess = 'has-success';

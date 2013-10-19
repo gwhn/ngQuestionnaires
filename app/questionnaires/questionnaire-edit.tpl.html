@@ -26,7 +26,7 @@
         <div class="form-group" validation-class on="questions">
             <label for="questionnaire.questions" class="control-label">Questions</label>
             <p>
-                <a ng-click="addQuestion()" class="btn btn-link btn-sm">New</a>
+                <a ng-click="addQuestion()" class="btn btn-link">New</a>
             </p>
             <select ng-model="questionnaire.questions" name="questions" size="10"
                     ng-options="question.id as question.text for question in questions"

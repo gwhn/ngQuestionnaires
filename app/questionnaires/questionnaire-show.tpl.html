@@ -1,4 +1,13 @@
 <section class="questionnaire">
+    <ul class="list-inline pull-right">
+        <li>
+            <a ng-href="#/questionnaires/list" class="btn btn-link">Back</a>
+        </li>
+        <li>
+            <a ng-href="#/questionnaires/edit/{{questionnaire.id}}" class="btn btn-link">Edit</a>
+        </li>
+    </ul>
+
     <h2>{{questionnaire.title}}</h2>
 
     <p class="lead">{{questionnaire.description}}</p>
@@ -16,6 +25,4 @@
         </li>
     </ul>
     <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
-
-    <button type="button" ng-click="back()" class="btn btn-default">Back</button>
 </section>

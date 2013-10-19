@@ -15,28 +15,24 @@
     </p>
 
     <p>
-        <a ng-href="#/questionnaires/new" class="btn btn-link btn-sm">New</a>
+        <a ng-href="#/questionnaires/new" class="btn btn-link">New</a>
     </p>
 
     <article class="questionnaire"
              ng-repeat="questionnaire in filteredQuestionnaires = (questionnaires | filter:isMatch)">
 
-        <ul class="list-unstyled pull-right text-right">
+        <ul class="list-inline pull-right">
             <li>
-                <a ng-href="#/questionnaires/show/{{questionnaire.id}}"
-                   class="btn btn-link btn-sm">Show</a>
+                <a ng-href="#/questionnaires/show/{{questionnaire.id}}" class="btn btn-link">Show</a>
             </li>
             <li>
-                <a ng-href="#/questionnaires/edit/{{questionnaire.id}}"
-                   class="btn btn-link btn-sm">Edit</a>
+                <a ng-href="#/questionnaires/edit/{{questionnaire.id}}" class="btn btn-link">Edit</a>
             </li>
             <li>
-                <a ng-href="#/questionnaires/delete/{{questionnaire.id}}"
-                   class="btn btn-link btn-sm">Delete</a>
+                <a ng-href="#/questionnaires/delete/{{questionnaire.id}}" class="btn btn-link">Delete</a>
             </li>
             <li ng-if="questionnaire.published">
-                <a ng-href="#/responses/new/{{questionnaire.id}}"
-                   class="btn btn-link btn-sm">Respond</a>
+                <a ng-href="#/responses/new/{{questionnaire.id}}" class="btn btn-link">Respond</a>
             </li>
         </ul>
 

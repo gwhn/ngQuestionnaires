@@ -17,10 +17,10 @@
     <article class="response"
              ng-repeat="response in filteredResponses = (responses | filter:isMatch)">
 
-        <ul class="list-unstyled pull-right text-right">
+        <ul class="list-inline pull-right">
             <li>
                 <a ng-href="#/responses/delete/{{response.id}}"
-                   class="btn btn-link btn-sm">Delete</a>
+                   class="btn btn-link">Delete</a>
             </li>
         </ul>
 

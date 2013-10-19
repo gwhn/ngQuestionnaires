@@ -1,14 +1,17 @@
-<section class="well well-small">
-    <h2>Delete Response</h2>
+<section class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>Delete Response</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">Are you sure you want to delete {{response.questionnaire}} from {{response.respondent}}?</p>
 
-    <p class="lead">Are you sure you want to delete {{response.questionnaire}} from {{response.respondent}}?</p>
-
-    <ul class="list-inline">
-        <li>
-            <button type="button" ng-click="remove()" class="btn btn-danger">Delete</button>
-        </li>
-        <li>
-            <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
-        </li>
-    </ul>
+        <ul class="list-inline">
+            <li>
+                <button type="button" ng-click="remove()" class="btn btn-danger">Delete</button>
+            </li>
+            <li>
+                <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+            </li>
+        </ul>
+    </div>
 </section>

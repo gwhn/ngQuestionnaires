@@ -1,43 +1,48 @@
-<section class="well well-small">
-    <h2>Questions</h2>
+<section class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>Questions</h3>
+    </div>
+    <div class="panel-body">
+        <div class="well well-large">
+            <form name="search">
+                <input type="search" class="form-control" placeholder="Search" ng-model="search.query"/>
+            </form>
 
-    <form name="search">
-        <input type="search" class="form-control" placeholder="Search" ng-model="search.query"/>
-    </form>
+            <p class="label label-info pull-right" ng-show="search.query">
+                <span ng-switch on="filteredQuestions.length">
+                    <span ng-switch-when="0">No questions match</span>
+                    <span ng-switch-when="1">One question matches</span>
+                    <span ng-switch-default>{{filteredQuestions.length}} questions match</span>
+                    {{search.query}}
+                </span>
+            </p>
+        </div>
 
-    <p class="label label-info pull-right" ng-show="search.query">
-        <span ng-switch on="filteredQuestions.length">
-            <span ng-switch-when="0">No questions match</span>
-            <span ng-switch-when="1">One question matches</span>
-            <span ng-switch-default>{{filteredQuestions.length}} questions match</span>
-            {{search.query}}
-        </span>
-    </p>
-
-    <ul class="list-inline">
-        <li>
-            <a ng-href="#/questions/new" class="btn btn-link">New</a>
-        </li>
-    </ul>
-
-    <article class="question"
-             ng-repeat="question in filteredQuestions = (questions | filter:isMatch)">
-
-        <ul class="list-inline pull-right">
+        <ul class="list-inline">
             <li>
-                <a ng-href="#/questions/edit/{{question.id}}" class="btn btn-link">Edit</a>
-            </li>
-            <li>
-                <a ng-href="#/questions/delete/{{question.id}}" class="btn btn-link">Delete</a>
+                <a ng-href="#/questions/new" class="btn btn-link">New</a>
             </li>
         </ul>
 
-        <p class="lead">{{question.text}}</p>
+        <article class="question"
+                 ng-repeat="question in filteredQuestions = (questions | filter:isMatch)">
 
-        <ol>
-            <li ng-repeat="choice in question.choices">{{choice.text}}</li>
-        </ol>
+            <ul class="list-inline pull-right">
+                <li>
+                    <a ng-href="#/questions/edit/{{question.id}}" class="btn btn-link">Edit</a>
+                </li>
+                <li>
+                    <a ng-href="#/questions/delete/{{question.id}}" class="btn btn-link">Delete</a>
+                </li>
+            </ul>
 
-        <hr/>
-    </article>
+            <p class="lead">{{question.text}}</p>
+
+            <ol>
+                <li ng-repeat="choice in question.choices">{{choice.text}}</li>
+            </ol>
+
+            <hr/>
+        </article>
+    </div>
 </section>

@@ -1,30 +1,33 @@
-<section class="well well-small">
-    <h2>{{questionnaire.title}}</h2>
+<section class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>{{questionnaire.title}}</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">{{questionnaire.description}}</p>
 
-    <p class="lead">{{questionnaire.description}}</p>
+        <form name="responseForm" novalidate>
+            <div class="form-group" validation-class on="respondent">
+                <label for="respondent" class="control-label">Respondent</label>
+                <input type="text" ng-model="respondent" name="respondent"
+                       id="respondent" class="form-control" required/>
+                <span show-help on="respondent" when="required">Respondent is required</span>
+            </div>
 
-    <form name="responseForm" novalidate>
-        <div class="form-group" validation-class on="respondent">
-            <label for="respondent" class="control-label">Respondent</label>
-            <input type="text" ng-model="respondent" name="respondent"
-                   id="respondent" class="form-control" required/>
-            <span show-help on="respondent" when="required">Respondent is required</span>
-        </div>
+            <h3>Questions</h3>
+            <ul class="list-unstyled">
+                <li ng-repeat="question in questionnaire.questions">
+                    <ng-include src="'questions/question-response.tpl.html'"></ng-include>
+                </li>
+            </ul>
 
-        <h3>Questions</h3>
-        <ul class="list-unstyled">
-            <li ng-repeat="question in questionnaire.questions">
-                <ng-include src="'questions/question-response.tpl.html'"></ng-include>
-            </li>
-        </ul>
-
-        <ul class="list-inline">
-            <li>
-                <button type="button" ng-click="submit()" disabled-when-invalid class="btn btn-primary">Submit</button>
-            </li>
-            <li>
-                <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
-            </li>
-        </ul>
-    </form>
+            <ul class="list-inline">
+                <li>
+                    <button type="button" ng-click="submit()" disabled-when-invalid class="btn btn-primary">Submit</button>
+                </li>
+                <li>
+                    <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+                </li>
+            </ul>
+        </form>
+    </div>
 </section>

@@ -1,56 +1,59 @@
-<section class="well well-small">
-    <h2>{{action}} Questionnaire</h2>
+<section class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>{{action}} Questionnaire</h3>
+    </div>
+    <div class="panel-body">
+        <form name="questionnaireForm" novalidate>
+            <div class="form-group" validation-class on="title">
+                <label for="questionnaireTitle" class="control-label">Title</label>
+                <input type="text" ng-model="questionnaire.title" name="title"
+                       id="questionnaireTitle" class="form-control" required unique-questionnaire-title/>
+                <span show-help on="title" when="required">Title is required</span>
+                <span show-help on="title" when="uniqueQuestionnaireTitle">Title must be unique</span>
+            </div>
 
-    <form name="questionnaireForm" novalidate>
-        <div class="form-group" validation-class on="title">
-            <label for="questionnaireTitle" class="control-label">Title</label>
-            <input type="text" ng-model="questionnaire.title" name="title"
-                   id="questionnaireTitle" class="form-control" required unique-questionnaire-title/>
-            <span show-help on="title" when="required">Title is required</span>
-            <span show-help on="title" when="uniqueQuestionnaireTitle">Title must be unique</span>
-        </div>
+            <div class="form-group" validation-class on="description">
+                <label for="questionnaire.description" class="control-label">Description</label>
+                <textarea ng-model="questionnaire.description" name="description"
+                          id="questionnaire.description" class="form-control" rows="3" required></textarea>
+                <span show-help on="description" when="required">Description is required</span>
+            </div>
 
-        <div class="form-group" validation-class on="description">
-            <label for="questionnaire.description" class="control-label">Description</label>
-            <textarea ng-model="questionnaire.description" name="description"
-                      id="questionnaire.description" class="form-control" rows="3" required></textarea>
-            <span show-help on="description" when="required">Description is required</span>
-        </div>
+            <div class="checkbox">
+                <label class="control-label">
+                    <input type="checkbox" ng-model="questionnaire.published"/>
+                    Published?
+                </label>
+            </div>
 
-        <div class="checkbox">
-            <label class="control-label">
-                <input type="checkbox" ng-model="questionnaire.published"/>
-                Published?
-            </label>
-        </div>
+            <div class="form-group" validation-class on="questions">
+                <label for="questionnaire.questions" class="control-label">Questions</label>
+                <select ng-model="questionnaire.questions" name="questions" size="10"
+                        ng-options="question.id as question.text for question in questions"
+                        id="questionnaire.questions" class="form-control" multiple required>
+                </select>
+                <ul class="list-inline pull-right">
+                    <li>
+                        <button type="button" ng-click="addQuestion()" class="btn btn-link">New</button>
+                    </li>
+                </ul>
+                <span show-help on="questions" when="required">Questions are required</span>
+            </div>
 
-        <div class="form-group" validation-class on="questions">
-            <label for="questionnaire.questions" class="control-label">Questions</label>
-            <select ng-model="questionnaire.questions" name="questions" size="10"
-                    ng-options="question.id as question.text for question in questions"
-                    id="questionnaire.questions" class="form-control" multiple required>
-            </select>
-            <ul class="list-inline pull-right">
+            <ul class="list-inline">
                 <li>
-                    <button type="button" ng-click="addQuestion()" class="btn btn-link">New</button>
+                    <div ng-switch on="action">
+                        <button type="button" ng-switch-when="New" ng-click="save()" disabled-when-invalid
+                                class="btn btn-primary">Save</button>
+                        <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid
+                                class="btn btn-primary">Update</button>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
                 </li>
             </ul>
-            <span show-help on="questions" when="required">Questions are required</span>
-        </div>
 
-        <ul class="list-inline">
-            <li>
-                <div ng-switch on="action">
-                    <button type="button" ng-switch-when="New" ng-click="save()" disabled-when-invalid
-                            class="btn btn-primary">Save</button>
-                    <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid
-                            class="btn btn-primary">Update</button>
-                </div>
-            </li>
-            <li>
-                <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
-            </li>
-        </ul>
-
-    </form>
+        </form>
+    </div>
 </section>

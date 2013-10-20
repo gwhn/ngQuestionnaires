@@ -25,12 +25,26 @@ angular.module('ngQuestionnaires.questionListController', [
     }])
     .controller('questionListController', [
         '$scope',
+        '$filter',
         '$log',
         '_',
         'questionFactory',
-        function ($scope, $log, _, questionFactory) {
+        'pagination',
+        function ($scope, $filter, $log, _, questionFactory, pagination) {
+            $scope.itemsPerPage = pagination.itemsPerPage;
+            $scope.maxSize = pagination.maxSize;
+
             questionFactory.query().then(function (questions) {
                 $scope.questions = questions;
+                $scope.$watch('search.query', function (value) {
+                    $scope.page = 1;
+                    if (value) {
+                        $scope.filteredQuestions = $filter('filter')($scope.questions, value);
+                    } else {
+                        $scope.filteredQuestions = questions;
+                    }
+                    $scope.totalItems = $scope.filteredQuestions.length;
+                });
             }, $log.error);
 
             $scope.isMatch = function (question) {

@@ -9,10 +9,10 @@
             </form>
 
             <p class="label label-info pull-right" ng-show="search.query">
-                <span ng-switch on="totalItems">
+                <span ng-switch="totalItems">
                     <span ng-switch-when="0">No questionnaires match</span>
                     <span ng-switch-when="1">One questionnaire matches</span>
-                    <span ng-switch-default>{{filteredQuestionnaires.length}} questionnaires match</span>
+                    <span ng-switch-default>{{totalItems}} questionnaires match</span>
                     {{search.query}}
                 </span>
             </p>

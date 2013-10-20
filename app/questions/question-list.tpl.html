@@ -9,10 +9,10 @@
             </form>
 
             <p class="label label-info pull-right" ng-show="search.query">
-                <span ng-switch on="filteredQuestions.length">
+                <span ng-switch="totalItems">
                     <span ng-switch-when="0">No questions match</span>
                     <span ng-switch-when="1">One question matches</span>
-                    <span ng-switch-default>{{filteredQuestions.length}} questions match</span>
+                    <span ng-switch-default>{{totalItems}} questions match</span>
                     {{search.query}}
                 </span>
             </p>
@@ -25,7 +25,7 @@
         </ul>
 
         <article class="question"
-                 ng-repeat="question in filteredQuestions = (questions | filter:isMatch)">
+                 ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
             <ul class="list-inline pull-right">
                 <li>
@@ -44,5 +44,10 @@
 
             <hr/>
         </article>
+
+        <div class="text-center">
+            <pagination total-items="totalItems" page="page" max-size="maxSize"
+                        items-per-page="itemsPerPage" boundary-links="true" rotate="false"></pagination>
+        </div>
     </div>
 </section>

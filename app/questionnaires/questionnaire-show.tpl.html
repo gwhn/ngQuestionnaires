@@ -5,7 +5,7 @@
     <div class="panel-body">
         <p class="lead">{{questionnaire.description}}</p>
 
-        <p ng-switch on="questionnaire.published">
+        <p ng-switch="questionnaire.published">
             Published?
             <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
             <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>

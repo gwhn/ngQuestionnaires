@@ -42,7 +42,7 @@
 
             <ul class="list-inline">
                 <li>
-                    <div ng-switch on="action">
+                    <div ng-switch="action">
                         <button type="button" ng-switch-when="New" ng-click="save()" disabled-when-invalid
                                 class="btn btn-primary">Save</button>
                         <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid

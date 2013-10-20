@@ -9,17 +9,17 @@
             </form>
 
             <p class="label label-info pull-right" ng-show="search.query">
-                <span ng-switch on="filteredResponses.length">
+                <span ng-switch="totalItems">
                     <span ng-switch-when="0">No responses match</span>
                     <span ng-switch-when="1">One response matches</span>
-                    <span ng-switch-default>{{filteredResponses.length}} responses match</span>
+                    <span ng-switch-default>{{totalItems}} responses match</span>
                     {{search.query}}
                 </span>
             </p>
         </div>
 
         <article class="response"
-                 ng-repeat="response in filteredResponses = (responses | filter:isMatch)">
+                 ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
             <ul class="list-inline pull-right">
                 <li>
@@ -48,5 +48,10 @@
 
             <hr/>
         </article>
+
+        <div class="text-center">
+            <pagination total-items="totalItems" page="page" max-size="maxSize"
+                        items-per-page="itemsPerPage" boundary-links="true" rotate="false"></pagination>
+        </div>
     </div>
 </section>

@@ -38,6 +38,7 @@ angular.module('ngQuestionnaires.questionnaireListController', [
         function ($scope, $filter, $log, questionnaireFactory, pagination) {
             $scope.itemsPerPage = pagination.itemsPerPage;
             $scope.maxSize = pagination.maxSize;
+
             questionnaireFactory.query().then(function (questionnaires) {
                 $scope.questionnaires = questionnaires;
                 $scope.$watch('search.query', function (value) {
@@ -50,6 +51,7 @@ angular.module('ngQuestionnaires.questionnaireListController', [
                     $scope.totalItems = $scope.filteredQuestionnaires.length;
                 });
             }, $log.error);
+
             $scope.isMatch = function (questionnaire) {
                 return $scope.search.query ? (
                     questionnaire.title.indexOf($scope.search.query) > -1 ||

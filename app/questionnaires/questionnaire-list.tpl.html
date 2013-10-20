@@ -9,7 +9,7 @@
             </form>
 
             <p class="label label-info pull-right" ng-show="search.query">
-                <span ng-switch on="filteredQuestionnaires.length">
+                <span ng-switch on="totalItems">
                     <span ng-switch-when="0">No questionnaires match</span>
                     <span ng-switch-when="1">One questionnaire matches</span>
                     <span ng-switch-default>{{filteredQuestionnaires.length}} questionnaires match</span>
@@ -25,7 +25,7 @@
         </ul>
 
         <article class="questionnaire"
-                 ng-repeat="questionnaire in filteredQuestionnaires = (questionnaires | filter:isMatch)">
+                 ng-repeat="questionnaire in filteredQuestionnaires | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
             <ul class="list-inline pull-right">
                 <li>
@@ -47,21 +47,22 @@
             <p>{{questionnaire.description}}</p>
 
             <p class="text-muted">
-            <span ng-if="questionnaire.questions">
-                Questions # {{questionnaire.questions.length}}<br/>
-            </span>
-            <span ng-switch on="questionnaire.published">
-                Published?
-                <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
-                <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
-            </span>
+                <span ng-if="questionnaire.questions">
+                    Questions # {{questionnaire.questions.length}}<br/>
+                </span>
+                <span ng-switch="questionnaire.published">
+                    Published?
+                    <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
+                    <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
+                </span>
             </p>
 
             <hr/>
         </article>
 
         <div class="text-center">
-            <pagination num-pages="" current-page="" on-select-page=""></pagination>
+            <pagination total-items="totalItems" page="page" max-size="maxSize"
+                        items-per-page="itemsPerPage" boundary-links="true" rotate="false"></pagination>
         </div>
     </div>
 </section>

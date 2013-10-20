@@ -31,13 +31,25 @@ angular.module('ngQuestionnaires.questionnaireListController', [
     }])
     .controller('questionnaireListController', [
         '$scope',
+        '$filter',
         '$log',
         'questionnaireFactory',
-        function ($scope, $log, questionnaireFactory) {
+        'pagination',
+        function ($scope, $filter, $log, questionnaireFactory, pagination) {
+            $scope.itemsPerPage = pagination.itemsPerPage;
+            $scope.maxSize = pagination.maxSize;
             questionnaireFactory.query().then(function (questionnaires) {
                 $scope.questionnaires = questionnaires;
+                $scope.$watch('search.query', function (value) {
+                    $scope.page = 1;
+                    if (value) {
+                        $scope.filteredQuestionnaires = $filter('filter')($scope.questionnaires, value);
+                    } else {
+                        $scope.filteredQuestionnaires = questionnaires;
+                    }
+                    $scope.totalItems = $scope.filteredQuestionnaires.length;
+                });
             }, $log.error);
-
             $scope.isMatch = function (questionnaire) {
                 return $scope.search.query ? (
                     questionnaire.title.indexOf($scope.search.query) > -1 ||

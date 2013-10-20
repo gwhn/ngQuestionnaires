@@ -5,6 +5,7 @@ angular.module('ngQuestionnaires', [
         'ngRoute',
         'ngAnimate',
         'ui.bootstrap',
+        'ngQuestionnaires.skip',
         'ngQuestionnaires.questionnaireFactory',
         'ngQuestionnaires.questionFactory',
         'ngQuestionnaires.responseFactory',
@@ -19,6 +20,10 @@ angular.module('ngQuestionnaires', [
         'ngQuestionnaires.responseListController'
     ])
     .constant('fbUrl', 'https://ngquestionnaires.firebaseio.com/')
+    .constant('pagination', {
+        itemsPerPage: 5,
+        maxSize: 5
+    })
     .value('Firebase', Firebase)
     .value('_', _)
     .config(['$routeProvider', function ($routeProvider) {

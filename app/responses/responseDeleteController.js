@@ -12,12 +12,18 @@ angular.module('ngQuestionnaires.responseDeleteController', [])
                 $location.url('/responses/list');
             }
 
-            responseFactory.get($routeParams.id).then(function (response) {
-                $scope.response = response;
-            }, $log.error);
+            responseFactory.get($routeParams.id)
+                .then(function (response) {
+                    $scope.response = response;
+                }, $scope.addErrorAlert);
 
             $scope.remove = function () {
-                responseFactory.remove($routeParams.id).then(navigate, $log.error);
+                responseFactory.remove($routeParams.id)
+                    .then(function () {
+                        $scope.addSuccessAlert('Response from ' + $scope.response.respondent +
+                            ' on ' + $scope.response.questionnaire + ' deleted successfully');
+                    }, $scope.addErrorAlert)
+                    .then(navigate);
             };
 
             $scope.cancel = navigate;

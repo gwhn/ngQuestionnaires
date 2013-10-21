@@ -21,18 +21,20 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             $scope.action = 'Edit';
 
             if (questionnaire === undefined) {
-                questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
-                    $scope.questionnaire = questionnaire;
-                    original = angular.copy($scope.questionnaire);
-                }, $log.error);
+                questionnaireFactory.get($routeParams.id)
+                    .then(function (questionnaire) {
+                        $scope.questionnaire = questionnaire;
+                        original = angular.copy($scope.questionnaire);
+                    }, $scope.addErrorAlert);
             } else {
                 $scope.questionnaire = questionnaire;
                 $cacheFactory.get('data').remove('questionnaire');
             }
 
-            questionFactory.query().then(function (questions) {
-                $scope.questions = questions;
-            }, $log.error);
+            questionFactory.query()
+                .then(function (questions) {
+                    $scope.questions = questions;
+                }, $scope.addErrorAlert);
 
             $scope.addQuestion = function () {
                 $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -40,7 +42,11 @@ angular.module('ngQuestionnaires.questionnaireEditController', [])
             };
 
             $scope.update = function () {
-                questionnaireFactory.update($routeParams.id, $scope.questionnaire).then(navigate, $log.error);
+                questionnaireFactory.update($routeParams.id, $scope.questionnaire)
+                    .then(function () {
+                        $scope.addSuccessAlert($scope.questionnaire.title + ' updated successfully');
+                    }, $scope.addErrorAlert)
+                    .then(navigate);
             };
 
             $scope.cancel = function () {

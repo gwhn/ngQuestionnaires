@@ -15,9 +15,10 @@ angular.module('ngQuestionnaires.responseNewController', [])
                 $location.url('/questionnaires/list');
             }
 
-            questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
-                $scope.questionnaire = questionnaire;
-            }, $log.error);
+            questionnaireFactory.get($routeParams.id)
+                .then(function (questionnaire) {
+                    $scope.questionnaire = questionnaire;
+                }, $scope.addErrorAlert);
 
             $scope.answer = function (question, choice) {
                 response.answers[question] = choice;
@@ -38,7 +39,10 @@ angular.module('ngQuestionnaires.responseNewController', [])
                     respondent: $scope.respondent,
                     questionnaire: $scope.questionnaire.title,
                     answers: answers
-                }).then(navigate, $log.error);
+                }).then(function () {
+                    $scope.addSuccessAlert('Response from ' + $scope.respondent + ' on ' +
+                        $scope.questionnaire.title + ' saved successfully');
+                }, $scope.addErrorAlert).then(navigate);
             };
 
             $scope.cancel = navigate;

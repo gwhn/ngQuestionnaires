@@ -16,10 +16,11 @@ angular.module('ngQuestionnaires.questionEditController', [])
 
             $scope.action = 'Edit';
 
-            questionFactory.get($routeParams.id).then(function (question) {
-                $scope.question = question;
-                original = angular.copy($scope.question);
-            }, $log.error);
+            questionFactory.get($routeParams.id)
+                .then(function (question) {
+                    $scope.question = question;
+                    original = angular.copy($scope.question);
+                }, $scope.addErrorAlert);
 
             $scope.removeChoice = function (index) {
                 $scope.question.choices.splice(index, 1);
@@ -33,7 +34,11 @@ angular.module('ngQuestionnaires.questionEditController', [])
             };
 
             $scope.update = function () {
-                questionFactory.update($routeParams.id, $scope.question).then(navigate, $log.error);
+                questionFactory.update($routeParams.id, $scope.question)
+                    .then(function () {
+                        $scope.addSuccessAlert($scope.question.text + ' updated successfully');
+                    }, $scope.addErrorAlert)
+                    .then(navigate);
             };
 
             $scope.cancel = function () {

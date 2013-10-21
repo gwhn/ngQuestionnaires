@@ -12,12 +12,17 @@ angular.module('ngQuestionnaires.questionDeleteController', [])
                 $location.url('/questions/list');
             }
 
-            questionFactory.get($routeParams.id).then(function (question) {
-                $scope.question = question;
-            });
+            questionFactory.get($routeParams.id)
+                .then(function (question) {
+                    $scope.question = question;
+                });
 
             $scope.remove = function () {
-                questionFactory.remove($routeParams.id).then(navigate, $log.error);
+                questionFactory.remove($routeParams.id)
+                    .then(function () {
+                        $scope.addSuccessAlert($scope.question.text + ' deleted successfully');
+                    }, $scope.addErrorAlert)
+                    .then(navigate);
             };
 
             $scope.cancel = navigate;

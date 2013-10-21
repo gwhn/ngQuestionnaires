@@ -10,9 +10,10 @@ angular.module('ngQuestionnaires.questionnaireShowController', [
         '$routeParams',
         'questionnaireFactory',
         function ($scope, $log, $location, $routeParams, questionnaireFactory) {
-            questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
-                $scope.questionnaire = questionnaire;
-            }, $log.error);
+            questionnaireFactory.get($routeParams.id)
+                .then(function (questionnaire) {
+                    $scope.questionnaire = questionnaire;
+                }, $scope.addErrorAlert);
 
             $scope.hasQuestions = function () {
                 return $scope.questionnaire && $scope.questionnaire.questions;

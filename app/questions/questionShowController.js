@@ -6,7 +6,8 @@ angular.module('ngQuestionnaires.questionShowController', [])
         '$log',
         'questionFactory',
         function ($scope, $log, questionFactory) {
-            questionFactory.get($scope.question).then(function (question) {
-                $scope.question = question;
-            }, $log.error);
+            questionFactory.get($scope.question)
+                .then(function (question) {
+                    $scope.question = question;
+                }, $scope.addErrorAlert);
         }]);

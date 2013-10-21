@@ -20,18 +20,19 @@ angular.module('ngQuestionnaires.responseListController', [
             $scope.itemsPerPage = pagination.itemsPerPage;
             $scope.maxSize = pagination.maxSize;
 
-            responseFactory.query().then(function (responses) {
-                $scope.responses = responses;
-                $scope.$watch('search.query', function (value) {
-                    $scope.page = 1;
-                    if (value) {
-                        $scope.filteredResponses = $filter('filter')($scope.responses, value);
-                    } else {
-                        $scope.filteredResponses = responses;
-                    }
-                    $scope.totalItems = $scope.filteredResponses.length;
-                });
-            }, $log.error);
+            responseFactory.query()
+                .then(function (responses) {
+                    $scope.responses = responses;
+                    $scope.$watch('search.query', function (value) {
+                        $scope.page = 1;
+                        if (value) {
+                            $scope.filteredResponses = $filter('filter')($scope.responses, value);
+                        } else {
+                            $scope.filteredResponses = responses;
+                        }
+                        $scope.totalItems = $scope.filteredResponses.length;
+                    });
+                }, $scope.addErrorAlert);
 
             $scope.isMatch = function (response) {
                 return $scope.search.query ? (

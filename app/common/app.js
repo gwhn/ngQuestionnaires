@@ -41,8 +41,38 @@ angular.module('ngQuestionnaires', [
         });
         $routeProvider.otherwise({redirectTo: '/questionnaires/list'});
     }])
-    .run([
-        '$cacheFactory',
-        function ($cacheFactory) {
-            var data = $cacheFactory('data');
+    .run(['$cacheFactory', function ($cacheFactory) {
+        var data = $cacheFactory('data');
+    }])
+    .controller('applicationController', [
+        '$scope',
+        function ($scope) {
+            $scope.alerts = [];
+
+            $scope.addAlert = function (type, msg) {
+                $scope.alerts.push({
+                    type: type,
+                    msg: msg
+                });
+            };
+
+            $scope.addSuccessAlert = function (msg) {
+                $scope.addAlert('success', msg);
+            };
+
+            $scope.addInfoAlert = function (msg) {
+                $scope.addAlert('info', msg);
+            };
+
+            $scope.addErrorAlert = function (msg) {
+                $scope.addAlert('error', msg);
+            };
+
+            $scope.addWarningAlert = function (msg) {
+                $scope.addAlert('warning', msg);
+            };
+
+            $scope.closeAlert = function (index) {
+                $scope.alerts.splice(index, 1);
+            };
         }]);

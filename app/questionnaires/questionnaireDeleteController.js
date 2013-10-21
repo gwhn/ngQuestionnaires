@@ -14,10 +14,14 @@ angular.module('ngQuestionnaires.questionnaireDeleteController', [])
 
             questionnaireFactory.get($routeParams.id).then(function (questionnaire) {
                 $scope.questionnaire = questionnaire;
-            }, $log.error);
+            }, $scope.addErrorAlert);
 
             $scope.remove = function () {
-                questionnaireFactory.remove($routeParams.id).then(navigate, $log.error);
+                questionnaireFactory.remove($routeParams.id)
+                    .then(function () {
+                        $scope.addSuccessAlert($scope.questionnaire.title + ' deleted successfully');
+                    }, $scope.addErrorAlert)
+                    .then(navigate);
             };
 
             $scope.cancel = navigate;

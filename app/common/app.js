@@ -50,7 +50,7 @@ angular.module('ngQuestionnaires', [
             $scope.alerts = [];
 
             $scope.addAlert = function (type, msg) {
-                $scope.alerts.push({
+                $scope.alerts.unshift({
                     type: type,
                     msg: msg
                 });

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="ngQuestionnaires" ng-controller="AppCtrl">
+<head>
+  <title>{{pageTitle}} | nqQuestionnaires</title>
+
+  <!-- social media tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gwhn">
+  <meta name="twitter:title" content="ngQuestionnaires">
+  <meta name="twitter:description" content="Demo questionnaire app using AngularJS">
+  <meta name="twitter:creator" content="@gwhn">
+  <meta name="twitter:image:src" content="http://octodex.github.com/images/daftpunktocat-guy.gif">
+  <meta property="og:title" content="ngQuestionnaires"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="http://bit.ly/HaA1kK"/>
+  <meta property="og:image" content="http://octodex.github.com/images/daftpunktocat-guy.gif"/>
+  <meta property="og:description" content="Demo questionnaire app using AngularJS">
+
+  <!-- font awesome from BootstrapCDN -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+  <link rel="stylesheet" type="text/css" href="<%= file %>"/>
+  <% }); %>
+
+  <script type="text/javascript" src="http://cdn.firebase.com/v0/firebase.js"></script>
+
+  <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+  <script type="text/javascript" src="<%= file %>"></script>
+  <% }); %>
+</head>
+<body>
+
+<header ng-include="'header.tpl.html'"></header>
+
+<section class="container reveal-container">
+  <div class="reveal-animation">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>{{pageTitle}}</h3>
+      </div>
+      <div class="panel-body">
+        <section ng-include="'alerts.tpl.html'"></section>
+        <section ui-view></section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer ng-include="'footer.tpl.html'"></footer>
+
+</body>
+</html>

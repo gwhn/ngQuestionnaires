@@ -1,8 +1,8 @@
 # ngQuestionnaires
 
-ngQuestionnaires is a single page application using AngularJS 1.2.0 rc2 cloned from angular/angular-seed.
+ngQuestionnaires is a single page application using AngularJS 1.2.0 rc2.
 
-It uses Firebase database to persist the following data structures as JSON and provides bi-directional synchronisation.
+It uses Firebase database to persist the following data structures as JSON.
 
 ## questionnaires
 

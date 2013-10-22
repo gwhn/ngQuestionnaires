@@ -1,0 +1,46 @@
+<div class="well well-large">
+  <form name="search">
+    <input type="search" class="form-control" placeholder="Search" ng-model="search.query"/>
+  </form>
+
+  <p class="label label-info pull-right" ng-show="search.query">
+    <span ng-switch="totalItems">
+      <span ng-switch-when="0">No questions match</span>
+      <span ng-switch-when="1">One question matches</span>
+      <span ng-switch-default>{{totalItems}} questions match</span>
+      {{search.query}}
+    </span>
+  </p>
+</div>
+
+<ul class="list-inline">
+  <li>
+    <a ui-sref="questionNew" class="btn btn-link">New</a>
+  </li>
+</ul>
+
+<article class="question"
+         ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
+
+  <ul class="list-inline pull-right">
+    <li>
+      <a ui-sref="questionEdit({id: question.id})" class="btn btn-link">Edit</a>
+    </li>
+    <li>
+      <a ui-sref="questionDelete({id: question.id})" class="btn btn-link">Delete</a>
+    </li>
+  </ul>
+
+  <p class="lead">{{question.text}}</p>
+
+  <ol>
+    <li ng-repeat="choice in question.choices">{{choice.text}}</li>
+  </ol>
+
+  <hr/>
+</article>
+
+<div class="text-center">
+  <pagination total-items="totalItems" page="page" max-size="maxSize"
+              items-per-page="itemsPerPage" boundary-links="true" rotate="false"></pagination>
+</div>

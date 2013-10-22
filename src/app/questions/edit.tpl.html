@@ -1,0 +1,44 @@
+<form name="questionForm" novalidate>
+  <div class="form-group" validation-class on="question">
+    <label for="questionText" class="control-label">Text</label>
+    <input type="text" ng-model="question.text" name="question"
+           id="questionText" class="form-control" required unique-question-text/>
+    <span show-help on="question" when="required">Question text is required</span>
+    <span show-help on="question" when="uniqueQuestionText">Question text must be unique</span>
+  </div>
+
+  <div class="form-group" ng-model="question.choices" multiple-required validation-class>
+    <label class="control-label">Choices</label>
+    <div ng-repeat="choice in question.choices" ng-form="choiceForm"
+         validation-class on="choice">
+      <div class="input-group">
+        <input type="text" ng-model="choice.text" name="choice"
+               class="form-control" required/>
+        <span class="input-group-btn">
+            <button type="button" ng-click="removeChoice($index)" class="btn btn-default">
+              <i class="glyphicon glyphicon-remove"></i>
+            </button>
+        </span>
+      </div>
+      <span show-help on="choice" when="required">Choice text is required</span>
+    </div>
+    <span show-help when="multipleRequired">More than one choice is required</span>
+    <button type="button" ng-click="addChoice()" class="btn btn-default">
+      <i class="glyphicon glyphicon-plus"></i>
+    </button>
+  </div>
+
+  <ul class="list-inline">
+    <li>
+      <div ng-switch="action">
+        <button type="button" ng-switch-when="Save" ng-click="save()" disabled-when-invalid
+                class="btn btn-primary">{{action}}</button>
+        <button type="button" ng-switch-default ng-click="update()" disabled-when-invalid
+                class="btn btn-primary">{{action}}</button>
+      </div>
+    </li>
+    <li>
+      <button type="button" ng-click="cancel()" class="btn btn-link">Cancel</button>
+    </li>
+  </ul>
+</form>

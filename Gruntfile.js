@@ -159,6 +159,16 @@ module.exports = function ( grunt ) {
             expand: true
           }
         ]
+      },
+      compile_fonts: {
+        files: [
+          {
+            src: [ '**' ],
+            dest: '<%= compile_dir %>/fonts',
+            cwd: '<%= build_dir %>/fonts',
+            expand: true
+          }
+        ]
       }
     },
 
@@ -582,7 +592,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'recess:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'recess:compile', 'copy:compile_assets', 'copy:compile_fonts', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
   /**

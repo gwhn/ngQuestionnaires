@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="ngQuestionnaires" ng-controller="AppCtrl">
+<head>
+  <title>{{pageTitle}} | nqQuestionnaires</title>
+
+  <!-- social media tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gwhn">
+  <meta name="twitter:title" content="ngQuestionnaires">
+  <meta name="twitter:description" content="Demo questionnaire app using AngularJS">
+  <meta name="twitter:creator" content="@gwhn">
+  <meta name="twitter:image:src" content="http://octodex.github.com/images/daftpunktocat-guy.gif">
+  <meta property="og:title" content="ngQuestionnaires"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="http://bit.ly/HaA1kK"/>
+  <meta property="og:image" content="http://octodex.github.com/images/daftpunktocat-guy.gif"/>
+  <meta property="og:description" content="Demo questionnaire app using AngularJS">
+
+  <!-- font awesome from BootstrapCDN -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <!-- compiled CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/ngQuestionnaires-0.0.1.css"/>
+  
+
+  <script type="text/javascript" src="http://cdn.firebase.com/v0/firebase.js"></script>
+
+  <!-- compiled JavaScript -->
+  <script type="text/javascript" src="vendor/underscore/underscore-min.js"></script>
+  
+  <script type="text/javascript" src="vendor/angular/angular.js"></script>
+  
+  <script type="text/javascript" src="vendor/angular-animate/angular-animate.min.js"></script>
+  
+  <script type="text/javascript" src="vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.6.0-SNAPSHOT.min.js"></script>
+  
+  <script type="text/javascript" src="vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script>
+  
+  <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  
+  <script type="text/javascript" src="vendor/angular-ui-utils/modules/route/route.js"></script>
+  
+  <script type="text/javascript" src="src/app/app.js"></script>
+  
+  <script type="text/javascript" src="src/app/questionnaires/delete.js"></script>
+  
+  <script type="text/javascript" src="src/app/questionnaires/edit.js"></script>
+  
+  <script type="text/javascript" src="src/app/questionnaires/list.js"></script>
+  
+  <script type="text/javascript" src="src/app/questionnaires/questionnaires.js"></script>
+  
+  <script type="text/javascript" src="src/app/questionnaires/show.js"></script>
+  
+  <script type="text/javascript" src="src/app/questions/delete.js"></script>
+  
+  <script type="text/javascript" src="src/app/questions/edit.js"></script>
+  
+  <script type="text/javascript" src="src/app/questions/list.js"></script>
+  
+  <script type="text/javascript" src="src/app/questions/questions.js"></script>
+  
+  <script type="text/javascript" src="src/app/questions/show.js"></script>
+  
+  <script type="text/javascript" src="src/app/responses/delete.js"></script>
+  
+  <script type="text/javascript" src="src/app/responses/list.js"></script>
+  
+  <script type="text/javascript" src="src/app/responses/new.js"></script>
+  
+  <script type="text/javascript" src="src/app/responses/responses.js"></script>
+  
+  <script type="text/javascript" src="src/common/directives/disabledWhenInvalid.js"></script>
+  
+  <script type="text/javascript" src="src/common/directives/multipleRequired.js"></script>
+  
+  <script type="text/javascript" src="src/common/directives/showHelp.js"></script>
+  
+  <script type="text/javascript" src="src/common/directives/uniqueQuestionText.js"></script>
+  
+  <script type="text/javascript" src="src/common/directives/uniqueQuestionnaireTitle.js"></script>
+  
+  <script type="text/javascript" src="src/common/directives/validationClass.js"></script>
+  
+  <script type="text/javascript" src="src/common/filters/skip.js"></script>
+  
+  <script type="text/javascript" src="src/common/services/questionFactory.js"></script>
+  
+  <script type="text/javascript" src="src/common/services/questionnaireFactory.js"></script>
+  
+  <script type="text/javascript" src="src/common/services/responseFactory.js"></script>
+  
+  <script type="text/javascript" src="templates-common.js"></script>
+  
+  <script type="text/javascript" src="templates-app.js"></script>
+  
+</head>
+<body>
+
+<header ng-include="'header.tpl.html'"></header>
+
+<section class="container reveal-container">
+  <div class="reveal-animation">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>{{pageTitle}}</h3>
+      </div>
+      <div class="panel-body">
+        <section ng-include="'alerts.tpl.html'"></section>
+        <section ui-view></section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer ng-include="'footer.tpl.html'"></footer>
+
+</body>
+</html>

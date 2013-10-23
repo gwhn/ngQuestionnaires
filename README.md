@@ -19,7 +19,7 @@ which contain many of the best practises for developing AngularJS apps.
 
 ## Live Demo
 
-You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/)
+You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/) on Github.
 
 ## Data structures
 
@@ -83,3 +83,8 @@ not providing distribution files. To resolve the issue you will need to build an
 It is highly recommended that you install AngularJS Batarang for Chrome, which provides
 useful tools for debugging and profiling, and LiveReload which will apply CSS and script
 edits without the need to refresh your browser.
+
+##To Dos
+
+1. Use Firebase authentication and authorisation
+2. Add visualisation for questionnaire response statistics

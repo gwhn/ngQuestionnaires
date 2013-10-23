@@ -1,11 +1,11 @@
-describe('Test ngQuestionnaires.questions QuestionDeleteCtrl', function () {
+describe('Test ngQuestionnaires.directives uniqueQuestionnaireTitle', function () {
   var ctrl, $scope;
 
-  beforeEach(module('ngQuestionnaires.questions'));
+  beforeEach(module('ngQuestionnaires.directives'));
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
-    ctrl = $controller('QuestionDeleteCtrl', { $scope: $scope });
+    ctrl = $controller('uniqueQuestionnaireTitle', { $scope: $scope });
   }));
 
   it('should pass a dummy test', inject(function () {

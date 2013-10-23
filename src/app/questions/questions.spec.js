@@ -1,4 +1,4 @@
-describe('Test ngQuestionnaires.questions QuestionDeleteCtrl', function () {
+describe('Test ngQuestionnaires.questions config', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.questions'));

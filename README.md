@@ -17,6 +17,10 @@ It is seeded from the [ng-boilerplate](https://github.com/ngbp/ng-boilerplate)
 and [angular-seed](https://github.com/angular/angular-seed) Github projects
 which contain many of the best practises for developing AngularJS apps.
 
+## Live Demo
+
+You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/)
+
 ## Data structures
 
 ### questionnaires

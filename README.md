@@ -10,7 +10,8 @@ such as many-to-many relationships, nested collections, CRUD operations, paginat
 
 It uses [Firebase](https://www.firebase.com/index.html) database to persist the following data structures as JSON,
 however it does not use the AngularJS bindings which support implicit synchronisation,
-instead opting to use the lower-level [Firebase API](https://www.firebase.com/docs/javascript/firebase/index.html) directly.
+instead opting to use the lower-level [Firebase API](https://www.firebase.com/docs/javascript/firebase/index.html)
+directly. The beauty of using Firebase is you can integrate without the need for server-side proxying.
 
 It is seeded from the [ng-boilerplate](https://github.com/ngbp/ng-boilerplate)
 and [angular-seed](https://github.com/angular/angular-seed) Github projects

@@ -8,9 +8,9 @@ It is a demonstration application, used for learning, with sufficient complexity
 to exercise many common aspects of developing sophisticated web applications
 such as many-to-many relationships, nested collections, CRUD operations, pagination etc.
 
-It uses Firebase database to persist the following data structures as JSON,
+It uses [Firebase](https://www.firebase.com/index.html) database to persist the following data structures as JSON,
 however it does not use the AngularJS bindings which support implicit synchronisation,
-instead opting to use the lower-level Firebase API directly.
+instead opting to use the lower-level [Firebase API](https://www.firebase.com/docs/javascript/firebase/index.html) directly.
 
 It is seeded from the [ng-boilerplate](https://github.com/ngbp/ng-boilerplate)
 and [angular-seed](https://github.com/angular/angular-seed) Github projects
@@ -42,19 +42,20 @@ which contain many of the best practises for developing AngularJS apps.
 
 ## Quick Start
 
-The scripts folder contains a Node.js web server for convenience.
+The scripts folder contains a [Node.js](http://nodejs.org/) web server for convenience.
 
-Bower is used for package management.
+[Bower](http://sindresorhus.com/bower-components/) is used for package management.
 
-Grunt is used to automate tasks including unit tests, linting, compilation and minification.
+[Grunt](http://gruntjs.com/) is used to automate tasks including unit tests, linting, compilation and minification.
 
-Karma (formerly Testacular) is used to run unit tests.
+[Karma](http://karma-runner.github.io/0.10/index.html) (formerly Testacular) is used to run unit tests.
 
-Jasmine is used as the test framework.
+[Jasmine](http://pivotal.github.io/jasmine/) is used as the test framework.
 
-Bootstrap 3 is used as the front-end styles framework.
+[Bootstrap 3](http://getbootstrap.com/getting-started/) is used as the front-end styles framework.
 
-AngularUI Router is used as the routing framework providing a state machine interface.
+[AngularUI Router](https://github.com/angular-ui/ui-router) is used as the routing framework
+providing a state machine interface.
 
 Install Node.js and then:
 

@@ -2,9 +2,9 @@
 
 ## Purpose
 
-ngQuestionnaires is a single page application using AngularJS 1.2.0 rc2.
+ngQuestionnaires is a single page application using AngularJS 1.2.0 rc3.
 
-It is a demonstration application used for learning with sufficient complexity
+It is a demonstration application, used for learning, with sufficient complexity
 to exercise many common aspects of developing sophisticated web applications
 such as many-to-many relationships, nested collections, CRUD operations, pagination etc.
 
@@ -40,7 +40,7 @@ which contain many of the best practises for developing AngularJS apps.
     * question (String)
     * choice (String)
 
-### Quick Start
+## Quick Start
 
 The scripts folder contains a Node.js web server for convenience.
 

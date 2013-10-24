@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.responses')
 
-  .controller('ResponseDeleteCtrl', [
+  .controller('responseDeleteCtrl', [
     '$scope',
     '$state',
     '$stateParams',

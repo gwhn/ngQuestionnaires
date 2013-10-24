@@ -1,4 +1,4 @@
-describe('Test ngQuestionnaires.directives disabledWhenInvalid', function () {
+xdescribe('Test ngQuestionnaires.directives disabledWhenInvalid', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.directives'));

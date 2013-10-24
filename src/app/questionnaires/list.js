@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.questionnaires')
 
-  .controller('QuestionnaireListCtrl', [
+  .controller('questionnaireListCtrl', [
     '$scope',
     '$filter',
     'questionnaireFactory',

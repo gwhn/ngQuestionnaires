@@ -1,4 +1,4 @@
-describe('Test ngQuestionnaires.directives showHelp', function () {
+xdescribe('Test ngQuestionnaires.directives showHelp', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.directives'));

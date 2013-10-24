@@ -4,7 +4,7 @@ angular.module('ngQuestionnaires.questions')
 
     $stateProvider.state('questionList', {
         url: '/questions/list',
-        controller: 'QuestionListCtrl',
+        controller: 'questionListCtrl',
         templateUrl: 'questions/list.tpl.html',
         data: {
           pageTitle: 'List Questions'
@@ -13,7 +13,7 @@ angular.module('ngQuestionnaires.questions')
 
       .state('questionNew', {
         url: '/questions/new?referrer',
-        controller: 'QuestionNewCtrl',
+        controller: 'questionNewCtrl',
         templateUrl: 'questions/edit.tpl.html',
         data: {
           pageTitle: 'New Question',
@@ -23,7 +23,7 @@ angular.module('ngQuestionnaires.questions')
 
       .state('questionEdit', {
         url: '/questions/edit/:id',
-        controller: 'QuestionEditCtrl',
+        controller: 'questionEditCtrl',
         templateUrl: 'questions/edit.tpl.html',
         data: {
           pageTitle: 'Edit Question',
@@ -33,7 +33,7 @@ angular.module('ngQuestionnaires.questions')
 
       .state('questionDelete', {
         url: '/questions/delete/:id',
-        controller: 'QuestionDeleteCtrl',
+        controller: 'questionDeleteCtrl',
         templateUrl: 'questions/delete.tpl.html',
         data: {
           pageTitle: 'Delete Question'

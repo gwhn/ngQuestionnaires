@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.responses')
 
-  .controller('ResponseNewCtrl', [
+  .controller('responseNewCtrl', [
     '$scope',
     '$state',
     '$stateParams',

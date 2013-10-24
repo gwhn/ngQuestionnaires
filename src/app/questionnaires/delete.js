@@ -1,15 +1,16 @@
 angular.module('ngQuestionnaires.questionnaires')
 
-  .controller('QuestionnaireDeleteCtrl', [
+  .controller('questionnaireDeleteCtrl', [
     '$scope',
     '$state',
     '$stateParams',
     'questionnaireFactory',
     function ($scope, $state, $stateParams, questionnaireFactory) {
 
-      questionnaireFactory.get($stateParams.id).then(function (questionnaire) {
-        $scope.questionnaire = questionnaire;
-      }, $scope.addErrorAlert);
+      questionnaireFactory.get($stateParams.id)
+        .then(function (questionnaire) {
+          $scope.questionnaire = questionnaire;
+        }, $scope.addErrorAlert);
 
       $scope.remove = function () {
         questionnaireFactory.remove($stateParams.id)

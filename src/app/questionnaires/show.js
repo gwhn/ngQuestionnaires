@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.questionnaires')
 
-  .controller('QuestionnaireShowCtrl', [
+  .controller('questionnaireShowCtrl', [
     '$scope',
     '$state',
     '$stateParams',

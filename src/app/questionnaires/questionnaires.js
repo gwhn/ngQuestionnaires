@@ -4,7 +4,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
     $stateProvider.state('questionnaireList', {
         url: '/questionnaires/list',
-        controller: 'QuestionnaireListCtrl',
+        controller: 'questionnaireListCtrl',
         templateUrl: 'questionnaires/list.tpl.html',
         data: {
           pageTitle: 'List Questionnaires'
@@ -13,7 +13,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
       .state('questionnaireShow', {
         url: '/questionnaires/show/:id',
-        controller: 'QuestionnaireShowCtrl',
+        controller: 'questionnaireShowCtrl',
         templateUrl: 'questionnaires/show.tpl.html',
         data: {
           pageTitle: 'Show Questionnaire'
@@ -22,7 +22,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
       .state('questionnaireNew', {
         url: '/questionnaires/new',
-        controller: 'QuestionnaireNewCtrl',
+        controller: 'questionnaireNewCtrl',
         templateUrl: 'questionnaires/edit.tpl.html',
         data: {
           pageTitle: 'New Questionnaire',
@@ -32,7 +32,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
       .state('questionnaireEdit', {
         url: '/questionnaires/edit/:id',
-        controller: 'QuestionnaireEditCtrl',
+        controller: 'questionnaireEditCtrl',
         templateUrl: 'questionnaires/edit.tpl.html',
         data: {
           pageTitle: 'Edit Questionnaire',
@@ -42,7 +42,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
       .state('questionnaireDelete', {
         url: '/questionnaires/delete/:id',
-        controller: 'QuestionnaireDeleteCtrl',
+        controller: 'questionnaireDeleteCtrl',
         templateUrl: 'questionnaires/delete.tpl.html',
         data: {
           pageTitle: 'Delete Questionnaire'

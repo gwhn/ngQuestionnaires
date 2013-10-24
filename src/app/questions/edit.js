@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.questions')
 
-  .controller('QuestionNewCtrl', [
+  .controller('questionNewCtrl', [
     '$scope',
     '$state',
     '$stateParams',
@@ -40,7 +40,7 @@ angular.module('ngQuestionnaires.questions')
 
     }])
 
-  .controller('QuestionEditCtrl', [
+  .controller('questionEditCtrl', [
     '$scope',
     '$state',
     '$stateParams',

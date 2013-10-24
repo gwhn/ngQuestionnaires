@@ -63,6 +63,7 @@ module.exports = {
   vendor_files: {
     js: [
       'vendor/underscore/underscore-min.js',
+      'vendor/firebase/firebase.js',
       'vendor/angular/angular.js',
       'vendor/angular-animate/angular-animate.min.js',
       'vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.6.0-SNAPSHOT.min.js',

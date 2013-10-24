@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.questionnaires')
 
-  .controller('QuestionnaireNewCtrl', [
+  .controller('questionnaireNewCtrl', [
     '$scope',
     '$cacheFactory',
     '$state',
@@ -43,7 +43,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
     }])
 
-  .controller('QuestionnaireEditCtrl', [
+  .controller('questionnaireEditCtrl', [
     '$scope',
     '$cacheFactory',
     '$state',

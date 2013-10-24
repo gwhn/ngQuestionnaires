@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.questions')
 
-  .controller('QuestionListCtrl', [
+  .controller('questionListCtrl', [
     '$scope',
     '$filter',
     'underscore',

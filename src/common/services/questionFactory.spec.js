@@ -1,4 +1,4 @@
-describe('Test ngQuestionnaires.services questionFactory', function () {
+xdescribe('Test ngQuestionnaires.services questionFactory', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.services'));

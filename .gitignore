@@ -2,7 +2,6 @@ logs/*
 !.gitkeep
 .idea
 node_modules/*
-vendor/*
 build/*
 bin/*
 

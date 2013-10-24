@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.questions')
 
-  .controller('QuestionShowCtrl', [
+  .controller('questionShowCtrl', [
     '$scope',
     'questionFactory',
     function ($scope, questionFactory) {

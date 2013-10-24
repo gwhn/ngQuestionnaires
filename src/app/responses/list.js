@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.responses')
 
-  .controller('ResponseListCtrl', [
+  .controller('responseListCtrl', [
     '$scope',
     '$filter',
     'underscore',

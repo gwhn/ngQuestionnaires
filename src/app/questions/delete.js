@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.questions')
 
-  .controller('QuestionDeleteCtrl', [
+  .controller('questionDeleteCtrl', [
     '$scope',
     '$state',
     '$stateParams',

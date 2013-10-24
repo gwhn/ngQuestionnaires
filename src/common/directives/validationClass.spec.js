@@ -1,4 +1,4 @@
-describe('Test ngQuestionnaires.directives validationClass', function () {
+xdescribe('Test ngQuestionnaires.directives validationClass', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.directives'));

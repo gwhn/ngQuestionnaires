@@ -1,14 +1,15 @@
-describe('Test ngQuestionnaires.questions QuestionDeleteCtrl', function () {
+xdescribe('questionDeleteCtrl', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.questions'));
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
-    ctrl = $controller('QuestionDeleteCtrl', { $scope: $scope });
+    ctrl = $controller('questionDeleteCtrl', { $scope: $scope });
   }));
 
-  it('should pass a dummy test', inject(function () {
-    expect(ctrl).toBeTruthy();
+  it('should be defined', inject(function () {
+    expect(ctrl).toBeDefined();
   }));
+
 });

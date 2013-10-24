@@ -1,4 +1,4 @@
-describe('Test ngQuestionnaires.directives multipleRequired', function () {
+xdescribe('Test ngQuestionnaires.directives multipleRequired', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.directives'));

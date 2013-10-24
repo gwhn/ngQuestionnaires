@@ -39,7 +39,7 @@ angular.module('ngQuestionnaires', [
     var data = $cacheFactory('data');
   }])
 
-  .controller('AppCtrl', ['$scope', function ($scope) {
+  .controller('appCtrl', ['$scope', function ($scope) {
 
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       if (angular.isDefined(toState.data.pageTitle)) {

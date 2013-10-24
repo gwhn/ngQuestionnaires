@@ -15,17 +15,16 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'vendor/underscore/underscore-min.js',
+      'vendor/firebase/firebase.js',
       'vendor/angular/angular.js',
+      'vendor/angular-mocks/angular-mocks.js',
       'vendor/angular-animate/angular-animate.min.js',
       'vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.6.0-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-ui-utils/modules/route/route.js',
       'build/templates-app.js',
       'build/templates-common.js',
-      'vendor/angular-mocks/angular-mocks.js',
-
-      'src/**/*.js',
-      'src/**/*.coffee'
+      'src/**/*.js'
     ],
 
 

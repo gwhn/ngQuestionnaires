@@ -1,29 +1,31 @@
-describe('Test ngQuestionnaires.questions QuestionNewCtrl', function () {
+xdescribe('questionNewCtrl', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.questions'));
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
-    ctrl = $controller('QuestionNewCtrl', { $scope: $scope });
+    ctrl = $controller('questionNewCtrl', { $scope: $scope });
   }));
 
-  it('should pass a dummy test', inject(function () {
-    expect(ctrl).toBeTruthy();
+  it('should be defined', inject(function () {
+    expect(ctrl).toBeDefined();
   }));
+
 });
 
-describe('Test ngQuestionnaires.questions QuestionEditCtrl', function () {
+xdescribe('questionEditCtrl', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires.questions'));
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
-    ctrl = $controller('QuestionEditCtrl', { $scope: $scope });
+    ctrl = $controller('questionEditCtrl', { $scope: $scope });
   }));
 
-  it('should pass a dummy test', inject(function () {
-    expect(ctrl).toBeTruthy();
+  it('should be defined', inject(function () {
+    expect(ctrl).toBeDefined();
   }));
+
 });

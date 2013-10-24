@@ -4,7 +4,7 @@ angular.module('ngQuestionnaires.responses')
 
     $stateProvider.state('responseList', {
         url: '/responses/list',
-        controller: 'ResponseListCtrl',
+        controller: 'responseListCtrl',
         templateUrl: 'responses/list.tpl.html',
         data: {
           pageTitle: 'List Responses'
@@ -13,7 +13,7 @@ angular.module('ngQuestionnaires.responses')
 
       .state('responseNew', {
         url: '/responses/new/:id',
-        controller: 'ResponseNewCtrl',
+        controller: 'responseNewCtrl',
         templateUrl: 'responses/new.tpl.html',
         data: {
           pageTitle: 'New Response'
@@ -22,7 +22,7 @@ angular.module('ngQuestionnaires.responses')
 
       .state('responseDelete', {
         url: '/responses/delete/:id',
-        controller: 'ResponseDeleteCtrl',
+        controller: 'responseDeleteCtrl',
         templateUrl: 'responses/delete.tpl.html',
         data: {
           pageTitle: 'Delete Response'

@@ -1,4 +1,4 @@
-describe('questionnaireDeleteCtrl', function () {
+xdescribe('questionnaireDeleteCtrl', function () {
   var ctrl, scope, state, stateParams, factory, deferred,
     questionnaire = {title: 'test'};
 

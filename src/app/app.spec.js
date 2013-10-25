@@ -1,4 +1,4 @@
-describe('appCtrl', function () {
+xdescribe('appCtrl', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires'));

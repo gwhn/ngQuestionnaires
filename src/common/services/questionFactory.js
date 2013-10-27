@@ -110,6 +110,19 @@ angular.module('ngQuestionnaires.services')
             }
           });
           return def.promise;
+        },
+
+        purge: function () {
+          var def = $q.defer(),
+            ref = new Firebase(fbUrl + 'questions');
+          ref.remove(function (err) {
+            if (err) {
+              def.reject('Failed to purge questions');
+            } else {
+              def.resolve();
+            }
+          });
+          return def.promise;
         }
       };
     }]);

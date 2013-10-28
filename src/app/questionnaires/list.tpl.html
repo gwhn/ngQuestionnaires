@@ -37,9 +37,9 @@
     </li>
   </ul>
 
-  <p class="lead">{{questionnaire.title}}</p>
+  <p class="lead" ng-bind-html="questionnaire.title | highlight:search.query"></p>
 
-  <p>{{questionnaire.description}}</p>
+  <p ng-bind-html="questionnaire.description | highlight:search.query"></p>
 
   <p class="text-muted">
     <span ng-if="questionnaire.questions">

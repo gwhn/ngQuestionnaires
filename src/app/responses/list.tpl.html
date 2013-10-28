@@ -22,9 +22,12 @@
     </li>
   </ul>
 
-  <p class="lead">{{response.questionnaire}}</p>
+  <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
 
-  <p class="lead"><strong>Respondent</strong> {{response.respondent}}</p>
+  <p class="lead">
+    <strong>Respondent</strong>
+    <span ng-bind-html="response.respondent | highlight:search.query"></span>
+  </p>
 
   <table class="table table-striped">
     <thead>

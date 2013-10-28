@@ -7,11 +7,13 @@ angular.module('ngQuestionnaires.services', []);
 
 angular.module('ngQuestionnaires', [
     'ng',
+    'ngSanitize',
     'ngAnimate',
     'templates-app',
     'templates-common',
     'ui.bootstrap',
     'ui.router',
+    'ui.highlight',
     'ngQuestionnaires.questionnaires',
     'ngQuestionnaires.questions',
     'ngQuestionnaires.responses',

@@ -7,10 +7,15 @@ angular.module('ngQuestionnaires.responses')
     'responseFactory',
     function ($scope, $state, $stateParams, responseFactory) {
 
+      $scope.loading(true);
+
       responseFactory.get($stateParams.id)
         .then(function (response) {
           $scope.response = response;
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function () {
+          $scope.loading(false);
+        });
 
       $scope.remove = function () {
         responseFactory.remove($stateParams.id)

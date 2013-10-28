@@ -7,9 +7,14 @@ angular.module('ngQuestionnaires.questions')
     'questionFactory',
     function ($scope, $state, $stateParams, questionFactory) {
 
+      $scope.loading(true);
+
       questionFactory.get($stateParams.id)
         .then(function (question) {
           $scope.question = question;
+        })
+        .then(function () {
+          $scope.loading(false);
         });
 
       $scope.remove = function () {

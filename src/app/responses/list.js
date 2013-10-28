@@ -11,6 +11,8 @@ angular.module('ngQuestionnaires.responses')
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
+      $scope.loading(true);
+
       responseFactory.query()
         .then(function (responses) {
           $scope.responses = responses;
@@ -23,7 +25,10 @@ angular.module('ngQuestionnaires.responses')
             }
             $scope.totalItems = $scope.filteredResponses.length;
           });
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function () {
+          $scope.loading(false);
+        });
 
       $scope.isMatch = function (response) {
         return $scope.search.query ? (

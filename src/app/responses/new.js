@@ -10,10 +10,15 @@ angular.module('ngQuestionnaires.responses')
 
       var response = {answers: {}};
 
+      $scope.loading(true);
+
       questionnaireFactory.get($stateParams.id)
         .then(function (questionnaire) {
           $scope.questionnaire = questionnaire;
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function () {
+          $scope.loading(false);
+        });
 
       $scope.answer = function (question, choice) {
         response.answers[question] = choice;

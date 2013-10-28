@@ -11,6 +11,8 @@ angular.module('ngQuestionnaires.questions')
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
+      $scope.loading(true);
+
       questionFactory.query()
         .then(function (questions) {
           $scope.questions = questions;
@@ -23,7 +25,10 @@ angular.module('ngQuestionnaires.questions')
             }
             $scope.totalItems = $scope.filteredQuestions.length;
           });
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function () {
+          $scope.loading(false);
+        });
 
       $scope.isMatch = function (question) {
         return $scope.search.query ? (

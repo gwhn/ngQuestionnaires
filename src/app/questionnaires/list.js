@@ -10,6 +10,8 @@ angular.module('ngQuestionnaires.questionnaires')
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
+      $scope.loading(true);
+
       questionnaireFactory.query()
         .then(function (questionnaires) {
           $scope.questionnaires = questionnaires;
@@ -22,7 +24,10 @@ angular.module('ngQuestionnaires.questionnaires')
             }
             $scope.totalItems = $scope.filteredQuestionnaires.length;
           });
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function () {
+          $scope.loading(false);
+        });
 
       $scope.isMatch = function (questionnaire) {
         return $scope.search.query ? (

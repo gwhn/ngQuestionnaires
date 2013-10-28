@@ -55,6 +55,11 @@ angular.module('ngQuestionnaires', [
           }
         });
 
+        $scope.isLoading = false;
+        $scope.loading = function (show) {
+          $scope.isLoading = show;
+        };
+
         $scope.alerts = [];
 
         $scope.addAlert = function (type, msg) {

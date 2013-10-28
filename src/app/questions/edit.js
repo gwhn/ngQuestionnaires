@@ -53,10 +53,15 @@ angular.module('ngQuestionnaires.questions')
 
       $scope.action = $state.current.data.action;
 
+      $scope.loading(true);
+
       questionFactory.get($stateParams.id)
         .then(function (question) {
           $scope.question = question;
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function () {
+          $scope.loading(false);
+        });
 
       $scope.removeChoice = function (index) {
         $scope.question.choices.splice(index, 1);

@@ -21,10 +21,15 @@ angular.module('ngQuestionnaires.questionnaires')
         $cacheFactory.get('data').remove('questionnaire');
       }
 
+      $scope.loading(true);
+
       questionFactory.query()
         .then(function (questions) {
           $scope.questions = questions;
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function() {
+          $scope.loading(false);
+        });
 
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -70,10 +75,15 @@ angular.module('ngQuestionnaires.questionnaires')
         $cacheFactory.get('data').remove('questionnaire');
       }
 
+      $scope.loading(true);
+
       questionFactory.query()
         .then(function (questions) {
           $scope.questions = questions;
-        }, $scope.addErrorAlert);
+        }, $scope.addErrorAlert)
+        .then(function () {
+          $scope.loading(false);
+        });
 
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);

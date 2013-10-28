@@ -18,15 +18,6 @@ angular.module('ngQuestionnaires.responses')
         data: {
           pageTitle: 'New Response'
         }
-      })
-
-      .state('responseDelete', {
-        url: '/responses/delete/:id',
-        controller: 'responseDeleteCtrl',
-        templateUrl: 'responses/delete.tpl.html',
-        data: {
-          pageTitle: 'Delete Response'
-        }
       });
 
   });

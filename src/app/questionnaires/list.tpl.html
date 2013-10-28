@@ -30,7 +30,7 @@
       <a ui-sref="questionnaireEdit({id: questionnaire.id})" class="btn btn-link">Edit</a>
     </li>
     <li>
-      <a ui-sref="questionnaireDelete({id: questionnaire.id})" class="btn btn-link">Delete</a>
+      <a ng-click="destroy(questionnaire.id)" class="btn btn-link">Delete</a>
     </li>
     <li ng-if="questionnaire.published">
       <a ui-sref="responseNew({id: questionnaire.id})" class="btn btn-link">Respond</a>

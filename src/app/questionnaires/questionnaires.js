@@ -38,15 +38,6 @@ angular.module('ngQuestionnaires.questionnaires')
           pageTitle: 'Edit Questionnaire',
           action: 'Update'
         }
-      })
-
-      .state('questionnaireDelete', {
-        url: '/questionnaires/delete/:id',
-        controller: 'questionnaireDeleteCtrl',
-        templateUrl: 'questionnaires/delete.tpl.html',
-        data: {
-          pageTitle: 'Delete Questionnaire'
-        }
       });
 
   });

@@ -27,7 +27,7 @@
       <a ui-sref="questionEdit({id: question.id})" class="btn btn-link">Edit</a>
     </li>
     <li>
-      <a ui-sref="questionDelete({id: question.id})" class="btn btn-link">Delete</a>
+      <a ng-click="destroy(question.id)" class="btn btn-link">Delete</a>
     </li>
   </ul>
 

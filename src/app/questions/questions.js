@@ -29,15 +29,6 @@ angular.module('ngQuestionnaires.questions')
           pageTitle: 'Edit Question',
           action: 'Update'
         }
-      })
-
-      .state('questionDelete', {
-        url: '/questions/delete/:id',
-        controller: 'questionDeleteCtrl',
-        templateUrl: 'questions/delete.tpl.html',
-        data: {
-          pageTitle: 'Delete Question'
-        }
       });
 
   });

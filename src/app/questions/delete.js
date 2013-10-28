@@ -2,29 +2,16 @@ angular.module('ngQuestionnaires.questions')
 
   .controller('questionDeleteCtrl', [
     '$scope',
-    '$state',
-    '$stateParams',
-    'questionFactory',
-    function ($scope, $state, $stateParams, questionFactory) {
+    '$modalInstance',
+    'question',
+    function ($scope, $modalInstance, question) {
+      $scope.question = question;
 
-      $scope.loading(true);
-
-      questionFactory.get($stateParams.id)
-        .then(function (question) {
-          $scope.question = question;
-        })
-        .then(function () {
-          $scope.loading(false);
-        });
-
-      $scope.remove = function () {
-        questionFactory.remove($stateParams.id)
-          .then(function () {
-            $scope.addSuccessAlert($scope.question.text + ' deleted successfully');
-          }, $scope.addErrorAlert)
-          .then(function () {
-            $state.go('questionList');
-          });
+      $scope.ok = function () {
+        $modalInstance.close($scope.question);
       };
 
+      $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+      };
     }]);

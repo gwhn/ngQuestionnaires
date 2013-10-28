@@ -48,8 +48,8 @@ angular.module('ngQuestionnaires', [
   }])
 
   .controller('appCtrl',
-    ['$scope', '$modal', '$q', 'questionnaireFactory', 'questionFactory', 'responseFactory', 'underscore',
-      function ($scope, $modal, $q, questionnaireFactory, questionFactory, responseFactory, underscore) {
+    ['$scope', '$modal', '$q', '$state', 'questionnaireFactory', 'questionFactory', 'responseFactory', 'underscore',
+      function ($scope, $modal, $q, $state, questionnaireFactory, questionFactory, responseFactory, underscore) {
 
         $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
           if (angular.isDefined(toState.data.pageTitle)) {
@@ -143,7 +143,7 @@ angular.module('ngQuestionnaires', [
                   return deferred.promise;
                 };
 
-              $q.all([
+              return $q.all([
                   questionnaireFactory.purge(),
                   questionFactory.purge(),
                   responseFactory.purge()
@@ -215,6 +215,9 @@ angular.module('ngQuestionnaires', [
                 .then(function () {
                   $scope.addInfoAlert('Created ' + y + ' responses');
                 });
+            })
+            .then(function () {
+              $state.go('questionnaireList');
             });
         };
 

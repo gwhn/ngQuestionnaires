@@ -7,7 +7,7 @@ angular.module('ngQuestionnaires.questions')
     function ($scope, $modalInstance, question) {
       $scope.question = question;
 
-      $scope.ok = function () {
+      $scope.confirm = function () {
         $modalInstance.close($scope.question);
       };
 

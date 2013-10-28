@@ -91,7 +91,7 @@ angular.module('ngQuestionnaires', [
           $scope.alerts.splice(index, 1);
         };
 
-        $scope.confirm = function () {
+        $scope.seed = function () {
           $modal.open({
             controller: 'seedCtrl',
             templateUrl: 'seed.tpl.html'
@@ -223,7 +223,7 @@ angular.module('ngQuestionnaires', [
   .controller('seedCtrl',
     ['$scope', '$modalInstance',
       function ($scope, $modalInstance) {
-        $scope.ok = function () {
+        $scope.confirm = function () {
           $modalInstance.close();
         };
 

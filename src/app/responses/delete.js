@@ -7,7 +7,7 @@ angular.module('ngQuestionnaires.responses')
     function ($scope, $modalInstance, response) {
       $scope.response = response;
 
-      $scope.ok = function () {
+      $scope.confirm = function () {
         $modalInstance.close($scope.response);
       };
 

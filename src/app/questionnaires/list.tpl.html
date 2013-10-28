@@ -13,11 +13,11 @@
   </p>
 </div>
 
-<ul class="list-unstyled">
-  <li>
-    <button ui-sref="questionnaireNew" class="btn btn-default">New</button>
-  </li>
-</ul>
+    <ul class="list-unstyled">
+      <li>
+        <button ui-sref="questionnaireNew" class="btn btn-default">New</button>
+      </li>
+    </ul>
 
 <article class="well well-lg"
          ng-repeat="questionnaire in filteredQuestionnaires | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
@@ -49,7 +49,7 @@
 
   <p class="text-muted">
     <span ng-if="questionnaire.questions">
-      Questions # {{questionnaire.questions.length}}<br/>
+      Questions <span class="badge">{{questionnaire.questions.length}}</span><br/>
     </span>
     <span ng-switch="questionnaire.published">
       Published?

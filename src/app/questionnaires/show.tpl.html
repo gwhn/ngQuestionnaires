@@ -1,9 +1,11 @@
 <article class="well well-lg">
   <button ui-sref="questionnaireEdit({id: questionnaire.id})" class="btn btn-default pull-right">Edit</button>
 
-  <p class="lead">{{questionnaire.title}}</p>
+  <div class="page-header">
+    <h3>{{questionnaire.title}}</h3>
+  </div>
 
-  <p>{{questionnaire.description}}</p>
+  <p class="lead">{{questionnaire.description}}</p>
 
   <p ng-switch="questionnaire.published">
     Published?
@@ -11,7 +13,9 @@
     <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
   </p>
 
-  <h3>Questions</h3>
+  <div class="page-header">
+    <h3>Questions</h3>
+  </div>
   <ul class="list-unstyled">
     <li ng-repeat="questionId in questionnaire.questions">
       <article ng-controller="questionShowCtrl">

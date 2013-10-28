@@ -16,15 +16,12 @@
 <article class="well well-lg"
          ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <button ng-click="destroy(response.id)" class="btn btn-warning pull-right">Delete</button>
-
-  <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
-
   <div ng-controller="answerShowCtrl">
-    <p class="lead">
-      <strong>Respondent</strong>
-      <span ng-bind-html="response.respondent | highlight:search.query"></span>
-    </p>
+    <p class="lead pull-right"><i ng-bind-html="response.respondent | highlight:search.query"></i></p>
+
+    <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
+
+    <button ng-click="destroy(response.id)" class="btn btn-warning pull-right">Delete</button>
 
     <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
       <span ng-show="isCollapsed">
@@ -33,10 +30,10 @@
       <span ng-hide="isCollapsed">
         <i class="glyphicon glyphicon-minus"></i>
       </span>
-      Answers # {{response.answers.length}}
+      Answers <span class="badge">{{response.answers.length}}</span>
     </button>
 
-    <table class="table table-striped" ng-hide="isCollapsed">
+    <table class="table table-striped animate-hide" ng-hide="isCollapsed">
       <thead>
       <tr>
         <th>Question</th>

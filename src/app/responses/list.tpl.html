@@ -13,14 +13,10 @@
   </p>
 </div>
 
-<article class="response"
+<article class="well well-lg"
          ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <ul class="list-inline pull-right">
-    <li>
-      <a ng-click="destroy(response.id)" class="btn btn-link">Delete</a>
-    </li>
-  </ul>
+  <button ng-click="destroy(response.id)" class="btn btn-warning pull-right">Delete</button>
 
   <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
 
@@ -56,7 +52,6 @@
     </table>
   </div>
 
-  <hr/>
 </article>
 
 <div class="text-center">

@@ -7,12 +7,12 @@ angular.module('ngQuestionnaires.questions')
         controller: 'questionListCtrl',
         templateUrl: 'questions/list.tpl.html',
         data: {
-          pageTitle: 'List Questions'
+          pageTitle: 'Questions'
         }
       })
 
       .state('questionNew', {
-        url: '/questions/new?referrer',
+        url: '/questions/new?referrer&id',
         controller: 'questionNewCtrl',
         templateUrl: 'questions/edit.tpl.html',
         data: {

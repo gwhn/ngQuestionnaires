@@ -13,23 +13,29 @@
   </p>
 </div>
 
-<ul class="list-inline">
+<ul class="list-unstyled">
   <li>
-    <a ui-sref="questionNew" class="btn btn-link">New</a>
+    <button ui-sref="questionNew" class="btn btn-default">New</button>
   </li>
 </ul>
 
-<article class="question"
+<article class="well well-lg"
          ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <ul class="list-inline pull-right">
-    <li>
-      <a ui-sref="questionEdit({id: question.id})" class="btn btn-link">Edit</a>
-    </li>
-    <li>
-      <a ng-click="destroy(question.id)" class="btn btn-link">Delete</a>
-    </li>
-  </ul>
+  <div class="btn-group pull-right">
+    <button class="btn btn-default" ui-sref="questionEdit({id: question.id})">Edit</button>
+    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <a ui-sref="questionEdit({id: question.id})">Edit</a>
+      </li>
+      <li>
+        <a ng-click="destroy(question.id)" class="text-warning">Delete</a>
+      </li>
+    </ul>
+  </div>
 
   <p class="lead" ng-bind-html="question.text | highlight:search.query"></p>
 
@@ -37,7 +43,6 @@
     <li ng-repeat="choice in question.choices" ng-bind-html="choice.text | highlight:search.query"></li>
   </ol>
 
-  <hr/>
 </article>
 
 <div class="text-center">

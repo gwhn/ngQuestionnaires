@@ -7,7 +7,7 @@ angular.module('ngQuestionnaires.questionnaires')
         controller: 'questionnaireListCtrl',
         templateUrl: 'questionnaires/list.tpl.html',
         data: {
-          pageTitle: 'List Questionnaires'
+          pageTitle: 'Questionnaires'
         }
       })
 
@@ -16,7 +16,7 @@ angular.module('ngQuestionnaires.questionnaires')
         controller: 'questionnaireShowCtrl',
         templateUrl: 'questionnaires/show.tpl.html',
         data: {
-          pageTitle: 'Show Questionnaire'
+          pageTitle: 'Questionnaire'
         }
       })
 

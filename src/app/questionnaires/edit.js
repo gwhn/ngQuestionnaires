@@ -87,7 +87,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
-        $state.go('questionNew', {returnTo: $state.current.name});
+        $state.go('questionNew', {referrer: $state.current.name, id: $stateParams.id});
       };
 
       $scope.update = function () {

@@ -1,34 +1,30 @@
-<p class="lead">{{questionnaire.title}}</p>
+<article class="well well-lg">
+  <button ui-sref="questionnaireEdit({id: questionnaire.id})" class="btn btn-default pull-right">Edit</button>
 
-<p>{{questionnaire.description}}</p>
+  <p class="lead">{{questionnaire.title}}</p>
 
-<p ng-switch="questionnaire.published">
-  Published?
-  <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
-  <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
-</p>
+  <p>{{questionnaire.description}}</p>
 
-<h3>Questions</h3>
-<ul class="list-unstyled">
-  <li ng-repeat="questionId in questionnaire.questions">
-    <article ng-controller="questionShowCtrl">
-      <p class="lead">{{question.text}}</p>
+  <p ng-switch="questionnaire.published">
+    Published?
+    <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
+    <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
+  </p>
 
-      <ol>
-        <li ng-repeat="choice in question.choices">{{choice.text}}</li>
-      </ol>
+  <h3>Questions</h3>
+  <ul class="list-unstyled">
+    <li ng-repeat="questionId in questionnaire.questions">
+      <article ng-controller="questionShowCtrl">
+        <p class="lead">{{question.text}}</p>
 
-      <hr/>
-    </article>
-  </li>
-</ul>
-<p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
+        <ol>
+          <li ng-repeat="choice in question.choices">{{choice.text}}</li>
+        </ol>
 
-<ul class="list-inline">
-  <li>
-    <a ui-sref="questionnaireList" class="btn btn-link">Back</a>
-  </li>
-  <li>
-    <a ui-sref="questionnaireEdit({id: questionnaire.id})" class="btn btn-link">Edit</a>
-  </li>
-</ul>
+        <hr/>
+      </article>
+    </li>
+  </ul>
+  <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
+
+</article>

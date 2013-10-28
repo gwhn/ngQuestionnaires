@@ -7,7 +7,7 @@ angular.module('ngQuestionnaires.responses')
         controller: 'responseListCtrl',
         templateUrl: 'responses/list.tpl.html',
         data: {
-          pageTitle: 'List Responses'
+          pageTitle: 'Responses'
         }
       })
 

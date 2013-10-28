@@ -13,29 +13,35 @@
   </p>
 </div>
 
-<ul class="list-inline">
+<ul class="list-unstyled">
   <li>
-    <a ui-sref="questionnaireNew" class="btn btn-link">New</a>
+    <button ui-sref="questionnaireNew" class="btn btn-default">New</button>
   </li>
 </ul>
 
-<article class="questionnaire"
+<article class="well well-lg"
          ng-repeat="questionnaire in filteredQuestionnaires | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <ul class="list-inline pull-right">
-    <li>
-      <a ui-sref="questionnaireShow({id: questionnaire.id})" class="btn btn-link">Show</a>
-    </li>
-    <li>
-      <a ui-sref="questionnaireEdit({id: questionnaire.id})" class="btn btn-link">Edit</a>
-    </li>
-    <li>
-      <a ng-click="destroy(questionnaire.id)" class="btn btn-link">Delete</a>
-    </li>
-    <li ng-if="questionnaire.published">
-      <a ui-sref="responseNew({id: questionnaire.id})" class="btn btn-link">Respond</a>
-    </li>
-  </ul>
+  <div class="btn-group pull-right">
+    <button class="btn btn-default" ui-sref="questionnaireShow({id: questionnaire.id})">Show</button>
+    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <a ui-sref="questionnaireShow({id: questionnaire.id})">Show</a>
+      </li>
+      <li>
+        <a ui-sref="questionnaireEdit({id: questionnaire.id})">Edit</a>
+      </li>
+      <li ng-if="questionnaire.published">
+        <a ui-sref="responseNew({id: questionnaire.id})">Respond</a>
+      </li>
+      <li>
+        <a ng-click="destroy(questionnaire.id)" class="text-warning">Delete</a>
+      </li>
+    </ul>
+  </div>
 
   <p class="lead" ng-bind-html="questionnaire.title | highlight:search.query"></p>
 
@@ -52,7 +58,6 @@
     </span>
   </p>
 
-  <hr/>
 </article>
 
 <div class="text-center">

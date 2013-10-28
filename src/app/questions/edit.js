@@ -8,11 +8,16 @@ angular.module('ngQuestionnaires.questions')
     function ($scope, $state, $stateParams, questionFactory) {
 
       var navigate = function () {
-        var referrer = $stateParams.referrer;
+        var referrer = $stateParams.referrer,
+          id = $stateParams.id;
         if (angular.isDefined(referrer)) {
-          $state.go('questionList');
+          if (angular.isDefined(id)) {
+            $state.go(referrer, {id: id});
+          } else {
+            $state.go(referrer);
+          }
         } else {
-          $state.go(referrer);
+          $state.go('questionList');
         }
       };
 

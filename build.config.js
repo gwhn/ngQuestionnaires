@@ -62,6 +62,7 @@ module.exports = {
    */
   vendor_files: {
     js: [
+      'vendor/jquery/jquery.min.js',
       'vendor/underscore/underscore-min.js',
       'vendor/firebase/firebase.js',
       'vendor/angular/angular.js',

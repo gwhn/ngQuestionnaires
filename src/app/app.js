@@ -102,7 +102,7 @@ angular.module('ngQuestionnaires', [
                 questionnaires,
                 questionnaire,
                 i, j,
-                x = 10, y = 1000, z = 100,
+                x = 4, y = 100, z = 10,
                 promises,
                 found = function (values, match) {
                   return underscore.find(values, function (value) {

@@ -7,7 +7,6 @@ angular.module('ngQuestionnaires.responses')
     'responseFactory',
     'pagination',
     function ($scope, $filter, $modal, responseFactory, pagination) {
-
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
@@ -17,6 +16,7 @@ angular.module('ngQuestionnaires.responses')
           .then(function (responses) {
             $scope.responses = responses;
             $scope.$watch('search.query', function (value) {
+              var i;
               $scope.page = 1;
               if (value) {
                 $scope.filteredResponses = $filter('filter')($scope.responses, value);
@@ -60,4 +60,8 @@ angular.module('ngQuestionnaires.responses')
           .then($scope.queryResponses);
       };
 
-    }]);
+    }])
+
+  .controller('answerShowCtrl', ['$scope', function ($scope) {
+    $scope.isCollapsed = true;
+  }]);

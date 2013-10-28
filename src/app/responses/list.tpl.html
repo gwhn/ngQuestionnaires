@@ -24,25 +24,37 @@
 
   <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
 
-  <p class="lead">
-    <strong>Respondent</strong>
-    <span ng-bind-html="response.respondent | highlight:search.query"></span>
-  </p>
+  <div ng-controller="answerShowCtrl">
+    <p class="lead">
+      <strong>Respondent</strong>
+      <span ng-bind-html="response.respondent | highlight:search.query"></span>
+    </p>
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Question</th>
-      <th>Choice</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="answer in response.answers">
-      <td class="col-md-6">{{answer.question}}</td>
-      <td class="col-md-6">{{answer.choice}}</td>
-    </tr>
-    </tbody>
-  </table>
+    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+      <span ng-show="isCollapsed">
+        <i class="glyphicon glyphicon-plus"></i>
+      </span>
+      <span ng-hide="isCollapsed">
+        <i class="glyphicon glyphicon-minus"></i>
+      </span>
+      Answers # {{response.answers.length}}
+    </button>
+
+    <table class="table table-striped" ng-hide="isCollapsed">
+      <thead>
+      <tr>
+        <th>Question</th>
+        <th>Choice</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="answer in response.answers">
+        <td class="col-md-6">{{answer.question}}</td>
+        <td class="col-md-6">{{answer.choice}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
   <hr/>
 </article>

@@ -20,7 +20,7 @@
               <div class="radio">
                 <label class="control-label">
                   <input type="radio" ng-model="$parent.response.choices" value="{{choice.text}}"
-                         ng-click="answer(question.text, choice.text)" required/>
+                         ng-click="answer(question.id, question.text, choice.text, $index)" required/>
                   {{choice.text}}
                 </label>
               </div>

@@ -78,6 +78,25 @@ angular.module('ngQuestionnaires.services')
           return def.promise;
         },
 
+        increment: function (id, index) {
+          var def = $q.defer(),
+            ref = new Firebase(fbUrl + 'questions/' + id + '/choices/' + index);
+          ref.once('value', function (snapshot) {
+            var value = snapshot.val(),
+              count = value.count + 1;
+            ref.update({count: count}, function (err) {
+              if (err) {
+                def.reject('Failed to update question choice count');
+              } else {
+                def.resolve(count);
+              }
+            });
+          }, function () {
+            def.reject('Failed to get question');
+          });
+          return def.promise;
+        },
+
         remove: function (id) {
           var def = $q.defer(),
             ref = new Firebase(fbUrl + 'questions/' + id),

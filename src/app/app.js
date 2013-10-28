@@ -135,10 +135,14 @@ angular.module('ngQuestionnaires', [
                   var deferred = $q.defer();
                   questionFactory.get(questionId)
                     .then(function (question) {
-                      deferred.resolve({
-                        question: question.text,
-                        choice: question.choices[Math.floor(Math.random() * question.choices.length)].text
-                      });
+                      var index = Math.floor(Math.random() * question.choices.length);
+                      questionFactory.increment(question.id, index)
+                        .then(function() {
+                          deferred.resolve({
+                            question: question.text,
+                            choice: question.choices[index].text
+                          });
+                        });
                     });
                   return deferred.promise;
                 };
@@ -161,7 +165,10 @@ angular.module('ngQuestionnaires', [
                       choices: []
                     };
                     for (j = 0; j < x; j += 1) {
-                      question.choices.push({text: 'Choice ' + (j + 1) + ' of question ' + (i + 1)});
+                      question.choices.push({
+                        text: 'Choice ' + (j + 1) + ' of question ' + (i + 1),
+                        count: 0
+                      });
                     }
                     promises.push(questionFactory.add(question));
                   }
@@ -217,7 +224,7 @@ angular.module('ngQuestionnaires', [
                 });
             })
             .then(function () {
-              $state.go('questionnaireList');
+              $state.go('questionnaireList', {location: 'replace'});
             });
         };
 

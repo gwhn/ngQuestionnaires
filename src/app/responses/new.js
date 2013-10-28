@@ -4,9 +4,11 @@ angular.module('ngQuestionnaires.responses')
     '$scope',
     '$state',
     '$stateParams',
+    '$q',
     'questionnaireFactory',
+    'questionFactory',
     'responseFactory',
-    function ($scope, $state, $stateParams, questionnaireFactory, responseFactory) {
+    function ($scope, $state, $stateParams, $q, questionnaireFactory, questionFactory, responseFactory) {
 
       var response = {answers: {}};
 
@@ -20,19 +22,25 @@ angular.module('ngQuestionnaires.responses')
           $scope.loading(false);
         });
 
-      $scope.answer = function (question, choice) {
-        response.answers[question] = choice;
+      $scope.answer = function (id, question, choice, index) {
+        response.answers[id] = {
+          question: question,
+          choice: choice,
+          index: index
+        };
       };
 
       $scope.submit = function () {
         var answers = [],
-          key;
+          key,
+          promises = [];
         for (key in response.answers) {
           if (response.answers.hasOwnProperty(key)) {
             answers.push({
-              question: key,
-              choice: response.answers[key]
+              question: response.answers[key].question,
+              choice: response.answers[key].choice
             });
+            promises.push(questionFactory.increment(key, response.answers[key].index));
           }
         }
         responseFactory.add({
@@ -40,6 +48,9 @@ angular.module('ngQuestionnaires.responses')
           questionnaire: $scope.questionnaire.title,
           answers: answers
         })
+          .then(function () {
+            return $q.all(promises);
+          })
           .then(function () {
             $scope.addSuccessAlert('Response from ' + $scope.respondent + ' on ' +
               $scope.questionnaire.title + ' saved successfully');

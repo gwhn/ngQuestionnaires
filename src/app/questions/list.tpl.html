@@ -40,7 +40,10 @@
   <p class="lead" ng-bind-html="question.text | highlight:search.query"></p>
 
   <ol>
-    <li ng-repeat="choice in question.choices" ng-bind-html="choice.text | highlight:search.query"></li>
+    <li ng-repeat="choice in question.choices">
+      <span ng-bind-html="choice.text | highlight:search.query"></span>
+      <span class="badge">{{choice.count}}</span>
+    </li>
   </ol>
 
 </article>

@@ -30,7 +30,7 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.addChoice = function () {
-        $scope.question.choices.push({text: ''});
+        $scope.question.choices.push({text: '', count: 0});
       };
 
       $scope.save = function () {

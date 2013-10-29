@@ -10,7 +10,9 @@ angular.module('ngQuestionnaires.directives')
         link: function (scope, element, attrs) {
           var margin = parseInt(attrs.margin, 10) || 20,
             barHeight = parseInt(attrs.barHeight, 10) || 30,
-            barPadding = parseInt(attrs.barPadding, 10) || 10;
+            barPadding = parseInt(attrs.barPadding, 10) || 10,
+            label = attrs.label || 'text',
+            value = attrs.value || 'count';
 
           var svg = d3.select(element[0])
             .append('svg')
@@ -34,16 +36,41 @@ angular.module('ngQuestionnaires.directives')
             svg.selectAll('*').remove();
 
             if (data) {
-              var width = d3.select(element[0])[0][0].offsetWidth - margin,
+              var width = d3.select(element[0])[0][0].offsetWidth - margin - barHeight,
                 height = scope.data.length * (barHeight + barPadding),
-                color = d3.scale.category20(),
+                color = d3.scale.category10(),
                 xScale = d3.scale.linear()
-                  .domain([0, d3.max(data, function (d) {
-                    return d.count;
+                  .domain([0, d3.max(data, function (item) {
+                    return item[value];
                   })])
                   .range([0, width]);
 
               svg.attr('height', height);
+
+              svg.selectAll('badge')
+                .data(data)
+                .enter()
+                .append('circle')
+                .attr('r', Math.round(barHeight / 2))
+                .attr('cx', Math.round(margin / 2) + Math.round(barHeight / 2))
+                .attr('cy', function (item, index) {
+                  return (index * (barHeight + barPadding)) + Math.round(barHeight / 2);
+                })
+                .attr('fill', function (item) {
+                  return color(item[value]);
+                });
+
+              svg.selectAll('value')
+                .data(data)
+                .enter()
+                .append('text')
+                .attr('y', function (item, index) {
+                  return index * (barHeight + barPadding) + 20;
+                })
+                .attr('x', 20)
+                .text(function (item) {
+                  return item[value];
+                });
 
               svg.selectAll('rect')
                 .data(data)
@@ -51,29 +78,29 @@ angular.module('ngQuestionnaires.directives')
                 .append('rect')
                 .attr('height', barHeight)
                 .attr('width', 200)
-                .attr('x', Math.round(margin / 2))
-                .attr('y', function (d, i) {
-                  return i * (barHeight + barPadding);
+                .attr('x', Math.round(margin / 2) * 5)
+                .attr('y', function (item, index) {
+                  return index * (barHeight + barPadding);
                 })
-                .attr('fill', function (d) {
-                  return color(d.count);
+                .attr('fill', function (item) {
+                  return color(item[value]);
                 })
                 .transition()
                 .duration(2000)
-                .attr('width', function (d) {
-                  return xScale(d.count);
+                .attr('width', function (item) {
+                  return xScale(item[value]);
                 });
 
-              svg.selectAll('text')
+              svg.selectAll('label')
                 .data(data)
                 .enter()
                 .append('text')
-                .attr('y', function (d, i) {
-                  return i * (barHeight + barPadding) + 20;
+                .attr('y', function (item, index) {
+                  return index * (barHeight + barPadding) + 20;
                 })
-                .attr('x', 15)
-                .text(function (d) {
-                  return d.text + ' (' + d.count + ')';
+                .attr('x', Math.round(margin / 2) * 6)
+                .text(function (item) {
+                  return item[label];
                 });
             }
           };

@@ -9,6 +9,7 @@ angular.module('ngQuestionnaires', [
     'ng',
     'ngSanitize',
     'ngAnimate',
+    'ngCookies',
     'templates-app',
     'templates-common',
     'ui.bootstrap',
@@ -54,11 +55,14 @@ angular.module('ngQuestionnaires', [
     '$modal',
     '$q',
     '$state',
+    '$cookieStore',
+    '$location',
     'questionnaireFactory',
     'questionFactory',
     'responseFactory',
     'underscore',
-    function ($scope, $modal, $q, $state, questionnaireFactory, questionFactory, responseFactory, underscore) {
+    function ($scope, $modal, $q, $state, $cookieStore, $location,
+              questionnaireFactory, questionFactory, responseFactory, underscore) {
 
       $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         if (angular.isDefined(toState.data.pageTitle)) {
@@ -99,6 +103,16 @@ angular.module('ngQuestionnaires', [
       $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);
       };
+
+      if (!$cookieStore.get('acceptedTerms')) {
+        $modal.open({
+          controller: 'termsCtrl',
+          templateUrl: 'terms.tpl.html'
+        }).result
+          .then(function () {
+            $cookieStore.put('acceptedTerms', true);
+          });
+      }
 
       $scope.seed = function () {
         $modal.open({
@@ -254,4 +268,13 @@ angular.module('ngQuestionnaires', [
         $modalInstance.dismiss('cancel');
       };
     }
-  ]);
+  ])
+
+  .controller('termsCtrl', [
+    '$scope',
+    '$modalInstance',
+    function ($scope, $modalInstance) {
+      $scope.ok = function () {
+        $modalInstance.close();
+      };
+    }]);

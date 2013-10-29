@@ -10,8 +10,8 @@ angular.module('ngQuestionnaires.questions')
       var navigate = function () {
         var referrer = $stateParams.referrer,
           id = $stateParams.id;
-        if (angular.isDefined(referrer)) {
-          if (angular.isDefined(id)) {
+        if (referrer !== null) {
+          if (id !== null) {
             $state.go(referrer, {id: id});
           } else {
             $state.go(referrer);
@@ -76,11 +76,11 @@ angular.module('ngQuestionnaires.questions')
         if ($scope.question.choices === undefined) {
           $scope.question.choices = [];
         }
-        $scope.question.choices.push({text: ''});
+        $scope.question.choices.push({text: '', count: 0});
       };
 
       $scope.update = function () {
-        questionFactory.update($stateParams.id, $scope.question)
+        questionFactory.update($stateParams.id, angular.copy($scope.question))
           .then(function () {
             $scope.addSuccessAlert($scope.question.text + ' updated successfully');
           }, $scope.addErrorAlert)

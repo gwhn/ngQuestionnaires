@@ -6,9 +6,10 @@
   <form name="responseForm" novalidate>
     <div class="form-group" validation-class on="respondent">
       <label for="respondent" class="control-label">Respondent</label>
-      <input type="text" ng-model="respondent" name="respondent"
+      <input type="email" ng-model="respondent" name="respondent"
              id="respondent" class="form-control" required/>
       <span show-help on="respondent" when="required">Respondent is required</span>
+      <span show-help on="respondent" when="email">Respondent must be a valid email address</span>
     </div>
 
     <h3>Questions</h3>

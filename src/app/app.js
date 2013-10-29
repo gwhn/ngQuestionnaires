@@ -123,7 +123,7 @@ angular.module('ngQuestionnaires', [
                 questionnaireFactory.get(questionnaireId)
                   .then(function (questionnaire) {
                     var response = {
-                      respondent: 'Respondent ' + (key + 1),
+                      respondent: 'respondent' + (key + 1) + '@email.com',
                       questionnaire: questionnaire.title,
                       answers: []
                     };

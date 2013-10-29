@@ -1,3 +1,4 @@
+/*
 xdescribe('Test ngQuestionnaires.services questionFactory', function () {
   var ctrl, $scope;
 
@@ -12,3 +13,4 @@ xdescribe('Test ngQuestionnaires.services questionFactory', function () {
     expect(ctrl).toBeTruthy();
   }));
 });
+*/

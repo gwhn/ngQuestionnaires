@@ -1,4 +1,4 @@
-xdescribe('appCtrl', function () {
+describe('appCtrl', function () {
   var ctrl, $scope;
 
   beforeEach(module('ngQuestionnaires'));
@@ -12,3 +12,4 @@ xdescribe('appCtrl', function () {
     expect(ctrl).toBeDefined();
   }));
 });
+

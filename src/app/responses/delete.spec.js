@@ -1,3 +1,4 @@
+/*
 xdescribe('responseDeleteCtrl', function () {
   var ctrl, $scope;
 
@@ -13,3 +14,4 @@ xdescribe('responseDeleteCtrl', function () {
   }));
 
 });
+*/

@@ -13,6 +13,8 @@ however it does not use the AngularJS bindings which support implicit synchronis
 instead opting to use the lower-level [Firebase API](https://www.firebase.com/docs/javascript/firebase/index.html)
 directly. The beauty of using Firebase is you can integrate without the need for server-side proxying.
 
+It uses [d3](http://d3js.org/) visualization library to generate bar charts for the question choices answered.
+
 It is seeded from the [ng-boilerplate](https://github.com/ngbp/ng-boilerplate)
 and [angular-seed](https://github.com/angular/angular-seed) Github projects
 which contain many of the best practises for developing AngularJS apps.
@@ -87,4 +89,3 @@ edits without the need to refresh your browser.
 ##To Dos
 
 1. Use Firebase authentication and authorisation
-2. Add visualisation for questionnaire response statistics

@@ -1,3 +1,4 @@
+/*
 xdescribe('responseListCtrl', function () {
   var ctrl, $scope;
 
@@ -13,3 +14,4 @@ xdescribe('responseListCtrl', function () {
   }));
 
 });
+*/

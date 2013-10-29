@@ -1,3 +1,4 @@
+/*
 xdescribe('Test ngQuestionnaires.directives uniqueQuestionnaireTitle', function () {
   var ctrl, $scope;
 
@@ -12,3 +13,4 @@ xdescribe('Test ngQuestionnaires.directives uniqueQuestionnaireTitle', function 
     expect(ctrl).toBeTruthy();
   }));
 });
+*/

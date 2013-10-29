@@ -1,3 +1,4 @@
+/*
 xdescribe('Test ngQuestionnaires.filters skip', function () {
   var ctrl, $scope;
 
@@ -12,3 +13,4 @@ xdescribe('Test ngQuestionnaires.filters skip', function () {
     expect(ctrl).toBeTruthy();
   }));
 });
+*/

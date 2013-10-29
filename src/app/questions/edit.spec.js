@@ -1,3 +1,4 @@
+/*
 xdescribe('questionNewCtrl', function () {
   var ctrl, $scope;
 
@@ -29,3 +30,4 @@ xdescribe('questionEditCtrl', function () {
   }));
 
 });
+*/

@@ -1,3 +1,4 @@
+/*
 xdescribe('questionnaireListCtrl', function () {
   var ctrl, $scope;
 
@@ -13,3 +14,5 @@ xdescribe('questionnaireListCtrl', function () {
   }));
 
 });
+
+*/

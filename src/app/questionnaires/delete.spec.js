@@ -1,3 +1,4 @@
+/*
 xdescribe('questionnaireDeleteCtrl', function () {
   var ctrl, scope, state, stateParams, factory, deferred,
     questionnaire = {title: 'test'};
@@ -39,3 +40,4 @@ xdescribe('questionnaireDeleteCtrl', function () {
 
 });
 
+*/

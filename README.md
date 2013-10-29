@@ -34,8 +34,8 @@ You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/) on Gith
 
 * text (String)
 * choices (Array)
-    * ordinal (Number)
     * text (String)
+    * count (Number)
 
 ### responses
 

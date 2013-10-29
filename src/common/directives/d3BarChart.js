@@ -1,6 +1,6 @@
 angular.module('ngQuestionnaires.directives')
 
-  .directive('d3Bars', ['$window', '$timeout', 'd3',
+  .directive('d3BarChart', ['$window', '$timeout', 'd3',
     function ($window, $timeout, d3) {
       return {
         restrict: 'A',
@@ -50,7 +50,7 @@ angular.module('ngQuestionnaires.directives')
                 .enter()
                 .append('rect')
                 .attr('height', barHeight)
-                .attr('width', 140)
+                .attr('width', 200)
                 .attr('x', Math.round(margin / 2))
                 .attr('y', function (d, i) {
                   return i * (barHeight + barPadding);
@@ -59,7 +59,7 @@ angular.module('ngQuestionnaires.directives')
                   return color(d.count);
                 })
                 .transition()
-                .duration(1000)
+                .duration(2000)
                 .attr('width', function (d) {
                   return xScale(d.count);
                 });

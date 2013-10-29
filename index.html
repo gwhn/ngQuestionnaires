@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ngQuestionnaires" ng-controller="AppCtrl">
+<html ng-app="ngQuestionnaires" ng-controller="appCtrl">
 <head>
   <title>{{pageTitle}} | nqQuestionnaires</title>
 
@@ -23,8 +23,6 @@
   <link rel="stylesheet" type="text/css" href="assets/ngQuestionnaires-0.0.1.css"/>
   
 
-  <script type="text/javascript" src="http://cdn.firebase.com/v0/firebase.js"></script>
-
   <!-- compiled JavaScript -->
   <script type="text/javascript" src="assets/ngQuestionnaires-0.0.1.js"></script>
   
@@ -33,16 +31,14 @@
 
 <header ng-include="'header.tpl.html'"></header>
 
-<section class="container reveal-container">
-  <div class="reveal-animation">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3>{{pageTitle}}</h3>
-      </div>
-      <div class="panel-body">
-        <section ng-include="'alerts.tpl.html'"></section>
-        <section ui-view></section>
-      </div>
+<section class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>{{pageTitle}}</h2>
+    </div>
+    <div class="panel-body">
+      <section ng-include="'alerts.tpl.html'"></section>
+      <section ui-view></section>
     </div>
   </div>
 </section>

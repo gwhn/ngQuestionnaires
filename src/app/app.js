@@ -28,7 +28,7 @@ angular.module('ngQuestionnaires', [
 
   .constant('pagination', {
     itemsPerPage: 5,
-    maxSize: 10
+    maxSize: 5
   })
 
   .factory('Firebase', ['$window', function ($window) {
@@ -37,6 +37,10 @@ angular.module('ngQuestionnaires', [
 
   .factory('underscore', ['$window', function ($window) {
     return $window._;
+  }])
+
+  .factory('d3', ['$window', function ($window) {
+    return $window.d3;
   }])
 
   .config(function ($urlRouterProvider) {

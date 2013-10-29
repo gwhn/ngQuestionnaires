@@ -19,7 +19,7 @@
   </li>
 </ul>
 
-<article class="well well-lg"
+<article class="well well-lg repeated-item"
          ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
   <div class="btn-group pull-right">
@@ -39,12 +39,7 @@
 
   <p class="lead" ng-bind-html="question.text | highlight:search.query"></p>
 
-  <ol>
-    <li ng-repeat="choice in question.choices">
-      <span ng-bind-html="choice.text | highlight:search.query"></span>
-      <span class="badge">{{choice.count}}</span>
-    </li>
-  </ol>
+  <div d3-bars data="question.choices"></div>
 
 </article>
 

@@ -66,6 +66,7 @@ module.exports = {
       'vendor/underscore/underscore-min.js',
       'vendor/bootstrap/dist/js/bootstrap.min.js',
       'vendor/firebase/firebase.js',
+      'vendor/d3/d3.min.js',
       'vendor/angular/angular.js',
       'vendor/angular-sanitize/angular-sanitize.min.js',
       'vendor/angular-animate/angular-animate.min.js',

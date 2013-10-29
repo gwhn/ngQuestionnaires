@@ -176,6 +176,34 @@ body {
 }
 
 
+.repeated-item.ng-enter,
+.repeated-item.ng-leave,
+.repeated-item.ng-move {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+
+.repeated-item.ng-enter,
+.repeated-item.ng-move {
+  opacity: 0;
+}
+
+.repeated-item.ng-move.ng-move-active,
+.repeated-item.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.repeated-item.ng-leave {
+  opacity: 1;
+}
+
+.repeated-item.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+
 /**
  * Now that all app-wide styles have been applied, we can load the styles for
  * all the submodules and components we are using. 

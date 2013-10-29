@@ -31,16 +31,14 @@
 
 <header ng-include="'header.tpl.html'"></header>
 
-<section class="container reveal-container">
-  <div class="reveal-animation">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h2>{{pageTitle}}</h2>
-      </div>
-      <div class="panel-body">
-        <section ng-include="'alerts.tpl.html'"></section>
-        <section ui-view></section>
-      </div>
+<section class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>{{pageTitle}}</h2>
+    </div>
+    <div class="panel-body">
+      <section ng-include="'alerts.tpl.html'"></section>
+      <section ui-view></section>
     </div>
   </div>
 </section>

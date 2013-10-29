@@ -248,6 +248,9 @@ module.exports = function ( grunt ) {
      * Minify the sources!
      */
     uglify: {
+      options: {
+        mangle: false
+      },
       compile: {
         options: {
           banner: '<%= meta.banner %>'

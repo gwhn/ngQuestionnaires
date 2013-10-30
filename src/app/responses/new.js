@@ -12,6 +12,8 @@ angular.module('ngQuestionnaires.responses')
 
       var response = {answers: {}};
 
+      $scope.respondent = $scope.user.email;
+
       $scope.loading(true);
 
       questionnaireFactory.get($stateParams.id)

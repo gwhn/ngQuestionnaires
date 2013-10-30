@@ -44,6 +44,7 @@ angular.module('ngQuestionnaires.responses')
           }
         }
         responseFactory.add({
+          userId: $scope.user.id,
           respondent: $scope.respondent,
           questionnaire: $scope.questionnaire.title,
           answers: answers

@@ -27,6 +27,7 @@ You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/) on Gith
 
 ### questionnaires
 
+* userId (String)
 * title (String)
 * description (String)
 * published (Boolean)
@@ -34,6 +35,7 @@ You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/) on Gith
 
 ### questions
 
+* userId (String)
 * text (String)
 * choices (Array)
     * text (String)
@@ -41,6 +43,7 @@ You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/) on Gith
 
 ### responses
 
+* userId (String)
 * respondent (String)
 * questionnaire (String)
 * answers (Array)

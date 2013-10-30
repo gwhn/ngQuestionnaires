@@ -166,6 +166,7 @@ angular.module('ngQuestionnaires', [
                 questionnaireFactory.get(questionnaireId)
                   .then(function (questionnaire) {
                     var response = {
+                      userId: $scope.user.id,
                       respondent: 'respondent' + (key + 1) + '@email.com',
                       questionnaire: questionnaire.title,
                       answers: []
@@ -215,6 +216,7 @@ angular.module('ngQuestionnaires', [
                 promises = [];
                 for (i = 0; i < y; i += 1) {
                   question = {
+                    userId: $scope.user.id,
                     text: 'Question ' + (i + 1),
                     choices: []
                   };
@@ -240,6 +242,7 @@ angular.module('ngQuestionnaires', [
                 promises = [];
                 for (i = 0; i < y; i += 1) {
                   questionnaire = {
+                    userId: $scope.user.id,
                     title: 'Questionnaire ' + (i + 1),
                     description: 'Description for questionnaire ' + (i + 1),
                     published: true,
@@ -278,6 +281,7 @@ angular.module('ngQuestionnaires', [
               });
           })
           .then(function () {
+            $scope.addSuccessAlert('Finished seeding new data successfully');
             $scope.loading(false);
             $state.go('questionnaireList', {location: 'replace'});
           });

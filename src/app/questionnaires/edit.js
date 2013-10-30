@@ -16,6 +16,8 @@ angular.module('ngQuestionnaires.questionnaires')
 
       $scope.action = $state.current.data.action;
 
+      $scope.questionnaire = {userId: $scope.user.id};
+
       if (questionnaire !== undefined) {
         $scope.questionnaire = questionnaire;
         $cacheFactory.get('data').remove('questionnaire');

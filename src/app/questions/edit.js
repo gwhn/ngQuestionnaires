@@ -23,7 +23,10 @@ angular.module('ngQuestionnaires.questions')
 
       $scope.action = $state.current.data.action;
 
-      $scope.question = {choices: []};
+      $scope.question = {
+        userId: $scope.user.id,
+        choices: []
+      };
 
       $scope.removeChoice = function (index) {
         $scope.question.choices.splice(index, 1);

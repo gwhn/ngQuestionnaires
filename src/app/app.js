@@ -282,8 +282,12 @@ angular.module('ngQuestionnaires', [
           })
           .then(function () {
             $scope.addSuccessAlert('Finished seeding new data successfully');
-            $scope.loading(false);
             $state.go('questionnaireList', {location: 'replace'});
+          }, function () {
+            $scope.addErrorAlert('Failed to seed new data');
+          })
+          ['finally'](function () {
+            $scope.loading(false);
           });
       };
 

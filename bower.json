@@ -12,8 +12,7 @@
     "angular-ui-bootstrap": "#bootstrap3_bis2",
     "angular-ui-router": "~0.2.0",
     "angular-ui-utils": "~0.0.3",
-    "d3": "~3.3.9",
-    "oauthio": "~0.1.2"
+    "d3": "~3.3.9"
   },
   "dependencies": {}
 }

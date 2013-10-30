@@ -34,6 +34,10 @@ angular.module('ngQuestionnaires', [
     return $window.Firebase;
   }])
 
+  .factory('FirebaseSimpleLogin', ['$window', function ($window) {
+    return $window.FirebaseSimpleLogin;
+  }])
+
   .factory('underscore', ['$window', function ($window) {
     return $window._;
   }])

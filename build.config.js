@@ -62,11 +62,11 @@ module.exports = {
    */
   vendor_files: {
     js: [
-      'vendor/oauthio/app/js/oauth.min.js',
       'vendor/jquery/jquery.min.js',
       'vendor/underscore/underscore-min.js',
       'vendor/bootstrap/dist/js/bootstrap.min.js',
-      'vendor/firebase/firebase.js',
+      'vendor/firebase/firebase.min.js',
+      'vendor/firebase/firebase-simple-login.min.js',
       'vendor/d3/d3.min.js',
       'vendor/angular/angular.js',
       'vendor/angular-sanitize/angular-sanitize.min.js',

@@ -69,6 +69,19 @@ angular.module('ngQuestionnaires', [
     function ($scope, $modal, $q, $state, $cookieStore, $location,
               authenticationFactory, questionnaireFactory, questionFactory, responseFactory, underscore) {
 
+      $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        if (!$scope.user && (
+          toState.name === 'questionnaireNew' ||
+            toState.name === 'questionnaireEdit' ||
+            toState.name === 'questionNew' ||
+            toState.name === 'questionEdit' ||
+            toState.name === 'responseNew'
+          )) {
+          $scope.addErrorAlert('Permission denied');
+          event.preventDefault();
+        }
+      });
+
       $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         if (angular.isDefined(toState.data.pageTitle)) {
           $scope.pageTitle = toState.data.pageTitle;
@@ -109,7 +122,7 @@ angular.module('ngQuestionnaires', [
       };
 
       $scope.addErrorAlert = function (msg) {
-        $scope.addAlert('error', msg);
+        $scope.addAlert('danger', msg);
       };
 
       $scope.addWarningAlert = function (msg) {

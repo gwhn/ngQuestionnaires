@@ -13,11 +13,11 @@
   </p>
 </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <button ui-sref="questionnaireNew" class="btn btn-default">New</button>
-      </li>
-    </ul>
+<ul ng-if="user" class="list-unstyled">
+  <li>
+    <button ui-sref="questionnaireNew" class="btn btn-default">New</button>
+  </li>
+</ul>
 
 <article class="well well-lg repeated-item"
          ng-repeat="questionnaire in filteredQuestionnaires | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
@@ -31,13 +31,13 @@
       <li>
         <a ui-sref="questionnaireShow({id: questionnaire.id})">Show</a>
       </li>
-      <li>
+      <li ng-if="user">
         <a ui-sref="questionnaireEdit({id: questionnaire.id})">Edit</a>
       </li>
-      <li ng-if="questionnaire.published">
+      <li ng-if="user && questionnaire.published">
         <a ui-sref="responseNew({id: questionnaire.id})">Respond</a>
       </li>
-      <li>
+      <li ng-if="user">
         <a ng-click="destroy(questionnaire.id)"><span class="text-danger">Delete</span></a>
       </li>
     </ul>

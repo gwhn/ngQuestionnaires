@@ -12,9 +12,11 @@ angular.module('ngQuestionnaires.services')
           var def = $q.defer(),
             auth = new FirebaseSimpleLogin(ref, function (error, user) {
               if (error) {
-                def.reject('Login failed');
-              } else {
+                def.reject(error.message);
+              } else if (user) {
                 def.resolve(user);
+              } else {
+                def.reject('User is logged out');
               }
             });
           auth.login(provider, {

@@ -21,7 +21,7 @@
 
     <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
 
-    <button ng-click="destroy(response.id)" class="btn btn-danger pull-right">Delete</button>
+    <button ng-if="user" ng-click="destroy(response.id)" class="btn btn-danger pull-right">Delete</button>
 
     <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
       <span ng-show="isCollapsed">

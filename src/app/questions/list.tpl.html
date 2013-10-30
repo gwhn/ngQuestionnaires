@@ -13,7 +13,7 @@
   </p>
 </div>
 
-<ul class="list-unstyled">
+<ul ng-if="user" class="list-unstyled">
   <li>
     <button ui-sref="questionNew" class="btn btn-default">New</button>
   </li>
@@ -22,7 +22,7 @@
 <article class="well well-lg repeated-item"
          ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <div class="btn-group pull-right">
+  <div ng-if="user" class="btn-group pull-right">
     <button class="btn btn-default" ui-sref="questionEdit({id: question.id})">Edit</button>
     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>

@@ -1,5 +1,6 @@
 <article class="well well-lg">
-  <button ui-sref="questionnaireEdit({id: questionnaire.id})" class="btn btn-default pull-right">Edit</button>
+  <button ng-if="user" ui-sref="questionnaireEdit({id: questionnaire.id})"
+          class="btn btn-default pull-right">Edit</button>
 
   <div class="page-header">
     <h3>{{questionnaire.title}}</h3>

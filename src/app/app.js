@@ -80,7 +80,7 @@ angular.module('ngQuestionnaires', [
         $scope.isLoading = show;
       };
 
-      $scope.user = null;
+      $scope.user = false;
       $scope.login = function (provider) {
         authenticationFactory.login(provider)
           .then(function (user) {

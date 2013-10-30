@@ -62,6 +62,7 @@ module.exports = {
    */
   vendor_files: {
     js: [
+      'vendor/oauthio/app/js/oauth.min.js',
       'vendor/jquery/jquery.min.js',
       'vendor/underscore/underscore-min.js',
       'vendor/bootstrap/dist/js/bootstrap.min.js',

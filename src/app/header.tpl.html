@@ -8,7 +8,7 @@
     </button>
     <a class="navbar-brand" ui-sref="questionnaireList">ngQuestionnaires</a>
   </div>
-  <div class="collapse navbar-collapse main-navbar">
+  <div class="collapse navbar-collapse main-navbar" ng-switch="user === null">
     <ul class="nav navbar-nav">
       <li>
         <a ui-sref="questionList">Questions</a>
@@ -18,6 +18,17 @@
       </li>
       <li>
         <a href="#" ng-click="seed()"><span class="text-danger">Seed</span></a>
+      </li>
+      <li ng-switch-when="false">
+        <p class="navbar-text">Logged in as {{user.displayName}}</p>
+      </li>
+      <li class="dropdown" ng-switch-default>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#" ng-click="login('facebook')"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+          <li><a href="#" ng-click="login('github')"><i class="fa fa-github"></i> GitHub</a></li>
+          <li><a href="#" ng-click="login('twitter')"><i class="fa fa-twitter"></i> Twitter</a></li>
+        </ul>
       </li>
     </ul>
   </div>

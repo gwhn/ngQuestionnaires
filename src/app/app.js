@@ -61,12 +61,13 @@ angular.module('ngQuestionnaires', [
     '$state',
     '$cookieStore',
     '$location',
+    'authenticationFactory',
     'questionnaireFactory',
     'questionFactory',
     'responseFactory',
     'underscore',
     function ($scope, $modal, $q, $state, $cookieStore, $location,
-              questionnaireFactory, questionFactory, responseFactory, underscore) {
+              authenticationFactory, questionnaireFactory, questionFactory, responseFactory, underscore) {
 
       $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         if (angular.isDefined(toState.data.pageTitle)) {
@@ -77,6 +78,17 @@ angular.module('ngQuestionnaires', [
       $scope.isLoading = false;
       $scope.loading = function (show) {
         $scope.isLoading = show;
+      };
+
+      $scope.user = null;
+      $scope.login = function (provider) {
+        authenticationFactory.login(provider)
+          .then(function (user) {
+            $scope.user = user;
+            $scope.addSuccessAlert('Logged in as ' + user.displayName + ' with ' + provider + ' successfully');
+          }, function (reason) {
+            $scope.addWarningAlert(reason);
+          });
       };
 
       $scope.alerts = [];

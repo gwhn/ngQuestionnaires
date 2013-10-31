@@ -28,8 +28,8 @@
             Choices <span class="badge">{{question.choices.length}}</span>
           </div>
           <div toggle-body>
-            <ol>
-              <li ng-repeat="choice in question.choices">{{choice.text}}</li>
+            <ol class="list-group">
+              <li ng-repeat="choice in question.choices" class="list-group-item">{{choice.text}}</li>
             </ol>
           </div>
         </div>

@@ -12,7 +12,7 @@ angular.module('ngQuestionnaires.directives')
           '$element',
           '$attrs',
           function ($scope, $element, $attrs) {
-            $scope.isCollapsed = $attrs.isCollapsed;
+            $scope.isCollapsed = $attrs.isCollapsed || false;
           }]
       };
     }])

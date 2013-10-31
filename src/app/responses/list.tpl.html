@@ -16,37 +16,35 @@
 <article class="well well-lg repeated-item"
          ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <div ng-controller="answerShowCtrl">
+  <div>
     <p class="lead pull-right"><i ng-bind-html="response.respondent | highlight:search.query"></i></p>
 
     <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
 
     <button ng-if="user" ng-click="destroy(response.id)" class="btn btn-danger pull-right">Delete</button>
 
-    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
-      <span ng-show="isCollapsed">
-        <i class="glyphicon glyphicon-plus"></i>
-      </span>
-      <span ng-hide="isCollapsed">
-        <i class="glyphicon glyphicon-minus"></i>
-      </span>
-      Answers <span class="badge">{{response.answers.length}}</span>
-    </button>
+    <div toggle-collapse is-collapsed="true">
+      <div toggle-label>
+        Answers <span class="badge">{{response.answers.length}}</span>
+      </div>
+      <div toggle-body>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Question</th>
+            <th>Choice</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="answer in response.answers">
+            <td class="col-md-6">{{answer.question}}</td>
+            <td class="col-md-6">{{answer.choice}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <table class="table table-striped animate-hide" ng-hide="isCollapsed">
-      <thead>
-      <tr>
-        <th>Question</th>
-        <th>Choice</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="answer in response.answers">
-        <td class="col-md-6">{{answer.question}}</td>
-        <td class="col-md-6">{{answer.choice}}</td>
-      </tr>
-      </tbody>
-    </table>
   </div>
 
 </article>

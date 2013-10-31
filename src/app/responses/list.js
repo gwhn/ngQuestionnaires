@@ -60,8 +60,4 @@ angular.module('ngQuestionnaires.responses')
           .then($scope.queryResponses);
       };
 
-    }])
-
-  .controller('answerShowCtrl', ['$scope', function ($scope) {
-    $scope.isCollapsed = true;
-  }]);
+    }]);

@@ -27,8 +27,8 @@
           <li><a href="#" ng-click="login('twitter')"><i class="fa fa-twitter"></i> Twitter</a></li>
         </ul>
       </li>
-      <li ng-show="user">
-        <p class="navbar-text">Logged in as {{user.displayName}}</p>
+      <li ng-show="user" class="navbar-form">
+        <button ng-click="logout()" class="btn btn-default">Log out {{user.displayName}}</button>
       </li>
     </ul>
   </div>

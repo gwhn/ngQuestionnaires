@@ -6,18 +6,48 @@ angular.module('ngQuestionnaires.services')
     'Firebase',
     'FirebaseSimpleLogin',
     function ($rootScope, fbUrl, Firebase, FirebaseSimpleLogin) {
+      var ref = new Firebase(fbUrl),
+        callback = function (error, user) {
+          if (error) {
+            $rootScope.$broadcast('loginError', error);
+          } else if (user) {
+            $rootScope.$broadcast('login', user);
+          } else {
+            $rootScope.$broadcast('logout');
+          }
+          $rootScope.$apply();
+        },
+        auth = new FirebaseSimpleLogin(ref, callback);
+
       return {
         login: function (provider) {
-          var ref = new Firebase(fbUrl);
-          new FirebaseSimpleLogin(ref, function (error, user) {
-            if (error) {
-              $rootScope.$broadcast('loginError', error);
-            } else if (user) {
-              $rootScope.$broadcast('login', user, provider);
-            } else {
-              $rootScope.$broadcast('logout');
+          var options = function () {
+            switch (provider) {
+              case 'facebook':
+                return {
+                  rememberMe: false,
+                  scope: 'email'
+                };
+              case 'github':
+                return {
+                  rememberMe: false,
+                  scope: 'user:email'
+                };
+              case 'twitter':
+                return {
+                  rememberMe: false
+                };
+              default:
+                return {};
             }
-          }).login(provider, {scope: 'email'});
+          };
+          auth.login(provider, options());
+        },
+        logout: function () {
+          auth.logout();
+        },
+        clearSession: function () {
+          auth.clearSession();
         }
       };
     }]);

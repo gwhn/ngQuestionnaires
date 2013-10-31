@@ -50,8 +50,9 @@ angular.module('ngQuestionnaires', [
     $urlRouterProvider.otherwise('/questionnaires/list');
   })
 
-  .run(['$cacheFactory', function ($cacheFactory) {
-    var data = $cacheFactory('data');
+  .run(['$cacheFactory', 'authenticationFactory', function ($cacheFactory, authenticationFactory) {
+    $cacheFactory('data');
+    authenticationFactory.clearSession();
   }])
 
   .controller('appCtrl', [
@@ -94,18 +95,27 @@ angular.module('ngQuestionnaires', [
       };
 
       $scope.user = false;
-      $scope.$on('login', function (event, user, provider) {
+
+      $scope.$on('login', function (event, user) {
         $scope.user = user;
-        $scope.addSuccessAlert('Logged in to ' + provider + ' as ' + user.displayName + ' successfully');
+        $scope.addSuccessAlert('Logged in to ' + user.provider + ' as ' + user.displayName + ' successfully');
       });
+
       $scope.$on('logout', function (event) {
         $scope.user = false;
+        $scope.addWarningAlert('Logged out');
       });
+
       $scope.$on('loginError', function (event, error) {
-        $scope.addWarningAlert(error.reason);
+        $scope.addWarningAlert(error.message);
       });
+
       $scope.login = function (provider) {
         authenticationFactory.login(provider);
+      };
+
+      $scope.logout = function () {
+        authenticationFactory.logout();
       };
 
       $scope.alerts = [];
@@ -291,8 +301,8 @@ angular.module('ngQuestionnaires', [
             $scope.addErrorAlert('Failed to seed new data');
           })
           ['finally'](function () {
-            $scope.loading(false);
-          });
+          $scope.loading(false);
+        });
       };
 
     }])

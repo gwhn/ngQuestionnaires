@@ -94,14 +94,18 @@ angular.module('ngQuestionnaires', [
       };
 
       $scope.user = false;
+      $scope.$on('login', function (event, user, provider) {
+        $scope.user = user;
+        $scope.addSuccessAlert('Logged in to ' + provider + ' as ' + user.displayName + ' successfully');
+      });
+      $scope.$on('logout', function (event) {
+        $scope.user = false;
+      });
+      $scope.$on('loginError', function (event, error) {
+        $scope.addWarningAlert(error.reason);
+      });
       $scope.login = function (provider) {
-        authenticationFactory.login(provider)
-          .then(function (user) {
-            $scope.user = user;
-            $scope.addSuccessAlert('Logged in as ' + user.displayName + ' with ' + provider + ' successfully');
-          }, function (reason) {
-            $scope.addWarningAlert(reason);
-          });
+        authenticationFactory.login(provider);
       };
 
       $scope.alerts = [];

@@ -1,29 +1,23 @@
 angular.module('ngQuestionnaires.services')
 
   .factory('authenticationFactory', [
-    '$q',
+    '$rootScope',
     'fbUrl',
     'Firebase',
     'FirebaseSimpleLogin',
-    function ($q, fbUrl, Firebase, FirebaseSimpleLogin) {
-      var ref = new Firebase(fbUrl);
+    function ($rootScope, fbUrl, Firebase, FirebaseSimpleLogin) {
       return {
         login: function (provider) {
-          var def = $q.defer(),
-            auth = new FirebaseSimpleLogin(ref, function (error, user) {
-              if (error) {
-                def.reject(error.message);
-              } else if (user) {
-                def.resolve(user);
-              } else {
-                def.reject('User is logged out');
-              }
-            });
-          auth.login(provider, {
-            rememberMe: true,
-            scope: 'email'
-          });
-          return def.promise;
+          var ref = new Firebase(fbUrl);
+          new FirebaseSimpleLogin(ref, function (error, user) {
+            if (error) {
+              $rootScope.$broadcast('loginError', error);
+            } else if (user) {
+              $rootScope.$broadcast('login', user, provider);
+            } else {
+              $rootScope.$broadcast('logout');
+            }
+          }).login(provider, {scope: 'email'});
         }
       };
     }]);

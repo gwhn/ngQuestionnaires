@@ -37,7 +37,7 @@
     </ul>
   </div>
 
-  <p class="lead" ng-bind-html="question.text | highlight:search.query"></p>
+  <h3 ng-bind-html="question.text | highlight:search.query"></h3>
 
   <div d3-bar-chart data="question.choices" label="text" value="count"></div>
 

@@ -3,21 +3,19 @@
           class="btn btn-default pull-right">Edit
   </button>
 
-  <div class="page-header">
-    <h3>{{questionnaire.title}}</h3>
+  <h3>{{questionnaire.title}}</h3>
+
+  <div class="row">
+    <p class="lead col-md-10">{{questionnaire.description}}</p>
+    <p ng-switch="questionnaire.published" class="col-md-2 text-right">
+      Published?
+      <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
+      <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
+    </p>
   </div>
 
-  <p class="lead">{{questionnaire.description}}</p>
+  <hr/>
 
-  <p ng-switch="questionnaire.published">
-    Published?
-    <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
-    <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
-  </p>
-
-  <div class="page-header">
-    <h3>Questions</h3>
-  </div>
   <ul class="list-unstyled">
     <li ng-repeat="questionId in questionnaire.questions">
       <article ng-controller="questionShowCtrl">
@@ -33,8 +31,6 @@
             </ol>
           </div>
         </div>
-
-        <hr/>
       </article>
     </li>
   </ul>

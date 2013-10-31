@@ -17,9 +17,10 @@
          ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
   <div>
-    <p class="lead pull-right"><i ng-bind-html="response.respondent | highlight:search.query"></i></p>
-
-    <p class="lead" ng-bind-html="response.questionnaire | highlight:search.query"></p>
+    <div class="row">
+      <h3 class="col-md-8" ng-bind-html="response.questionnaire | highlight:search.query"></h3>
+      <h3 class="col-md-4 text-right text-muted" ng-bind-html="response.respondent | highlight:search.query"></h3>
+    </div>
 
     <button ng-if="user" ng-click="destroy(response.id)" class="btn btn-danger pull-right">Delete</button>
 

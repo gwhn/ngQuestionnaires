@@ -43,20 +43,20 @@
     </ul>
   </div>
 
-  <p class="lead" ng-bind-html="questionnaire.title | highlight:search.query"></p>
+  <h3 ng-bind-html="questionnaire.title | highlight:search.query"></h3>
 
-  <p ng-bind-html="questionnaire.description | highlight:search.query"></p>
+  <p ng-bind-html="questionnaire.description | highlight:search.query" class="lead"></p>
 
-  <p class="text-muted">
-    <span ng-if="questionnaire.questions">
-      Questions <span class="badge">{{questionnaire.questions.length}}</span><br/>
-    </span>
-    <span ng-switch="questionnaire.published">
+  <div class="row">
+    <div ng-if="questionnaire.questions" class="col-md-10">
+      Questions <span class="badge">{{questionnaire.questions.length}}</span>
+    </div>
+    <div ng-switch="questionnaire.published" class="col-md-2 text-right">
       Published?
       <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
       <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
-    </span>
-  </p>
+    </div>
+  </div>
 
 </article>
 

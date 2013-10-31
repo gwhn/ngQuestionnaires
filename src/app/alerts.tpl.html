@@ -1,3 +1,15 @@
-<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+<div ng-if="alerts.length > 1">
+  <div toggle-collapse is-collapsed="true">
+    <div toggle-label>
+      <i class="glyphicon glyphicon-list"></i>
+    </div>
+    <div toggle-body>
+      <alert ng-repeat="alert in alerts | skip:1" type="alert.type" close="closeAlert($index+1)">
+        {{alert.msg}}
+      </alert>
+    </div>
+  </div>
+</div>
+<alert ng-repeat="alert in alerts | take:1" type="alert.type" close="closeAlert($index)">
   {{alert.msg}}
 </alert>

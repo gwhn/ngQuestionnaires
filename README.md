@@ -13,6 +13,38 @@ however it does not use the AngularJS bindings which support implicit synchronis
 instead opting to use the lower-level [Firebase API](https://www.firebase.com/docs/javascript/firebase/index.html)
 directly. The beauty of using Firebase is you can integrate without the need for server-side proxying.
 
+It also uses Firebase authentication with GitHub, Facebook and Twitter providers, and uses write rules to enforce
+edits only by authenticated users.
+
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth != null && data.exists()",
+    "questionnaires": {
+      "$questionnaire": {
+        ".write": "(auth != null && !data.exists()) || (auth != null && data.exists() && data.child('userId').val() == auth.id)"
+      }
+    },
+    "questions": {
+      "$question": {
+        ".write": "(auth != null && !data.exists()) || (auth != null && data.exists() && data.child('userId').val() == auth.id)",
+        "choices": {
+          "$index": {
+            ".write": "auth != null && data.exists()"
+          }
+        }
+      }
+    },
+    "responses": {
+      "$response": {
+        ".write": "(auth != null && !data.exists()) || (auth != null && data.exists() && data.child('userId').val() == auth.id)"
+      }
+    }
+  }
+}
+```
+
 It uses [d3](http://d3js.org/) visualization library to generate bar charts for the question choices answered.
 
 It is seeded from the [ng-boilerplate](https://github.com/ngbp/ng-boilerplate)
@@ -88,7 +120,3 @@ not providing distribution files. To resolve the issue you will need to build an
 It is highly recommended that you install AngularJS Batarang for Chrome, which provides
 useful tools for debugging and profiling, and LiveReload which will apply CSS and script
 edits without the need to refresh your browser.
-
-##To Dos
-
-1. Use Firebase authentication and authorisation

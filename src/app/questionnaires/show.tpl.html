@@ -7,33 +7,33 @@
 
   <div class="row">
     <p class="lead col-md-10">{{questionnaire.description}}</p>
+
     <p ng-switch="questionnaire.published" class="col-md-2 text-right">
       Published?
       <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
       <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
     </p>
   </div>
-
-  <hr/>
-
-  <ul class="list-unstyled">
-    <li ng-repeat="questionId in questionnaire.questions">
-      <article ng-controller="questionShowCtrl">
-        <p class="lead">{{question.text}}</p>
-
-        <div toggle-collapse="false">
-          <div toggle-label>
-            Choices <span class="badge">{{question.choices.length}}</span>
-          </div>
-          <div toggle-body>
-            <ol class="list-group">
-              <li ng-repeat="choice in question.choices" class="list-group-item">{{choice.text}}</li>
-            </ol>
-          </div>
-        </div>
-      </article>
-    </li>
-  </ul>
-  <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
-
 </article>
+
+<ul class="list-unstyled">
+  <li ng-repeat="questionId in questionnaire.questions">
+    <article ng-controller="questionShowCtrl" class="well well-lg">
+      <p class="lead">{{question.text}}</p>
+
+      <div toggle-collapse="false">
+        <div toggle-label>
+          Choices <span class="badge">{{question.choices.length}}</span>
+        </div>
+        <div toggle-body>
+          <ol class="list-group">
+            <li ng-repeat="choice in question.choices" class="list-group-item">
+              {{choice.text}} <span class="badge">{{choice.count}}</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </article>
+  </li>
+</ul>
+<p ng-if="!questionnaire.questions" ng-bind="There are no questions" class="text-info"></p>

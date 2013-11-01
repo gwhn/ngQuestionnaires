@@ -67,8 +67,7 @@ angular.module('ngQuestionnaires', [
     'questionFactory',
     'responseFactory',
     'underscore',
-    function ($scope, $modal, $q, $state, $cookieStore, $location,
-              authenticationFactory, questionnaireFactory, questionFactory, responseFactory, underscore) {
+    function ($scope, $modal, $q, $state, $cookieStore, $location, authenticationFactory, questionnaireFactory, questionFactory, responseFactory, underscore) {
 
       $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (!$scope.user && (
@@ -167,7 +166,7 @@ angular.module('ngQuestionnaires', [
               question,
               questionnaires,
               questionnaire,
-              i, j,
+              i, j, k,
               x = 4, y = 100, z = 10,
               promises,
               found = function (values, match) {
@@ -296,9 +295,11 @@ angular.module('ngQuestionnaires', [
           })
           .then(function () {
             $scope.addSuccessAlert('Finished seeding new data successfully');
-            $state.go('questionnaireList', {location: 'replace'});
           }, function () {
             $scope.addErrorAlert('Failed to seed new data');
+          })
+          .then(function () {
+            $state.go('questionnaireList', {location: 'replace'});
           })
           ['finally'](function () {
           $scope.loading(false);

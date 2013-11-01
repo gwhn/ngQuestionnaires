@@ -26,10 +26,10 @@ angular.module('ngQuestionnaires.directives')
         transclude: true,
         template: '<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">' +
           '<span ng-show="isCollapsed">' +
-          '<i class="glyphicon glyphicon-plus"></i>' +
+          '<i class="glyphicon glyphicon-chevron-down"></i>' +
           '</span>' +
           '<span ng-hide="isCollapsed">' +
-          '<i class="glyphicon glyphicon-minus"></i>' +
+          '<i class="glyphicon glyphicon-chevron-up"></i>' +
           '</span>' +
           '<span ng-transclude></span>' +
           '</button>'

@@ -6,7 +6,8 @@ angular.module('ngQuestionnaires.responses')
     '$modal',
     'responseFactory',
     'pagination',
-    function ($scope, $filter, $modal, responseFactory, pagination) {
+    'underscore',
+    function ($scope, $filter, $modal, responseFactory, pagination, underscore) {
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
@@ -36,7 +37,11 @@ angular.module('ngQuestionnaires.responses')
       $scope.isMatch = function (response) {
         return $scope.search.query ? (
           response.questionnaire.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
-            response.respondent.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1
+            response.respondent.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
+            underscore.any(response.answers, function (answer) {
+              return answer.question.toLowerCase().indexOf($scope.search.query) > -1 ||
+                answer.choice.toLowerCase().indexOf($scope.search.query) > -1 ;
+            })
           ) : true;
       };
 

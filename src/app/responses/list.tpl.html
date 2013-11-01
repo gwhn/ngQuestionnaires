@@ -38,8 +38,8 @@
           </thead>
           <tbody>
           <tr ng-repeat="answer in response.answers">
-            <td class="col-md-6">{{answer.question}}</td>
-            <td class="col-md-6">{{answer.choice}}</td>
+            <td class="col-md-6" ng-bind-html="answer.question | highlight:search.query"></td>
+            <td class="col-md-6" ng-bind-html="answer.choice | highlight:search.query"></td>
           </tr>
           </tbody>
         </table>

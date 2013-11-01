@@ -14,6 +14,9 @@
       <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
     </p>
   </div>
+
+  <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
+
 </article>
 
 <ul class="list-unstyled">
@@ -36,4 +39,3 @@
     </article>
   </li>
 </ul>
-<p ng-if="!questionnaire.questions" ng-bind="There are no questions" class="text-info"></p>

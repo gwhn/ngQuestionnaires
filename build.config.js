@@ -78,6 +78,7 @@ module.exports = {
       'vendor/angular-ui-utils/modules/highlight/highlight.js'
     ],
     css: [
+      'vendor/animate.css/animate.css'
     ],
     assets: [
     ],

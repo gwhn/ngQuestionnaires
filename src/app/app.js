@@ -52,7 +52,6 @@ angular.module('ngQuestionnaires', [
 
   .run(['$cacheFactory', 'authenticationFactory', function ($cacheFactory, authenticationFactory) {
     $cacheFactory('data');
-    authenticationFactory.clearSession();
   }])
 
   .controller('appCtrl', [
@@ -93,7 +92,9 @@ angular.module('ngQuestionnaires', [
         $scope.isLoading = show;
       };
 
-      $scope.user = false;
+      $scope.$watch('user', function (value) {
+        console.log(value);
+      });
 
       $scope.$on('login', function (event, user) {
         $scope.user = user;
@@ -101,7 +102,7 @@ angular.module('ngQuestionnaires', [
       });
 
       $scope.$on('logout', function (event) {
-        $scope.user = false;
+        $scope.user = null;
         $scope.addWarningAlert('Logged out');
       });
 

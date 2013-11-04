@@ -404,7 +404,7 @@ module.exports = function ( grunt ) {
           '<%= build_dir %>/src/**/*.js',
           '<%= html2js.common.dest %>',
           '<%= html2js.app.dest %>',
-          '<%= vendor_files.css %>',
+          //'<%= vendor_files.css %>',
           '<%= recess.build.dest %>'
         ]
       },

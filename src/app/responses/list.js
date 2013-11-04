@@ -4,35 +4,24 @@ angular.module('ngQuestionnaires.responses')
     '$scope',
     '$filter',
     '$modal',
-    'responseFactory',
+    'responses',
     'pagination',
     'underscore',
-    function ($scope, $filter, $modal, responseFactory, pagination, underscore) {
+    function ($scope, $filter, $modal, responses, pagination, underscore) {
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
-      $scope.queryResponses = function () {
-        $scope.loading(true);
-        responseFactory.query()
-          .then(function (responses) {
-            $scope.responses = responses;
-            $scope.$watch('search.query', function (value) {
-              var i;
-              $scope.page = 1;
-              if (value) {
-                $scope.filteredResponses = $filter('filter')($scope.responses, value);
-              } else {
-                $scope.filteredResponses = responses;
-              }
-              $scope.totalItems = $scope.filteredResponses.length;
-            });
-          }, $scope.addErrorAlert)
-          .then(function () {
-            $scope.loading(false);
-          });
-      };
+      $scope.responses = responses;
 
-      $scope.queryResponses();
+      $scope.$watch('search.query', function (value) {
+        $scope.page = 1;
+        if (value) {
+          $scope.filteredResponses = $filter('filter')($scope.responses, value);
+        } else {
+          $scope.filteredResponses = responses;
+        }
+        $scope.totalItems = $scope.filteredResponses.length;
+      });
 
       $scope.isMatch = function (response) {
         return $scope.search.query ? (
@@ -51,18 +40,20 @@ angular.module('ngQuestionnaires.responses')
           templateUrl: 'responses/delete.tpl.html',
           resolve: {
             response: function () {
-              return responseFactory.get(id);
+              return responses.getByName(id);
             }
           }
         }).result
           .then(function (response) {
-            return responseFactory.remove(id)
-              .then(function () {
+            responses.remove(response, function (err) {
+              if (err) {
+                $scope.addErrorAlert(err);
+              } else {
                 $scope.addSuccessAlert('Response from ' + response.respondent +
                   ' on ' + response.questionnaire + ' deleted successfully');
-              }, $scope.addErrorAlert);
-          })
-          .then($scope.queryResponses);
+              }
+            });
+          });
       };
 
     }]);

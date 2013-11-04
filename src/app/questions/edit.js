@@ -4,8 +4,8 @@ angular.module('ngQuestionnaires.questions')
     '$scope',
     '$state',
     '$stateParams',
-    'questionFactory',
-    function ($scope, $state, $stateParams, questionFactory) {
+    'questions',
+    function ($scope, $state, $stateParams, questions) {
 
       var navigate = function () {
         var referrer = $stateParams.referrer,
@@ -37,11 +37,14 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.save = function () {
-        questionFactory.add(angular.copy($scope.question))
-          .then(function () {
+        questions.add(angular.copy($scope.question), function (err) {
+          if (err) {
+            $scope.addErrorAlert(err);
+          } else {
             $scope.addSuccessAlert($scope.question.text + ' saved successfully');
-          }, $scope.addErrorAlert)
-          .then(navigate);
+            navigate();
+          }
+        });
       };
 
       $scope.cancel = navigate;
@@ -52,8 +55,8 @@ angular.module('ngQuestionnaires.questions')
     '$scope',
     '$state',
     '$stateParams',
-    'questionFactory',
-    function ($scope, $state, $stateParams, questionFactory) {
+    'questions',
+    function ($scope, $state, $stateParams, questions) {
 
       var navigate = function () {
         $state.go('questionList');
@@ -61,15 +64,7 @@ angular.module('ngQuestionnaires.questions')
 
       $scope.action = $state.current.data.action;
 
-      $scope.loading(true);
-
-      questionFactory.get($stateParams.id)
-        .then(function (question) {
-          $scope.question = question;
-        }, $scope.addErrorAlert)
-        .then(function () {
-          $scope.loading(false);
-        });
+      $scope.question = questions.getByName($stateParams.id);
 
       $scope.removeChoice = function (index) {
         $scope.question.choices.splice(index, 1);
@@ -83,11 +78,14 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.update = function () {
-        questionFactory.update($stateParams.id, angular.copy($scope.question))
-          .then(function () {
+        questions.update(angular.copy($scope.question), function (err) {
+          if (err) {
+            $scope.addErrorAlert(err);
+          } else {
             $scope.addSuccessAlert($scope.question.text + ' updated successfully');
-          }, $scope.addErrorAlert)
-          .then(navigate);
+            navigate();
+          }
+        });
       };
 
       $scope.cancel = navigate;

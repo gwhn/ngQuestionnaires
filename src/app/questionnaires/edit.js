@@ -4,9 +4,9 @@ angular.module('ngQuestionnaires.questionnaires')
     '$scope',
     '$cacheFactory',
     '$state',
-    'questionnaireFactory',
-    'questionFactory',
-    function ($scope, $cacheFactory, $state, questionnaireFactory, questionFactory) {
+    'questionnaires',
+    'questions',
+    function ($scope, $cacheFactory, $state, questionnaires, questions) {
       var questionnaire = $cacheFactory.get('data').get('questionnaire');
 
       function navigate() {
@@ -23,15 +23,7 @@ angular.module('ngQuestionnaires.questionnaires')
         $cacheFactory.get('data').remove('questionnaire');
       }
 
-      $scope.loading(true);
-
-      questionFactory.query()
-        .then(function (questions) {
-          $scope.questions = questions;
-        }, $scope.addErrorAlert)
-        .then(function() {
-          $scope.loading(false);
-        });
+      $scope.questions = questions;
 
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -39,11 +31,14 @@ angular.module('ngQuestionnaires.questionnaires')
       };
 
       $scope.save = function () {
-        questionnaireFactory.add($scope.questionnaire)
-          .then(function () {
+        questionnaires.add($scope.questionnaire, function (err) {
+          if (err) {
+            $scope.addErrorAlert(err);
+          } else {
             $scope.addSuccessAlert($scope.questionnaire.title + ' saved successfully');
-          }, $scope.addErrorAlert)
-          .then(navigate);
+            navigate();
+          }
+        });
       };
 
       $scope.cancel = navigate;
@@ -55,9 +50,9 @@ angular.module('ngQuestionnaires.questionnaires')
     '$cacheFactory',
     '$state',
     '$stateParams',
-    'questionnaireFactory',
-    'questionFactory',
-    function ($scope, $cacheFactory, $state, $stateParams, questionnaireFactory, questionFactory) {
+    'questionnaires',
+    'questions',
+    function ($scope, $cacheFactory, $state, $stateParams, questionnaires, questions) {
 
       var questionnaire = $cacheFactory.get('data').get('questionnaire'),
         navigate = function () {
@@ -68,24 +63,13 @@ angular.module('ngQuestionnaires.questionnaires')
       $scope.action = $state.current.data.action;
 
       if (questionnaire === undefined) {
-        questionnaireFactory.get($stateParams.id)
-          .then(function (questionnaire) {
-            $scope.questionnaire = questionnaire;
-          }, $scope.addErrorAlert);
+        $scope.questionnaire = questionnaires.getByName($stateParams.id);
       } else {
         $scope.questionnaire = questionnaire;
         $cacheFactory.get('data').remove('questionnaire');
       }
 
-      $scope.loading(true);
-
-      questionFactory.query()
-        .then(function (questions) {
-          $scope.questions = questions;
-        }, $scope.addErrorAlert)
-        .then(function () {
-          $scope.loading(false);
-        });
+      $scope.questions = questions;
 
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
@@ -93,11 +77,14 @@ angular.module('ngQuestionnaires.questionnaires')
       };
 
       $scope.update = function () {
-        questionnaireFactory.update($stateParams.id, $scope.questionnaire)
-          .then(function () {
+        questionnaires.update($scope.questionnaire, function (err) {
+          if (err) {
+            $scope.addErrorAlert(err);
+          } else {
             $scope.addSuccessAlert($scope.questionnaire.title + ' updated successfully');
-          }, $scope.addErrorAlert)
-          .then(navigate);
+            navigate();
+          }
+        });
       };
 
       $scope.cancel = navigate;

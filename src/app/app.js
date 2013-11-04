@@ -10,11 +10,13 @@ angular.module('ngQuestionnaires', [
     'ngSanitize',
     'ngAnimate',
     'ngCookies',
+    'ngRoute',
     'templates-app',
     'templates-common',
     'ui.bootstrap',
     'ui.router',
     'ui.highlight',
+    'firebase',
     'ngQuestionnaires.questionnaires',
     'ngQuestionnaires.questions',
     'ngQuestionnaires.responses',
@@ -25,18 +27,32 @@ angular.module('ngQuestionnaires', [
 
   .constant('fbUrl', 'https://ngquestionnaires.firebaseio.com/')
 
-  .constant('pagination', {
-    itemsPerPage: 5,
-    maxSize: 5
-  })
+  .constant('pagination', {itemsPerPage: 5, maxSize: 5})
 
   .factory('Firebase', ['$window', function ($window) {
     return $window.Firebase;
   }])
 
-  .factory('FirebaseSimpleLogin', ['$window', function ($window) {
-    return $window.FirebaseSimpleLogin;
-  }])
+  .factory('questionnaires', [
+    'fbUrl', 'Firebase', 'angularFireCollection',
+    function (fbUrl, Firebase, angularFireCollection) {
+      return angularFireCollection(new Firebase(fbUrl + 'questionnaires'));
+    }
+  ])
+
+  .factory('questions', [
+    'fbUrl', 'Firebase', 'angularFireCollection',
+    function (fbUrl, Firebase, angularFireCollection) {
+      return angularFireCollection(new Firebase(fbUrl + 'questions'));
+    }
+  ])
+
+  .factory('responses', [
+    'fbUrl', 'Firebase', 'angularFireCollection',
+    function (fbUrl, Firebase, angularFireCollection) {
+      return angularFireCollection(new Firebase(fbUrl + 'responses'));
+    }
+  ])
 
   .factory('underscore', ['$window', function ($window) {
     return $window._;
@@ -50,9 +66,11 @@ angular.module('ngQuestionnaires', [
     $urlRouterProvider.otherwise('/questionnaires/list');
   })
 
-  .run(['$cacheFactory', 'authenticationFactory', function ($cacheFactory, authenticationFactory) {
-    $cacheFactory('data');
-  }])
+  .run(['$rootScope', 'fbUrl', 'Firebase', 'angularFireAuth', '$cacheFactory',
+    function ($rootScope, fbUrl, Firebase, angularFireAuth, $cacheFactory) {
+      angularFireAuth.initialize(new Firebase(fbUrl), {scope: $rootScope, name: 'user'});
+      $cacheFactory('data');
+    }])
 
   .controller('appCtrl', [
     '$scope',
@@ -61,14 +79,10 @@ angular.module('ngQuestionnaires', [
     '$state',
     '$cookieStore',
     '$location',
-    'authenticationFactory',
-    'questionnaireFactory',
-    'questionFactory',
-    'responseFactory',
-    'underscore',
-    function ($scope, $modal, $q, $state, $cookieStore, $location, authenticationFactory, questionnaireFactory, questionFactory, responseFactory, underscore) {
+    'angularFireAuth',
+    function ($scope, $modal, $q, $state, $cookieStore, $location, angularFireAuth) {
 
-      $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+      $scope.$on('$stateChangeStart', function (event, toState) {
         if (!$scope.user && (
           toState.name === 'questionnaireNew' ||
             toState.name === 'questionnaireEdit' ||
@@ -81,7 +95,7 @@ angular.module('ngQuestionnaires', [
         }
       });
 
-      $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      $scope.$on('$stateChangeSuccess', function (event, toState) {
         if (angular.isDefined(toState.data.pageTitle)) {
           $scope.pageTitle = toState.data.pageTitle;
         }
@@ -92,30 +106,26 @@ angular.module('ngQuestionnaires', [
         $scope.isLoading = show;
       };
 
-      $scope.$watch('user', function (value) {
-        console.log(value);
-      });
-
-      $scope.$on('login', function (event, user) {
+      $scope.$on('angularFireAuth:login', function (event, user) {
         $scope.user = user;
         $scope.addSuccessAlert('Logged in to ' + user.provider + ' as ' + user.displayName + ' successfully');
       });
 
-      $scope.$on('logout', function (event) {
+      $scope.$on('angularFireAuth:logout', function (event) {
         $scope.user = null;
         $scope.addWarningAlert('Logged out');
       });
 
-      $scope.$on('loginError', function (event, error) {
+      $scope.$on('angularFireAuth:error', function (event, error) {
         $scope.addWarningAlert(error.message);
       });
 
       $scope.login = function (provider) {
-        authenticationFactory.login(provider);
+        angularFireAuth.login(provider);
       };
 
       $scope.logout = function () {
-        authenticationFactory.logout();
+        angularFireAuth.logout();
       };
 
       $scope.alerts = [];
@@ -157,171 +167,175 @@ angular.module('ngQuestionnaires', [
           });
       }
 
-      $scope.seed = function () {
-        $modal.open({
-          controller: 'seedCtrl',
-          templateUrl: 'seed.tpl.html'
-        }).result
-          .then(function () {
-            var questions,
-              question,
-              questionnaires,
-              questionnaire,
-              i, j, k,
-              x = 4, y = 100, z = 10,
-              promises,
-              found = function (values, match) {
-                return underscore.find(values, function (value) {
-                  return value === match;
-                });
-              },
-              makeResponse = function (questionnaireId, key) {
-                var deferred = $q.defer();
-                questionnaireFactory.get(questionnaireId)
-                  .then(function (questionnaire) {
-                    var response = {
-                      userId: $scope.user.id,
-                      respondent: 'respondent' + (key + 1) + '@email.com',
-                      questionnaire: questionnaire.title,
-                      answers: []
-                    };
-                    promises = [];
-                    angular.forEach(questionnaire.questions, function (questionId) {
-                      promises.push(makeAnswer(questionId));
-                    });
-                    return $q.all(promises)
-                      .then(function (answers) {
-                        response.answers = answers;
-                        return responseFactory.add(response);
-                      })
-                      .then(deferred.resolve);
-                  });
-                return deferred.promise;
-              },
-              makeAnswer = function (questionId) {
-                var deferred = $q.defer();
-                questionFactory.get(questionId)
-                  .then(function (question) {
-                    var index = Math.floor(Math.random() * question.choices.length);
-                    questionFactory.increment(question.id, index)
-                      .then(function () {
-                        deferred.resolve({
-                          question: question.text,
-                          choice: question.choices[index].text
-                        });
-                      });
-                  });
-                return deferred.promise;
-              };
+      /*
+       $scope.seed = function () {
+       $modal.open({
+       controller: 'seedCtrl',
+       templateUrl: 'seed.tpl.html'
+       }).result
+       .then(function () {
+       var questions,
+       question,
+       questionnaires,
+       questionnaire,
+       i, j, k,
+       x = 4, y = 100, z = 10,
+       promises,
+       found = function (values, match) {
+       return underscore.find(values, function (value) {
+       return value === match;
+       });
+       },
+       makeResponse = function (questionnaireId, key) {
+       var deferred = $q.defer();
+       questionnaireFactory.get(questionnaireId)
+       .then(function (questionnaire) {
+       var response = {
+       userId: $scope.user.id,
+       respondent: 'respondent' + (key + 1) + '@email.com',
+       questionnaire: questionnaire.title,
+       answers: []
+       };
+       promises = [];
+       angular.forEach(questionnaire.questions, function (questionId) {
+       promises.push(makeAnswer(questionId));
+       });
+       return $q.all(promises)
+       .then(function (answers) {
+       response.answers = answers;
+       return responseFactory.add(response);
+       })
+       .then(deferred.resolve);
+       });
+       return deferred.promise;
+       },
+       makeAnswer = function (questionId) {
+       var deferred = $q.defer();
+       questionFactory.get(questionId)
+       .then(function (question) {
+       var index = Math.floor(Math.random() * question.choices.length);
+       questionFactory.increment(question.id, index)
+       .then(function () {
+       deferred.resolve({
+       question: question.text,
+       choice: question.choices[index].text
+       });
+       });
+       });
+       return deferred.promise;
+       };
 
-            $scope.loading(true);
+       $scope.loading(true);
 
-            return $q.all([
-                questionnaireFactory.purge(),
-                questionFactory.purge(),
-                responseFactory.purge()
-              ])
+       return $q.all([
+       questionnaireFactory.purge(),
+       questionFactory.purge(),
+       responseFactory.purge()
+       ])
 
-              .then(function () {
-                $scope.addWarningAlert('All questionnaires, questions and responses were purged');
-              })
+       .then(function () {
+       $scope.addWarningAlert('All questionnaires, questions and responses were purged');
+       })
 
-              .then(function () {
-                promises = [];
-                for (i = 0; i < y; i += 1) {
-                  question = {
-                    userId: $scope.user.id,
-                    text: 'Question ' + (i + 1),
-                    choices: []
-                  };
-                  for (j = 0; j < x; j += 1) {
-                    question.choices.push({
-                      text: 'Choice ' + (j + 1) + ' of question ' + (i + 1),
-                      count: 0
-                    });
-                  }
-                  promises.push(questionFactory.add(question));
-                }
-                return $q.all(promises)
-                  .then(function (values) {
-                    questions = values;
-                  });
-              })
+       .then(function () {
+       promises = [];
+       for (i = 0; i < y; i += 1) {
+       question = {
+       userId: $scope.user.id,
+       text: 'Question ' + (i + 1),
+       choices: []
+       };
+       for (j = 0; j < x; j += 1) {
+       question.choices.push({
+       text: 'Choice ' + (j + 1) + ' of question ' + (i + 1),
+       count: 0
+       });
+       }
+       promises.push(questionFactory.add(question));
+       }
+       return $q.all(promises)
+       .then(function (values) {
+       questions = values;
+       });
+       })
 
-              .then(function () {
-                $scope.addInfoAlert('Created ' + y + ' questions');
-              })
+       .then(function () {
+       $scope.addInfoAlert('Created ' + y + ' questions');
+       })
 
-              .then(function () {
-                promises = [];
-                for (i = 0; i < y; i += 1) {
-                  questionnaire = {
-                    userId: $scope.user.id,
-                    title: 'Questionnaire ' + (i + 1),
-                    description: 'Description for questionnaire ' + (i + 1),
-                    published: true,
-                    questions: []
-                  };
-                  for (j = 0; j < z; j += 1) {
-                    question = questions[Math.floor(Math.random() * y)];
-                    if (!found(questionnaire.questions, question)) {
-                      questionnaire.questions.push(question);
-                    }
-                  }
-                  promises.push(questionnaireFactory.add(questionnaire));
-                }
-                return $q.all(promises)
-                  .then(function (values) {
-                    questionnaires = values;
-                  });
-              })
+       .then(function () {
+       promises = [];
+       for (i = 0; i < y; i += 1) {
+       questionnaire = {
+       userId: $scope.user.id,
+       title: 'Questionnaire ' + (i + 1),
+       description: 'Description for questionnaire ' + (i + 1),
+       published: true,
+       questions: []
+       };
+       for (j = 0; j < z; j += 1) {
+       question = questions[Math.floor(Math.random() * y)];
+       if (!found(questionnaire.questions, question)) {
+       questionnaire.questions.push(question);
+       }
+       }
+       promises.push(questionnaireFactory.add(questionnaire));
+       }
+       return $q.all(promises)
+       .then(function (values) {
+       questionnaires = values;
+       });
+       })
 
-              .then(function () {
-                $scope.addInfoAlert('Created ' + y + ' questionnaires');
-              })
+       .then(function () {
+       $scope.addInfoAlert('Created ' + y + ' questionnaires');
+       })
 
-              .then(function () {
-                promises = [];
+       .then(function () {
+       promises = [];
 
-                for (i = 0; i < questionnaires.length; i += 1) {
-                  promises.push(makeResponse(questionnaires[i], i));
-                }
+       for (i = 0; i < questionnaires.length; i += 1) {
+       promises.push(makeResponse(questionnaires[i], i));
+       }
 
-                return $q.all(promises);
-              })
+       return $q.all(promises);
+       })
 
-              .then(function () {
-                $scope.addInfoAlert('Created ' + y + ' responses');
-              });
-          })
-          .then(function () {
-            $scope.addSuccessAlert('Finished seeding new data successfully');
-          }, function () {
-            $scope.addErrorAlert('Failed to seed new data');
-          })
-          .then(function () {
-            $state.go('questionnaireList', {location: 'replace'});
-          })
-          ['finally'](function () {
-          $scope.loading(false);
-        });
-      };
+       .then(function () {
+       $scope.addInfoAlert('Created ' + y + ' responses');
+       });
+       })
+       .then(function () {
+       $scope.addSuccessAlert('Finished seeding new data successfully');
+       }, function () {
+       $scope.addErrorAlert('Failed to seed new data');
+       })
+       .then(function () {
+       $state.go('questionnaireList', {location: 'replace'});
+       })
+       ['finally'](function () {
+       $scope.loading(false);
+       });
+       };
+       */
 
     }])
 
-  .controller('seedCtrl', [
-    '$scope',
-    '$modalInstance',
-    function ($scope, $modalInstance) {
-      $scope.confirm = function () {
-        $modalInstance.close();
-      };
+  /*
+   .controller('seedCtrl', [
+   '$scope',
+   '$modalInstance',
+   function ($scope, $modalInstance) {
+   $scope.confirm = function () {
+   $modalInstance.close();
+   };
 
-      $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-      };
-    }
-  ])
+   $scope.cancel = function () {
+   $modalInstance.dismiss('cancel');
+   };
+   }
+   ])
+   */
 
   .controller('termsCtrl', [
     '$scope',

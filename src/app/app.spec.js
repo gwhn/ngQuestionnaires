@@ -5,7 +5,7 @@ describe('appCtrl', function () {
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
-    ctrl = $controller('appCtrl', { $scope: $scope });
+    ctrl = $controller('appCtrl', {$scope: $scope});
   }));
 
   it('should be defined', inject(function () {

@@ -4,18 +4,12 @@ angular.module('ngQuestionnaires.questionnaires')
     '$scope',
     '$state',
     '$stateParams',
-    'questionnaireFactory',
-    function ($scope, $state, $stateParams, questionnaireFactory) {
+    'questionnaires',
+    function ($scope, $state, $stateParams, questionnaires) {
 
       $scope.loading(true);
 
-      questionnaireFactory.get($stateParams.id)
-        .then(function (questionnaire) {
-          $scope.questionnaire = questionnaire;
-        }, $scope.addErrorAlert)
-        .then(function () {
-          $scope.loading(false);
-        });
+      $scope.questionnaire = questionnaires.getByName($stateParams.id);
 
       $scope.hasQuestions = function () {
         return $scope.questionnaire && $scope.questionnaire.questions;

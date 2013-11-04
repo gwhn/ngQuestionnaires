@@ -5,34 +5,24 @@ angular.module('ngQuestionnaires.questions')
     '$filter',
     '$modal',
     'underscore',
-    'questionFactory',
+    'questions',
     'pagination',
-    function ($scope, $filter, $modal, underscore, questionFactory, pagination) {
+    function ($scope, $filter, $modal, underscore, questions, pagination) {
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
-      $scope.queryQuestions = function () {
-        $scope.loading(true);
-        questionFactory.query()
-          .then(function (questions) {
-            $scope.questions = questions;
-            $scope.$watch('search.query', function (value) {
-              $scope.page = 1;
-              if (value) {
-                $scope.filteredQuestions = $filter('filter')($scope.questions, value);
-              } else {
-                $scope.filteredQuestions = questions;
-              }
-              $scope.totalItems = $scope.filteredQuestions.length;
-            });
-          }, $scope.addErrorAlert)
-          .then(function () {
-            $scope.loading(false);
-          });
-      };
+      $scope.questions = questions;
 
-      $scope.queryQuestions();
+      $scope.$watch('search.query', function (value) {
+        $scope.page = 1;
+        if (value) {
+          $scope.filteredQuestions = $filter('filter')($scope.questions, value);
+        } else {
+          $scope.filteredQuestions = questions;
+        }
+        $scope.totalItems = $scope.filteredQuestions.length;
+      });
 
       $scope.isMatch = function (question) {
         return $scope.search.query ? (
@@ -49,17 +39,19 @@ angular.module('ngQuestionnaires.questions')
           templateUrl: 'questions/delete.tpl.html',
           resolve: {
             question: function () {
-              return questionFactory.get(id);
+              return questions.getByName(id);
             }
           }
         }).result
           .then(function (question) {
-            return questionFactory.remove(id)
-              .then(function () {
+            questions.remove(question, function (err) {
+              if (err) {
+                $scope.addErrorAlert(err);
+              } else {
                 $scope.addSuccessAlert(question.text + ' deleted successfully');
-              }, $scope.addErrorAlert);
-          })
-          .then($scope.queryQuestions);
+              }
+            });
+          });
       };
 
     }]);

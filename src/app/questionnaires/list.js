@@ -4,34 +4,24 @@ angular.module('ngQuestionnaires.questionnaires')
     '$scope',
     '$filter',
     '$modal',
-    'questionnaireFactory',
+    'questionnaires',
     'pagination',
-    function ($scope, $filter, $modal, questionnaireFactory, pagination) {
+    function ($scope, $filter, $modal, questionnaires, pagination) {
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
-      $scope.queryQuestionnaires = function () {
-        $scope.loading(true);
-        questionnaireFactory.query()
-          .then(function (questionnaires) {
-            $scope.questionnaires = questionnaires;
-            $scope.$watch('search.query', function (value) {
-              $scope.page = 1;
-              if (value) {
-                $scope.filteredQuestionnaires = $filter('filter')($scope.questionnaires, value);
-              } else {
-                $scope.filteredQuestionnaires = questionnaires;
-              }
-              $scope.totalItems = $scope.filteredQuestionnaires.length;
-            });
-          }, $scope.addErrorAlert)
-          .then(function () {
-            $scope.loading(false);
-          });
-      };
+      $scope.questionnaires = questionnaires;
 
-      $scope.queryQuestionnaires();
+      $scope.$watch('search.query', function (value) {
+        $scope.page = 1;
+        if (value) {
+          $scope.filteredQuestionnaires = $filter('filter')($scope.questionnaires, value);
+        } else {
+          $scope.filteredQuestionnaires = questionnaires;
+        }
+        $scope.totalItems = $scope.filteredQuestionnaires.length;
+      });
 
       $scope.isMatch = function (questionnaire) {
         return $scope.search.query ? (
@@ -46,16 +36,18 @@ angular.module('ngQuestionnaires.questionnaires')
           templateUrl: 'questionnaires/delete.tpl.html',
           resolve: {
             questionnaire: function () {
-              return questionnaireFactory.get(id);
+              return questionnaires.getByName(id);
             }
           }
         }).result
           .then(function (questionnaire) {
-            return questionnaireFactory.remove(id)
-              .then(function () {
+            questionnaires.remove(questionnaire, function (err) {
+              if (err) {
+                $scope.addErrorAlert(err);
+              } else {
                 $scope.addSuccessAlert(questionnaire.title + ' deleted successfully');
-              }, $scope.addErrorAlert);
-          })
-          .then($scope.queryQuestionnaires);
+              }
+            });
+          });
       };
     }]);

@@ -2,17 +2,9 @@ angular.module('ngQuestionnaires.questions')
 
   .controller('questionShowCtrl', [
     '$scope',
-    'questionFactory',
-    function ($scope, questionFactory) {
+    'questions',
+    function ($scope, questions) {
 
-      $scope.loading(true);
-
-      questionFactory.get($scope.questionId)
-        .then(function (question) {
-          $scope.question = question;
-        }, $scope.addErrorAlert)
-        .then(function () {
-          $scope.loading(false);
-        });
+      $scope.question = questions.getByName($scope.questionId);
 
     }]);

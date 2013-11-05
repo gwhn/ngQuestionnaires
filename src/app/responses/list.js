@@ -4,23 +4,25 @@ angular.module('ngQuestionnaires.responses')
     '$scope',
     '$filter',
     '$modal',
-    'responses',
     'pagination',
     'underscore',
-    function ($scope, $filter, $modal, responses, pagination, underscore) {
+    'responses',
+    function ($scope, $filter, $modal, pagination, underscore, responses) {
+
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
-      $scope.responses = responses;
+      $scope.$watch('filteredResponses.length', function (value) {
+        $scope.totalItems = value;
+      });
 
       $scope.$watch('search.query', function (value) {
         $scope.page = 1;
         if (value) {
-          $scope.filteredResponses = $filter('filter')($scope.responses, value);
+          $scope.filteredResponses = $filter('filter')(responses, value);
         } else {
           $scope.filteredResponses = responses;
         }
-        $scope.totalItems = $scope.filteredResponses.length;
       });
 
       $scope.isMatch = function (response) {
@@ -28,8 +30,8 @@ angular.module('ngQuestionnaires.responses')
           response.questionnaire.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
             response.respondent.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
             underscore.any(response.answers, function (answer) {
-              return answer.question.toLowerCase().indexOf($scope.search.query) > -1 ||
-                answer.choice.toLowerCase().indexOf($scope.search.query) > -1 ;
+              return answer.question.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
+                answer.choice.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1;
             })
           ) : true;
       };
@@ -56,4 +58,5 @@ angular.module('ngQuestionnaires.responses')
           });
       };
 
-    }]);
+    }
+  ]);

@@ -1,8 +1,9 @@
 angular.module('ngQuestionnaires.directives')
 
   .directive('uniqueQuestionnaireTitle', [
-    'questionnaireFactory',
-    function (questionnaireFactory) {
+    'underscore',
+    'questionnaires',
+    function (underscore, questionnaires) {
       return {
         require: 'ngModel',
         link: function (scope, element, attributes, modelController) {
@@ -14,7 +15,7 @@ angular.module('ngQuestionnaires.directives')
           });
           modelController.$parsers.push(function (value) {
             if (value && value !== original) {
-              questionnaireFactory.query({title: value}).then(function (questionnaires) {
+              questionnaires.query({title: value}).then(function (questionnaires) {
                 modelController.$setValidity(key, questionnaires.length === 0);
               });
               return value;
@@ -22,4 +23,5 @@ angular.module('ngQuestionnaires.directives')
           });
         }
       };
-    }]);
+    }
+  ]);

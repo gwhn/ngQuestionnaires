@@ -4,23 +4,24 @@ angular.module('ngQuestionnaires.questionnaires')
     '$scope',
     '$filter',
     '$modal',
-    'questionnaires',
     'pagination',
-    function ($scope, $filter, $modal, questionnaires, pagination) {
+    'questionnaires',
+    function ($scope, $filter, $modal, pagination, questionnaires) {
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
-      $scope.questionnaires = questionnaires;
+      $scope.$watch('filteredQuestionnaires.length', function (value) {
+        $scope.totalItems = value;
+      });
 
       $scope.$watch('search.query', function (value) {
         $scope.page = 1;
         if (value) {
-          $scope.filteredQuestionnaires = $filter('filter')($scope.questionnaires, value);
+          $scope.filteredQuestionnaires = $filter('filter')(questionnaires, value);
         } else {
           $scope.filteredQuestionnaires = questionnaires;
         }
-        $scope.totalItems = $scope.filteredQuestionnaires.length;
       });
 
       $scope.isMatch = function (questionnaire) {
@@ -50,4 +51,5 @@ angular.module('ngQuestionnaires.questionnaires')
             });
           });
       };
+
     }]);

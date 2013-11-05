@@ -5,30 +5,31 @@ angular.module('ngQuestionnaires.questions')
     '$filter',
     '$modal',
     'underscore',
-    'questions',
     'pagination',
-    function ($scope, $filter, $modal, underscore, questions, pagination) {
+    'questions',
+    function ($scope, $filter, $modal, underscore, pagination, questions) {
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
 
-      $scope.questions = questions;
+      $scope.$watch('filteredQuestions.length', function (value) {
+        $scope.totalItems = value;
+      });
 
       $scope.$watch('search.query', function (value) {
         $scope.page = 1;
         if (value) {
-          $scope.filteredQuestions = $filter('filter')($scope.questions, value);
+          $scope.filteredQuestions = $filter('filter')(questions, value);
         } else {
           $scope.filteredQuestions = questions;
         }
-        $scope.totalItems = $scope.filteredQuestions.length;
       });
 
       $scope.isMatch = function (question) {
         return $scope.search.query ? (
-          question.text.indexOf($scope.search.query) > -1 ||
+          question.text.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
             underscore.any(question.choices, function (choice) {
-              return choice.text.indexOf($scope.search.query) > -1;
+              return choice.text.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1;
             })
           ) : true;
       };
@@ -54,4 +55,5 @@ angular.module('ngQuestionnaires.questions')
           });
       };
 
-    }]);
+    }
+  ]);

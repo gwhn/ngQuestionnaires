@@ -1,13 +1,18 @@
 angular.module('ngQuestionnaires.directives')
 
-  .directive('d3BarChart', ['$window', '$timeout', 'd3',
+  .directive('d3BarChart', [
+    '$window',
+    '$timeout',
+    'd3',
     function ($window, $timeout, d3) {
+
       return {
         restrict: 'A',
         scope: {
           data: '='
         },
         link: function (scope, element, attrs) {
+
           var margin = parseInt(attrs.margin, 10) || 20,
             barHeight = parseInt(attrs.barHeight, 10) || 30,
             barPadding = parseInt(attrs.barPadding, 10) || 10,
@@ -79,5 +84,8 @@ angular.module('ngQuestionnaires.directives')
                 });
             }
           };
+
         }};
-    }]);
+
+    }
+  ]);

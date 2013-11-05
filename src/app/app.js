@@ -3,7 +3,7 @@ angular.module('ngQuestionnaires.questions', []);
 angular.module('ngQuestionnaires.responses', []);
 angular.module('ngQuestionnaires.directives', []);
 angular.module('ngQuestionnaires.filters', []);
-angular.module('ngQuestionnaires.services', []);
+angular.module('ngQuestionnaires.services', ['firebase']);
 
 angular.module('ngQuestionnaires', [
     'ng',
@@ -16,7 +16,6 @@ angular.module('ngQuestionnaires', [
     'ui.bootstrap',
     'ui.router',
     'ui.highlight',
-    'firebase',
     'ngQuestionnaires.questionnaires',
     'ngQuestionnaires.questions',
     'ngQuestionnaires.responses',
@@ -29,48 +28,50 @@ angular.module('ngQuestionnaires', [
 
   .constant('pagination', {itemsPerPage: 5, maxSize: 5})
 
-  .factory('Firebase', ['$window', function ($window) {
-    return $window.Firebase;
-  }])
-
-  .factory('questionnaires', [
-    'fbUrl', 'Firebase', 'angularFireCollection',
-    function (fbUrl, Firebase, angularFireCollection) {
-      return angularFireCollection(new Firebase(fbUrl + 'questionnaires'));
+  .factory('Firebase', [
+    '$window',
+    function ($window) {
+      return $window.Firebase;
     }
   ])
 
-  .factory('questions', [
-    'fbUrl', 'Firebase', 'angularFireCollection',
-    function (fbUrl, Firebase, angularFireCollection) {
-      return angularFireCollection(new Firebase(fbUrl + 'questions'));
+  .factory('underscore', [
+    '$window',
+    function ($window) {
+      return $window._;
     }
   ])
 
-  .factory('responses', [
-    'fbUrl', 'Firebase', 'angularFireCollection',
-    function (fbUrl, Firebase, angularFireCollection) {
-      return angularFireCollection(new Firebase(fbUrl + 'responses'));
+  .factory('d3', [
+    '$window',
+    function ($window) {
+      return $window.d3;
     }
   ])
-
-  .factory('underscore', ['$window', function ($window) {
-    return $window._;
-  }])
-
-  .factory('d3', ['$window', function ($window) {
-    return $window.d3;
-  }])
 
   .config(function ($urlRouterProvider) {
     $urlRouterProvider.otherwise('/questionnaires/list');
   })
 
-  .run(['$rootScope', 'fbUrl', 'Firebase', 'angularFireAuth', '$cacheFactory',
-    function ($rootScope, fbUrl, Firebase, angularFireAuth, $cacheFactory) {
-      angularFireAuth.initialize(new Firebase(fbUrl), {scope: $rootScope, name: 'user'});
+  .run([
+    '$rootScope',
+    '$cacheFactory',
+    'fbUrl',
+    'Firebase',
+    'angularFireAuth',
+    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth) {
+
+      angularFireAuth.initialize(
+        new Firebase(fbUrl), {
+          scope: $rootScope,
+          name: 'user'
+        }
+      );
+
       $cacheFactory('data');
-    }])
+
+    }
+  ])
 
   .controller('appCtrl', [
     '$scope',
@@ -107,12 +108,10 @@ angular.module('ngQuestionnaires', [
       };
 
       $scope.$on('angularFireAuth:login', function (event, user) {
-        $scope.user = user;
         $scope.addSuccessAlert('Logged in to ' + user.provider + ' as ' + user.displayName + ' successfully');
       });
 
       $scope.$on('angularFireAuth:logout', function (event) {
-        $scope.user = null;
         $scope.addWarningAlert('Logged out');
       });
 
@@ -161,187 +160,22 @@ angular.module('ngQuestionnaires', [
         $modal.open({
           controller: 'termsCtrl',
           templateUrl: 'terms.tpl.html'
-        }).result
-          .then(function () {
-            $cookieStore.put('acceptedTerms', true);
-          });
+        }).result.then(function () {
+          $cookieStore.put('acceptedTerms', true);
+        });
       }
 
-      /*
-       $scope.seed = function () {
-       $modal.open({
-       controller: 'seedCtrl',
-       templateUrl: 'seed.tpl.html'
-       }).result
-       .then(function () {
-       var questions,
-       question,
-       questionnaires,
-       questionnaire,
-       i, j, k,
-       x = 4, y = 100, z = 10,
-       promises,
-       found = function (values, match) {
-       return underscore.find(values, function (value) {
-       return value === match;
-       });
-       },
-       makeResponse = function (questionnaireId, key) {
-       var deferred = $q.defer();
-       questionnaireFactory.get(questionnaireId)
-       .then(function (questionnaire) {
-       var response = {
-       userId: $scope.user.id,
-       respondent: 'respondent' + (key + 1) + '@email.com',
-       questionnaire: questionnaire.title,
-       answers: []
-       };
-       promises = [];
-       angular.forEach(questionnaire.questions, function (questionId) {
-       promises.push(makeAnswer(questionId));
-       });
-       return $q.all(promises)
-       .then(function (answers) {
-       response.answers = answers;
-       return responseFactory.add(response);
-       })
-       .then(deferred.resolve);
-       });
-       return deferred.promise;
-       },
-       makeAnswer = function (questionId) {
-       var deferred = $q.defer();
-       questionFactory.get(questionId)
-       .then(function (question) {
-       var index = Math.floor(Math.random() * question.choices.length);
-       questionFactory.increment(question.id, index)
-       .then(function () {
-       deferred.resolve({
-       question: question.text,
-       choice: question.choices[index].text
-       });
-       });
-       });
-       return deferred.promise;
-       };
-
-       $scope.loading(true);
-
-       return $q.all([
-       questionnaireFactory.purge(),
-       questionFactory.purge(),
-       responseFactory.purge()
-       ])
-
-       .then(function () {
-       $scope.addWarningAlert('All questionnaires, questions and responses were purged');
-       })
-
-       .then(function () {
-       promises = [];
-       for (i = 0; i < y; i += 1) {
-       question = {
-       userId: $scope.user.id,
-       text: 'Question ' + (i + 1),
-       choices: []
-       };
-       for (j = 0; j < x; j += 1) {
-       question.choices.push({
-       text: 'Choice ' + (j + 1) + ' of question ' + (i + 1),
-       count: 0
-       });
-       }
-       promises.push(questionFactory.add(question));
-       }
-       return $q.all(promises)
-       .then(function (values) {
-       questions = values;
-       });
-       })
-
-       .then(function () {
-       $scope.addInfoAlert('Created ' + y + ' questions');
-       })
-
-       .then(function () {
-       promises = [];
-       for (i = 0; i < y; i += 1) {
-       questionnaire = {
-       userId: $scope.user.id,
-       title: 'Questionnaire ' + (i + 1),
-       description: 'Description for questionnaire ' + (i + 1),
-       published: true,
-       questions: []
-       };
-       for (j = 0; j < z; j += 1) {
-       question = questions[Math.floor(Math.random() * y)];
-       if (!found(questionnaire.questions, question)) {
-       questionnaire.questions.push(question);
-       }
-       }
-       promises.push(questionnaireFactory.add(questionnaire));
-       }
-       return $q.all(promises)
-       .then(function (values) {
-       questionnaires = values;
-       });
-       })
-
-       .then(function () {
-       $scope.addInfoAlert('Created ' + y + ' questionnaires');
-       })
-
-       .then(function () {
-       promises = [];
-
-       for (i = 0; i < questionnaires.length; i += 1) {
-       promises.push(makeResponse(questionnaires[i], i));
-       }
-
-       return $q.all(promises);
-       })
-
-       .then(function () {
-       $scope.addInfoAlert('Created ' + y + ' responses');
-       });
-       })
-       .then(function () {
-       $scope.addSuccessAlert('Finished seeding new data successfully');
-       }, function () {
-       $scope.addErrorAlert('Failed to seed new data');
-       })
-       .then(function () {
-       $state.go('questionnaireList', {location: 'replace'});
-       })
-       ['finally'](function () {
-       $scope.loading(false);
-       });
-       };
-       */
-
-    }])
-
-  /*
-   .controller('seedCtrl', [
-   '$scope',
-   '$modalInstance',
-   function ($scope, $modalInstance) {
-   $scope.confirm = function () {
-   $modalInstance.close();
-   };
-
-   $scope.cancel = function () {
-   $modalInstance.dismiss('cancel');
-   };
-   }
-   ])
-   */
+    }
+  ])
 
   .controller('termsCtrl', [
     '$scope',
     '$modalInstance',
     function ($scope, $modalInstance) {
+
       $scope.ok = function () {
         $modalInstance.close();
       };
-    }]);
+
+    }
+  ]);

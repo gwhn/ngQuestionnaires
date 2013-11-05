@@ -2,12 +2,9 @@ angular.module('ngQuestionnaires.questionnaires')
 
   .controller('questionnaireShowCtrl', [
     '$scope',
-    '$state',
     '$stateParams',
     'questionnaires',
-    function ($scope, $state, $stateParams, questionnaires) {
-
-      $scope.loading(true);
+    function ($scope, $stateParams, questionnaires) {
 
       $scope.questionnaire = questionnaires.getByName($stateParams.id);
 
@@ -15,4 +12,15 @@ angular.module('ngQuestionnaires.questionnaires')
         return $scope.questionnaire && $scope.questionnaire.questions;
       };
 
-    }]);
+    }
+  ])
+
+  .controller('questionShowCtrl', [
+    '$scope',
+    'questions',
+    function ($scope, questions) {
+
+      $scope.question = questions.getByName($scope.id);
+
+    }
+  ]);

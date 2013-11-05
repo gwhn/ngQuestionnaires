@@ -4,9 +4,10 @@ angular.module('ngQuestionnaires.questionnaires')
     '$scope',
     '$cacheFactory',
     '$state',
-    'questionnaires',
     'questions',
-    function ($scope, $cacheFactory, $state, questionnaires, questions) {
+    'questionnaires',
+    function ($scope, $cacheFactory, $state, questions, questionnaires) {
+
       var questionnaire = $cacheFactory.get('data').get('questionnaire');
 
       function navigate() {
@@ -43,16 +44,17 @@ angular.module('ngQuestionnaires.questionnaires')
 
       $scope.cancel = navigate;
 
-    }])
+    }
+  ])
 
   .controller('questionnaireEditCtrl', [
     '$scope',
     '$cacheFactory',
     '$state',
     '$stateParams',
-    'questionnaires',
     'questions',
-    function ($scope, $cacheFactory, $state, $stateParams, questionnaires, questions) {
+    'questionnaires',
+    function ($scope, $cacheFactory, $state, $stateParams, questions, questionnaires) {
 
       var questionnaire = $cacheFactory.get('data').get('questionnaire'),
         navigate = function () {
@@ -89,4 +91,5 @@ angular.module('ngQuestionnaires.questionnaires')
 
       $scope.cancel = navigate;
 
-    }]);
+    }
+  ]);

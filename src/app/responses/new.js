@@ -4,11 +4,9 @@ angular.module('ngQuestionnaires.responses')
     '$scope',
     '$state',
     '$stateParams',
-    '$q',
     'questionnaires',
-    'questions',
     'responses',
-    function ($scope, $state, $stateParams, $q, questionnaires, questions, responses) {
+    function ($scope, $state, $stateParams, questionnaires, responses) {
 
       var response = {answers: {}};
 
@@ -35,6 +33,7 @@ angular.module('ngQuestionnaires.responses')
             });
           }
         }
+        // remember to increment question choice count
         responses.add({
           userId: $scope.user.id,
           respondent: $scope.respondent,
@@ -51,4 +50,5 @@ angular.module('ngQuestionnaires.responses')
         });
       };
 
-    }]);
+    }
+  ]);

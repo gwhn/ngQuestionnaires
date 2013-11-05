@@ -1,11 +1,14 @@
 angular.module('ngQuestionnaires.directives')
 
   .directive('validationClass', function () {
+
     return {
       require: '^form',
       link: function (scope, element, attributes, formController) {
+
         var hasError = 'has-error',
           hasSuccess = 'has-success';
+
         scope.$watch(function () {
           var controller = formController[attributes.on] || formController,
             state;
@@ -26,6 +29,8 @@ angular.module('ngQuestionnaires.directives')
               break;
           }
         });
+
       }
     };
+
   });

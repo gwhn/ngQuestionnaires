@@ -15,7 +15,8 @@ angular.module('ngQuestionnaires.directives')
             $scope.isCollapsed = $attrs.isCollapsed || false;
           }]
       };
-    }])
+    }
+  ])
 
   .directive('toggleLabel', [
     function () {
@@ -34,7 +35,8 @@ angular.module('ngQuestionnaires.directives')
           '<span ng-transclude></span>' +
           '</button>'
       };
-    }])
+    }
+  ])
 
   .directive('toggleBody', [
     function () {
@@ -45,5 +47,6 @@ angular.module('ngQuestionnaires.directives')
         transclude: true,
         template: '<div ng-transclude ng-hide="isCollapsed" class="animate-hide">'
       };
-    }]);
+    }
+  ]);
 

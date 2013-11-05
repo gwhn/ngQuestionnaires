@@ -29,10 +29,10 @@
     </button>
     <ul class="dropdown-menu">
       <li>
-        <a ui-sref="questionEdit({id: question.id})">Edit</a>
+        <a ui-sref="questionEdit({id: question.$id})">Edit</a>
       </li>
       <li>
-        <a ng-click="destroy(question.id)"><span class="text-danger">Delete</span></a>
+        <a ng-click="destroy(question.$id)"><span class="text-danger">Delete</span></a>
       </li>
     </ul>
   </div>

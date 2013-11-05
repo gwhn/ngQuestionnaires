@@ -25,7 +25,7 @@
     <div class="form-group" validation-class on="questions">
       <label for="questionnaire.questions" class="control-label">Questions</label>
       <select ng-model="questionnaire.questions" name="questions" size="10"
-              ng-options="question.id as question.text for question in questions"
+              ng-options="question.$id as question.text for question in questions"
               id="questionnaire.questions" class="form-control" multiple required>
       </select>
       <button ng-click="addQuestion()" class="btn btn-default">

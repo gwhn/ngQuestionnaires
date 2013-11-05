@@ -2,7 +2,8 @@ angular.module('ngQuestionnaires.questionnaires')
 
   .config(function ($stateProvider) {
 
-    $stateProvider.state('questionnaireList', {
+    $stateProvider
+      .state('questionnaireList', {
         url: '/questionnaires/list',
         controller: 'questionnaireListCtrl',
         templateUrl: 'questionnaires/list.tpl.html',

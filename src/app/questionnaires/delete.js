@@ -5,6 +5,7 @@ angular.module('ngQuestionnaires.questionnaires')
     '$modalInstance',
     'questionnaire',
     function ($scope, $modalInstance, questionnaire) {
+
       $scope.questionnaire = questionnaire;
 
       $scope.confirm = function () {
@@ -14,4 +15,6 @@ angular.module('ngQuestionnaires.questionnaires')
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };
-    }]);
+
+    }
+  ]);

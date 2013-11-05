@@ -49,7 +49,8 @@ angular.module('ngQuestionnaires.questions')
 
       $scope.cancel = navigate;
 
-    }])
+    }
+  ])
 
   .controller('questionEditCtrl', [
     '$scope',
@@ -90,4 +91,5 @@ angular.module('ngQuestionnaires.questions')
 
       $scope.cancel = navigate;
 
-    }]);
+    }
+  ]);

@@ -14,7 +14,7 @@
     </div>
 
     <ul class="list-unstyled">
-      <li ng-repeat="questionId in questionnaire.questions">
+      <li ng-repeat="id in questionnaire.questions">
         <article ng-controller="questionShowCtrl" ng-form="choiceForm">
           <p class="lead">{{question.text}}</p>
 
@@ -23,7 +23,7 @@
               <div class="radio">
                 <label class="control-label">
                   <input type="radio" ng-model="$parent.response.choices" value="{{choice.text}}"
-                         ng-click="answer(question.id, question.text, choice.text, $index)" required/>
+                         ng-click="answer(question.$id, question.text, choice.text, $index)" required/>
                   {{choice.text}}
                 </label>
               </div>

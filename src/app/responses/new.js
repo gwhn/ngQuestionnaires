@@ -5,8 +5,9 @@ angular.module('ngQuestionnaires.responses')
     '$state',
     '$stateParams',
     'questionnaires',
+    'questions',
     'responses',
-    function ($scope, $state, $stateParams, questionnaires, responses) {
+    function ($scope, $state, $stateParams, questionnaires, questions, responses) {
 
       var response = {answers: {}};
 
@@ -23,26 +24,36 @@ angular.module('ngQuestionnaires.responses')
       };
 
       $scope.submit = function () {
-        var answers = [],
-          key;
-        for (key in response.answers) {
-          if (response.answers.hasOwnProperty(key)) {
-            answers.push({
-              question: response.answers[key].question,
-              choice: response.answers[key].choice
+        var as = [],
+          qs = [],
+          q,
+          k,
+          i;
+        for (k in response.answers) {
+          if (response.answers.hasOwnProperty(k)) {
+            as.push({
+              question: response.answers[k].question,
+              choice: response.answers[k].choice
             });
+            qs.push([k, response.answers[k].index]);
           }
         }
-        // remember to increment question choice count
         responses.add({
           userId: $scope.user.id,
           respondent: $scope.respondent,
           questionnaire: $scope.questionnaire.title,
-          answers: answers
+          answers: as
         }, function (err) {
           if (err) {
             $scope.addErrorAlert(err);
           } else {
+            for (i = 0; i < qs.length; i += 1) {
+              q = questions.getByName(qs[i][0]);
+              if (q !== undefined) {
+                q.choices[qs[i][1]].count = q.choices[qs[i][1]].count + 1;
+                questions.update(q);
+              }
+            }
             $scope.addSuccessAlert('Response from ' + $scope.respondent + ' on ' +
               $scope.questionnaire.title + ' saved successfully');
             $state.go('questionnaireList');

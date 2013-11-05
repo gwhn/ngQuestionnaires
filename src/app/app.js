@@ -31,35 +31,52 @@ angular.module('ngQuestionnaires', [
   .factory('Firebase', [
     '$window',
     function ($window) {
+
       return $window.Firebase;
+
     }
   ])
 
   .factory('underscore', [
     '$window',
     function ($window) {
+
       return $window._;
+
     }
   ])
 
   .factory('d3', [
     '$window',
     function ($window) {
+
       return $window.d3;
+
     }
   ])
 
   .config(function ($urlRouterProvider) {
+
     $urlRouterProvider.otherwise('/questionnaires/list');
+
   })
 
   .run([
     '$rootScope',
     '$cacheFactory',
+    '$timeout',
     'fbUrl',
     'Firebase',
     'angularFireAuth',
-    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth) {
+    'questionnaires',
+    'questions',
+    'responses',
+    function ($rootScope, $cacheFactory, $timeout, fbUrl, Firebase, angularFireAuth, questionnaires, questions, responses) {
+
+      var data = {};
+      data.questionnaires = questionnaires;
+      data.questions = questions;
+      data.responses = responses;
 
       angularFireAuth.initialize(
         new Firebase(fbUrl), {

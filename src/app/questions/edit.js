@@ -37,7 +37,7 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.save = function () {
-        questions.add(angular.copy($scope.question), function (err) {
+        questions.add($scope.question, function (err) {
           if (err) {
             $scope.addErrorAlert(err);
           } else {
@@ -79,7 +79,7 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.update = function () {
-        questions.update(angular.copy($scope.question), function (err) {
+        questions.update($scope.question, function (err) {
           if (err) {
             $scope.addErrorAlert(err);
           } else {

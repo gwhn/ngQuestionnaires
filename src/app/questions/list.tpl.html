@@ -23,7 +23,7 @@
          ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
   <div ng-if="user" class="btn-group pull-right">
-    <button class="btn btn-default" ui-sref="questionEdit({id: question.id})">Edit</button>
+    <button class="btn btn-default" ui-sref="questionEdit({id: question.$id})">Edit</button>
     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>

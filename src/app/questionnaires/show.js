@@ -13,14 +13,4 @@ angular.module('ngQuestionnaires.questionnaires')
       };
 
     }
-  ])
-
-  .controller('questionShowCtrl', [
-    '$scope',
-    'questions',
-    function ($scope, questions) {
-
-      $scope.question = questions.getByName($scope.id);
-
-    }
   ]);

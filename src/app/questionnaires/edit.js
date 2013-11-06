@@ -25,9 +25,10 @@ angular.module('ngQuestionnaires.questionnaires')
       }
 
       $scope.addQuestion = function () {
+        var referrer = $location.path();
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
         $location.path('/questions/new')
-          .search({referrer: $location.path()});
+          .search({referrer: referrer});
       };
 
       $scope.save = function () {
@@ -78,10 +79,11 @@ angular.module('ngQuestionnaires.questionnaires')
       }
 
       $scope.addQuestion = function () {
+        var referrer = $location.path();
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
         $location.path('/questions/new')
           .search({
-            referrer: $location.path(),
+            referrer: referrer,
             id: $routeParams.id
           });
       };

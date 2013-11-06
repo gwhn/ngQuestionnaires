@@ -6,8 +6,7 @@ angular.module('ngQuestionnaires.responses')
     '$modal',
     'pagination',
     'underscore',
-    'responses',
-    function ($scope, $filter, $modal, pagination, underscore, responses) {
+    function ($scope, $filter, $modal, pagination, underscore) {
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
@@ -19,9 +18,9 @@ angular.module('ngQuestionnaires.responses')
       $scope.$watch('search.query', function (value) {
         $scope.page = 1;
         if (value) {
-          $scope.filteredResponses = $filter('filter')(responses, value);
+          $scope.filteredResponses = $filter('filter')($scope.responses, value);
         } else {
-          $scope.filteredResponses = responses;
+          $scope.filteredResponses = $scope.responses;
         }
       });
 
@@ -42,12 +41,12 @@ angular.module('ngQuestionnaires.responses')
           templateUrl: 'responses/delete.tpl.html',
           resolve: {
             response: function () {
-              return responses.getByName(id);
+              return $scope.responses.getByName(id);
             }
           }
         }).result
           .then(function (response) {
-            responses.remove(response, function (err) {
+            $scope.responses.remove(response, function (err) {
               if (err) {
                 $scope.addErrorAlert(err);
               } else {

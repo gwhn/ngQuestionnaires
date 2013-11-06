@@ -68,7 +68,16 @@ angular.module('ngQuestionnaires', [
     'fbUrl',
     'Firebase',
     'angularFireAuth',
-    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth) {
+    'questionnaires',
+    'questions',
+    'responses',
+    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth, questionnaires, questions, responses) {
+
+      $rootScope.questionnaires = questionnaires;
+
+      $rootScope.questions = questions;
+
+      $rootScope.responses = responses;
 
       angularFireAuth.initialize(
         new Firebase(fbUrl), {

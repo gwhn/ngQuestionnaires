@@ -3,11 +3,10 @@ angular.module('ngQuestionnaires.questionnaires')
   .controller('questionnaireShowCtrl', [
     '$scope',
     '$stateParams',
-    'questionnaires',
-    function ($scope, $stateParams, questionnaires) {
+    function ($scope, $stateParams) {
 
       $scope.$watch(function () {
-        return questionnaires.getByName($stateParams.id);
+        return $scope.questionnaires.getByName($stateParams.id);
       }, function (questionnaire) {
         $scope.questionnaire = questionnaire;
       });

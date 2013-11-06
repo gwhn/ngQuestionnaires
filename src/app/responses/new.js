@@ -4,10 +4,7 @@ angular.module('ngQuestionnaires.responses')
     '$scope',
     '$state',
     '$stateParams',
-    'questionnaires',
-    'questions',
-    'responses',
-    function ($scope, $state, $stateParams, questionnaires, questions, responses) {
+    function ($scope, $state, $stateParams) {
 
       var response = {answers: {}};
 
@@ -16,7 +13,7 @@ angular.module('ngQuestionnaires.responses')
       });
 
       $scope.$watch(function () {
-        return questionnaires.getByName($stateParams.id);
+        return $scope.questionnaires.getByName($stateParams.id);
       }, function (questionnaire) {
         $scope.questionnaire = questionnaire;
       });
@@ -47,7 +44,7 @@ angular.module('ngQuestionnaires.responses')
             });
           }
         }
-        responses.add({
+        $scope.responses.add({
           userId: $scope.user.id,
           respondent: $scope.respondent,
           questionnaire: $scope.questionnaire.title,
@@ -57,10 +54,10 @@ angular.module('ngQuestionnaires.responses')
             $scope.addErrorAlert(err);
           } else {
             for (i = 0; i < qs.length; i += 1) {
-              q = questions.getByName(qs[i].id);
+              q = $scope.questions.getByName(qs[i].id);
               if (q !== undefined) {
                 q.choices[qs[i].index].count = q.choices[qs[i].index].count + 1;
-                questions.update(q);
+                $scope.questions.update(q);
               }
             }
             $scope.addSuccessAlert('Response from ' + $scope.respondent + ' on ' +

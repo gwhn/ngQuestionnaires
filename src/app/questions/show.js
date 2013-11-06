@@ -2,11 +2,10 @@ angular.module('ngQuestionnaires.questions')
 
   .controller('questionShowCtrl', [
     '$scope',
-    'questions',
-    function ($scope, questions) {
+    function ($scope) {
 
       $scope.$watch(function () {
-        return questions.getByName($scope.id);
+        return $scope.questions.getByName($scope.id);
       }, function (question) {
         $scope.question = question;
       });

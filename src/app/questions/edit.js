@@ -4,8 +4,7 @@ angular.module('ngQuestionnaires.questions')
     '$scope',
     '$state',
     '$stateParams',
-    'questions',
-    function ($scope, $state, $stateParams, questions) {
+    function ($scope, $state, $stateParams) {
 
       var navigate = function () {
         var referrer = $stateParams.referrer,
@@ -37,7 +36,7 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.save = function () {
-        questions.add($scope.question, function (err) {
+        $scope.questions.add($scope.question, function (err) {
           if (err) {
             $scope.addErrorAlert(err);
           } else {
@@ -57,8 +56,7 @@ angular.module('ngQuestionnaires.questions')
     '$scope',
     '$state',
     '$stateParams',
-    'questions',
-    function ($scope, $state, $stateParams, questions) {
+    function ($scope, $state, $stateParams) {
 
       var navigate = function () {
         $state.go('questionList');
@@ -67,7 +65,7 @@ angular.module('ngQuestionnaires.questions')
       $scope.action = $state.current.data.action;
 
       $scope.$watch(function () {
-        return questions.getByName($stateParams.id);
+        return $scope.questions.getByName($stateParams.id);
       }, function (question) {
         $scope.question = question;
       });
@@ -84,7 +82,7 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.update = function () {
-        questions.update($scope.question, function (err) {
+        $scope.questions.update($scope.question, function (err) {
           if (err) {
             $scope.addErrorAlert(err);
           } else {

@@ -5,8 +5,7 @@ angular.module('ngQuestionnaires.questionnaires')
     '$filter',
     '$modal',
     'pagination',
-    'questionnaires',
-    function ($scope, $filter, $modal, pagination, questionnaires) {
+    function ($scope, $filter, $modal, pagination) {
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
@@ -18,9 +17,9 @@ angular.module('ngQuestionnaires.questionnaires')
       $scope.$watch('search.query', function (value) {
         $scope.page = 1;
         if (value) {
-          $scope.filteredQuestionnaires = $filter('filter')(questionnaires, value);
+          $scope.filteredQuestionnaires = $filter('filter')($scope.questionnaires, value);
         } else {
-          $scope.filteredQuestionnaires = questionnaires;
+          $scope.filteredQuestionnaires = $scope.questionnaires;
         }
       });
 
@@ -37,12 +36,12 @@ angular.module('ngQuestionnaires.questionnaires')
           templateUrl: 'questionnaires/delete.tpl.html',
           resolve: {
             questionnaire: function () {
-              return questionnaires.getByName(id);
+              return $scope.questionnaires.getByName(id);
             }
           }
         }).result
           .then(function (questionnaire) {
-            questionnaires.remove(questionnaire, function (err) {
+            $scope.questionnaires.remove(questionnaire, function (err) {
               if (err) {
                 $scope.addErrorAlert(err);
               } else {

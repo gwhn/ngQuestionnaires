@@ -4,9 +4,7 @@ angular.module('ngQuestionnaires.questionnaires')
     '$scope',
     '$cacheFactory',
     '$state',
-    'questions',
-    'questionnaires',
-    function ($scope, $cacheFactory, $state, questions, questionnaires) {
+    function ($scope, $cacheFactory, $state) {
 
       var questionnaire = $cacheFactory.get('data').get('questionnaire');
 
@@ -24,15 +22,13 @@ angular.module('ngQuestionnaires.questionnaires')
         $cacheFactory.get('data').remove('questionnaire');
       }
 
-      $scope.questions = questions;
-
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
         $state.go('questionNew', {referrer: $state.current.name});
       };
 
       $scope.save = function () {
-        questionnaires.add($scope.questionnaire, function (err) {
+        $scope.questionnaires.add($scope.questionnaire, function (err) {
           if (err) {
             $scope.addErrorAlert(err);
           } else {
@@ -53,9 +49,7 @@ angular.module('ngQuestionnaires.questionnaires')
     '$cacheFactory',
     '$state',
     '$stateParams',
-    'questions',
-    'questionnaires',
-    function ($scope, $cacheFactory, $state, $stateParams, questions, questionnaires) {
+    function ($scope, $cacheFactory, $state, $stateParams) {
 
       var questionnaire = $cacheFactory.get('data').get('questionnaire'),
         navigate = function () {
@@ -67,7 +61,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
       if (questionnaire === undefined) {
         $scope.$watch(function () {
-          return questionnaires.getByName($stateParams.id);
+          return $scope.questionnaires.getByName($stateParams.id);
         }, function (questionnaire) {
           $scope.questionnaire = questionnaire;
         });
@@ -76,15 +70,13 @@ angular.module('ngQuestionnaires.questionnaires')
         $cacheFactory.get('data').remove('questionnaire');
       }
 
-      $scope.questions = questions;
-
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
         $state.go('questionNew', {referrer: $state.current.name, id: $stateParams.id});
       };
 
       $scope.update = function () {
-        questionnaires.update($scope.questionnaire, function (err) {
+        $scope.questionnaires.update($scope.questionnaire, function (err) {
           if (err) {
             $scope.addErrorAlert(err);
           } else {

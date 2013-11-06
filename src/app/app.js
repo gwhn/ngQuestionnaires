@@ -114,11 +114,11 @@ angular.module('ngQuestionnaires', [
       };
 
       $scope.$on('angularFireAuth:login', function (event, user) {
-        $scope.addSuccessAlert('Logged in to ' + user.provider + ' as ' + user.displayName + ' successfully');
+        $scope.addSuccessAlert('You are logged in to ' + user.provider + ' as ' + user.displayName);
       });
 
       $scope.$on('angularFireAuth:logout', function (event) {
-        $scope.addWarningAlert('Logged out');
+        $scope.addWarningAlert('You are not logged in');
       });
 
       $scope.$on('angularFireAuth:error', function (event, error) {

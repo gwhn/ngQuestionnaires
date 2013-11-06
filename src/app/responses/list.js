@@ -6,7 +6,10 @@ angular.module('ngQuestionnaires.responses')
     '$modal',
     'pagination',
     'underscore',
-    function ($scope, $filter, $modal, pagination, underscore) {
+    'title',
+    function ($scope, $filter, $modal, pagination, underscore, title) {
+
+      $scope.setTitle(title);
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
@@ -48,9 +51,9 @@ angular.module('ngQuestionnaires.responses')
           .then(function (response) {
             $scope.responses.remove(response, function (err) {
               if (err) {
-                $scope.addErrorAlert(err);
+                $scope.setAlert('danger', err);
               } else {
-                $scope.addSuccessAlert('Response from ' + response.respondent +
+                $scope.setAlert('success', 'Response from ' + response.respondent +
                   ' on ' + response.questionnaire + ' deleted successfully');
               }
               $scope.$apply();

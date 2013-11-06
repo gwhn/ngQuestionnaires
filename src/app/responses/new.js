@@ -2,18 +2,21 @@ angular.module('ngQuestionnaires.responses')
 
   .controller('responseNewCtrl', [
     '$scope',
-    '$state',
-    '$stateParams',
-    function ($scope, $state, $stateParams) {
+    '$location',
+    '$routeParams',
+    'title',
+    function ($scope, $location, $routeParams, title) {
 
       var response = {answers: {}};
+
+      $scope.setTitle(title);
 
       $scope.$watch('user.email', function (email) {
         $scope.respondent = email;
       });
 
       $scope.$watch(function () {
-        return $scope.questionnaires.getByName($stateParams.id);
+        return $scope.questionnaires.getByName($routeParams.id);
       }, function (questionnaire) {
         $scope.questionnaire = questionnaire;
       });
@@ -51,7 +54,7 @@ angular.module('ngQuestionnaires.responses')
           answers: as
         }, function (err) {
           if (err) {
-            $scope.addErrorAlert(err);
+            $scope.setAlert('danger', err);
           } else {
             for (i = 0; i < qs.length; i += 1) {
               q = $scope.questions.getByName(qs[i].id);
@@ -60,9 +63,9 @@ angular.module('ngQuestionnaires.responses')
                 $scope.questions.update(q);
               }
             }
-            $scope.addSuccessAlert('Response from ' + $scope.respondent + ' on ' +
+            $scope.setAlert('success', 'Response from ' + $scope.respondent + ' on ' +
               $scope.questionnaire.title + ' saved successfully');
-            $state.go('questionnaireList');
+            $location.path('/questionnaires/list');
           }
           $scope.$apply();
         });

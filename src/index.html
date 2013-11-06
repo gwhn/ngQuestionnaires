@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="ngQuestionnaires" ng-controller="appCtrl">
 <head>
-  <title>{{pageTitle}} | nqQuestionnaires</title>
+  <title ng-bind="title"></title>
 
   <!-- social media tags -->
   <meta name="twitter:card" content="summary">
@@ -35,7 +35,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h2>
-        {{pageTitle}}
+        {{title}}
         <span ng-show="isLoading" class="pull-right">
           <img src="assets/img/loader.gif"/>
         </span>
@@ -43,7 +43,7 @@
     </div>
     <div class="panel-body" ng-hide="isLoading">
       <section ng-include="'alerts.tpl.html'" class="alerts"></section>
-      <section ui-view></section>
+      <section ng-view></section>
     </div>
   </div>
 </section>

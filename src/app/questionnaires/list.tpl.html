@@ -15,7 +15,7 @@
 
 <ul ng-if="user" class="list-unstyled">
   <li>
-    <button ui-sref="questionnaireNew" class="btn btn-default">New</button>
+    <a ng-href="#/questionnaires/new" class="btn btn-default">New</a>
   </li>
 </ul>
 
@@ -23,22 +23,22 @@
          ng-repeat="questionnaire in filteredQuestionnaires | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
   <div class="btn-group pull-right">
-    <button class="btn btn-default" ui-sref="questionnaireShow({id: questionnaire.$id})">Show</button>
+    <a class="btn btn-default" ng-href="#/questionnaires/show/{{questionnaire.$id}}">Show</a>
     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
       <li>
-        <a ui-sref="questionnaireShow({id: questionnaire.$id})">Show</a>
+        <a ng-href="#/questionnaires/show/{{questionnaire.$id}}">Show</a>
       </li>
       <li ng-if="user">
-        <a ui-sref="questionnaireEdit({id: questionnaire.$id})">Edit</a>
+        <a ng-href="#/questionnaires/edit/{{questionnaire.$id}}">Edit</a>
       </li>
       <li ng-if="user && questionnaire.published">
-        <a ui-sref="responseNew({id: questionnaire.$id})">Respond</a>
+        <a ng-href="#/responses/new/{{questionnaire.$id}}">Respond</a>
       </li>
       <li ng-if="user">
-        <a ng-click="destroy(questionnaire.$id)"><span class="text-danger">Delete</span></a>
+        <a href="" ng-click="destroy(questionnaire.$id)"><span class="text-danger">Delete</span></a>
       </li>
     </ul>
   </div>

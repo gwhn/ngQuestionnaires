@@ -5,7 +5,10 @@ angular.module('ngQuestionnaires.questionnaires')
     '$filter',
     '$modal',
     'pagination',
-    function ($scope, $filter, $modal, pagination) {
+    'title',
+    function ($scope, $filter, $modal, pagination, title) {
+
+      $scope.setTitle(title);
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
@@ -43,9 +46,9 @@ angular.module('ngQuestionnaires.questionnaires')
           .then(function (questionnaire) {
             $scope.questionnaires.remove(questionnaire, function (err) {
               if (err) {
-                $scope.addErrorAlert(err);
+                $scope.setAlert('danger', err);
               } else {
-                $scope.addSuccessAlert(questionnaire.title + ' deleted successfully');
+                $scope.setAlert('success', questionnaire.title + ' deleted successfully');
               }
               $scope.$apply();
             });

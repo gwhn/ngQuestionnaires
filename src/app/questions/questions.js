@@ -1,33 +1,41 @@
 angular.module('ngQuestionnaires.questions')
 
-  .config(function ($stateProvider) {
+  .config(function ($routeProvider) {
 
-    $stateProvider.state('questionList', {
-        url: '/questions/list',
+    $routeProvider
+      .when('/questions/list', {
         controller: 'questionListCtrl',
         templateUrl: 'questions/list.tpl.html',
-        data: {
-          pageTitle: 'Questions'
+        resolve: {
+          title: function () {
+            return 'Questions';
+          }
         }
       })
 
-      .state('questionNew', {
-        url: '/questions/new?referrer&id',
+      .when('/questions/new', {
         controller: 'questionNewCtrl',
         templateUrl: 'questions/edit.tpl.html',
-        data: {
-          pageTitle: 'New Question',
-          action: 'Save'
+        resolve: {
+          title: function () {
+            return 'New Question';
+          },
+          action: function () {
+            return 'Save';
+          }
         }
       })
 
-      .state('questionEdit', {
-        url: '/questions/edit/:id',
+      .when('/questions/edit/:id', {
         controller: 'questionEditCtrl',
         templateUrl: 'questions/edit.tpl.html',
-        data: {
-          pageTitle: 'Edit Question',
-          action: 'Update'
+        resolve: {
+          title: function () {
+            return 'Edit Question';
+          },
+          action: function () {
+            return 'Update';
+          }
         }
       });
 

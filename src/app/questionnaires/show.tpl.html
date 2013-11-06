@@ -1,7 +1,7 @@
 <article class="well well-lg">
-  <button ng-if="user" ui-sref="questionnaireEdit({id: questionnaire.$id})"
+  <a ng-if="user" ng-href="#/questionnaires/edit/{{questionnaire.$id}}"
           class="btn btn-default pull-right">Edit
-  </button>
+  </a>
 
   <h3>{{questionnaire.title}}</h3>
 

@@ -2,11 +2,14 @@ angular.module('ngQuestionnaires.questionnaires')
 
   .controller('questionnaireShowCtrl', [
     '$scope',
-    '$stateParams',
-    function ($scope, $stateParams) {
+    '$routeParams',
+    'title',
+    function ($scope, $routeParams, title) {
+
+      $scope.setTitle(title);
 
       $scope.$watch(function () {
-        return $scope.questionnaires.getByName($stateParams.id);
+        return $scope.questionnaires.getByName($routeParams.id);
       }, function (questionnaire) {
         $scope.questionnaire = questionnaire;
       });

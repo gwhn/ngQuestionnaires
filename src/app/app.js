@@ -15,7 +15,6 @@ angular.module('ngQuestionnaires', [
     'templates-app',
     'templates-common',
     'ui.bootstrap',
-    'ui.router',
     'ui.highlight',
     'ngQuestionnaires.questionnaires',
     'ngQuestionnaires.questions',
@@ -56,9 +55,9 @@ angular.module('ngQuestionnaires', [
     }
   ])
 
-  .config(function ($urlRouterProvider) {
+  .config(function ($routeProvider) {
 
-    $urlRouterProvider.otherwise('/questionnaires/list');
+    $routeProvider.otherwise({redirectTo: '/questionnaires/list'});
 
   })
 
@@ -73,18 +72,18 @@ angular.module('ngQuestionnaires', [
     'responses',
     function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth, questionnaires, questions, responses) {
 
-      $rootScope.questionnaires = questionnaires;
-
-      $rootScope.questions = questions;
-
-      $rootScope.responses = responses;
-
       angularFireAuth.initialize(
         new Firebase(fbUrl), {
           scope: $rootScope,
           name: 'user'
         }
       );
+
+      $rootScope.questionnaires = questionnaires;
+
+      $rootScope.questions = questions;
+
+      $rootScope.responses = responses;
 
       $cacheFactory('data');
 
@@ -94,29 +93,44 @@ angular.module('ngQuestionnaires', [
   .controller('appCtrl', [
     '$scope',
     '$modal',
-    '$state',
     '$cookieStore',
     '$location',
     'angularFireAuth',
-    function ($scope, $modal, $state, $cookieStore, $location, angularFireAuth) {
+    function ($scope, $modal, $cookieStore, $location, angularFireAuth) {
 
-      $scope.$on('$stateChangeStart', function (event, toState) {
+      $scope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
+        console.log(event, newUrl, oldUrl);
         if (!$scope.user && (
-          toState.name === 'questionnaireNew' ||
-            toState.name === 'questionnaireEdit' ||
-            toState.name === 'questionNew' ||
-            toState.name === 'questionEdit' ||
-            toState.name === 'responseNew'
+            newUrl.indexOf('#/questionnaires/new') > -1 ||
+            newUrl.indexOf('#/questionnaires/edit') > -1 ||
+            newUrl.indexOf('#/questions/new') > -1 ||
+            newUrl.indexOf('#/questions/edit') > -1 ||
+            newUrl.indexOf('#/responses/new') > -1
           )) {
-          $scope.addErrorAlert('Permission denied');
+          $scope.setAlert('danger', 'Permission denied');
         }
       });
 
-      $scope.$on('$stateChangeSuccess', function (event, toState) {
-        if (angular.isDefined(toState.data.pageTitle)) {
-          $scope.pageTitle = toState.data.pageTitle;
-        }
+      $scope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
+        console.log(event, newUrl, oldUrl);
       });
+
+      $scope.$on('$routeChangeStart', function (event, next, current) {
+        console.log(event, next, current);
+      });
+
+      $scope.$on('$routeChangeSuccess', function (event, current, previous) {
+        console.log(event, current, previous);
+      });
+
+      $scope.$on('$routeChangeError', function (event, current, previous, rejection) {
+        console.log(event, current, previous, rejection);
+      });
+
+      $scope.title = "ngQuestionnaires";
+      $scope.setTitle = function (title) {
+        $scope.title = title;
+      };
 
       $scope.isLoading = false;
       $scope.loading = function (show) {
@@ -124,15 +138,15 @@ angular.module('ngQuestionnaires', [
       };
 
       $scope.$on('angularFireAuth:login', function (event, user) {
-        $scope.addSuccessAlert('You are logged in to ' + user.provider + ' as ' + user.displayName);
+        $scope.setAlert('success', 'You are logged in to ' + user.provider + ' as ' + user.displayName);
       });
 
       $scope.$on('angularFireAuth:logout', function (event) {
-        $scope.addWarningAlert('You are not logged in');
+        $scope.setAlert('warning', 'You are not logged in');
       });
 
       $scope.$on('angularFireAuth:error', function (event, error) {
-        $scope.addWarningAlert(error.message);
+        $scope.setAlert('warning', error.message);
       });
 
       $scope.login = function (provider) {
@@ -143,42 +157,28 @@ angular.module('ngQuestionnaires', [
         angularFireAuth.logout();
       };
 
-      $scope.alerts = [];
+      $scope.alert = null;
 
-      $scope.addAlert = function (type, msg) {
-        $scope.alerts.unshift({
+      $scope.setAlert = function (type, msg) {
+        $scope.alert = {
           type: type,
           msg: msg
-        });
+        };
       };
 
-      $scope.addSuccessAlert = function (msg) {
-        $scope.addAlert('success', msg);
+/*
+      $scope.closeAlert = function () {
+        $scope.alert = null;
       };
-
-      $scope.addInfoAlert = function (msg) {
-        $scope.addAlert('info', msg);
-      };
-
-      $scope.addErrorAlert = function (msg) {
-        $scope.addAlert('danger', msg);
-      };
-
-      $scope.addWarningAlert = function (msg) {
-        $scope.addAlert('warning', msg);
-      };
-
-      $scope.closeAlert = function (index) {
-        $scope.alerts.splice(index, 1);
-      };
+*/
 
       if (!$cookieStore.get('acceptedTerms')) {
         $modal.open({
           controller: 'termsCtrl',
           templateUrl: 'terms.tpl.html'
         }).result.then(function () {
-          $cookieStore.put('acceptedTerms', true);
-        });
+            $cookieStore.put('acceptedTerms', true);
+          });
       }
 
     }

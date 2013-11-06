@@ -2,30 +2,30 @@ angular.module('ngQuestionnaires.questions')
 
   .controller('questionNewCtrl', [
     '$scope',
-    '$state',
-    '$stateParams',
-    function ($scope, $state, $stateParams) {
+    '$location',
+    '$routeParams',
+    'title',
+    'action',
+    function ($scope, $location, $routeParams, title, action) {
 
       var navigate = function () {
-        var referrer = $stateParams.referrer,
-          id = $stateParams.id;
+        var referrer = $routeParams.referrer,
+          id = $routeParams.id;
         if (referrer !== null) {
           if (id !== null) {
-            $state.go(referrer, {id: id});
+            $location.path(referrer).search({id: id});
           } else {
-            $state.go(referrer);
+            $location.path(referrer);
           }
         } else {
-          $state.go('questionList');
+          $location.path('/questions/list');
         }
       };
 
-      $scope.action = $state.current.data.action;
+      $scope.setTitle(title);
+      $scope.action = action;
 
-      $scope.question = {
-        userId: $scope.user.id,
-        choices: []
-      };
+      $scope.question = {choices: []};
 
       $scope.removeChoice = function (index) {
         $scope.question.choices.splice(index, 1);
@@ -36,11 +36,12 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.save = function () {
+        $scope.question.userId = $scope.user.id;
         $scope.questions.add($scope.question, function (err) {
           if (err) {
-            $scope.addErrorAlert(err);
+            $scope.setAlert('danger', err);
           } else {
-            $scope.addSuccessAlert($scope.question.text + ' saved successfully');
+            $scope.setAlert('success', $scope.question.text + ' saved successfully');
             navigate();
             $scope.$apply();
           }
@@ -54,18 +55,21 @@ angular.module('ngQuestionnaires.questions')
 
   .controller('questionEditCtrl', [
     '$scope',
-    '$state',
-    '$stateParams',
-    function ($scope, $state, $stateParams) {
+    '$location',
+    '$routeParams',
+    'title',
+    'action',
+    function ($scope, $location, $routeParams, title, action) {
 
       var navigate = function () {
-        $state.go('questionList');
+        $location.path('/questions/list');
       };
 
-      $scope.action = $state.current.data.action;
+      $scope.setTitle(title);
+      $scope.action = action;
 
       $scope.$watch(function () {
-        return $scope.questions.getByName($stateParams.id);
+        return $scope.questions.getByName($routeParams.id);
       }, function (question) {
         $scope.question = question;
       });
@@ -84,9 +88,9 @@ angular.module('ngQuestionnaires.questions')
       $scope.update = function () {
         $scope.questions.update($scope.question, function (err) {
           if (err) {
-            $scope.addErrorAlert(err);
+            $scope.setAlert('danger', err);
           } else {
-            $scope.addSuccessAlert($scope.question.text + ' updated successfully');
+            $scope.setAlert('success', $scope.question.text + ' updated successfully');
             navigate();
           }
           $scope.$apply();

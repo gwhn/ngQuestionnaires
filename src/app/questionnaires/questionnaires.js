@@ -1,43 +1,51 @@
 angular.module('ngQuestionnaires.questionnaires')
 
-  .config(function ($stateProvider) {
+  .config(function ($routeProvider) {
 
-    $stateProvider
-      .state('questionnaireList', {
-        url: '/questionnaires/list',
+    $routeProvider
+      .when('/questionnaires/list', {
         controller: 'questionnaireListCtrl',
         templateUrl: 'questionnaires/list.tpl.html',
-        data: {
-          pageTitle: 'Questionnaires'
+        resolve: {
+          title: function () {
+            return 'Questionnaires';
+          }
         }
       })
 
-      .state('questionnaireShow', {
-        url: '/questionnaires/show/:id',
+      .when('/questionnaires/show/:id', {
         controller: 'questionnaireShowCtrl',
         templateUrl: 'questionnaires/show.tpl.html',
-        data: {
-          pageTitle: 'Questionnaire'
+        resolve: {
+          title: function () {
+            return 'Questionnaire';
+          }
         }
       })
 
-      .state('questionnaireNew', {
-        url: '/questionnaires/new',
+      .when('/questionnaires/new', {
         controller: 'questionnaireNewCtrl',
         templateUrl: 'questionnaires/edit.tpl.html',
-        data: {
-          pageTitle: 'New Questionnaire',
-          action: 'Save'
+        resolve: {
+          title: function () {
+            return 'New Questionnaire';
+          },
+          action: function () {
+            return 'Save';
+          }
         }
       })
 
-      .state('questionnaireEdit', {
-        url: '/questionnaires/edit/:id',
+      .when('/questionnaires/edit/:id', {
         controller: 'questionnaireEditCtrl',
         templateUrl: 'questionnaires/edit.tpl.html',
-        data: {
-          pageTitle: 'Edit Questionnaire',
-          action: 'Update'
+        resolve: {
+          title: function () {
+            return 'Edit Questionnaire';
+          },
+          action: function () {
+            return 'Update';
+          }
         }
       });
 

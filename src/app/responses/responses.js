@@ -1,22 +1,25 @@
 angular.module('ngQuestionnaires.responses')
 
-  .config(function ($stateProvider) {
+  .config(function ($routeProvider) {
 
-    $stateProvider.state('responseList', {
-        url: '/responses/list',
+    $routeProvider
+      .when('/responses/list', {
         controller: 'responseListCtrl',
         templateUrl: 'responses/list.tpl.html',
-        data: {
-          pageTitle: 'Responses'
+        resolve: {
+          title: function () {
+            return 'Responses';
+          }
         }
       })
 
-      .state('responseNew', {
-        url: '/responses/new/:id',
+      .when('/responses/new/:id', {
         controller: 'responseNewCtrl',
         templateUrl: 'responses/new.tpl.html',
-        data: {
-          pageTitle: 'New Response'
+        resolve: {
+          title: function () {
+            return 'New Response';
+          }
         }
       });
 

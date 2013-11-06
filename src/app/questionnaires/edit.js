@@ -3,19 +3,21 @@ angular.module('ngQuestionnaires.questionnaires')
   .controller('questionnaireNewCtrl', [
     '$scope',
     '$cacheFactory',
-    '$state',
-    function ($scope, $cacheFactory, $state) {
+    '$location',
+    'title',
+    'action',
+    function ($scope, $cacheFactory, $location, title, action) {
 
       var questionnaire = $cacheFactory.get('data').get('questionnaire');
 
       function navigate() {
         $cacheFactory.get('data').remove('questionnaire');
-        $state.go('questionnaireList');
+        $location.path('/questionnaires/list');
       }
 
-      $scope.action = $state.current.data.action;
+      $scope.setTitle(title);
+      $scope.action = action;
 
-      $scope.questionnaire = {userId: $scope.user.id};
 
       if (questionnaire !== undefined) {
         $scope.questionnaire = questionnaire;
@@ -24,15 +26,17 @@ angular.module('ngQuestionnaires.questionnaires')
 
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
-        $state.go('questionNew', {referrer: $state.current.name});
+        $location.path('/questions/new')
+          .search({referrer: $location.path()});
       };
 
       $scope.save = function () {
+        $scope.questionnaire.userId = $scope.user.id;
         $scope.questionnaires.add($scope.questionnaire, function (err) {
           if (err) {
-            $scope.addErrorAlert(err);
+            $scope.setAlert('danger', err);
           } else {
-            $scope.addSuccessAlert($scope.questionnaire.title + ' saved successfully');
+            $scope.setAlert('success', $scope.questionnaire.title + ' saved successfully');
             navigate();
           }
           $scope.$apply();
@@ -47,21 +51,24 @@ angular.module('ngQuestionnaires.questionnaires')
   .controller('questionnaireEditCtrl', [
     '$scope',
     '$cacheFactory',
-    '$state',
-    '$stateParams',
-    function ($scope, $cacheFactory, $state, $stateParams) {
+    '$location',
+    '$routeParams',
+    'title',
+    'action',
+    function ($scope, $cacheFactory, $location, $routeParams, title, action) {
 
       var questionnaire = $cacheFactory.get('data').get('questionnaire'),
         navigate = function () {
           $cacheFactory.get('data').remove('questionnaire');
-          $state.go('questionnaireShow');
+          $location.path('/questionnaires/show/' + $scope.questionnaire.$id);
         };
 
-      $scope.action = $state.current.data.action;
+      $scope.setTitle(title);
+      $scope.action = action;
 
       if (questionnaire === undefined) {
         $scope.$watch(function () {
-          return $scope.questionnaires.getByName($stateParams.id);
+          return $scope.questionnaires.getByName($routeParams.id);
         }, function (questionnaire) {
           $scope.questionnaire = questionnaire;
         });
@@ -72,15 +79,19 @@ angular.module('ngQuestionnaires.questionnaires')
 
       $scope.addQuestion = function () {
         $cacheFactory.get('data').put('questionnaire', $scope.questionnaire);
-        $state.go('questionNew', {referrer: $state.current.name, id: $stateParams.id});
+        $location.path('/questions/new')
+          .search({
+            referrer: $location.path(),
+            id: $routeParams.id
+          });
       };
 
       $scope.update = function () {
         $scope.questionnaires.update($scope.questionnaire, function (err) {
           if (err) {
-            $scope.addErrorAlert(err);
+            $scope.setAlert('danger', err);
           } else {
-            $scope.addSuccessAlert($scope.questionnaire.title + ' updated successfully');
+            $scope.setAlert('success', $scope.questionnaire.title + ' updated successfully');
             navigate();
           }
           $scope.$apply();

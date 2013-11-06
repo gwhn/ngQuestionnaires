@@ -15,7 +15,7 @@
 
 <ul ng-if="user" class="list-unstyled">
   <li>
-    <button ui-sref="questionNew" class="btn btn-default">New</button>
+    <a ng-href="#/questions/new" class="btn btn-default">New</a>
   </li>
 </ul>
 
@@ -23,16 +23,16 @@
          ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
   <div ng-if="user" class="btn-group pull-right">
-    <button class="btn btn-default" ui-sref="questionEdit({id: question.$id})">Edit</button>
+    <a class="btn btn-default" ng-href="#/questions/edit/{{question.$id}}">Edit</a>
     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
       <li>
-        <a ui-sref="questionEdit({id: question.$id})">Edit</a>
+        <a ng-href="#/questions/edit/{{question.$id}}">Edit</a>
       </li>
       <li>
-        <a ng-click="destroy(question.$id)"><span class="text-danger">Delete</span></a>
+        <a href="" ng-click="destroy(question.$id)"><span class="text-danger">Delete</span></a>
       </li>
     </ul>
   </div>

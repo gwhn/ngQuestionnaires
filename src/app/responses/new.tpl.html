@@ -1,10 +1,9 @@
-<article class="well well-lg">
-  <h3>{{questionnaire.title}}</h3>
-  <p class="lead">{{questionnaire.description}}</p>
-</article>
+<form name="responseForm" novalidate>
+  <article class="well well-lg">
+    <h3>{{questionnaire.title}}</h3>
 
-<article class="well well-lg">
-  <form name="responseForm" novalidate>
+    <p class="lead">{{questionnaire.description}}</p>
+
     <div class="form-group" validation-class on="respondent">
       <label for="respondent" class="control-label">Respondent</label>
       <input type="email" ng-model="respondent" name="respondent"
@@ -12,37 +11,36 @@
       <span show-help on="respondent" when="required">Respondent is required</span>
       <span show-help on="respondent" when="email">Respondent must be a valid email address</span>
     </div>
+  </article>
 
-    <ul class="list-unstyled">
-      <li ng-repeat="id in questionnaire.questions">
-        <article ng-controller="questionShowCtrl" ng-form="choiceForm">
-          <p class="lead">{{question.text}}</p>
 
-          <ul class="list-unstyled form-group" validation-class>
-            <li ng-repeat="choice in question.choices">
-              <div class="radio">
-                <label class="control-label">
-                  <input type="radio" ng-model="$parent.response.choices" value="{{choice.text}}"
-                         ng-click="answer(question.$id, question.text, choice.text, $index)" required/>
-                  {{choice.text}}
-                </label>
-              </div>
-            </li>
-          </ul>
-          <span show-help when="required">Choice is required</span>
+  <ul class="list-unstyled">
+    <li ng-repeat="id in questionnaire.questions">
+      <article ng-controller="questionShowCtrl" ng-form="choiceForm" class="well well-lg">
+        <p class="lead">{{question.text}}</p>
 
-          <hr/>
-        </article>
-      </li>
-    </ul>
+        <ul class="list-unstyled form-group" validation-class>
+          <li ng-repeat="choice in question.choices">
+            <div class="radio">
+              <label class="control-label">
+                <input type="radio" ng-model="$parent.response.choices" value="{{choice.text}}"
+                       ng-click="answer(question.$id, question.text, choice.text, $index)" required/>
+                {{choice.text}}
+              </label>
+            </div>
+          </li>
+        </ul>
+        <span show-help when="required">Choice is required</span>
+      </article>
+    </li>
+  </ul>
 
-    <ul class="list-inline">
-      <li>
-        <button ng-click="submit()" disabled-when-invalid class="btn btn-primary">Submit</button>
-      </li>
-      <li>
-        <button ui-sref="responseList" class="btn btn-default">Cancel</button>
-      </li>
-    </ul>
-  </form>
-</article>
+  <ul class="list-inline">
+    <li>
+      <button ng-click="submit()" disabled-when-invalid class="btn btn-primary">Submit</button>
+    </li>
+    <li>
+      <a ng-href="#/responses/list" class="btn btn-default">Cancel</a>
+    </li>
+  </ul>
+</form>

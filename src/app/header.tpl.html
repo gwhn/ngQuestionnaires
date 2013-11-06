@@ -16,11 +16,6 @@
       <li>
         <a ui-sref="responseList">Responses</a>
       </li>
-<!--
-      <li ng-show="user">
-        <a href="#" ng-click="seed()"><span class="text-danger">Seed</span></a>
-      </li>
--->
       <li ng-hide="user" class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -29,8 +24,8 @@
           <li><a href="#" ng-click="login('twitter')"><i class="fa fa-twitter"></i> Twitter</a></li>
         </ul>
       </li>
-      <li ng-show="user" class="navbar-form">
-        <button ng-click="logout()" class="btn btn-default">Log out {{user.displayName}}</button>
+      <li ng-show="user">
+        <a href="" ng-click="logout()">Log out {{user.displayName}}</a>
       </li>
     </ul>
   </div>

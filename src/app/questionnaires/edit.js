@@ -65,7 +65,11 @@ angular.module('ngQuestionnaires.questionnaires')
       $scope.action = $state.current.data.action;
 
       if (questionnaire === undefined) {
-        $scope.questionnaire = questionnaires.getByName($stateParams.id);
+        $scope.$watch(function () {
+          return questionnaires.getByName($stateParams.id);
+        }, function (questionnaire) {
+          $scope.questionnaire = questionnaire;
+        });
       } else {
         $scope.questionnaire = questionnaire;
         $cacheFactory.get('data').remove('questionnaire');

@@ -64,19 +64,10 @@ angular.module('ngQuestionnaires', [
   .run([
     '$rootScope',
     '$cacheFactory',
-    '$timeout',
     'fbUrl',
     'Firebase',
     'angularFireAuth',
-    'questionnaires',
-    'questions',
-    'responses',
-    function ($rootScope, $cacheFactory, $timeout, fbUrl, Firebase, angularFireAuth, questionnaires, questions, responses) {
-
-      var data = {};
-      data.questionnaires = questionnaires;
-      data.questions = questions;
-      data.responses = responses;
+    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth) {
 
       angularFireAuth.initialize(
         new Firebase(fbUrl), {
@@ -93,13 +84,13 @@ angular.module('ngQuestionnaires', [
   .controller('appCtrl', [
     '$scope',
     '$modal',
-    '$q',
     '$state',
     '$cookieStore',
     '$location',
     'angularFireAuth',
-    function ($scope, $modal, $q, $state, $cookieStore, $location, angularFireAuth) {
+    function ($scope, $modal, $state, $cookieStore, $location, angularFireAuth) {
 
+/*
       $scope.$on('$stateChangeStart', function (event, toState) {
         if (!$scope.user && (
           toState.name === 'questionnaireNew' ||
@@ -112,6 +103,7 @@ angular.module('ngQuestionnaires', [
           event.preventDefault();
         }
       });
+*/
 
       $scope.$on('$stateChangeSuccess', function (event, toState) {
         if (angular.isDefined(toState.data.pageTitle)) {

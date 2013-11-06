@@ -65,7 +65,11 @@ angular.module('ngQuestionnaires.questions')
 
       $scope.action = $state.current.data.action;
 
-      $scope.question = questions.getByName($stateParams.id);
+      $scope.$watch(function () {
+        return questions.getByName($stateParams.id);
+      }, function (question) {
+        $scope.question = question;
+      });
 
       $scope.removeChoice = function (index) {
         $scope.question.choices.splice(index, 1);

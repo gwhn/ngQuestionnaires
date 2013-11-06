@@ -11,9 +11,15 @@ angular.module('ngQuestionnaires.responses')
 
       var response = {answers: {}};
 
-      $scope.respondent = $scope.user.email;
+      $scope.$watch('user.email', function (email) {
+        $scope.respondent = email;
+      });
 
-      $scope.questionnaire = questionnaires.getByName($stateParams.id);
+      $scope.$watch(function () {
+        return questionnaires.getByName($stateParams.id);
+      }, function (questionnaire) {
+        $scope.questionnaire = questionnaire;
+      });
 
       $scope.answer = function (id, question, choice, index) {
         response.answers[id] = {
@@ -35,7 +41,10 @@ angular.module('ngQuestionnaires.responses')
               question: response.answers[k].question,
               choice: response.answers[k].choice
             });
-            qs.push([k, response.answers[k].index]);
+            qs.push({
+              id: k,
+              index: response.answers[k].index
+            });
           }
         }
         responses.add({
@@ -48,9 +57,9 @@ angular.module('ngQuestionnaires.responses')
             $scope.addErrorAlert(err);
           } else {
             for (i = 0; i < qs.length; i += 1) {
-              q = questions.getByName(qs[i][0]);
+              q = questions.getByName(qs[i].id);
               if (q !== undefined) {
-                q.choices[qs[i][1]].count = q.choices[qs[i][1]].count + 1;
+                q.choices[qs[i].index].count = q.choices[qs[i].index].count + 1;
                 questions.update(q);
               }
             }

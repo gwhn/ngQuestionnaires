@@ -5,7 +5,11 @@ angular.module('ngQuestionnaires.questions')
     'questions',
     function ($scope, questions) {
 
-      $scope.question = questions.getByName($scope.id);
+      $scope.$watch(function () {
+        return questions.getByName($scope.id);
+      }, function (question) {
+        $scope.question = question;
+      });
 
     }
   ]);

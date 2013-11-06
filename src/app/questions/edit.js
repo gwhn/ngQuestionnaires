@@ -11,8 +11,8 @@ angular.module('ngQuestionnaires.questions')
       var navigate = function () {
         var referrer = $routeParams.referrer,
           id = $routeParams.id;
-        if (referrer !== null) {
-          if (id !== null) {
+        if (referrer !== undefined) {
+          if (id !== undefined) {
             $location.path(referrer).search({id: id});
           } else {
             $location.path(referrer);

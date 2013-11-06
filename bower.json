@@ -10,7 +10,6 @@
     "angular-cookies": "~1.2.0-rc.3",
     "bootstrap": "3.0.0",
     "angular-ui-bootstrap": "#bootstrap3_bis2",
-    "angular-ui-router": "~0.2.0",
     "angular-ui-utils": "~0.0.3",
     "d3": "~3.3.9",
     "animate.css": "~2.1.0",

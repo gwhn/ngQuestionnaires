@@ -90,7 +90,6 @@ angular.module('ngQuestionnaires', [
     'angularFireAuth',
     function ($scope, $modal, $state, $cookieStore, $location, angularFireAuth) {
 
-/*
       $scope.$on('$stateChangeStart', function (event, toState) {
         if (!$scope.user && (
           toState.name === 'questionnaireNew' ||
@@ -100,10 +99,8 @@ angular.module('ngQuestionnaires', [
             toState.name === 'responseNew'
           )) {
           $scope.addErrorAlert('Permission denied');
-          event.preventDefault();
         }
       });
-*/
 
       $scope.$on('$stateChangeSuccess', function (event, toState) {
         if (angular.isDefined(toState.data.pageTitle)) {

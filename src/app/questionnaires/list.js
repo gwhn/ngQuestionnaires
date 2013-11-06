@@ -48,6 +48,7 @@ angular.module('ngQuestionnaires.questionnaires')
               } else {
                 $scope.addSuccessAlert(questionnaire.title + ' deleted successfully');
               }
+              $scope.$apply();
             });
           });
       };

@@ -6,8 +6,9 @@ angular.module('ngQuestionnaires.questions')
     '$modal',
     'underscore',
     'pagination',
+    'questionnaires',
     'questions',
-    function ($scope, $filter, $modal, underscore, pagination, questions) {
+    function ($scope, $filter, $modal, underscore, pagination, questionnaires, questions) {
 
       $scope.itemsPerPage = pagination.itemsPerPage;
       $scope.maxSize = pagination.maxSize;
@@ -49,8 +50,10 @@ angular.module('ngQuestionnaires.questions')
               if (err) {
                 $scope.addErrorAlert(err);
               } else {
+                // need to delete any references from questionnaires
                 $scope.addSuccessAlert(question.text + ' deleted successfully');
               }
+              $scope.$apply();
             });
           });
       };

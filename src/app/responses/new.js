@@ -67,6 +67,7 @@ angular.module('ngQuestionnaires.responses')
               $scope.questionnaire.title + ' saved successfully');
             $state.go('questionnaireList');
           }
+          $scope.$apply();
         });
       };
 

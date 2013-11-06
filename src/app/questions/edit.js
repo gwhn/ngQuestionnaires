@@ -43,6 +43,7 @@ angular.module('ngQuestionnaires.questions')
           } else {
             $scope.addSuccessAlert($scope.question.text + ' saved successfully');
             navigate();
+            $scope.$apply();
           }
         });
       };
@@ -90,6 +91,7 @@ angular.module('ngQuestionnaires.questions')
             $scope.addSuccessAlert($scope.question.text + ' updated successfully');
             navigate();
           }
+          $scope.$apply();
         });
       };
 

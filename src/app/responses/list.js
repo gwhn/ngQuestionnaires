@@ -54,6 +54,7 @@ angular.module('ngQuestionnaires.responses')
                 $scope.addSuccessAlert('Response from ' + response.respondent +
                   ' on ' + response.questionnaire + ' deleted successfully');
               }
+              $scope.$apply();
             });
           });
       };

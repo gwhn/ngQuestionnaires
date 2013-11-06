@@ -63,147 +63,18 @@ body {
  * Animations
  */
 
-.reveal-container {
-  position: relative;
-}
-
-.reveal-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-.reveal-animation.ng-enter {
-  -webkit-animation: slide-in 0.5s ease-out;
-  -moz-animation: slide-in 0.5s ease-out;
-  -o-animation: slide-in 0.5s ease-out;
-  animation: slide-in 0.5s ease-out;
-}
-
-@-webkit-keyframes slide-in {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0;
-  }
-}
-
-@-moz-keyframes slide-in {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0;
-  }
-}
-
-@-o-keyframes slide-in {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0;
-  }
-}
-
-@keyframes slide-in {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0;
-  }
-}
-
-.reveal-animation.ng-leave {
-  -webkit-animation: slide-out 0.2s ease-in;
-  -moz-animation: slide-out 0.2s ease-in;
-  -o-animation: slide-out 0.2s ease-in;
-  animation: slide-out 0.2s ease-in;
-}
-
-@-webkit-keyframes slide-out {
-  from {
-    left: 0;
-  }
-  to {
-    left: -100%;
-  }
-}
-
-@-moz-keyframes slide-out {
-  from {
-    left: 0;
-  }
-  to {
-    left: -100%;
-  }
-}
-
-@-o-keyframes slide-out {
-  from {
-    left: 0;
-  }
-  to {
-    left: -100%;
-  }
-}
-
-@keyframes slide-out {
-  from {
-    left: 0;
-  }
-  to {
-    left: -100%;
-  }
-}
-
 .help-block {
   opacity: 0;
 }
+
 .help-block.animate-show,
 .help-block.animate-show-add.animate-show-add-active {
   opacity: 1;
-  -moz-transition: opacity 1s ease 0.5s;
-  -webkit-transition: opacity 1s ease 0.5s;
-  -o-transition: opacity 1s ease 0.5s;
-  transition: opacity 1s ease 0.5s;
+  -moz-transition: opacity 0.3s ease 0.2s;
+  -webkit-transition: opacity 0.3s ease 0.2s;
+  -o-transition: opacity 0.3s ease 0.2s;
+  transition: opacity 0.3s ease 0.2s;
 }
-
-
-.repeated-item.ng-enter,
-.repeated-item.ng-leave,
-.repeated-item.ng-move {
-  -webkit-transition: 0.5s linear all;
-  -moz-transition: 0.5s linear all;
-  -o-transition: 0.5s linear all;
-  transition: 0.5s linear all;
-}
-
-.repeated-item.ng-enter,
-.repeated-item.ng-move {
-  opacity: 0;
-}
-
-.repeated-item.ng-move.ng-move-active,
-.repeated-item.ng-enter.ng-enter-active {
-  opacity: 1;
-}
-
-.repeated-item.ng-leave {
-  opacity: 1;
-}
-
-.repeated-item.ng-leave.ng-leave-active {
-  opacity: 0;
-}
-
-
-
 
 /**
  * Now that all app-wide styles have been applied, we can load the styles for

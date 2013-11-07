@@ -8,6 +8,14 @@
       <span show-help on="question" when="uniqueQuestionText">Question text must be unique</span>
     </div>
 
+    <div class="checkbox">
+      <label class="control-label">
+        <input type="checkbox" ng-model="question.multiple"
+               ng-true-value="true" ng-false-value="false"/>
+        Allow multiple choices?
+      </label>
+    </div>
+
     <div class="form-group" ng-model="question.choices" multiple-required validation-class>
       <label class="control-label">Choices</label>
 
@@ -34,9 +42,11 @@
       <li>
         <div ng-switch="action">
           <button ng-switch-when="Save" ng-click="save()" disabled-when-invalid
-                  class="btn btn-primary">{{action}}</button>
+                  class="btn btn-primary">{{action}}
+          </button>
           <button ng-switch-default ng-click="update()" disabled-when-invalid
-                  class="btn btn-primary">{{action}}</button>
+                  class="btn btn-primary">{{action}}
+          </button>
         </div>
       </li>
       <li>

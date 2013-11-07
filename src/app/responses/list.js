@@ -38,28 +38,5 @@ angular.module('ngQuestionnaires.responses')
           ) : true;
       };
 
-      $scope.destroy = function (id) {
-        $modal.open({
-          controller: 'responseDeleteCtrl',
-          templateUrl: 'responses/delete.tpl.html',
-          resolve: {
-            response: function () {
-              return $scope.responses.getByName(id);
-            }
-          }
-        }).result
-          .then(function (response) {
-            $scope.responses.remove(response, function (err) {
-              if (err) {
-                $scope.setAlert('danger', err);
-              } else {
-                $scope.setAlert('success', 'Response from ' + response.respondent +
-                  ' on ' + response.questionnaire + ' deleted successfully');
-              }
-              $scope.$apply();
-            });
-          });
-      };
-
     }
   ]);

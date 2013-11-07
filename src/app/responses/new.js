@@ -4,8 +4,9 @@ angular.module('ngQuestionnaires.responses')
     '$scope',
     '$location',
     '$routeParams',
+    'underscore',
     'title',
-    function ($scope, $location, $routeParams, title) {
+    function ($scope, $location, $routeParams, underscore, title) {
 
       var response = {answers: {}};
 
@@ -21,51 +22,79 @@ angular.module('ngQuestionnaires.responses')
         $scope.questionnaire = questionnaire;
       });
 
-      $scope.answer = function (id, question, choice, index) {
-        response.answers[id] = {
-          question: question,
-          choice: choice,
-          index: index
+      $scope.singleChoice = function (question, choice) {
+        response.answers[question.$id] = {
+          question: question.text,
+          choices: [choice]
         };
       };
 
+      $scope.multipleChoice = function (question, choice, index) {
+        if (response.answers[question.$id] === undefined) {
+          response.answers[question.$id] = {};
+        }
+        response.answers[question.$id].question = question.text;
+        if (response.answers[question.$id].choices === undefined) {
+          response.answers[question.$id].choices = [];
+        }
+        response.answers[question.$id].choices[index] = choice;
+      };
+
       $scope.submit = function () {
-        var as = [],
-          qs = [],
-          q,
-          k,
-          i;
-        for (k in response.answers) {
-          if (response.answers.hasOwnProperty(k)) {
-            as.push({
-              question: response.answers[k].question,
-              choice: response.answers[k].choice
+        var answers = [],
+          questions = [],
+          choices = [],
+          key,
+          validChoice = function (choice) {
+            return choice !== false;
+          };
+
+        for (key in response.answers) {
+          if (response.answers.hasOwnProperty(key)) {
+            choices = underscore.filter(response.answers[key].choices, validChoice);
+            answers.push({
+              question: response.answers[key].question,
+              choices: choices
             });
-            qs.push({
-              id: k,
-              index: response.answers[k].index
+            questions.push({
+              id: key,
+              choices: choices
             });
           }
         }
+
         $scope.responses.add({
+          createdAt: Date.now(),
           userId: $scope.user.id,
           respondent: $scope.respondent,
           questionnaire: $scope.questionnaire.title,
-          answers: as
+          answers: answers
         }, function (err) {
           if (err) {
             $scope.setAlert('danger', err);
           } else {
-            for (i = 0; i < qs.length; i += 1) {
-              q = $scope.questions.getByName(qs[i].id);
-              if (q !== undefined) {
-                q.choices[qs[i].index].count = q.choices[qs[i].index].count + 1;
-                $scope.questions.update(q);
-              }
-            }
+
+            underscore.each(questions, function (q) {
+              var question = $scope.questions.getByName(q.id);
+              underscore.each(q.choices, function (t) {
+                underscore.every(question.choices, function (c) {
+                  if (c.text === t) {
+                    c.count += 1;
+                    return false;
+                  }
+                  return true;
+                });
+              });
+              $scope.questions.update(question);
+            });
+
+            $scope.questionnaire.count += 1;
+            $scope.questionnaires.update($scope.questionnaire);
+
             $scope.setAlert('success', 'Response from ' + $scope.respondent + ' on ' +
               $scope.questionnaire.title + ' saved successfully');
             $location.path('/questionnaires/list');
+
           }
           $scope.$apply();
         });

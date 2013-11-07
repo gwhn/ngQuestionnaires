@@ -36,35 +36,5 @@ angular.module('ngQuestionnaires.questions')
           ) : true;
       };
 
-      $scope.destroy = function (id) {
-        $modal.open({
-          controller: 'questionDeleteCtrl',
-          templateUrl: 'questions/delete.tpl.html',
-          resolve: {
-            question: function () {
-              return $scope.questions.getByName(id);
-            }
-          }
-        }).result
-          .then(function (question) {
-            $scope.questions.remove(question, function (err) {
-              if (err) {
-                $scope.setAlert('danger', err);
-              } else {
-                underscore.chain($scope.questionnaires)
-                  .filter(function (questionnaire) {
-                    return underscore.contains(questionnaire.questions, id);
-                  })
-                  .each(function (questionnaire) {
-                    questionnaire.questions = underscore.without(questionnaire.questions, id);
-                    $scope.questionnaires.update(questionnaire);
-                  });
-                $scope.setAlert('success', question.text + ' deleted successfully');
-              }
-              $scope.$apply();
-            });
-          });
-      };
-
     }
   ]);

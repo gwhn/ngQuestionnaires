@@ -99,7 +99,7 @@ angular.module('ngQuestionnaires', [
     function ($scope, $modal, $cookieStore, $location, angularFireAuth) {
 
       $scope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
-        console.log(event, newUrl, oldUrl);
+//        console.log(event, newUrl, oldUrl);
         if (!$scope.user && (
             newUrl.indexOf('#/questionnaires/new') > -1 ||
             newUrl.indexOf('#/questionnaires/edit') > -1 ||
@@ -112,19 +112,19 @@ angular.module('ngQuestionnaires', [
       });
 
       $scope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
-        console.log(event, newUrl, oldUrl);
+//        console.log(event, newUrl, oldUrl);
       });
 
       $scope.$on('$routeChangeStart', function (event, next, current) {
-        console.log(event, next, current);
+//        console.log(event, next, current);
       });
 
       $scope.$on('$routeChangeSuccess', function (event, current, previous) {
-        console.log(event, current, previous);
+//        console.log(event, current, previous);
       });
 
       $scope.$on('$routeChangeError', function (event, current, previous, rejection) {
-        console.log(event, current, previous, rejection);
+//        console.log(event, current, previous, rejection);
       });
 
       $scope.title = "ngQuestionnaires";
@@ -166,11 +166,80 @@ angular.module('ngQuestionnaires', [
         };
       };
 
-/*
-      $scope.closeAlert = function () {
-        $scope.alert = null;
+      $scope.destroyQuestionnaire = function (id) {
+        $modal.open({
+          controller: 'questionnaireDeleteCtrl',
+          templateUrl: 'questionnaires/delete.tpl.html',
+          resolve: {
+            questionnaire: function () {
+              return $scope.questionnaires.getByName(id);
+            }
+          }
+        }).result
+          .then(function (questionnaire) {
+            $scope.questionnaires.remove(questionnaire, function (err) {
+              if (err) {
+                $scope.setAlert('danger', err);
+              } else {
+                $scope.setAlert('success', questionnaire.title + ' deleted successfully');
+              }
+              $scope.$apply();
+            });
+          });
       };
-*/
+
+      $scope.destroyQuestion = function (id) {
+        $modal.open({
+          controller: 'questionDeleteCtrl',
+          templateUrl: 'questions/delete.tpl.html',
+          resolve: {
+            question: function () {
+              return $scope.questions.getByName(id);
+            }
+          }
+        }).result
+          .then(function (question) {
+            $scope.questions.remove(question, function (err) {
+              if (err) {
+                $scope.setAlert('danger', err);
+              } else {
+                underscore.chain($scope.questionnaires)
+                  .filter(function (questionnaire) {
+                    return underscore.contains(questionnaire.questions, id);
+                  })
+                  .each(function (questionnaire) {
+                    questionnaire.questions = underscore.without(questionnaire.questions, id);
+                    $scope.questionnaires.update(questionnaire);
+                  });
+                $scope.setAlert('success', question.text + ' deleted successfully');
+              }
+              $scope.$apply();
+            });
+          });
+      };
+
+      $scope.destroyResponse = function (id) {
+        $modal.open({
+          controller: 'responseDeleteCtrl',
+          templateUrl: 'responses/delete.tpl.html',
+          resolve: {
+            response: function () {
+              return $scope.responses.getByName(id);
+            }
+          }
+        }).result
+          .then(function (response) {
+            $scope.responses.remove(response, function (err) {
+              if (err) {
+                $scope.setAlert('danger', err);
+              } else {
+                $scope.setAlert('success', 'Response from ' + response.respondent +
+                  ' on ' + response.questionnaire + ' deleted successfully');
+              }
+              $scope.$apply();
+            });
+          });
+      };
 
       if (!$cookieStore.get('acceptedTerms')) {
         $modal.open({

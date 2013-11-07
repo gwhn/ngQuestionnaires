@@ -33,26 +33,4 @@ angular.module('ngQuestionnaires.questionnaires')
           ) : true;
       };
 
-      $scope.destroy = function (id) {
-        $modal.open({
-          controller: 'questionnaireDeleteCtrl',
-          templateUrl: 'questionnaires/delete.tpl.html',
-          resolve: {
-            questionnaire: function () {
-              return $scope.questionnaires.getByName(id);
-            }
-          }
-        }).result
-          .then(function (questionnaire) {
-            $scope.questionnaires.remove(questionnaire, function (err) {
-              if (err) {
-                $scope.setAlert('danger', err);
-              } else {
-                $scope.setAlert('success', questionnaire.title + ' deleted successfully');
-              }
-              $scope.$apply();
-            });
-          });
-      };
-
     }]);

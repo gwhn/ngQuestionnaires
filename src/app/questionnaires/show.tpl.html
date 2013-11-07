@@ -1,7 +1,21 @@
 <article class="well well-lg">
-  <a ng-if="user" ng-href="#/questionnaires/edit/{{questionnaire.$id}}"
-          class="btn btn-default pull-right">Edit
-  </a>
+  <div class="btn-group pull-right">
+    <a class="btn btn-default" ng-href="#/questionnaires/edit/{{questionnaire.$id}}">Edit</a>
+    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li ng-if="user">
+        <a ng-href="#/questionnaires/edit/{{questionnaire.$id}}">Edit</a>
+      </li>
+      <li ng-if="user && questionnaire.published">
+        <a ng-href="#/responses/new/{{questionnaire.$id}}">Respond</a>
+      </li>
+      <li ng-if="user">
+        <a href="" ng-click="destroyQuestionnaire(questionnaire.$id)"><span class="text-danger">Delete</span></a>
+      </li>
+    </ul>
+  </div>
 
   <h3>{{questionnaire.title}}</h3>
 

@@ -36,6 +36,7 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.save = function () {
+        $scope.question.createdAt = Date.now();
         $scope.question.userId = $scope.user.id;
         $scope.questions.add($scope.question, function (err) {
           if (err) {
@@ -86,6 +87,7 @@ angular.module('ngQuestionnaires.questions')
       };
 
       $scope.update = function () {
+        $scope.question.updatedAt = Date.now();
         $scope.questions.update($scope.question, function (err) {
           if (err) {
             $scope.setAlert('danger', err);

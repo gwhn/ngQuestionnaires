@@ -21,7 +21,7 @@
 
     <p class="lead" ng-bind-html="response.respondent | highlight:search.query"></p>
 
-    <button ng-if="user" ng-click="destroy(response.$id)" class="btn btn-danger pull-right">Delete</button>
+    <button ng-if="user" ng-click="destroyResponse(response.$id)" class="btn btn-danger pull-right">Delete</button>
 
     <div toggle-collapse is-collapsed="true">
       <div toggle-label>

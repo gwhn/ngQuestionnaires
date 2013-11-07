@@ -51,7 +51,14 @@ angular.module('ngQuestionnaires.questions')
               if (err) {
                 $scope.setAlert('danger', err);
               } else {
-                // need to delete any references from questionnaires
+                underscore.chain($scope.questionnaires)
+                  .filter(function (questionnaire) {
+                    return underscore.contains(questionnaire.questions, id);
+                  })
+                  .each(function (questionnaire) {
+                    questionnaire.questions = underscore.without(questionnaire.questions, id);
+                    $scope.questionnaires.update(questionnaire);
+                  });
                 $scope.setAlert('success', question.text + ' deleted successfully');
               }
               $scope.$apply();

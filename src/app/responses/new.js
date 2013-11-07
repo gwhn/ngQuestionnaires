@@ -42,26 +42,31 @@ angular.module('ngQuestionnaires.responses')
 
       $scope.submit = function () {
         var answers = [],
-          questions = [],
-          choices = [],
-          key,
-          validChoice = function (choice) {
-            return choice !== false;
-          };
+          questions = [];
 
-        for (key in response.answers) {
-          if (response.answers.hasOwnProperty(key)) {
-            choices = underscore.filter(response.answers[key].choices, validChoice);
+        function validChoice(choice) {
+          return choice !== false;
+        }
+
+        underscore.each($scope.questionnaire.questions, function (id) {
+          var choices = [];
+          if (response.answers.hasOwnProperty(id)) {
+            choices = underscore.filter(response.answers[id].choices, validChoice);
             answers.push({
-              question: response.answers[key].question,
+              question: response.answers[id].question,
               choices: choices
             });
             questions.push({
-              id: key,
+              id: id,
               choices: choices
             });
+          } else {
+            answers.push({
+              question: $scope.questions.getByName(id).text,
+              choices: []
+            });
           }
-        }
+        });
 
         $scope.responses.add({
           createdAt: Date.now(),
@@ -77,12 +82,10 @@ angular.module('ngQuestionnaires.responses')
             underscore.each(questions, function (q) {
               var question = $scope.questions.getByName(q.id);
               underscore.each(q.choices, function (t) {
-                underscore.every(question.choices, function (c) {
+                underscore.each(question.choices, function (c) {
                   if (c.text === t) {
                     c.count += 1;
-                    return false;
                   }
-                  return true;
                 });
               });
               $scope.questions.update(question);

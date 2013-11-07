@@ -32,13 +32,21 @@
           <thead>
           <tr>
             <th>Question</th>
-            <th>Choice</th>
+            <th>Choices</th>
           </tr>
           </thead>
           <tbody>
           <tr ng-repeat="answer in response.answers">
             <td class="col-md-6" ng-bind-html="answer.question | highlight:search.query"></td>
-            <td class="col-md-6" ng-bind-html="answer.choice | highlight:search.query"></td>
+            <td class="col-md-6">
+              <ul ng-show="answer.choices" class="list-inline comma-delimited">
+                <li ng-repeat="choice in answer.choices"
+                    ng-bind-html="choice | highlight:search.query"></li>
+              </ul>
+              <ul ng-hide="answer.choices" class="list-inline">
+                <li class="text-muted">None</li>
+              </ul>
+            </td>
           </tr>
           </tbody>
         </table>

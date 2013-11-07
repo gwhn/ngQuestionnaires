@@ -59,6 +59,14 @@ body {
   background: #c4ff00;
 }
 
+.list-inline.comma-delimited > li:after {
+  content: ', ';
+}
+
+.list-inline.comma-delimited > li:last-child:after {
+  content: '';
+}
+
 /**
  * Animations
  */

@@ -24,7 +24,8 @@ angular.module('ngQuestionnaires', [
     'ngQuestionnaires.services'
   ])
 
-  .constant('fbUrl', 'https://ngquestionnaires.firebaseio.com/')
+  .constant('fbUrl', 'https://ngdev.firebaseio.com/')
+//  .constant('fbUrl', 'https://ngquestionnaires.firebaseio.com/')
 
   .constant('pagination', {itemsPerPage: 5, maxSize: 5})
 

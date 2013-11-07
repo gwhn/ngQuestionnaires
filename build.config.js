@@ -75,8 +75,6 @@ module.exports = {
       'vendor/angular-cookies/angular-cookies.min.js',
       'vendor/angular-route/angular-route.min.js',
       'vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.6.0-SNAPSHOT.min.js',
-      'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
-      'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-ui-utils/modules/highlight/highlight.js',
       'vendor/angular-fire/angularFire.min.js'
     ],

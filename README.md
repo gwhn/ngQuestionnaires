@@ -63,12 +63,19 @@ You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/) on Gith
 * title (String)
 * description (String)
 * published (Boolean)
+* createdAt (Date)
+* updatedAt (Date)
+* count (Number)
 * questions (ref Array)
 
 ### questions
 
 * userId (String)
 * text (String)
+* multiple (Boolean)
+* createdAt (Date)
+* updatedAt (Date)
+* count (Number)
 * choices (Array)
     * text (String)
     * count (Number)
@@ -78,9 +85,10 @@ You can find a live demo [here](http://gwhn.github.io/ngQuestionnaires/) on Gith
 * userId (String)
 * respondent (String)
 * questionnaire (String)
+* createdAt (Date)
 * answers (Array)
     * question (String)
-    * choice (String)
+    * choices (Array)
 
 ## Quick Start
 

@@ -168,8 +168,8 @@ angular.module('ngQuestionnaires', [
         };
       };
 
-      $scope.formatDate = function (date) {
-        var d = new Date(date);
+      $scope.formatDate = function (ms) {
+        var d = new Date(ms);
         return 'on ' + d.toLocaleDateString() + ' at ' + d.toLocaleTimeString();
       };
 

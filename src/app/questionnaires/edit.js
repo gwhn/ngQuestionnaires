@@ -60,11 +60,12 @@ angular.module('ngQuestionnaires.questionnaires')
     'action',
     function ($scope, $cacheFactory, $location, $routeParams, title, action) {
 
-      var questionnaire = $cacheFactory.get('data').get('questionnaire'),
-        navigate = function () {
-          $cacheFactory.get('data').remove('questionnaire');
-          $location.path('/questionnaires/show/' + $scope.questionnaire.$id);
-        };
+      var questionnaire = $cacheFactory.get('data').get('questionnaire');
+
+      function navigate() {
+        $cacheFactory.get('data').remove('questionnaire');
+        $location.path('/questionnaires/show/' + $scope.questionnaire.$id);
+      }
 
       $scope.setTitle(title);
       $scope.action = action;

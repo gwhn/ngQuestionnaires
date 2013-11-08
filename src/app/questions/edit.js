@@ -8,19 +8,17 @@ angular.module('ngQuestionnaires.questions')
     'action',
     function ($scope, $location, $routeParams, title, action) {
 
-      var navigate = function () {
+      function navigate() {
         var referrer = $routeParams.referrer,
           id = $routeParams.id;
-        if (referrer !== undefined) {
-          if (id !== undefined) {
-            $location.path(referrer).search({id: id});
-          } else {
-            $location.path(referrer);
-          }
+        if (referrer && id) {
+          $location.path(referrer).search({id: id});
+        } else if (referrer) {
+          $location.path(referrer);
         } else {
           $location.path('/questions/list');
         }
-      };
+      }
 
       $scope.setTitle(title);
       $scope.action = action;
@@ -43,6 +41,7 @@ angular.module('ngQuestionnaires.questions')
           if (err) {
             $scope.setAlert('danger', err.code);
           } else {
+            console.log($scope.question);
             $scope.setAlert('success', $scope.question.text + ' saved successfully');
             navigate();
             $scope.$apply();
@@ -63,9 +62,9 @@ angular.module('ngQuestionnaires.questions')
     'action',
     function ($scope, $location, $routeParams, title, action) {
 
-      var navigate = function () {
+      function navigate() {
         $location.path('/questions/list');
-      };
+      }
 
       $scope.setTitle(title);
       $scope.action = action;

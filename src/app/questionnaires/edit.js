@@ -37,7 +37,7 @@ angular.module('ngQuestionnaires.questionnaires')
         $scope.questionnaire.count = 0;
         $scope.questionnaires.add($scope.questionnaire, function (err) {
           if (err) {
-            $scope.setAlert('danger', err);
+            $scope.setAlert('danger', err.code);
           } else {
             $scope.setAlert('success', $scope.questionnaire.title + ' saved successfully');
             navigate();
@@ -94,7 +94,7 @@ angular.module('ngQuestionnaires.questionnaires')
         $scope.questionnaire.updatedAt = Date.now();
         $scope.questionnaires.update($scope.questionnaire, function (err) {
           if (err) {
-            $scope.setAlert('danger', err);
+            $scope.setAlert('danger', err.code);
           } else {
             $scope.setAlert('success', $scope.questionnaire.title + ' updated successfully');
             navigate();

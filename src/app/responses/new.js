@@ -76,11 +76,12 @@ angular.module('ngQuestionnaires.responses')
           answers: answers
         }, function (err) {
           if (err) {
-            $scope.setAlert('danger', err);
+            $scope.setAlert('danger', err.code);
           } else {
 
             underscore.each(questions, function (q) {
               var question = $scope.questions.getByName(q.id);
+              question.count += 1;
               underscore.each(q.choices, function (t) {
                 underscore.each(question.choices, function (c) {
                   if (c.text === t) {

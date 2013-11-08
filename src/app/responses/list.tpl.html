@@ -16,44 +16,43 @@
 <article class="well well-lg dn-flip-x"
          ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <div>
-    <h3 ng-bind-html="response.questionnaire | highlight:search.query"></h3>
+  <button ng-if="user" ng-click="destroyResponse(response.$id)" class="btn btn-danger pull-right">Delete</button>
 
-    <p class="lead" ng-bind-html="response.respondent | highlight:search.query"></p>
+  <h3 ng-bind-html="response.questionnaire | highlight:search.query"></h3>
 
-    <button ng-if="user" ng-click="destroyResponse(response.$id)" class="btn btn-danger pull-right">Delete</button>
+  <p class="lead" ng-bind-html="response.respondent | highlight:search.query"></p>
 
-    <div toggle-collapse is-collapsed="true">
-      <div toggle-label>
-        Answers <span class="badge">{{response.answers.length}}</span>
-      </div>
-      <div toggle-body>
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Question</th>
-            <th>Choices</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="answer in response.answers">
-            <td class="col-md-6" ng-bind-html="answer.question | highlight:search.query"></td>
-            <td class="col-md-6">
-              <ul ng-show="answer.choices" class="list-inline comma-delimited">
-                <li ng-repeat="choice in answer.choices"
-                    ng-bind-html="choice | highlight:search.query"></li>
-              </ul>
-              <ul ng-hide="answer.choices" class="list-inline">
-                <li class="text-muted">None</li>
-              </ul>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+  <div toggle-collapse is-collapsed="true">
+    <div toggle-label>
+      <span class="badge">{{response.answers.length}}</span> Answers
     </div>
-
+    <div toggle-body>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Question</th>
+          <th>Choices</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="answer in response.answers">
+          <td class="col-md-6 col-xs-6" ng-bind-html="answer.question | highlight:search.query"></td>
+          <td class="col-md-6 col-xs-6">
+            <ul ng-show="answer.choices" class="list-inline comma-delimited">
+              <li ng-repeat="choice in answer.choices"
+                  ng-bind-html="choice | highlight:search.query"></li>
+            </ul>
+            <ul ng-hide="answer.choices" class="list-inline">
+              <li class="text-muted">None</li>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <section ng-include="'responses/meta.tpl.html'"></section>
 
 </article>
 

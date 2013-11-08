@@ -22,14 +22,10 @@
   <div class="row">
     <p class="lead col-md-10">{{questionnaire.description}}</p>
 
-    <p ng-switch="questionnaire.published" class="col-md-2 text-right">
-      Published?
-      <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
-      <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
-    </p>
   </div>
 
-  <p ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
+  <section ng-include="'questionnaires/meta.tpl.html'"></section>
+  <p ng-cloak ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
 
 </article>
 
@@ -40,16 +36,18 @@
 
       <div toggle-collapse="false">
         <div toggle-label>
-          Choices <span class="badge">{{question.choices.length}}</span>
+          <span class="badge">{{question.choices.length}}</span> Choices
         </div>
         <div toggle-body>
           <ol class="list-group">
             <li ng-repeat="choice in question.choices" class="list-group-item">
-              {{choice.text}} <span class="badge">{{choice.count}}</span>
+              <span class="badge">{{choice.count}}</span>{{choice.text}}
             </li>
           </ol>
         </div>
       </div>
+
+      <section ng-include="'questions/meta.tpl.html'"></section>
     </article>
   </li>
 </ul>

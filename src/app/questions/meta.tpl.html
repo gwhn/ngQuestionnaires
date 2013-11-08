@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-6 col-xs-6">
+    <div ng-switch="question.multiple">
+      <span ng-switch-when="true"><i class="glyphicon glyphicon-ok"></i></span>
+      <span ng-switch-default><i class="glyphicon glyphicon-remove"></i></span>
+      Allow multiple choices?
+    </div>
+    <div><span class="badge">{{question.count}}</span> Responses</div>
+  </div>
+  <div class="col-md-6 col-xs-6 text-right text-muted">
+    <div>Created {{formatDate(question.createdAt)}}</div>
+    <div ng-if="question.updatedAt">Updated {{formatDate(question.updatedAt)}}</div>
+  </div>
+</div>

@@ -97,7 +97,8 @@ angular.module('ngQuestionnaires', [
     '$cookieStore',
     '$location',
     'angularFireAuth',
-    function ($scope, $modal, $cookieStore, $location, angularFireAuth) {
+    'underscore',
+    function ($scope, $modal, $cookieStore, $location, angularFireAuth, underscore) {
 
       $scope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
 //        console.log(event, newUrl, oldUrl);
@@ -167,6 +168,11 @@ angular.module('ngQuestionnaires', [
         };
       };
 
+      $scope.formatDate = function (date) {
+        var d = new Date(date);
+        return 'on ' + d.toLocaleDateString() + ' at ' + d.toLocaleTimeString();
+      };
+
       $scope.destroyQuestionnaire = function (id) {
         $modal.open({
           controller: 'questionnaireDeleteCtrl',
@@ -180,7 +186,7 @@ angular.module('ngQuestionnaires', [
           .then(function (questionnaire) {
             $scope.questionnaires.remove(questionnaire, function (err) {
               if (err) {
-                $scope.setAlert('danger', err);
+                $scope.setAlert('danger', err.code);
               } else {
                 $scope.setAlert('success', questionnaire.title + ' deleted successfully');
               }
@@ -202,7 +208,7 @@ angular.module('ngQuestionnaires', [
           .then(function (question) {
             $scope.questions.remove(question, function (err) {
               if (err) {
-                $scope.setAlert('danger', err);
+                $scope.setAlert('danger', err.code);
               } else {
                 underscore.chain($scope.questionnaires)
                   .filter(function (questionnaire) {
@@ -232,7 +238,7 @@ angular.module('ngQuestionnaires', [
           .then(function (response) {
             $scope.responses.remove(response, function (err) {
               if (err) {
-                $scope.setAlert('danger', err);
+                $scope.setAlert('danger', err.code);
               } else {
                 $scope.setAlert('success', 'Response from ' + response.respondent +
                   ' on ' + response.questionnaire + ' deleted successfully');

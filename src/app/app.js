@@ -71,7 +71,9 @@ angular.module('ngQuestionnaires', [
     'questionnaires',
     'questions',
     'responses',
-    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth, questionnaires, questions, responses) {
+    'categories',
+    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth,
+              questionnaires, questions, responses, categories) {
 
       angularFireAuth.initialize(
         new Firebase(fbUrl), {
@@ -85,6 +87,8 @@ angular.module('ngQuestionnaires', [
       $rootScope.questions = questions;
 
       $rootScope.responses = responses;
+
+      $rootScope.categories = categories;
 
       $cacheFactory('data');
 
@@ -256,6 +260,29 @@ angular.module('ngQuestionnaires', [
             $cookieStore.put('acceptedTerms', true);
           });
       }
+
+    }
+  ])
+
+  .controller('categoryCtrl', [
+    '$scope',
+    function ($scope) {
+
+      $scope.newCategory = false;
+
+      $scope.saveCategory = function () {
+
+        $scope.categories.add($scope.category, function (err) {
+          if (err) {
+            $scope.setAlert('danger', err.code);
+          } else {
+            $scope.setAlert('success', $scope.category.name + ' saved successfully');
+          }
+          $scope.category = null;
+          $scope.newCategory = false;
+          $scope.$apply();
+        });
+      };
 
     }
   ])

@@ -1,0 +1,14 @@
+<div ng-controller="categoryCtrl">
+  <button ng-hide="newCategory" ng-click="newCategory = true" class="btn btn-default">
+    <i class="glyphicon glyphicon-plus"></i>
+  </button>
+  <div ng-show="newCategory" class="form-inline">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Name" ng-model="category.name"/>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" ng-click="saveCategory()">Save</button>
+      <button class="btn btn-default" ng-click="newCategory = false">Cancel</button>
+    </div>
+  </div>
+</div>

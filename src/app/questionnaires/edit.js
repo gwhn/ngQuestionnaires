@@ -19,7 +19,8 @@ angular.module('ngQuestionnaires.questionnaires')
       $scope.action = action;
 
       $scope.questionnaire = {
-        categories: {}
+        questions: [],
+        categories: []
       };
 
       if (questionnaire !== undefined) {
@@ -79,7 +80,8 @@ angular.module('ngQuestionnaires.questionnaires')
         }, function (questionnaire) {
           $scope.questionnaire = questionnaire;
           if ($scope.questionnaire) {
-            $scope.questionnaire.categories = $scope.questionnaire.categories || {};
+            $scope.questionnaire.categories = $scope.questionnaire.categories || [];
+            $scope.questionnaire.questions = $scope.questionnaire.questions || [];
           }
         });
       } else {

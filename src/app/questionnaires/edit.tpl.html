@@ -15,14 +15,6 @@
       <span show-help on="description" when="required">Description is required</span>
     </div>
 
-    <div class="form-group">
-      <label class="control-label">Categories</label>
-      <label class="checkbox-inline" ng-repeat="category in categories">
-        <input type="checkbox" ng-model="questionnaire.categories[category.$id]"/>
-        {{category.name}}
-      </label>
-      <div ng-include="'category.tpl.html'"></div>
-    </div>
     <div class="checkbox">
       <label class="control-label">
         <input type="checkbox" ng-model="questionnaire.published"/>
@@ -30,23 +22,42 @@
       </label>
     </div>
 
-    <div class="form-group" validation-class on="questions">
-      <label for="questionnaire.questions" class="control-label">Questions</label>
-      <select ng-model="questionnaire.questions" name="questions" size="10"
-              ng-options="question.$id as question.text for question in questions"
-              id="questionnaire.questions" class="form-control" multiple required>
-      </select>
+    <div class="form-group">
+      <label class="control-label">Categories</label>
+
+      <div class="checkbox" checkbox-list
+           selection="questionnaire.categories"
+           items="categories"
+           value="$id"
+           label="name">
+      </div>
+
+      <div ng-include="'category.tpl.html'"></div>
+    </div>
+
+    <!--<div class="form-group" validation-class on="questions">-->
+    <div class="form-group">
+      <label class="control-label">Questions</label>
+
+      <div class="checkbox" checkbox-list
+           selection="questionnaire.questions"
+           items="questions"
+           value="$id"
+           label="text">
+      </div>
       <button ng-click="addQuestion()" class="btn btn-default">
         <i class="glyphicon glyphicon-plus"></i>
       </button>
-      <span show-help on="questions" when="required">Questions are required</span>
+      <!--<span show-help on="questions" when="required">Questions are required</span>-->
     </div>
 
     <ul class="list-inline">
       <li>
         <div ng-switch="action">
-          <button ng-switch-when="Save" ng-click="save()" disabled-when-invalid class="btn btn-primary">{{action}}</button>
-          <button ng-switch-default ng-click="update()" disabled-when-invalid class="btn btn-primary">{{action}}</button>
+          <button ng-switch-when="Save" ng-click="save()" disabled-when-invalid class="btn btn-primary">{{action}}
+          </button>
+          <button ng-switch-default ng-click="update()" disabled-when-invalid class="btn btn-primary">{{action}}
+          </button>
         </div>
       </li>
       <li>

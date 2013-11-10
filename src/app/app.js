@@ -72,8 +72,7 @@ angular.module('ngQuestionnaires', [
     'questions',
     'responses',
     'categories',
-    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth,
-              questionnaires, questions, responses, categories) {
+    function ($rootScope, $cacheFactory, fbUrl, Firebase, angularFireAuth, questionnaires, questions, responses, categories) {
 
       angularFireAuth.initialize(
         new Firebase(fbUrl), {
@@ -107,7 +106,7 @@ angular.module('ngQuestionnaires', [
       $scope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
 //        console.log(event, newUrl, oldUrl);
         if (!$scope.user && (
-            newUrl.indexOf('#/questionnaires/new') > -1 ||
+          newUrl.indexOf('#/questionnaires/new') > -1 ||
             newUrl.indexOf('#/questionnaires/edit') > -1 ||
             newUrl.indexOf('#/questions/new') > -1 ||
             newUrl.indexOf('#/questions/edit') > -1 ||

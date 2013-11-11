@@ -71,10 +71,8 @@ module.exports = {
       'vendor/angular/angular.js',
       'vendor/angular-sanitize/angular-sanitize.min.js',
       'vendor/angular-animate/angular-animate.min.js',
-      'vendor/ngAnimate-animate.css/animate.js',
       'vendor/angular-cookies/angular-cookies.min.js',
       'vendor/angular-route/angular-route.min.js',
-      'vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.6.0-SNAPSHOT.min.js',
       'vendor/angular-ui-utils/modules/highlight/highlight.js',
       'vendor/angular-fire/angularFire.min.js'
     ],

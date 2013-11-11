@@ -9,7 +9,6 @@ angular.module('ngQuestionnaires', [
     'ng',
     'ngSanitize',
     'ngAnimate',
-    'ngAnimate-animate.css',
     'ngCookies',
     'ngRoute',
     'templates-app',

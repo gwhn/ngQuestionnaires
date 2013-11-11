@@ -45,7 +45,7 @@ angular.module('ngQuestionnaires.directives')
         restrict: 'EA',
         replace: true,
         transclude: true,
-        template: '<div ng-transclude ng-hide="isCollapsed" ng-class="{\'dn-fade\':!isCollapsed}">'
+        template: '<div ng-transclude ng-hide="isCollapsed">'
       };
     }
   ]);

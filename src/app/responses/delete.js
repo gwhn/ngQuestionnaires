@@ -20,12 +20,13 @@ angular.module('ngQuestionnaires.responses')
       });
 
       $scope.ok = function () {
+        var successMsg = $scope.response.questionnaire + ' from ' +
+          $scope.response.respondent + ' deleted successfully';
         $scope.responses.remove($scope.response, function (err) {
           if (err) {
             $scope.setAlert('danger', err.code);
           } else {
-            $scope.setAlert('success', $scope.response.questionnaire + ' from ' +
-              $scope.response.respondent + ' deleted successfully');
+            $scope.setAlert('success', successMsg);
           }
           navigate();
           $scope.$apply();

@@ -21,6 +21,7 @@ angular.module('ngQuestionnaires.questions')
       });
 
       $scope.ok = function () {
+        var successMsg = $scope.question.text + ' deleted successfully';
         $scope.questions.remove($scope.question, function (err) {
           if (err) {
             $scope.setAlert('danger', err.code);
@@ -33,7 +34,7 @@ angular.module('ngQuestionnaires.questions')
                 questionnaire.questions = underscore.without(questionnaire.questions, $routeParams.id);
                 $scope.questionnaires.update(questionnaire);
               });
-            $scope.setAlert('success', $scope.question.text + ' deleted successfully');
+            $scope.setAlert('success', successMsg);
           }
           navigate();
           $scope.$apply();

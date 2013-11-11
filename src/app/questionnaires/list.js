@@ -3,10 +3,9 @@ angular.module('ngQuestionnaires.questionnaires')
   .controller('questionnaireListCtrl', [
     '$scope',
     '$filter',
-    '$modal',
     'pagination',
     'title',
-    function ($scope, $filter, $modal, pagination, title) {
+    function ($scope, $filter, pagination, title) {
 
       $scope.setTitle(title);
 
@@ -33,4 +32,5 @@ angular.module('ngQuestionnaires.questionnaires')
           ) : true;
       };
 
-    }]);
+    }
+  ]);

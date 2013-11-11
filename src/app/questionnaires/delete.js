@@ -2,19 +2,36 @@ angular.module('ngQuestionnaires.questionnaires')
 
   .controller('questionnaireDeleteCtrl', [
     '$scope',
-    '$modalInstance',
-    'questionnaire',
-    function ($scope, $modalInstance, questionnaire) {
+    '$routeParams',
+    '$location',
+    'title',
+    function ($scope, $routeParams, $location, title) {
 
-      $scope.questionnaire = questionnaire;
+      function navigate() {
+        $location.path('/questionnaires/list');
+      }
 
-      $scope.confirm = function () {
-        $modalInstance.close($scope.questionnaire);
+      $scope.setTitle(title);
+
+      $scope.$watch(function () {
+        return $scope.questionnaires.getByName($routeParams.id);
+      }, function (questionnaire) {
+        $scope.questionnaire = questionnaire;
+      });
+
+      $scope.ok = function () {
+        $scope.questionnaires.remove($scope.questionnaire, function (err) {
+          if (err) {
+            $scope.setAlert('danger', err.code);
+          } else {
+            $scope.setAlert('success', $scope.questionnaire.title + ' deleted successfully');
+          }
+          navigate();
+          $scope.$apply();
+        });
       };
 
-      $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-      };
+      $scope.cancel = navigate;
 
     }
   ]);

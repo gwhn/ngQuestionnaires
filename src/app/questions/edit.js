@@ -41,7 +41,6 @@ angular.module('ngQuestionnaires.questions')
           if (err) {
             $scope.setAlert('danger', err.code);
           } else {
-            console.log($scope.question);
             $scope.setAlert('success', $scope.question.text + ' saved successfully');
             navigate();
             $scope.$apply();

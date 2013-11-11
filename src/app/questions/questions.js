@@ -37,6 +37,16 @@ angular.module('ngQuestionnaires.questions')
             return 'Update';
           }
         }
+      })
+
+      .when('/questions/delete/:id', {
+        controller: 'questionDeleteCtrl',
+        templateUrl: 'questions/delete.tpl.html',
+        resolve: {
+          title: function () {
+            return 'Delete Question';
+          }
+        }
       });
 
   });

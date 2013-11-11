@@ -14,7 +14,6 @@ angular.module('ngQuestionnaires', [
     'ngRoute',
     'templates-app',
     'templates-common',
-    'ui.bootstrap',
     'ui.highlight',
     'ngQuestionnaires.questionnaires',
     'ngQuestionnaires.questions',
@@ -96,21 +95,22 @@ angular.module('ngQuestionnaires', [
 
   .controller('appCtrl', [
     '$scope',
-    '$modal',
     '$cookieStore',
     '$location',
     'angularFireAuth',
-    'underscore',
-    function ($scope, $modal, $cookieStore, $location, angularFireAuth, underscore) {
+    function ($scope, $cookieStore, $location, angularFireAuth) {
 
       $scope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
 //        console.log(event, newUrl, oldUrl);
         if (!$scope.user && (
           newUrl.indexOf('#/questionnaires/new') > -1 ||
             newUrl.indexOf('#/questionnaires/edit') > -1 ||
+            newUrl.indexOf('#/questionnaires/delete') > -1 ||
             newUrl.indexOf('#/questions/new') > -1 ||
             newUrl.indexOf('#/questions/edit') > -1 ||
-            newUrl.indexOf('#/responses/new') > -1
+            newUrl.indexOf('#/questions/delete') > -1 ||
+            newUrl.indexOf('#/responses/new') > -1 ||
+            newUrl.indexOf('#/responses/delete') > -1
           )) {
           $scope.setAlert('danger', 'Permission denied');
         }
@@ -176,90 +176,6 @@ angular.module('ngQuestionnaires', [
         return 'on ' + d.toLocaleDateString() + ' at ' + d.toLocaleTimeString();
       };
 
-      $scope.destroyQuestionnaire = function (id) {
-        $modal.open({
-          controller: 'questionnaireDeleteCtrl',
-          templateUrl: 'questionnaires/delete.tpl.html',
-          resolve: {
-            questionnaire: function () {
-              return $scope.questionnaires.getByName(id);
-            }
-          }
-        }).result
-          .then(function (questionnaire) {
-            $scope.questionnaires.remove(questionnaire, function (err) {
-              if (err) {
-                $scope.setAlert('danger', err.code);
-              } else {
-                $scope.setAlert('success', questionnaire.title + ' deleted successfully');
-              }
-              $scope.$apply();
-            });
-          });
-      };
-
-      $scope.destroyQuestion = function (id) {
-        $modal.open({
-          controller: 'questionDeleteCtrl',
-          templateUrl: 'questions/delete.tpl.html',
-          resolve: {
-            question: function () {
-              return $scope.questions.getByName(id);
-            }
-          }
-        }).result
-          .then(function (question) {
-            $scope.questions.remove(question, function (err) {
-              if (err) {
-                $scope.setAlert('danger', err.code);
-              } else {
-                underscore.chain($scope.questionnaires)
-                  .filter(function (questionnaire) {
-                    return underscore.contains(questionnaire.questions, id);
-                  })
-                  .each(function (questionnaire) {
-                    questionnaire.questions = underscore.without(questionnaire.questions, id);
-                    $scope.questionnaires.update(questionnaire);
-                  });
-                $scope.setAlert('success', question.text + ' deleted successfully');
-              }
-              $scope.$apply();
-            });
-          });
-      };
-
-      $scope.destroyResponse = function (id) {
-        $modal.open({
-          controller: 'responseDeleteCtrl',
-          templateUrl: 'responses/delete.tpl.html',
-          resolve: {
-            response: function () {
-              return $scope.responses.getByName(id);
-            }
-          }
-        }).result
-          .then(function (response) {
-            $scope.responses.remove(response, function (err) {
-              if (err) {
-                $scope.setAlert('danger', err.code);
-              } else {
-                $scope.setAlert('success', 'Response from ' + response.respondent +
-                  ' on ' + response.questionnaire + ' deleted successfully');
-              }
-              $scope.$apply();
-            });
-          });
-      };
-
-      if (!$cookieStore.get('acceptedTerms')) {
-        $modal.open({
-          controller: 'termsCtrl',
-          templateUrl: 'terms.tpl.html'
-        }).result.then(function () {
-            $cookieStore.put('acceptedTerms', true);
-          });
-      }
-
     }
   ])
 
@@ -281,18 +197,6 @@ angular.module('ngQuestionnaires', [
           $scope.newCategory = false;
           $scope.$apply();
         });
-      };
-
-    }
-  ])
-
-  .controller('termsCtrl', [
-    '$scope',
-    '$modalInstance',
-    function ($scope, $modalInstance) {
-
-      $scope.ok = function () {
-        $modalInstance.close();
       };
 
     }

@@ -16,7 +16,7 @@
 <article class="well well-lg dn-flip-x"
          ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
-  <button ng-if="user" ng-click="destroyResponse(response.$id)" class="btn btn-danger pull-right">Delete</button>
+  <a ng-if="user" ng-href="#/responses/delete/{{response.$id}}" class="btn btn-danger pull-right">Delete</a>
 
   <h3 ng-bind-html="response.questionnaire | highlight:search.query"></h3>
 

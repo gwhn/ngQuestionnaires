@@ -21,6 +21,16 @@ angular.module('ngQuestionnaires.responses')
             return 'New Response';
           }
         }
+      })
+
+      .when('/responses/delete/:id', {
+        controller: 'responseDeleteCtrl',
+        templateUrl: 'responses/delete.tpl.html',
+        resolve: {
+          title: function () {
+            return 'Delete Response';
+          }
+        }
       });
 
   });

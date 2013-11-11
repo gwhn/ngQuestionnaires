@@ -47,6 +47,16 @@ angular.module('ngQuestionnaires.questionnaires')
             return 'Update';
           }
         }
+      })
+
+      .when('/questionnaires/delete/:id', {
+        controller: 'questionnaireDeleteCtrl',
+        templateUrl: 'questionnaires/delete.tpl.html',
+        resolve: {
+          title: function () {
+            return 'Delete Questionnaire';
+          }
+        }
       });
 
   });

@@ -2,19 +2,37 @@ angular.module('ngQuestionnaires.responses')
 
   .controller('responseDeleteCtrl', [
     '$scope',
-    '$modalInstance',
-    'response',
-    function ($scope, $modalInstance, response) {
+    '$routeParams',
+    '$location',
+    'title',
+    function ($scope, $routeParams, $location, title) {
 
-      $scope.response = response;
+      function navigate() {
+        $location.path('/responses/list');
+      }
 
-      $scope.confirm = function () {
-        $modalInstance.close($scope.response);
+      $scope.setTitle(title);
+
+      $scope.$watch(function () {
+        return $scope.responses.getByName($routeParams.id);
+      }, function (response) {
+        $scope.response = response;
+      });
+
+      $scope.ok = function () {
+        $scope.responses.remove($scope.response, function (err) {
+          if (err) {
+            $scope.setAlert('danger', err.code);
+          } else {
+            $scope.setAlert('success', $scope.response.questionnaire + ' from ' +
+              $scope.response.respondent + ' deleted successfully');
+          }
+          navigate();
+          $scope.$apply();
+        });
       };
 
-      $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-      };
+      $scope.cancel = navigate;
 
     }
   ]);

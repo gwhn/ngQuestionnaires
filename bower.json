@@ -3,18 +3,18 @@
   "version": "0.0.2",
   "devDependencies": {
     "underscore": "~1.5.2",
-    "angular": "~1.2.0-rc.3",
-    "angular-mocks": "~1.2.0-rc.3",
-    "angular-sanitize": "~1.2.0-rc.3",
-    "angular-animate": "~1.2.0-rc.3",
-    "angular-cookies": "~1.2.0-rc.3",
+    "angular": "~1.2.0",
+    "angular-mocks": "~1.2.0",
+    "angular-sanitize": "~1.2.0",
+    "angular-animate": "~1.2.0",
+    "angular-cookies": "~1.2.0",
     "bootstrap": "3.0.0",
     "angular-ui-bootstrap": "#bootstrap3_bis2",
     "angular-ui-utils": "~0.0.3",
     "d3": "~3.3.9",
     "animate.css": "~2.1.0",
     "angular-fire": "~0.3.1",
-    "angular-route": "~1.2.0-rc.3"
+    "angular-route": "~1.2.0"
   },
   "dependencies": {}
 }

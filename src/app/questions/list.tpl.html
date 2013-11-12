@@ -39,7 +39,16 @@
 
   <h3 ng-bind-html="question.text | highlight:search.query"></h3>
 
-  <div d3-bar-chart data="question.choices" label="text" value="count"></div>
+  <div d3-bar-chart data="question.choices"
+       label="text"
+       value="count"
+       margin-top="40"
+       margin-right="50"
+       margin-bottom="0"
+       margin-left="10"
+       bar-height="40"
+       label-height="30">
+  </div>
 
   <section ng-include="'questions/meta.tpl.html'"></section>
 </article>

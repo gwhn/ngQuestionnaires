@@ -85,6 +85,41 @@ body {
 }
 
 /**
+ * Charts
+ */
+
+.bar-chart {
+  width: 100%;
+  .bars {
+    .bar {
+      rect {
+      }
+      text {
+        &.label {
+        }
+        &.value {
+        }
+      }
+    }
+  }
+  .axis {
+    .tick {
+      line {
+        stroke: black;
+        stroke-opacity: .1;
+        shape-rendering: crispEdges;
+      }
+    }
+    text {
+      text-anchor: end;
+    }
+    path {
+      display: none;
+    }
+  }
+}
+
+/**
  * Now that all app-wide styles have been applied, we can load the styles for
  * all the submodules and components we are using. 
  *

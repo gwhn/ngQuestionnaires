@@ -2,26 +2,34 @@ angular.module('ngQuestionnaires.directives')
 
   .directive('d3BarChart', [
     '$window',
-    '$timeout',
     'd3',
-    function ($window, $timeout, d3) {
-
+    function ($window, d3) {
       return {
         restrict: 'A',
         scope: {
-          data: '='
+          data: '=',
+          label: '@',
+          value: '@',
+          marginTop: '@',
+          marginRight: '@',
+          marginBottom: '@',
+          marginLeft: '@',
+          labelHeight: '@',
+          barHeight: '@'
         },
         link: function (scope, element, attrs) {
 
-          var margin = parseInt(attrs.margin, 10) || 20,
-            barHeight = parseInt(attrs.barHeight, 10) || 30,
-            barPadding = parseInt(attrs.barPadding, 10) || 10,
-            label = attrs.label || 'text',
-            value = attrs.value || 'count';
-
-          var svg = d3.select(element[0])
-            .append('svg')
-            .style('width', '100%');
+          var margin = {
+              top: +scope.marginTop || 40,
+              right: +scope.marginRight || 50,
+              bottom: +scope.marginBottom || 0,
+              left: +scope.marginLeft || 10
+            },
+            barHeight = +scope.barHeight || 30,
+            labelHeight = +scope.labelHeight || 30,
+            chart = d3.select(element[0])
+              .append('svg')
+              .attr('class', 'bar-chart');
 
           $window.onresize = function () {
             scope.$apply();
@@ -33,59 +41,115 @@ angular.module('ngQuestionnaires.directives')
             scope.render(scope.data);
           });
 
-          scope.$watch('data', function (newData) {
-            scope.render(newData);
+          scope.$watch('data', function (data) {
+            scope.render(data);
           }, true);
 
           scope.render = function (data) {
-            svg.selectAll('*').remove();
 
-            if (data) {
-              var width = d3.select(element[0])[0][0].offsetWidth - margin,
-                height = scope.data.length * (barHeight + barPadding),
-                color = d3.scale.category10(),
-                xScale = d3.scale.linear()
-                  .domain([0, d3.max(data, function (d) {
-                    return d[value];
-                  })])
-                  .range([0, width]);
+            chart.selectAll('*').remove();
 
-              svg.attr('height', height);
-
-              svg.selectAll('rect')
-                .data(data)
-                .enter()
-                .append('rect')
-                .attr('height', barHeight)
-                .attr('width', 200)
-                .attr('x', Math.round(margin / 2))
-                .attr('y', function (d, i) {
-                  return i * (barHeight + barPadding);
-                })
-                .attr('fill', function (d) {
-                  return color(d[value]);
-                })
-                .transition()
-                .duration(2000)
-                .attr('width', function (d) {
-                  return xScale(d[value]);
-                });
-
-              svg.selectAll('text')
-                .data(data)
-                .enter()
-                .append('text')
-                .attr('y', function (d, i) {
-                  return i * (barHeight + barPadding) + 20;
-                })
-                .attr('x', 15)
-                .text(function (d) {
-                  return d[label] + ' (' + d[value] + ')';
-                });
+            if (!data || !angular.isArray(data)) {
+              return;
             }
+
+            var length = data.length,
+              width = chart[0][0].offsetWidth,
+              barsWidth = width - margin.left - margin.right,
+              barsHeight = ((barHeight + labelHeight) * length),
+              chartHeight = barsHeight + margin.top + margin.bottom,
+              label = function (d) {
+                return d[scope.label];
+              },
+              value = function (d) {
+                return d[scope.value];
+              },
+              max = d3.max(data, value),
+              x = d3.scale.linear()
+                .domain([0, max])
+                .range([0, barsWidth]),
+              xAxis = d3.svg.axis()
+                .ticks(max < 10 ? max : max < 100 ? 10 : 100)
+                .scale(x)
+                .orient('top')
+                .tickSize(-barsHeight)
+                .tickFormat(d3.format('f')),
+              bar,
+              colour = d3.scale.category20();
+
+            bar = chart.attr('height', chartHeight)
+              .append('g')
+              .attr('class', 'bars')
+              .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+              .selectAll('g')
+              .data(data)
+              .enter()
+              .append('g')
+              .attr('class', 'bar')
+              .attr('transform', function (d, i) {
+                return 'translate(0,' + (i * (barHeight + labelHeight)) + ')';
+              });
+
+            bar.append('rect')
+              .attr('transform', 'translate(0,' + labelHeight + ')')
+              .attr('width', 0)
+              .attr('height', barHeight)
+              .attr('fill', function (d, i) {
+                return colour(i);
+              })
+              .transition()
+              .attr('width', function (d) {
+                return x(d[scope.value]);
+              })
+              .delay(function (d, i) {
+                return i * 200;
+              })
+              .duration(1000);
+
+            bar.append('text')
+              .attr('class', 'label')
+              .attr('x', 1)
+              .attr('y', labelHeight / 2)
+              .attr('dy', '0.67em')
+              .attr('fill', function (d, i) {
+                return colour(i);
+              })
+              .text(label);
+
+            bar.append('text')
+              .attr('class', 'value')
+              .attr('transform', function (d) {
+                return 'translate(' + x(d[scope.value]) + ',' + labelHeight + ')';
+              })
+              .attr('x', 1)
+              .attr('y', barHeight / 2)
+              .attr('dy', '0.33em')
+              .attr('fill', function (d, i) {
+                return colour(i);
+              })
+              .attr('opacity', 0)
+              .text(value)
+              .transition()
+              .attr('opacity', 1)
+              .delay(function (d, i) {
+                return (i * 200) + 1000;
+              })
+              .duration(200);
+
+            chart.append('g')
+              .attr('class', 'axis')
+              .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+              .attr('height', barsHeight)
+              .attr('width', barsWidth)
+              .call(xAxis)
+              .append('text')
+              .attr('transform', 'translate(' + barsWidth + ',-' + margin.top + ')')
+              .attr('dy', '1em')
+              .text(scope.value);
+
           };
 
-        }};
-
+        }
+      };
     }
   ]);

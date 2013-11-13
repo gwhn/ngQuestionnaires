@@ -54,11 +54,9 @@ angular.module('ngQuestionnaires.directives')
           }
 
           // Remove any zero values from data
-          /*
-           data = data.filter(function (d) {
-           return +d[scope.value] !== 0;
-           });
-           */
+          data = data.filter(function (d) {
+            return +d[scope.value] !== 0;
+          });
 
           data.forEach(function (d) {
             total += d[scope.value];

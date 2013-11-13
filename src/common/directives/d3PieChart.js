@@ -112,6 +112,7 @@ angular.module('ngQuestionnaires.directives')
               .data(pieData)
               .enter()
               .append('text')
+              .attr('class', 'label')
               .attr("dy", function (d) {
                 if ((d.startAngle + d.endAngle) / 2 > Math.PI / 2 && (d.startAngle + d.endAngle) / 2 < Math.PI * 1.5) {
                   return 5;

@@ -39,7 +39,17 @@
 
   <h3 ng-bind-html="question.text | highlight:search.query"></h3>
 
-  <div d3-bar-chart data="question.choices"
+  <ul class="nav nav-pills">
+    <li ng-class="{active: !showPieChart}">
+      <a href="" ng-click="showPieChart = false">Bar Chart</a>
+    </li>
+    <li ng-class="{active: showPieChart}">
+      <a href="" ng-click="showPieChart = true">Pie Chart</a>
+    </li>
+  </ul>
+
+  <div ng-if="!showPieChart"
+       d3-bar-chart data="question.choices"
        label="text"
        value="count"
        margin-top="40"
@@ -48,6 +58,13 @@
        margin-left="10"
        bar-height="40"
        label-height="30">
+  </div>
+
+  <div ng-if="showPieChart"
+       d3-pie-chart data="question.choices"
+       label="text"
+       value="count"
+       height="300">
   </div>
 
   <section ng-include="'questions/meta.tpl.html'"></section>

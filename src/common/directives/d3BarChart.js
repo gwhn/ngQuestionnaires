@@ -27,6 +27,12 @@ angular.module('ngQuestionnaires.directives')
             },
             barHeight = +scope.barHeight || 30,
             labelHeight = +scope.labelHeight || 30,
+            label = function (d) {
+              return d[scope.label];
+            },
+            value = function (d) {
+              return d[scope.value];
+            },
             chart = d3.select(element[0])
               .append('svg')
               .attr('class', 'bar-chart');
@@ -58,12 +64,6 @@ angular.module('ngQuestionnaires.directives')
               barsWidth = width - margin.left - margin.right,
               barsHeight = ((barHeight + labelHeight) * length),
               chartHeight = barsHeight + margin.top + margin.bottom,
-              label = function (d) {
-                return d[scope.label];
-              },
-              value = function (d) {
-                return d[scope.value];
-              },
               max = d3.max(data, value),
               x = d3.scale.linear()
                 .domain([0, max])

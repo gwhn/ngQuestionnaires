@@ -5,7 +5,7 @@ angular.module('ngQuestionnaires.directives')
     'd3',
     function ($window, d3) {
       return {
-        restrict: 'A',
+        restrict: 'AE',
         scope: {
           data: '=',
           label: '@',

@@ -1,3 +1,4 @@
+angular.module('ngQuestionnaires.categories', []);
 angular.module('ngQuestionnaires.questionnaires', []);
 angular.module('ngQuestionnaires.questions', []);
 angular.module('ngQuestionnaires.responses', []);
@@ -14,6 +15,7 @@ angular.module('ngQuestionnaires', [
     'templates-app',
     'templates-common',
     'ui.highlight',
+    'ngQuestionnaires.categories',
     'ngQuestionnaires.questionnaires',
     'ngQuestionnaires.questions',
     'ngQuestionnaires.responses',
@@ -56,7 +58,7 @@ angular.module('ngQuestionnaires', [
 
   .config(function ($routeProvider) {
 
-    $routeProvider.otherwise({redirectTo: '/questionnaires/list'});
+    $routeProvider.otherwise({redirectTo: '/categories/pack'});
 
   })
 

@@ -1,0 +1,2625 @@
+{
+  "categories" : {
+    "-J8MVXZUUpxd2uPI72Gi" : {
+      "name" : "Business"
+    },
+    "-J8N1Az93WzJ_0oXkVog" : {
+      "name" : "Medical"
+    },
+    "-J8MVAJGrhVoUt08Fl0P" : {
+      "name" : "Consumer"
+    }
+  },
+  "questions" : {
+    "-J8MffhDC-vcm0yuyTaf" : {
+      "text" : "How well did your account manager handle your project?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450547466
+    },
+    "-J8MaEYZem7tOH6mI4G8" : {
+      "text" : "How clear was the information the customer service representatives at our company gave you?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely clear",
+        "count" : 0
+      }, {
+        "text" : "Very clear",
+        "count" : 0
+      }, {
+        "text" : "Moderately clear",
+        "count" : 0
+      }, {
+        "text" : "Slightly clear",
+        "count" : 0
+      }, {
+        "text" : "Not at all clear",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449121439
+    },
+    "-J8MdIQqmZKvyBI08BdB" : {
+      "text" : "How important is convenience when choosing this type of service?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely important",
+        "count" : 0
+      }, {
+        "text" : "Very important",
+        "count" : 0
+      }, {
+        "text" : "Moderately important",
+        "count" : 0
+      }, {
+        "text" : "Slightly important",
+        "count" : 0
+      }, {
+        "text" : "Not at all important",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449923762
+    },
+    "-J8Mctn6f485OdYBo-6B" : {
+      "text" : "Overall, are you satisfied with your experience using our new product, neither satisfied or dissatisfied with it, or dissatisfied with it?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449818755
+    },
+    "-J8MkxaxFfPbwf2V2TWF" : {
+      "text" : "How consistently does your supervisor reward employees for good work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely consistently",
+        "count" : 0
+      }, {
+        "text" : "Very consistently",
+        "count" : 0
+      }, {
+        "text" : "Moderately consistently",
+        "count" : 0
+      }, {
+        "text" : "Slightly consistently",
+        "count" : 0
+      }, {
+        "text" : "Not at all consistently",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451931513
+    },
+    "-J8McG0wNxm5YmKK74LH" : {
+      "text" : "How important is convenience when choosing this type of product?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely important",
+        "count" : 0
+      }, {
+        "text" : "Very important",
+        "count" : 0
+      }, {
+        "text" : "Moderately important",
+        "count" : 0
+      }, {
+        "text" : "Slightly important",
+        "count" : 0
+      }, {
+        "text" : "Not at all important",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449651768
+    },
+    "-J8N-nuGnXC38GWJWk5b" : {
+      "text" : "How comfortable is your employer's work environment?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely comfortable",
+        "count" : 0
+      }, {
+        "text" : "Very comfortable",
+        "count" : 0
+      }, {
+        "text" : "Moderately comfortable",
+        "count" : 0
+      }, {
+        "text" : "Slightly comfortable",
+        "count" : 0
+      }, {
+        "text" : "Not at all comfortable",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456089426
+    },
+    "-J8MfX3Mns8pNtfaO2ZA" : {
+      "text" : "Is your project with our company currently active, or has it been completed?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Currently active",
+        "count" : 0
+      }, {
+        "text" : "Completed",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450507987
+    },
+    "-J8MiZn0zTjaZrMu8vze" : {
+      "text" : "Are you satisfied with your employee benefits, neither satisfied nor dissatisfied with them, or dissatisfied with them?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451305596
+    },
+    "-J8N02jUNEXzFj8hDJX_" : {
+      "text" : "Are you satisfied with your options for getting to and from work, neither satisfied nor dissatisfied with them, or dissatisfied with them?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456154272
+    },
+    "-J8MapPZW9bcIoxREjKY" : {
+      "text" : "Was your experience with customer service at our company better than you expected it to be, worse than you expected it to be, or about what you expected it to be?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Much better",
+        "count" : 0
+      }, {
+        "text" : "Somewhat better",
+        "count" : 0
+      }, {
+        "text" : "Slightly better",
+        "count" : 0
+      }, {
+        "text" : "About what was expected",
+        "count" : 0
+      }, {
+        "text" : "Slightly worse",
+        "count" : 0
+      }, {
+        "text" : "Somewhat worse",
+        "count" : 0
+      }, {
+        "text" : "Much worse",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449276512
+    },
+    "-J8MljgjC48HdSS31EpZ" : {
+      "text" : "How often does your supervisor listen to employees' opinions when making decisions?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely often",
+        "count" : 0
+      }, {
+        "text" : "Very often",
+        "count" : 0
+      }, {
+        "text" : "Moderately often",
+        "count" : 0
+      }, {
+        "text" : "Slightly often",
+        "count" : 0
+      }, {
+        "text" : "Not at all often",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452136683
+    },
+    "-J8N2wdC-4Zga02wU4el" : {
+      "text" : "The clinician staff was friendly to you",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Strongly disagree",
+        "count" : 0
+      }, {
+        "text" : "Disagree",
+        "count" : 0
+      }, {
+        "text" : "Neutral",
+        "count" : 0
+      }, {
+        "text" : "Agree",
+        "count" : 0
+      }, {
+        "text" : "Strongly agree",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456911631
+    },
+    "-J8N7UDdxqW6O-LzhlK1" : {
+      "text" : "Would you recommend your friends and family have their dental work done with us?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Yes",
+        "count" : 0
+      }, {
+        "text" : "No",
+        "count" : 0
+      }, {
+        "text" : "Maybe",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384458101866
+    },
+    "-J8N5uC2NnUAkmlPvB_L" : {
+      "text" : "Skill of your dentist",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457688069
+    },
+    "-J8N3x7fMi7dGcBWzW0q" : {
+      "text" : "How did you hear about us?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Don't remember",
+        "count" : 0
+      }, {
+        "text" : "Friend or family member",
+        "count" : 0
+      }, {
+        "text" : "Radio ad",
+        "count" : 0
+      }, {
+        "text" : "Community newsletter",
+        "count" : 0
+      }, {
+        "text" : "Yellow pages",
+        "count" : 0
+      }, {
+        "text" : "Other",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457175788
+    },
+    "-J8Ms1ue9wbvHRPZspKG" : {
+      "text" : "How well does your employee handle criticism of his/her work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453788262
+    },
+    "-J8Me8wcw3uUV-tD62BU" : {
+      "text" : "If our new service were available today, how likely would you be to recommend it to others?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450147044
+    },
+    "-J8MiGLD85LrU_GiC_PZ" : {
+      "text" : "Are you supervised too much at work, supervised too little, or supervised about the right amount?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Much too much",
+        "count" : 0
+      }, {
+        "text" : "Somewhat too much",
+        "count" : 0
+      }, {
+        "text" : "Slightly too much",
+        "count" : 0
+      }, {
+        "text" : "About the right amount",
+        "count" : 0
+      }, {
+        "text" : "Slightly too little",
+        "count" : 0
+      }, {
+        "text" : "Somewhat too little",
+        "count" : 0
+      }, {
+        "text" : "Much too little",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451225930
+    },
+    "-J8Mg4HQBR9J1LuH4tiH" : {
+      "text" : "How likely are you to hire our company again?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450652247
+    },
+    "-J8Ma5T_hQK0B9azLobn" : {
+      "text" : "How knowledgeable were the customer service representatives at our company?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Very knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Moderately knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Slightly knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Not at all knowledgeable",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449084256
+    },
+    "-J8MkApeCMiHjGsFhX-e" : {
+      "text" : "How approachable is your supervisor?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely approachable",
+        "count" : 0
+      }, {
+        "text" : "Very approachable",
+        "count" : 0
+      }, {
+        "text" : "Moderately approachable",
+        "count" : 0
+      }, {
+        "text" : "Slightly approachable",
+        "count" : 0
+      }, {
+        "text" : "Not at all approachable",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451727654
+    },
+    "-J8N0QlBl6jBh8bmjS6d" : {
+      "text" : "Is your employer's health insurance plan better, worse, or about the same as those of other employers?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Much better",
+        "count" : 0
+      }, {
+        "text" : "Somewhat better",
+        "count" : 0
+      }, {
+        "text" : "Slightly better",
+        "count" : 0
+      }, {
+        "text" : "About the same",
+        "count" : 0
+      }, {
+        "text" : "Slightly worse",
+        "count" : 0
+      }, {
+        "text" : "Somewhat worse",
+        "count" : 0
+      }, {
+        "text" : "Much worse",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456252686
+    },
+    "-J8Md76nOXm71dpcuSfb" : {
+      "text" : "If our new product were available today, how likely would you be to recommend it to others?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449877423
+    },
+    "-J8N5dq2ZxZr-7754e18" : {
+      "text" : "Skill of hygienist and support staff",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457621061
+    },
+    "-J8MsNOtyoTAh4XDSVov" : {
+      "text" : "How quickly does your employee adjust to changing priorities?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely quickly",
+        "count" : 0
+      }, {
+        "text" : "Very quickly",
+        "count" : 0
+      }, {
+        "text" : "Moderately quickly",
+        "count" : 0
+      }, {
+        "text" : "Slightly quickly",
+        "count" : 0
+      }, {
+        "text" : "Not at all quickly",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453876276
+    },
+    "-J8Mm-WAa_sTX1xIv6KF" : {
+      "text" : "How easy is it for employees to disagree with the decisions made by your supervisor?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely easy",
+        "count" : 0
+      }, {
+        "text" : "Very easy",
+        "count" : 0
+      }, {
+        "text" : "Moderately easy",
+        "count" : 0
+      }, {
+        "text" : "Slightly easy",
+        "count" : 0
+      }, {
+        "text" : "Not at all easy",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452205574
+    },
+    "-J8N23XtBMW21bkPmq2Y" : {
+      "text" : "Did you have a scheduled appointment today?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Yes",
+        "count" : 0
+      }, {
+        "text" : "No",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456681851
+    },
+    "-J8Mh9zlhpeGwmhnxh2e" : {
+      "text" : "In a typical week, how often do you feel stressed at work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely often",
+        "count" : 0
+      }, {
+        "text" : "Very often",
+        "count" : 0
+      }, {
+        "text" : "Moderately often",
+        "count" : 0
+      }, {
+        "text" : "Slightly often",
+        "count" : 0
+      }, {
+        "text" : "Not at all often",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450937773
+    },
+    "-J8N7vNmDNxFSSF1pw9R" : {
+      "text" : "Have you ever considered sedation dentistry?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Yes",
+        "count" : 0
+      }, {
+        "text" : "No",
+        "count" : 0
+      }, {
+        "text" : "I am not sure what that is exactly",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384458217204
+    },
+    "-J8MkJzyP2oYIFAG04Kw" : {
+      "text" : "How available to employees is your supervisor?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely available",
+        "count" : 0
+      }, {
+        "text" : "Very available",
+        "count" : 0
+      }, {
+        "text" : "Moderately available",
+        "count" : 0
+      }, {
+        "text" : "Slightly available",
+        "count" : 0
+      }, {
+        "text" : "Not at all available",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451765177
+    },
+    "-J8MWEI9gpTUoc5Tvw9b" : {
+      "text" : "How convenient is our company to use?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely convenient",
+        "count" : 0
+      }, {
+        "text" : "Very convenient",
+        "count" : 0
+      }, {
+        "text" : "Moderately convenient",
+        "count" : 0
+      }, {
+        "text" : "Slightly convenient",
+        "count" : 0
+      }, {
+        "text" : "Not at all convenient",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384447809009
+    },
+    "-J8Mgr7WzKYeSSTBL0Fc" : {
+      "text" : "How meaningful is your work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely meaningful",
+        "count" : 0
+      }, {
+        "text" : "Very meaningful",
+        "count" : 0
+      }, {
+        "text" : "Moderately meaningful",
+        "count" : 0
+      }, {
+        "text" : "Slightly meaningful",
+        "count" : 0
+      }, {
+        "text" : "Not at all meaningful",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450856413
+    },
+    "-J8MgELLxU-btnADkIK_" : {
+      "text" : "How likely are you to recommend our company to others?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450693458
+    },
+    "-J8Mh0VeptGhOMUfKi0-" : {
+      "text" : "How challenging is your job?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely challenging",
+        "count" : 0
+      }, {
+        "text" : "Very challenging",
+        "count" : 0
+      }, {
+        "text" : "Moderately challenging",
+        "count" : 0
+      }, {
+        "text" : "Slightly challenging",
+        "count" : 0
+      }, {
+        "text" : "Not at all challenging",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450898918
+    },
+    "-J8MhWJwBBPDZkcRfxsx" : {
+      "text" : "How much do your opinions about work matter to your coworkers?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "A great deal",
+        "count" : 0
+      }, {
+        "text" : "A lot",
+        "count" : 0
+      }, {
+        "text" : "A moderate amount",
+        "count" : 0
+      }, {
+        "text" : "A little",
+        "count" : 0
+      }, {
+        "text" : "None at all",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451029240
+    },
+    "-J8N4DdiaS6VN9UE4E31" : {
+      "text" : "What made you choose us as your dental office?",
+      "count" : 0,
+      "multiple" : true,
+      "choices" : [ {
+        "text" : "Friendly staff",
+        "count" : 0
+      }, {
+        "text" : "Location",
+        "count" : 0
+      }, {
+        "text" : "Quality of work",
+        "count" : 0
+      }, {
+        "text" : "Price",
+        "count" : 0
+      }, {
+        "text" : "Great service",
+        "count" : 0
+      }, {
+        "text" : "Up to date technology in the office",
+        "count" : 0
+      }, {
+        "text" : "Other",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457247535
+    },
+    "-J8MdxJFlJflGuQgGXP7" : {
+      "text" : "Overall, are you satisfied with your experience using our new service, neither satisfied or dissatisfied with it, or dissatisfied with it?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450095308
+    },
+    "-J8Mn086ZBXSWZeSyBvY" : {
+      "text" : "Overall, are you satisfied with your supervisor, neither satisfied nor dissatisfied with him/her, or dissatisfied with him/her?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Very satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Very dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452470274
+    },
+    "-J8MrINlqOn9loPWdekv" : {
+      "text" : "How often does your employee meet his/her deadlines?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Always",
+        "count" : 0
+      }, {
+        "text" : "Most of the time",
+        "count" : 0
+      }, {
+        "text" : "About half the time",
+        "count" : 0
+      }, {
+        "text" : "Once in a while",
+        "count" : 0
+      }, {
+        "text" : "Never",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453593581
+    },
+    "-J8Mkmkfu31p4Q1AGaVK" : {
+      "text" : "How effective is the training you receive from your supervisor?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely effective",
+        "count" : 0
+      }, {
+        "text" : "Very effective",
+        "count" : 0
+      }, {
+        "text" : "Moderately effective",
+        "count" : 0
+      }, {
+        "text" : "Slightly effective",
+        "count" : 0
+      }, {
+        "text" : "Not at all effective",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451887079
+    },
+    "-J8N0hF4s-1FeydP1bxx" : {
+      "text" : "Are you satisfied with your employer's catered meals, neither satisfied nor dissatisfied with them, or dissatisfied with them?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456324294
+    },
+    "-J8N5VmgAIFRMI0XehRJ" : {
+      "text" : "Friendliness of staff",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457583982
+    },
+    "-J8N28kPdMQDiuira7Pm" : {
+      "text" : "Is this clinic your sole provider for medical care?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Yes",
+        "count" : 0
+      }, {
+        "text" : "No",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456703196
+    },
+    "-J8MZgvI9Jfmu__EeBDq" : {
+      "text" : "How long did you have to wait before a customer service representative at our company began to help you?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely long",
+        "count" : 0
+      }, {
+        "text" : "Very long",
+        "count" : 0
+      }, {
+        "text" : "Moderately long",
+        "count" : 0
+      }, {
+        "text" : "Slightly long",
+        "count" : 0
+      }, {
+        "text" : "Not at all long",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448716795
+    },
+    "-J8MrcuI7mavwGs8shaO" : {
+      "text" : "How well does your employee share responsibility with other employees for tasks?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453681743
+    },
+    "-J8MkcN4if49LM8_y8Ka" : {
+      "text" : "How improved is your performance after getting feedback from your supervisor about your work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely improved",
+        "count" : 0
+      }, {
+        "text" : "Very improved",
+        "count" : 0
+      }, {
+        "text" : "Moderately improved",
+        "count" : 0
+      }, {
+        "text" : "Slightly improved",
+        "count" : 0
+      }, {
+        "text" : "Not at all improved",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451844545
+    },
+    "-J8N618rdmL1skzTQr3m" : {
+      "text" : "Pain control",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457720633
+    },
+    "-J8MixVzfOlm3uit_sTH" : {
+      "text" : "How proud are you of your employer's brand?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely proud",
+        "count" : 0
+      }, {
+        "text" : "Very proud",
+        "count" : 0
+      }, {
+        "text" : "Moderately proud",
+        "count" : 0
+      }, {
+        "text" : "Slightly proud",
+        "count" : 0
+      }, {
+        "text" : "Not at all proud",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451406842
+    },
+    "-J8MXkakpPPoa-CNJ3rw" : {
+      "text" : "How well do the customer service representatives at our company answer your questions?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448207576
+    },
+    "-J8MWW1Gh-e4_zWKXcAf" : {
+      "text" : "How professional is our company?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely professional",
+        "count" : 0
+      }, {
+        "text" : "Very professional",
+        "count" : 0
+      }, {
+        "text" : "Moderately professional",
+        "count" : 0
+      }, {
+        "text" : "Slightly professional",
+        "count" : 0
+      }, {
+        "text" : "Not at all professional",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384447881656
+    },
+    "-J8MlXe8CvzyXM2Ct-pn" : {
+      "text" : "Does your supervisor take too much time to make decisions, too little time, or about the right amount of time?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Much too much",
+        "count" : 0
+      }, {
+        "text" : "Somewhat too much",
+        "count" : 0
+      }, {
+        "text" : "Slightly too much",
+        "count" : 0
+      }, {
+        "text" : "About the right amount",
+        "count" : 0
+      }, {
+        "text" : "Slightly too little",
+        "count" : 0
+      }, {
+        "text" : "Somewhat too little",
+        "count" : 0
+      }, {
+        "text" : "Much too little",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452083269
+    },
+    "-J8N0CmU5yY9g53CpmIW" : {
+      "text" : "How fair is your employer's sick day policy?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely fair",
+        "count" : 0
+      }, {
+        "text" : "Very fair",
+        "count" : 0
+      }, {
+        "text" : "Moderately fair",
+        "count" : 0
+      }, {
+        "text" : "Slightly fair",
+        "count" : 0
+      }, {
+        "text" : "Not at all fair",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456195424
+    },
+    "-J8N6nWT0NG7AOu5xmIZ" : {
+      "text" : "Supplying you with information on new technology and services we provide",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457922847
+    },
+    "-J8N8WWTDVgZbG2ZsuIi" : {
+      "text" : "Into what age group do you fall?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "20 and under",
+        "count" : 0
+      }, {
+        "text" : "21 to 40",
+        "count" : 0
+      }, {
+        "text" : "41 to 60",
+        "count" : 0
+      }, {
+        "text" : "61 and over",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384458373407
+    },
+    "-J8N6KhrH_I1oU1CBy-b" : {
+      "text" : "Handling of insurance claims",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457800761
+    },
+    "-J8MYbYInsXe7e0w67-J" : {
+      "text" : "How likely are you to recommend our company to people you know?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448432634
+    },
+    "-J8MWuEZK-H0h-cVvVXR" : {
+      "text" : "Compared to our competitors, is our product quality better, worse, or about the same?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Much better",
+        "count" : 0
+      }, {
+        "text" : "Somewhat better",
+        "count" : 0
+      }, {
+        "text" : "Slightly better",
+        "count" : 0
+      }, {
+        "text" : "About the same",
+        "count" : 0
+      }, {
+        "text" : "Slightly worse",
+        "count" : 0
+      }, {
+        "text" : "Somewhat worse",
+        "count" : 0
+      }, {
+        "text" : "Much worse",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384447984907
+    },
+    "-J8N7ikUgwiL3int0YJH" : {
+      "text" : "What is the best way to communicate with you if we get new services or have specials on the current ones?",
+      "count" : 0,
+      "multiple" : true,
+      "choices" : [ {
+        "text" : "Community newsletter",
+        "count" : 0
+      }, {
+        "text" : "Dentist newsletter",
+        "count" : 0
+      }, {
+        "text" : "Newspaper ad",
+        "count" : 0
+      }, {
+        "text" : "Email",
+        "count" : 0
+      }, {
+        "text" : "Sign on building",
+        "count" : 0
+      }, {
+        "text" : "Other",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384458165472
+    },
+    "-J8MZs3jsL4dWBb_Ol8B" : {
+      "text" : "How well did the customer service representatives at our company listen to you?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448762455
+    },
+    "-J8Mc_7UhAr4scr4e29j" : {
+      "text" : "If you are not likely to use our new product, why not?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Do not need a product like this",
+        "count" : 0
+      }, {
+        "text" : "Do not want a product like this",
+        "count" : 0
+      }, {
+        "text" : "Satisfied with competing products currently available",
+        "count" : 0
+      }, {
+        "text" : "Cannot pay for product like this",
+        "count" : 0
+      }, {
+        "text" : "Not willing to pay for a product like this",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449734106
+    },
+    "-J8MY3eNzzkPHB-zdK2f" : {
+      "text" : "Overall, are you satisfied with the employees at our company, neither satisfied nor dissatisfied with them, or dissatisfied with them?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448289728
+    },
+    "-J8N8wX_ARjezFwDNQ-R" : {
+      "text" : "What is something we could do to say thank you for referring others to our office?",
+      "count" : 0,
+      "multiple" : true,
+      "choices" : [ {
+        "text" : "Tickets to a sporting event",
+        "count" : 0
+      }, {
+        "text" : "No need to do anything",
+        "count" : 0
+      }, {
+        "text" : "Discount off dental services",
+        "count" : 0
+      }, {
+        "text" : "Free dental hygiene products",
+        "count" : 0
+      }, {
+        "text" : "Gift certificate to local salon",
+        "count" : 0
+      }, {
+        "text" : "Gift certificate for dental services",
+        "count" : 0
+      }, {
+        "text" : "Gift certificate to local restaurant",
+        "count" : 0
+      }, {
+        "text" : "Other",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384458484070
+    },
+    "-J8MrnVH_2jBx4HwcUAX" : {
+      "text" : "How quickly does your employee follow up on requests?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely quickly",
+        "count" : 0
+      }, {
+        "text" : "Very quickly",
+        "count" : 0
+      }, {
+        "text" : "Moderately quickly",
+        "count" : 0
+      }, {
+        "text" : "Slightly quickly",
+        "count" : 0
+      }, {
+        "text" : "Not at all quickly",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453725133
+    },
+    "-J8N5HwD13eTufZO0y3v" : {
+      "text" : "Business hours",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457527248
+    },
+    "-J8N1snBJOzUJAtIZ6lT" : {
+      "text" : "What department where you seen in today?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Maternal/Family Planning",
+        "count" : 0
+      }, {
+        "text" : "Pediatrics",
+        "count" : 0
+      }, {
+        "text" : "Adult",
+        "count" : 0
+      }, {
+        "text" : "X-ray/Lab/Mammogram",
+        "count" : 0
+      }, {
+        "text" : "Other",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456633741
+    },
+    "-J8Mmcm_4ahvkgV9HK6b" : {
+      "text" : "How reliable is your supervisor?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely reliable",
+        "count" : 0
+      }, {
+        "text" : "Very reliable",
+        "count" : 0
+      }, {
+        "text" : "Moderately reliable",
+        "count" : 0
+      }, {
+        "text" : "Slightly reliable",
+        "count" : 0
+      }, {
+        "text" : "Not at all reliable",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452370528
+    },
+    "-J8N4YqHGQGhZrh6TJSP" : {
+      "text" : "How long have you been a regular patient with us?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Less than 1 year",
+        "count" : 0
+      }, {
+        "text" : "1-2 years",
+        "count" : 0
+      }, {
+        "text" : "3-4 years",
+        "count" : 0
+      }, {
+        "text" : "5-9 years",
+        "count" : 0
+      }, {
+        "text" : "10-19 years",
+        "count" : 0
+      }, {
+        "text" : "20+ years",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457334356
+    },
+    "-J8N6c9Nz6qbgF9sxJ5j" : {
+      "text" : "Your treatment options being well explained",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457876314
+    },
+    "-J8N69nQBPmIH7sFNS1M" : {
+      "text" : "Cost of services",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457756061
+    },
+    "-J8N4yy9WTbkxxatd_gQ" : {
+      "text" : "How often do you make dental visits?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Quarterly",
+        "count" : 0
+      }, {
+        "text" : "Every 6 months",
+        "count" : 0
+      }, {
+        "text" : "Yearly",
+        "count" : 0
+      }, {
+        "text" : "Only when I have pain",
+        "count" : 0
+      }, {
+        "text" : "Other",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457445452
+    },
+    "-J8N36gLGzAYM7wKfKm_" : {
+      "text" : "All of your questions/concerns were answered by your Doctor/Midwife/Nurse Practitioner",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Strongly disagree",
+        "count" : 0
+      }, {
+        "text" : "Disagree",
+        "count" : 0
+      }, {
+        "text" : "Neutral",
+        "count" : 0
+      }, {
+        "text" : "Agree",
+        "count" : 0
+      }, {
+        "text" : "Strongly agree",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456956888
+    },
+    "-J8M_2ooA2txjPbuxx12" : {
+      "text" : "How eager to help you were the customer service representatives at our company?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely eager",
+        "count" : 0
+      }, {
+        "text" : "Very eager",
+        "count" : 0
+      }, {
+        "text" : "Moderately eager",
+        "count" : 0
+      }, {
+        "text" : "Slightly eager",
+        "count" : 0
+      }, {
+        "text" : "Not at all eager",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448810588
+    },
+    "-J8MmmfI_OMe3N15mrOk" : {
+      "text" : "How effectively does your supervisor use company resources?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely effectively",
+        "count" : 0
+      }, {
+        "text" : "Very effectively",
+        "count" : 0
+      }, {
+        "text" : "Moderately effectively",
+        "count" : 0
+      }, {
+        "text" : "Slightly effectively",
+        "count" : 0
+      }, {
+        "text" : "Not at all effectively",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452411023
+    },
+    "-J8N3Hxs7YNwmdai9axz" : {
+      "text" : "Overall, you were satisfied with your experience at the clinic today",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Strongly disagree",
+        "count" : 0
+      }, {
+        "text" : "Disagree",
+        "count" : 0
+      }, {
+        "text" : "Neutral",
+        "count" : 0
+      }, {
+        "text" : "Agree",
+        "count" : 0
+      }, {
+        "text" : "Strongly agree",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457003066
+    },
+    "-J8MhfilZWodsfuT-9T3" : {
+      "text" : "How realistic are the expectations of your supervisor?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely realistic",
+        "count" : 0
+      }, {
+        "text" : "Very realistic",
+        "count" : 0
+      }, {
+        "text" : "Moderately realistic",
+        "count" : 0
+      }, {
+        "text" : "Slightly realistic",
+        "count" : 0
+      }, {
+        "text" : "Not at all realistic",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451071853
+    },
+    "-J8N8K_k4zx_tlcPjJdG" : {
+      "text" : "Have you ever considered teeth whitening?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Yes",
+        "count" : 0
+      }, {
+        "text" : "No",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384458324530
+    },
+    "-J8Mr8n80hS2cynfTEyd" : {
+      "text" : "How effective at his/her job is your employee?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely effective",
+        "count" : 0
+      }, {
+        "text" : "Very effective",
+        "count" : 0
+      }, {
+        "text" : "Moderately effective",
+        "count" : 0
+      }, {
+        "text" : "Slightly effective",
+        "count" : 0
+      }, {
+        "text" : "Not at all effective",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453554309
+    },
+    "-J8N3SgrNw1vdcnDKUJn" : {
+      "text" : "How reasonable was your wait time for the services you received?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Strongly disagree",
+        "count" : 0
+      }, {
+        "text" : "Disagree",
+        "count" : 0
+      }, {
+        "text" : "Neutral",
+        "count" : 0
+      }, {
+        "text" : "Agree",
+        "count" : 0
+      }, {
+        "text" : "Strongly agree",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457047032
+    },
+    "-J8MfsA5he5vv2-xgDwX" : {
+      "text" : "How closely did our company follow your project timeline?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely closely",
+        "count" : 0
+      }, {
+        "text" : "Very closely",
+        "count" : 0
+      }, {
+        "text" : "Moderately closely",
+        "count" : 0
+      }, {
+        "text" : "Slightly closely",
+        "count" : 0
+      }, {
+        "text" : "Not at all closely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450598530
+    },
+    "-J8MeKB39Q_QsdXa6-sC" : {
+      "text" : "If our new product were available today, how likely would you be to use it instead of competing products currently available from other companies?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450193087
+    },
+    "-J8MsYmLkFrXPz4iyW9_" : {
+      "text" : "How knowledgeable is your employee about the company's goals?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Very knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Moderately knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Slightly knowledgeable",
+        "count" : 0
+      }, {
+        "text" : "Not at all knowledgeable",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453922898
+    },
+    "-J8MXQbwzOaO3sj-_Tk1" : {
+      "text" : "How responsive is our company?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely responsive",
+        "count" : 0
+      }, {
+        "text" : "Very responsive",
+        "count" : 0
+      }, {
+        "text" : "Moderately responsive",
+        "count" : 0
+      }, {
+        "text" : "Slightly responsive",
+        "count" : 0
+      }, {
+        "text" : "Not at all responsive",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448121636
+    },
+    "-J8MdSPWO1ZidzplhciI" : {
+      "text" : "If our new service were available today, how likely would you be to use it instead of competing services currently available from other companies?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449964636
+    },
+    "-J8N2RLdj1pw4C8kLkJR" : {
+      "text" : "When you called the clinic, the person who answered the phone was prompt",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Strongly disagree",
+        "count" : 0
+      }, {
+        "text" : "Disagree",
+        "count" : 0
+      }, {
+        "text" : "Neutral",
+        "count" : 0
+      }, {
+        "text" : "Agree",
+        "count" : 0
+      }, {
+        "text" : "Strongly agree",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456779371
+    },
+    "-J8MrV7hAvmjnYKwehWz" : {
+      "text" : "How well does your employee work with other employees?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453645801
+    },
+    "-J8MkTKhOL4wBQ7dDLW2" : {
+      "text" : "How often does your supervisor give you feedback about your work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely often",
+        "count" : 0
+      }, {
+        "text" : "Very often",
+        "count" : 0
+      }, {
+        "text" : "Moderately often",
+        "count" : 0
+      }, {
+        "text" : "Slightly often",
+        "count" : 0
+      }, {
+        "text" : "Not at all often",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451803433
+    },
+    "-J8N7LwH4bMO3FAjN4qD" : {
+      "text" : "In which areas does our staff make you feel comfortable?",
+      "count" : 0,
+      "multiple" : true,
+      "choices" : [ {
+        "text" : "Financial arrangements",
+        "count" : 0
+      }, {
+        "text" : "Sincere concern",
+        "count" : 0
+      }, {
+        "text" : "Convenience",
+        "count" : 0
+      }, {
+        "text" : "Communication",
+        "count" : 0
+      }, {
+        "text" : "Management of discomfort",
+        "count" : 0
+      }, {
+        "text" : "Value",
+        "count" : 0
+      }, {
+        "text" : "Hygiene treatment",
+        "count" : 0
+      }, {
+        "text" : "Understanding of our sterilisation practices",
+        "count" : 0
+      }, {
+        "text" : "Waiting time",
+        "count" : 0
+      }, {
+        "text" : "Making you feel special",
+        "count" : 0
+      }, {
+        "text" : "Service",
+        "count" : 0
+      }, {
+        "text" : "Organization",
+        "count" : 0
+      }, {
+        "text" : "Quality",
+        "count" : 0
+      }, {
+        "text" : "Other",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384458067923
+    },
+    "-J8MmTgVOY-idufnF25r" : {
+      "text" : "How well does your supervisor respond to employees' mistakes?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452329180
+    },
+    "-J8MXBG5dhBLfvp05D5f" : {
+      "text" : "Compared to our competitors, are our prices more reasonable, less reasonable, or about the same?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Much more reasonable",
+        "count" : 0
+      }, {
+        "text" : "Somewhat more reasonable",
+        "count" : 0
+      }, {
+        "text" : "Slightly more reasonable",
+        "count" : 0
+      }, {
+        "text" : "About as reasonable",
+        "count" : 0
+      }, {
+        "text" : "Slightly less reasonable",
+        "count" : 0
+      }, {
+        "text" : "Somewhat less reasonable",
+        "count" : 0
+      }, {
+        "text" : "Much less reasonable",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448058734
+    },
+    "-J8N6Tv5Fqhy69WcTsCI" : {
+      "text" : "Supplying you with information about your dental care",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457838471
+    },
+    "-J8MinA-K8DFb7IRN8rU" : {
+      "text" : "Are you satisfied with your job, neither satisfied nor dissatisfied with it, or dissatisfied with it?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely satisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately satisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly satisfied",
+        "count" : 0
+      }, {
+        "text" : "Neither satisfied nor dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Slightly dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Moderately dissatisfied",
+        "count" : 0
+      }, {
+        "text" : "Extremely dissatisfied",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451364476
+    },
+    "-J8MhpaNLneVHTb-46k7" : {
+      "text" : "How often do the tasks assigned to you by your supervisor help you grow professionally?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely often",
+        "count" : 0
+      }, {
+        "text" : "Very often",
+        "count" : 0
+      }, {
+        "text" : "Moderately often",
+        "count" : 0
+      }, {
+        "text" : "Slightly often",
+        "count" : 0
+      }, {
+        "text" : "Not at all often",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451112276
+    },
+    "-J8MhL1aQ_GUglWdhicW" : {
+      "text" : "How well are you paid for the work you do?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely well",
+        "count" : 0
+      }, {
+        "text" : "Very well",
+        "count" : 0
+      }, {
+        "text" : "Moderately well",
+        "count" : 0
+      }, {
+        "text" : "Slightly well",
+        "count" : 0
+      }, {
+        "text" : "Not at all well",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450983010
+    },
+    "-J8MlJ9jufbCFIhK4QPd" : {
+      "text" : "How reasonable are the decisions made by your supervisor?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely reasonable",
+        "count" : 0
+      }, {
+        "text" : "Very reasonable",
+        "count" : 0
+      }, {
+        "text" : "Moderately reasonable",
+        "count" : 0
+      }, {
+        "text" : "Slightly reasonable",
+        "count" : 0
+      }, {
+        "text" : "Not at all reasonable",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384452023915
+    },
+    "-J8N59G0aC6mvzbbHfaD" : {
+      "text" : "Location of the office",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely poor",
+        "count" : 0
+      }, {
+        "text" : "Poor",
+        "count" : 0
+      }, {
+        "text" : "Fair",
+        "count" : 0
+      }, {
+        "text" : "Good",
+        "count" : 0
+      }, {
+        "text" : "Excellent",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384457491714
+    },
+    "-J8Mhz1L_YZdYkS_NnXV" : {
+      "text" : "How many opportunities do you have to get promoted where you work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "A great deal",
+        "count" : 0
+      }, {
+        "text" : "A lot",
+        "count" : 0
+      }, {
+        "text" : "A moderate amount",
+        "count" : 0
+      }, {
+        "text" : "A few",
+        "count" : 0
+      }, {
+        "text" : "None at all",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451150930
+    },
+    "-J8N2lDSg6ArkTdc1yBp" : {
+      "text" : "Your check in process was efficient",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Strongly disagree",
+        "count" : 0
+      }, {
+        "text" : "Disagree",
+        "count" : 0
+      }, {
+        "text" : "Neutral",
+        "count" : 0
+      }, {
+        "text" : "Agree",
+        "count" : 0
+      }, {
+        "text" : "Strongly agree",
+        "count" : 0
+      }, {
+        "text" : "N/A",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384456864863
+    },
+    "-J8MYNcvVp5AH2sPuSZj" : {
+      "text" : "Do you like our company, neither like nor dislike it, or dislike it?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Like a great deal",
+        "count" : 0
+      }, {
+        "text" : "Like a moderate amount",
+        "count" : 0
+      }, {
+        "text" : "Like a little",
+        "count" : 0
+      }, {
+        "text" : "Neither like nor dislike",
+        "count" : 0
+      }, {
+        "text" : "Dislike a little",
+        "count" : 0
+      }, {
+        "text" : "Dislike a moderate amount",
+        "count" : 0
+      }, {
+        "text" : "Dislike a great deal",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448371554
+    },
+    "-J8MjCgEiTPwMX3O5Y2g" : {
+      "text" : "Do you like your employer, neither like nor dislike them, or dislike them?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Like a great deal",
+        "count" : 0
+      }, {
+        "text" : "Like a moderate amount",
+        "count" : 0
+      }, {
+        "text" : "Like a little",
+        "count" : 0
+      }, {
+        "text" : "Neither like nor dislike",
+        "count" : 0
+      }, {
+        "text" : "Dislike a little",
+        "count" : 0
+      }, {
+        "text" : "Dislike a moderate amount",
+        "count" : 0
+      }, {
+        "text" : "Dislike a great deal",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451473099
+    },
+    "-J8Mdi2ba8tnXC5fMblJ" : {
+      "text" : "If you are not likely to use our new service, why not?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Do not need a service like this",
+        "count" : 0
+      }, {
+        "text" : "Do not want a service like this",
+        "count" : 0
+      }, {
+        "text" : "Satisfied with competing services currently available",
+        "count" : 0
+      }, {
+        "text" : "Cannot pay for a service like this",
+        "count" : 0
+      }, {
+        "text" : "Not willing to pay for a service like this",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384450032802
+    },
+    "-J8M_DTAOR33_EMCRkBt" : {
+      "text" : "How quickly did the customer service representatives at our company help you?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely quickly",
+        "count" : 0
+      }, {
+        "text" : "Very quickly",
+        "count" : 0
+      }, {
+        "text" : "Moderately quickly",
+        "count" : 0
+      }, {
+        "text" : "Slightly quickly",
+        "count" : 0
+      }, {
+        "text" : "Not at all quickly",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384448854195
+    },
+    "-J8MaaEp8u-OZMxpKZUI" : {
+      "text" : "How helpful were the customer service representatives at our company?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely helpful",
+        "count" : 0
+      }, {
+        "text" : "Very helpful",
+        "count" : 0
+      }, {
+        "text" : "Moderately helpful",
+        "count" : 0
+      }, {
+        "text" : "Slightly helpful",
+        "count" : 0
+      }, {
+        "text" : "Not at all helpful",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449214384
+    },
+    "-J8MqzirDyeRI9xs7kLm" : {
+      "text" : "How hardworking is your employee?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely hardworking",
+        "count" : 0
+      }, {
+        "text" : "Very hardworking",
+        "count" : 0
+      }, {
+        "text" : "Moderately hardworking",
+        "count" : 0
+      }, {
+        "text" : "Slightly hardworking",
+        "count" : 0
+      }, {
+        "text" : "Not at all hardworking",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384453513075
+    },
+    "-J8MaQWuxBisc7Aj0GeD" : {
+      "text" : "How many of your questions did the customer service representatives at our company resolve?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "All of them",
+        "count" : 0
+      }, {
+        "text" : "Most of them",
+        "count" : 0
+      }, {
+        "text" : "About half of them",
+        "count" : 0
+      }, {
+        "text" : "Some of them",
+        "count" : 0
+      }, {
+        "text" : "None of them",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384449170486
+    },
+    "-J8MjMr5cZiSlaQZOYsP" : {
+      "text" : "How likely are you to look for another job outside the company?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely likely",
+        "count" : 0
+      }, {
+        "text" : "Very likely",
+        "count" : 0
+      }, {
+        "text" : "Moderately likely",
+        "count" : 0
+      }, {
+        "text" : "Slightly likely",
+        "count" : 0
+      }, {
+        "text" : "Not at all likely",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451514753
+    },
+    "-J8Ml8NdTI2-DHHFLWVK" : {
+      "text" : "How consistently does your supervisor punish employees for bad work?",
+      "count" : 0,
+      "choices" : [ {
+        "text" : "Extremely consistently",
+        "count" : 0
+      }, {
+        "text" : "Very consistently",
+        "count" : 0
+      }, {
+        "text" : "Moderately consistently",
+        "count" : 0
+      }, {
+        "text" : "Slightly consistently",
+        "count" : 0
+      }, {
+        "text" : "Not at all consistently",
+        "count" : 0
+      } ],
+      "userId" : "641194965",
+      "createdAt" : 1384451979748
+    }
+  },
+  "questionnaires" : {
+    "-J8MjQeMKWbiUyEvHHno" : {
+      "count" : 0,
+      "updatedAt" : 1384452566752,
+      "published" : true,
+      "categories" : [ "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "What do your employees think about your business?",
+      "questions" : [ "-J8Mgr7WzKYeSSTBL0Fc", "-J8Mh0VeptGhOMUfKi0-", "-J8Mh9zlhpeGwmhnxh2e", "-J8MhL1aQ_GUglWdhicW", "-J8MhWJwBBPDZkcRfxsx", "-J8MhfilZWodsfuT-9T3", "-J8MhpaNLneVHTb-46k7", "-J8Mhz1L_YZdYkS_NnXV", "-J8MiGLD85LrU_GiC_PZ", "-J8MiZn0zTjaZrMu8vze", "-J8MinA-K8DFb7IRN8rU", "-J8MixVzfOlm3uit_sTH", "-J8MjCgEiTPwMX3O5Y2g", "-J8MjMr5cZiSlaQZOYsP" ],
+      "userId" : "641194965",
+      "title" : "Employee Satisfaction",
+      "createdAt" : 1384451530323
+    },
+    "-J8MeMiyM5m93mX4Qh9s" : {
+      "count" : 0,
+      "updatedAt" : 1384452530195,
+      "published" : true,
+      "categories" : [ "-J8MVAJGrhVoUt08Fl0P", "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "Discover consumer opinions",
+      "questions" : [ "-J8McG0wNxm5YmKK74LH", "-J8Mc_7UhAr4scr4e29j", "-J8Mctn6f485OdYBo-6B", "-J8Md76nOXm71dpcuSfb", "-J8MdIQqmZKvyBI08BdB", "-J8MdSPWO1ZidzplhciI", "-J8Mdi2ba8tnXC5fMblJ", "-J8MdxJFlJflGuQgGXP7", "-J8Me8wcw3uUV-tD62BU", "-J8MeKB39Q_QsdXa6-sC" ],
+      "userId" : "641194965",
+      "title" : "Market Research",
+      "createdAt" : 1384450203514
+    },
+    "-J8N0wxx8rqSeZRsSnC8" : {
+      "count" : 0,
+      "published" : true,
+      "categories" : [ "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "What do you think of the benefits your company offers?",
+      "questions" : [ "-J8N-nuGnXC38GWJWk5b", "-J8N02jUNEXzFj8hDJX_", "-J8N0CmU5yY9g53CpmIW", "-J8N0QlBl6jBh8bmjS6d", "-J8N0hF4s-1FeydP1bxx", "-J8MiZn0zTjaZrMu8vze" ],
+      "userId" : "641194965",
+      "title" : "Employee Benefits",
+      "createdAt" : 1384456388671
+    },
+    "-J8MscmCplh8VJMoHTqy" : {
+      "count" : 0,
+      "updatedAt" : 1384455227167,
+      "published" : true,
+      "categories" : [ "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "Rate your employees",
+      "questions" : [ "-J8MqzirDyeRI9xs7kLm", "-J8Mr8n80hS2cynfTEyd", "-J8MrINlqOn9loPWdekv", "-J8MrV7hAvmjnYKwehWz", "-J8MrcuI7mavwGs8shaO", "-J8MrnVH_2jBx4HwcUAX", "-J8Ms1ue9wbvHRPZspKG", "-J8MsNOtyoTAh4XDSVov", "-J8MsYmLkFrXPz4iyW9_" ],
+      "userId" : "641194965",
+      "title" : "Employee Evaluation",
+      "createdAt" : 1384453943369
+    },
+    "-J8N8zf8lFi2CD4mbBv5" : {
+      "count" : 0,
+      "published" : true,
+      "categories" : [ "-J8N1Az93WzJ_0oXkVog" ],
+      "description" : "Dental care assessment",
+      "questions" : [ "-J8N3x7fMi7dGcBWzW0q", "-J8N4DdiaS6VN9UE4E31", "-J8N4YqHGQGhZrh6TJSP", "-J8N4yy9WTbkxxatd_gQ", "-J8N59G0aC6mvzbbHfaD", "-J8N5HwD13eTufZO0y3v", "-J8N5VmgAIFRMI0XehRJ", "-J8N5dq2ZxZr-7754e18", "-J8N5uC2NnUAkmlPvB_L", "-J8N618rdmL1skzTQr3m", "-J8N69nQBPmIH7sFNS1M", "-J8N6KhrH_I1oU1CBy-b", "-J8N6Tv5Fqhy69WcTsCI", "-J8N6c9Nz6qbgF9sxJ5j", "-J8N6nWT0NG7AOu5xmIZ", "-J8N7LwH4bMO3FAjN4qD", "-J8N7UDdxqW6O-LzhlK1", "-J8N7ikUgwiL3int0YJH", "-J8N7vNmDNxFSSF1pw9R", "-J8N8K_k4zx_tlcPjJdG", "-J8N8WWTDVgZbG2ZsuIi", "-J8N8wX_ARjezFwDNQ-R" ],
+      "userId" : "641194965",
+      "title" : "Dental Care",
+      "createdAt" : 1384458496906
+    },
+    "-J8Mn1rTiWAQvD2umGsG" : {
+      "count" : 0,
+      "published" : true,
+      "categories" : [ "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "What do employees think of their supervisor?",
+      "questions" : [ "-J8MkApeCMiHjGsFhX-e", "-J8MkJzyP2oYIFAG04Kw", "-J8MkTKhOL4wBQ7dDLW2", "-J8MkcN4if49LM8_y8Ka", "-J8Mkmkfu31p4Q1AGaVK", "-J8MkxaxFfPbwf2V2TWF", "-J8Ml8NdTI2-DHHFLWVK", "-J8MlJ9jufbCFIhK4QPd", "-J8MlXe8CvzyXM2Ct-pn", "-J8MljgjC48HdSS31EpZ", "-J8Mm-WAa_sTX1xIv6KF", "-J8MhfilZWodsfuT-9T3", "-J8MmTgVOY-idufnF25r", "-J8Mmcm_4ahvkgV9HK6b", "-J8MmmfI_OMe3N15mrOk", "-J8Mn086ZBXSWZeSyBvY" ],
+      "userId" : "641194965",
+      "title" : "Supervisor Performance Survey",
+      "createdAt" : 1384452477338
+    },
+    "-J8MargwA7hZPtHlNsdp" : {
+      "count" : 0,
+      "updatedAt" : 1384452515204,
+      "published" : true,
+      "categories" : [ "-J8MVAJGrhVoUt08Fl0P", "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "How do customers rate our service?",
+      "questions" : [ "-J8MZgvI9Jfmu__EeBDq", "-J8MZs3jsL4dWBb_Ol8B", "-J8M_2ooA2txjPbuxx12", "-J8M_DTAOR33_EMCRkBt", "-J8Ma5T_hQK0B9azLobn", "-J8MaEYZem7tOH6mI4G8", "-J8MaQWuxBisc7Aj0GeD", "-J8MaaEp8u-OZMxpKZUI", "-J8MapPZW9bcIoxREjKY" ],
+      "userId" : "641194965",
+      "title" : "Customer Service",
+      "createdAt" : 1384449285880
+    },
+    "-J8MgHg0c89gwyo9sK3s" : {
+      "count" : 0,
+      "updatedAt" : 1384452546391,
+      "published" : true,
+      "categories" : [ "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "Is your customer a business too?",
+      "questions" : [ "-J8MfX3Mns8pNtfaO2ZA", "-J8MffhDC-vcm0yuyTaf", "-J8MfsA5he5vv2-xgDwX", "-J8Mg4HQBR9J1LuH4tiH", "-J8MgELLxU-btnADkIK_" ],
+      "userId" : "641194965",
+      "title" : "Business to Business",
+      "createdAt" : 1384450707132
+    },
+    "-J8MYkmFlvAp0zKK6jd9" : {
+      "count" : 0,
+      "updatedAt" : 1384452501321,
+      "published" : true,
+      "categories" : [ "-J8MVAJGrhVoUt08Fl0P", "-J8MVXZUUpxd2uPI72Gi" ],
+      "description" : "How are you doing in the eyes of your customers?",
+      "questions" : [ "-J8MWEI9gpTUoc5Tvw9b", "-J8MWW1Gh-e4_zWKXcAf", "-J8MWuEZK-H0h-cVvVXR", "-J8MXBG5dhBLfvp05D5f", "-J8MXQbwzOaO3sj-_Tk1", "-J8MXkakpPPoa-CNJ3rw", "-J8MY3eNzzkPHB-zdK2f", "-J8MYNcvVp5AH2sPuSZj", "-J8MYbYInsXe7e0w67-J" ],
+      "userId" : "641194965",
+      "title" : "Customer Satisfaction",
+      "createdAt" : 1384448470456
+    },
+    "-J8N3UXdHwjVaC_Coctn" : {
+      "count" : 0,
+      "published" : true,
+      "categories" : [ "-J8N1Az93WzJ_0oXkVog" ],
+      "description" : "Medical assessment",
+      "questions" : [ "-J8N1snBJOzUJAtIZ6lT", "-J8N23XtBMW21bkPmq2Y", "-J8N28kPdMQDiuira7Pm", "-J8N2RLdj1pw4C8kLkJR", "-J8N2lDSg6ArkTdc1yBp", "-J8N2wdC-4Zga02wU4el", "-J8N36gLGzAYM7wKfKm_", "-J8N3Hxs7YNwmdai9axz", "-J8N3SgrNw1vdcnDKUJn" ],
+      "userId" : "641194965",
+      "title" : "Medical Patient",
+      "createdAt" : 1384457054571
+    }
+  }
+}

@@ -74,7 +74,8 @@ module.exports = {
       'vendor/angular-cookies/angular-cookies.min.js',
       'vendor/angular-route/angular-route.min.js',
       'vendor/angular-ui-utils/modules/highlight/highlight.js',
-      'vendor/angular-fire/angularFire.min.js'
+      'vendor/angular-fire/angularFire.min.js',
+      'vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.7.0-SNAPSHOT.min.js'
     ],
     css: [
       'vendor/animate.css/animate.css'

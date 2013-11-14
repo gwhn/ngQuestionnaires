@@ -36,7 +36,6 @@ angular.module('ngQuestionnaires.directives')
               chart,
               node;
 
-            console.log(diameter);
             svg.selectAll('*').remove();
 
             chart = svg.attr('width', diameter)

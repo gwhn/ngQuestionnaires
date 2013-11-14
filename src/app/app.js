@@ -14,6 +14,7 @@ angular.module('ngQuestionnaires', [
     'ngRoute',
     'templates-app',
     'templates-common',
+    'ui.bootstrap',
     'ui.highlight',
     'ngQuestionnaires.categories',
     'ngQuestionnaires.questionnaires',

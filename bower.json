@@ -9,6 +9,7 @@
     "angular-animate": "~1.2.0",
     "angular-cookies": "~1.2.0",
     "bootstrap": "3.0.0",
+    "angular-ui-bootstrap": "#bootstrap3",
     "angular-ui-utils": "~0.0.3",
     "d3": "~3.3.9",
     "animate.css": "~2.1.0",

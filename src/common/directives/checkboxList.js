@@ -16,7 +16,6 @@ angular.module('ngQuestionnaires.directives')
         '</label>' +
         '</div>',
       controller: ['$scope', function ($scope) {
-
         $scope.toggle = function (index) {
           var item = $scope.list[index],
             i = $scope.selection.indexOf(item.value);
@@ -27,20 +26,18 @@ angular.module('ngQuestionnaires.directives')
             $scope.selection.push(item.value);
           }
         };
-
-        $scope.$watch('items', function (value) {
-          $scope.list = [];
-          if (angular.isArray(value)) {
-            angular.forEach(value, function (item) {
-              $scope.list.push({
-                value: item[$scope.value],
-                label: item[$scope.label],
-                checked: $scope.selection.indexOf(item[$scope.value]) > -1
-              });
+      }],
+      link: function (scope, element, attrs) {
+        scope.$watch('items.length', function () {
+          scope.list = [];
+          angular.forEach(scope.items, function (item) {
+            scope.list.push({
+              value: item[scope.value],
+              label: item[scope.label],
+              checked: scope.selection.indexOf(item[scope.value]) > -1
             });
-          }
+          });
         });
-
-      }]
+      }
     };
   });

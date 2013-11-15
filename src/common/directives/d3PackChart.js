@@ -84,9 +84,6 @@ angular.module('ngQuestionnaires.directives')
                 .style('fill', function (d) {
                   return colour(d.depth);
                 })
-                .style('stroke', function (d) {
-                  return colour(d.depth + 1);
-                })
                 .transition()
                 .attr('r', function (d) {
                   return d.r;
@@ -94,7 +91,7 @@ angular.module('ngQuestionnaires.directives')
                 .delay(function (d, i) {
                   return i * 5;
                 })
-                .duration(200);
+                .duration(100);
 
               node.filter(function (d) {
                 return !d[scope.children];
@@ -102,6 +99,11 @@ angular.module('ngQuestionnaires.directives')
                 .append('text')
                 .attr('dy', '0.33em')
                 .style('text-anchor', 'middle')
+                .transition()
+                .delay(function (d, i) {
+                  return i * 7;
+                })
+                .duration(100)
                 .text(function (d) {
                   return d[scope.title].substring(0, d.r / 2.1);
                 });

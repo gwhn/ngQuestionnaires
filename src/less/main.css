@@ -5889,6 +5889,10 @@ body {
 .navbar-fixed-bottom p {
   margin: 0;
 }
+.panel-heading h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /**
  * Typography
  */
@@ -5949,7 +5953,9 @@ body {
 }
 .d3-pack-chart circle {
   fill-opacity: 0.25;
-  stroke-width: 1px;
+  stroke: white;
+  stroke-opacity: 0.25;
+  stroke-width: 0.5px;
 }
 .d3-pack-chart .leaf circle {
   fill-opacity: 0.75;

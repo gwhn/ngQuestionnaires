@@ -37,7 +37,7 @@
     </ul>
   </div>
 
-  <h3 ng-bind-html="question.text | highlight:search.query"></h3>
+  <p class="lead" ng-bind-html="question.text | highlight:search.query"></p>
 
   <ul class="nav nav-pills">
     <li ng-class="{active: !showPieChart}">

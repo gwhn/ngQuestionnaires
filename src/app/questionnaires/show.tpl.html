@@ -19,10 +19,7 @@
 
   <h3>{{questionnaire.title}}</h3>
 
-  <div class="row">
-    <p class="lead col-md-10">{{questionnaire.description}}</p>
-
-  </div>
+  <p class="lead">{{questionnaire.description}}</p>
 
   <section ng-include="'questionnaires/meta.tpl.html'"></section>
   <p ng-cloak ng-if="!questionnaire.questions" class="text-info">There are no questions</p>

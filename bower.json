@@ -13,7 +13,7 @@
     "angular-ui-utils": "~0.0.3",
     "d3": "~3.3.9",
     "animate.css": "~2.1.0",
-    "angular-fire": "~0.3.1",
+    "angular-fire": "#v2",
     "angular-route": "~1.2.0"
   },
   "dependencies": {}

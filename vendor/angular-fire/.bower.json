@@ -1,8 +1,7 @@
 {
   "name": "angular-fire",
-  "version": "0.3.1",
   "main": [
-    "./angularFire.js",
+    "./angularfire.js",
     "./angularfire.min.js"
   ],
   "ignore": [
@@ -13,17 +12,17 @@
     ".travis.yml"
   ],
   "dependencies": {
-    "angular": "1.0.8"
+    "angular": "<=1.2.0",
+    "angular-mocks": "<=1.2.0"
   },
   "homepage": "https://github.com/firebase/angularFire",
-  "_release": "0.3.1",
+  "_release": "01949b619e",
   "_resolution": {
-    "type": "version",
-    "tag": "v0.3.1",
-    "commit": "33e2ae20090f05f24d6ee93ea83a641a260e2f50"
+    "type": "branch",
+    "branch": "v2",
+    "commit": "01949b619ee3539008f093a03e6f52e315947540"
   },
   "_source": "git://github.com/firebase/angularFire.git",
-  "_target": "~0.3.1",
-  "_originalSource": "angular-fire",
-  "_direct": true
+  "_target": "v2",
+  "_originalSource": "angular-fire"
 }

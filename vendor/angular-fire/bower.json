@@ -1,9 +1,10 @@
 {
   "name": "angular-fire",
-  "version": "0.3.1",
-  "main": ["./angularFire.js", "./angularfire.min.js"],
+  "version": "0.5.0",
+  "main": ["./angularfire.js", "./angularfire.min.js"],
   "ignore": ["Gruntfile.js", "package.js", "tests", "README.md", ".travis.yml"],
   "dependencies": {
-    "angular": "1.0.8"
+    "angular": "<=1.2.0",
+    "angular-mocks" : "<=1.2.0"
   }
 }

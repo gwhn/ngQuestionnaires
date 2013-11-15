@@ -1,4 +1,4 @@
-<div class="alert alert-{{alert.type}} alert-dismissable">
+<div ng-if="alert" class="alert alert-{{alert.type}} alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   {{alert.msg}}
 </div>

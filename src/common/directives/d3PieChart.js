@@ -17,6 +17,7 @@ angular.module('ngQuestionnaires.directives')
           var chart = d3.select(element[0])
               .append('svg')
               .attr('class', 'pie-chart'),
+            width = element[0].offsetWidth,
             height = scope.height || 500,
             colour = d3.scale.category20(),
             value = function (d) {
@@ -39,8 +40,7 @@ angular.module('ngQuestionnaires.directives')
 
           scope.render = function (data) {
 
-            var width = chart[0][0].offsetWidth,
-              radius = Math.min(height, width) / 2,
+            var radius = Math.min(height, width) / 2,
               margin = 30,
               arc = d3.svg.arc()
                 .startAngle(function (d) {
@@ -50,7 +50,7 @@ angular.module('ngQuestionnaires.directives')
                   return d.endAngle;
                 })
                 .outerRadius(radius - margin)
-                .innerRadius(45),
+                .innerRadius(60),
               pie = d3.layout.pie().value(value),
               arcs,
               total = 0,

@@ -23,7 +23,7 @@
            validation-class on="choice">
         <div class="input-group">
           <input type="text" ng-model="choice.text" name="choice"
-                 class="form-control" required/>
+                 class="form-control" required focus on="isLastEmpty($index)"/>
         <span class="input-group-btn">
             <button ng-click="removeChoice($index)" class="btn btn-default">
               <i class="glyphicon glyphicon-remove"></i>

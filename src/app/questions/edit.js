@@ -33,6 +33,11 @@ angular.module('ngQuestionnaires.questions')
         $scope.question.choices.push({text: '', count: 0});
       };
 
+      $scope.isLastEmpty = function (index) {
+        return $scope.question.choices[index].text === '' &&
+          index === $scope.question.choices.length - 1;
+      };
+
       $scope.save = function () {
         $scope.question.createdAt = Date.now();
         $scope.question.userId = $scope.user.id;
@@ -83,6 +88,11 @@ angular.module('ngQuestionnaires.questions')
           $scope.question.choices = [];
         }
         $scope.question.choices.push({text: '', count: 0});
+      };
+
+      $scope.isLastEmpty = function (index) {
+        return $scope.question.choices[index].text === '' &&
+          index === $scope.question.choices.length - 1;
       };
 
       $scope.update = function () {

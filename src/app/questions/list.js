@@ -26,14 +26,5 @@ angular.module('ngQuestionnaires.questions')
         }
       });
 
-      $scope.isMatch = function (question) {
-        return $scope.search.query ? (
-          question.text.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
-            underscore.any(question.choices, function (choice) {
-              return choice.text.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1;
-            })
-          ) : true;
-      };
-
     }
   ]);

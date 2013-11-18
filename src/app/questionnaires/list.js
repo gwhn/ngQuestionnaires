@@ -25,12 +25,5 @@ angular.module('ngQuestionnaires.questionnaires')
         }
       });
 
-      $scope.isMatch = function (questionnaire) {
-        return $scope.search.query ? (
-          questionnaire.title.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1 ||
-            questionnaire.description.toLowerCase().indexOf($scope.search.query.toLowerCase()) > -1
-          ) : true;
-      };
-
     }
   ]);

@@ -35,8 +35,7 @@ angular.module('ngQuestionnaires.directives')
             },
             chart = d3.select(element[0])
               .append('svg')
-              .attr('class', 'bar-chart'),
-            width = element[0].offsetWidth;
+              .attr('class', 'bar-chart');
 
           $window.onresize = function () {
             scope.$apply();
@@ -61,6 +60,7 @@ angular.module('ngQuestionnaires.directives')
             }
 
             var length = data.length,
+              width = element[0].offsetWidth,
               barsWidth = width - margin.left - margin.right,
               barsHeight = ((barHeight + labelHeight) * length),
               chartHeight = barsHeight + margin.top + margin.bottom,

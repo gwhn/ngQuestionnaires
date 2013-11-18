@@ -20,12 +20,12 @@ angular.module('ngQuestionnaires.directives')
           var svg = d3.select(element[0])
               .append('svg')
               .attr('class', 'd3-pack-chart'),
-            diameter = element[0].offsetWidth,
             format = d3.format(',d'),
             colour = d3.scale.category10();
 
           function render() {
-            var margin = 1,
+            var diameter = element[0].offsetWidth,
+              margin = 1,
               sw = diameter - margin * 2,
               sh = sw,
               pack = d3.layout.pack()

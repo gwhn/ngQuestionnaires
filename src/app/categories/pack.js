@@ -13,6 +13,34 @@ angular.module('ngQuestionnaires.categories')
           title: 'ngQuestionnaires',
           children: []
         };
+        underscore.each($scope.questionnaires, function (e1) {
+            var questionnaires = data.children,
+              questions = [];
+            questionnaires.push({
+              title: e1.title,
+              url: '/questionnaires/show/' + e1.$id,
+              children: questions
+            });
+            underscore.each(e1.questions, function (e2) {
+              var question = underscore.find($scope.questions, function (e3) {
+                  return e3.$id === e2;
+                }),
+                choices = [];
+              if (question) {
+                questions.push({
+                  title: question.text,
+                  children: choices
+                });
+                underscore.each(question.choices, function (e4) {
+                  choices.push({
+                    title: e4.text,
+                    count: e4.count
+                  });
+                });
+              }
+            });
+        });
+/*
         underscore.each($scope.categories, function (e) {
           var categories = data.children,
             questionnaires = [];
@@ -49,6 +77,7 @@ angular.module('ngQuestionnaires.categories')
             }
           });
         });
+*/
         return data;
       }
 

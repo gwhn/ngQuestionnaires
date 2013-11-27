@@ -21,7 +21,7 @@ angular.module('ngQuestionnaires.questionnaires')
 
       function map() {
         var data = {
-          title: 'ngQuestionnaires',
+          title: $scope.questionnaire.title,
           children: []
         };
         underscore.each($scope.questionnaire.questions, function (e1) {

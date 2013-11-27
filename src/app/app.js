@@ -59,7 +59,7 @@ angular.module('ngQuestionnaires', [
 
   .config(function ($routeProvider) {
 
-    $routeProvider.otherwise({redirectTo: '/categories/pack'});
+    $routeProvider.otherwise({redirectTo: '/questionnaires/list'});
 
   })
 
@@ -149,7 +149,7 @@ angular.module('ngQuestionnaires', [
       });
 
       $scope.$on('angularFireAuth:logout', function (event) {
-        $scope.setAlert('warning', 'You are not logged in');
+//        $scope.setAlert('warning', 'You are not logged in');
       });
 
       $scope.$on('angularFireAuth:error', function (event, error) {

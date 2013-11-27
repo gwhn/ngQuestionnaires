@@ -1,50 +1,72 @@
-<article class="well well-lg">
-  <div class="btn-group pull-right">
-    <a class="btn btn-default" ng-href="#/questionnaires/edit/{{questionnaire.$id}}">Edit</a>
-    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li ng-if="user">
-        <a ng-href="#/questionnaires/edit/{{questionnaire.$id}}">Edit</a>
-      </li>
-      <li ng-if="user && questionnaire.published">
-        <a ng-href="#/responses/new/{{questionnaire.$id}}">Respond</a>
-      </li>
-      <li ng-if="user">
-        <a ng-href="#/questionnaires/delete/{{questionnaire.$id}}"><span class="text-danger">Delete</span></a>
-      </li>
-    </ul>
-  </div>
-
-  <h3>{{questionnaire.title}}</h3>
-
-  <p class="lead">{{questionnaire.description}}</p>
-
-  <section ng-include="'questionnaires/meta.tpl.html'"></section>
-  <p ng-cloak ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
-
-</article>
-
-<ul class="list-unstyled">
-  <li ng-repeat="id in questionnaire.questions">
-    <article ng-controller="questionShowCtrl" class="well well-lg">
-      <p class="lead">{{question.text}}</p>
-
-      <div toggle-collapse="false">
-        <div toggle-label>
-          <span class="badge">{{question.choices.length}}</span> Choices
-        </div>
-        <div toggle-body>
-          <ol class="list-group">
-            <li ng-repeat="choice in question.choices" class="list-group-item">
-              <span class="badge">{{choice.count}}</span>{{choice.text}}
-            </li>
-          </ol>
-        </div>
-      </div>
-
-      <section ng-include="'questions/meta.tpl.html'"></section>
-    </article>
+<ul class="nav nav-pills">
+  <li ng-class="{active: !showChart}">
+    <a href="" ng-click="showChart = false">Detail</a>
+  </li>
+  <li ng-class="{active: showChart}">
+    <a href="" ng-click="showChart = true">Chart</a>
   </li>
 </ul>
+<br/>
+<div ng-if="!showChart">
+
+  <article class="well well-lg">
+    <div class="btn-group pull-right">
+      <a class="btn btn-default" ng-href="#/questionnaires/edit/{{questionnaire.$id}}">Edit</a>
+      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-if="user">
+          <a ng-href="#/questionnaires/edit/{{questionnaire.$id}}">Edit</a>
+        </li>
+        <li ng-if="user && questionnaire.published">
+          <a ng-href="#/responses/new/{{questionnaire.$id}}">Respond</a>
+        </li>
+        <li ng-if="user">
+          <a ng-href="#/questionnaires/delete/{{questionnaire.$id}}"><span class="text-danger">Delete</span></a>
+        </li>
+      </ul>
+    </div>
+
+    <h3>{{questionnaire.title}}</h3>
+
+    <p class="lead">{{questionnaire.description}}</p>
+
+    <section ng-include="'questionnaires/meta.tpl.html'"></section>
+    <p ng-cloak ng-if="!questionnaire.questions" class="text-info">There are no questions</p>
+
+  </article>
+
+  <ul class="list-unstyled">
+    <li ng-repeat="id in questionnaire.questions">
+      <article ng-controller="questionShowCtrl" class="well well-lg">
+        <p class="lead">{{question.text}}</p>
+
+        <div toggle-collapse="false">
+          <div toggle-label>
+            <span class="badge">{{question.choices.length}}</span> Choices
+          </div>
+          <div toggle-body>
+            <ol class="list-group">
+              <li ng-repeat="choice in question.choices" class="list-group-item">
+                <span class="badge">{{choice.count}}</span>{{choice.text}}
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <section ng-include="'questions/meta.tpl.html'"></section>
+      </article>
+    </li>
+  </ul>
+
+
+</div>
+
+<div ng-if="showChart"
+     d3-pack-chart
+     data="chart"
+     title="title"
+     children="children"
+     value="count"
+     url="url"></div>

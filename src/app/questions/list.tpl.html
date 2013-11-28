@@ -19,7 +19,7 @@
   </li>
 </ul>
 
-<article class="well well-lg"
+<article class="well well-lg repeat-animation"
          ng-repeat="question in filteredQuestions | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
   <div ng-if="user" class="btn-group pull-right">
@@ -49,6 +49,7 @@
   </ul>
 
   <div ng-if="!showPieChart"
+       ng-class="{'chart-animation': !showPieChart}"
        d3-bar-chart data="question.choices"
        label="text"
        value="count"
@@ -61,6 +62,7 @@
   </div>
 
   <div ng-if="showPieChart"
+       ng-class="{'chart-animation': showPieChart}"
        d3-pie-chart data="question.choices"
        label="text"
        value="count"

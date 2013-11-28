@@ -7,7 +7,7 @@
   </li>
 </ul>
 <br/>
-<div ng-if="!showChart">
+<div ng-hide="showChart" class="chart-animation">
 
   <article class="well well-lg">
     <div class="btn-group pull-right">
@@ -63,7 +63,8 @@
 
 </div>
 
-<div ng-if="showChart"
+<div ng-show="showChart"
+     class="chart-animation"
      d3-pack-chart
      data="chart"
      title="title"

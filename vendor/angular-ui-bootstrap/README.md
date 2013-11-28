@@ -80,6 +80,13 @@ We are always looking for the quality contributions! Please check the [CONTRIBUT
 * Build the whole project: `grunt` - this will run `lint`, `test`, and `concat` targets
 * To build modules, first run `grunt html2js` then `grunt build:module1:module2...:moduleN`
 
+You can generate a custom build, containing only needed modules, from the project's homepage.
+Alternativelly you can run local Grunt build from the command line and list needed modules as shown below:
+
+```
+grunt build:modal:tabs:alert:popover:dropdownToggle:buttons:progressbar
+```
+
 Check the Grunt build file for other tasks that are defined for this project.
 
 #### TDD

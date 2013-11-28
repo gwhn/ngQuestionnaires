@@ -7,7 +7,7 @@
   </li>
 </ul>
 <br/>
-<div ng-if="!showChart">
+<div ng-hide="showChart" class="chart-animation">
 
   <div class="well well-large">
     <form name="search">
@@ -30,7 +30,7 @@
     </li>
   </ul>
 
-  <article class="well well-lg"
+  <article class="well well-lg repeat-animation"
            ng-repeat="questionnaire in filteredQuestionnaires | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
     <div class="btn-group pull-right">
@@ -68,7 +68,8 @@
 
 </div>
 
-<div ng-if="showChart"
+<div ng-show="showChart"
+     class="chart-animation"
      d3-pack-chart
      data="chart"
      title="title"

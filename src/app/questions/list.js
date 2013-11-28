@@ -3,10 +3,9 @@ angular.module('ngQuestionnaires.questions')
   .controller('questionListCtrl', [
     '$scope',
     '$filter',
-    'underscore',
     'pagination',
     'title',
-    function ($scope, $filter, underscore, pagination, title) {
+    function ($scope, $filter, pagination, title) {
 
       $scope.setTitle(title);
 

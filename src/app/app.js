@@ -99,8 +99,9 @@ angular.module('ngQuestionnaires', [
     '$scope',
     '$cookieStore',
     '$location',
+    '$timeout',
     'angularFireAuth',
-    function ($scope, $cookieStore, $location, angularFireAuth) {
+    function ($scope, $cookieStore, $location, $timeout, angularFireAuth) {
 
       $scope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
 //        console.log(event, newUrl, oldUrl);
@@ -171,6 +172,9 @@ angular.module('ngQuestionnaires', [
           type: type,
           msg: msg
         };
+        $timeout(function () {
+          $scope.alert = null;
+        }, 5000);
       };
 
       $scope.formatDate = function (ms) {

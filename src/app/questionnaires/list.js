@@ -23,7 +23,6 @@ angular.module('ngQuestionnaires.questionnaires')
           $scope.filteredQuestionnaires = $filter('filter')($scope.questionnaires, value);
         } else {
           $scope.filteredQuestionnaires = $scope.questionnaires;
-
         }
       });
 

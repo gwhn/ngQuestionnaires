@@ -13,7 +13,7 @@
   </p>
 </div>
 
-<article class="well well-lg"
+<article class="well well-lg repeat-animation"
          ng-repeat="response in filteredResponses | skip:(page-1)*itemsPerPage | limitTo:itemsPerPage">
 
   <a ng-if="user" ng-href="#/responses/delete/{{response.$id}}" class="btn btn-danger pull-right">Delete</a>

@@ -177,6 +177,32 @@ body {
   }
 }
 
+.alert-animation {
+  &.ng-enter,
+  &.ng-leave {
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-backface-visibility: visible !important;
+    -moz-backface-visibility: visible !important;
+    -o-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+  }
+  &.ng-enter {
+    -webkit-animation: 0.5s slideInRight;
+    -moz-animation: 0.5s slideInRight;
+    -o-animation: 0.5s slideInRight;
+    animation: 0.5s slideInRight;
+  }
+  &.ng-leave {
+    -webkit-animation: 0.25s slideOutLeft;
+    -moz-animation: 0.25s slideOutLeft;
+    -o-animation: 0.25s slideOutLeft;
+    animation: 0.25s slideOutLeft;
+  }
+}
+
 .hide-animation {
   &.ng-hide-add,
   &.ng-hide-remove {

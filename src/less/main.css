@@ -5986,6 +5986,29 @@ body {
   -o-animation: 0.25s slideOutLeft;
   animation: 0.25s slideOutLeft;
 }
+.alert-animation.ng-enter,
+.alert-animation.ng-leave {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-backface-visibility: visible !important;
+  -moz-backface-visibility: visible !important;
+  -o-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+}
+.alert-animation.ng-enter {
+  -webkit-animation: 0.5s slideInRight;
+  -moz-animation: 0.5s slideInRight;
+  -o-animation: 0.5s slideInRight;
+  animation: 0.5s slideInRight;
+}
+.alert-animation.ng-leave {
+  -webkit-animation: 0.25s slideOutLeft;
+  -moz-animation: 0.25s slideOutLeft;
+  -o-animation: 0.25s slideOutLeft;
+  animation: 0.25s slideOutLeft;
+}
 .hide-animation.ng-hide-add,
 .hide-animation.ng-hide-remove {
   -webkit-transition: 0.5s linear all;

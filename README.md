@@ -100,7 +100,7 @@ The scripts folder contains a [Node.js](http://nodejs.org/) web server for conve
 
 [Karma](http://karma-runner.github.io/0.10/index.html) (formerly Testacular) is used to run unit tests.
 
-[Jasmine](http://pivotal.github.io/jasmine/) is used as the test framework.
+[Jasmine](http://jasmine.github.io/) is used as the test framework.
 
 [Bootstrap 3](http://getbootstrap.com/getting-started/) is used as the front-end styles framework.
 
